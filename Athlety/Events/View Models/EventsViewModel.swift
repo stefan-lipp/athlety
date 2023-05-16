@@ -5,15 +5,14 @@
 //  Created by Stefan Cimander on 16.05.23.
 //
 
-import Foundation
-import Combine
+import SwiftUI
 
 @MainActor
 class EventsViewModel: ObservableObject {
     
     @Published var events: [Event] = []
     
-    private let client = EventsClient()
+    private let client: EventsClient = LadvEventsClient()
     
     func loadUpcomingEvents() async {
         events = await client.loadUpcomingEvents()
