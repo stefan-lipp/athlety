@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct AthletyApp: App {
+    
+    @ObservedObject private var eventsViewModel = EventsViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            EventsView()
+                .environmentObject(eventsViewModel)
         }
     }
 }
