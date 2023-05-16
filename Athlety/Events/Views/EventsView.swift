@@ -12,10 +12,14 @@ struct EventsView: View {
     @EnvironmentObject var viewModel: EventsViewModel
     
     var body: some View {
-        List {
-            ForEach(viewModel.events) { event in
-                Text(event.name)
+        NavigationStack {
+            List {
+                ForEach(viewModel.events) { event in
+                    EventRow(event: event)
+                }
             }
+            .listStyle(.plain)
+            .navigationTitle("Events")
         }
         .task { await viewModel.loadUpcomingEvents() }
     }
