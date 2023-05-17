@@ -10,11 +10,12 @@ import SwiftUI
 @MainActor
 class EventsViewModel: ObservableObject {
     
-    @Published var events: [Event] = []
+    @Published var eventsByDate: [Date: [Event]] = [:]
     
     private let client: EventsClient = LadvEventsClient()
     
     func loadUpcomingEvents() async {
-        events = await client.loadUpcomingEvents()
+        let events = await client.loadUpcomingEvents()
+        eventsByDate = Dictionary(grouping: events) { event in event.date }
     }
 }
