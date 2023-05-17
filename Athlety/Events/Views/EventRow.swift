@@ -11,10 +11,10 @@ struct EventRow: View {
     let event: Event
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 6) {
             Text(event.name)
-                .font(.headline)
-                .lineLimit(2)
+                .fontWeight(.medium)
+                .lineLimit(1)
             Text(event.location)
                 .fontWeight(.light)
         }
