@@ -11,6 +11,8 @@ struct EventsView: View {
     
     @EnvironmentObject var viewModel: EventsViewModel
     
+    @State private var showFilterView = false
+    
     var body: some View {
         NavigationStack {
             List {
@@ -25,6 +27,16 @@ struct EventsView: View {
             }
             .listStyle(.plain)
             .navigationTitle("Events")
+            .toolbar {
+                Button {
+                    showFilterView = true
+                } label: {
+                    Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
+                }
+            }
+            .sheet(isPresented: $showFilterView) {
+                EventsFilterView()
+            }
         }
         .task { await viewModel.loadUpcomingEvents() }
     }
@@ -41,5 +53,6 @@ struct EventsView_Previews: PreviewProvider {
     static var previews: some View {
         EventsView()
             .environmentObject(EventsViewModel())
+            .environmentObject(EventsFilterViewModel())
     }
 }
