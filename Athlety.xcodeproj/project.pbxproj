@@ -17,9 +17,14 @@
 		E3496E482A142BBC00104A0B /* LadvEventsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3496E472A142BBC00104A0B /* LadvEventsClient.swift */; };
 		E3496E4B2A14335500104A0B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3496E4D2A14335500104A0B /* Localizable.strings */; };
 		E3496E502A143DE500104A0B /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3496E4F2A143DE500104A0B /* EventRow.swift */; };
+		E3496E522A17DEA400104A0B /* EventsFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3496E512A17DEA400104A0B /* EventsFilterView.swift */; };
+		E3496E562A17E30100104A0B /* AssociationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3496E552A17E30100104A0B /* AssociationsClient.swift */; };
+		E3496E592A17E33500104A0B /* Association.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3496E582A17E33500104A0B /* Association.swift */; };
 		E369D23E2A11DBB500FF2051 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E369D23D2A11DBB500FF2051 /* App.swift */; };
 		E369D2422A11DBB600FF2051 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E369D2412A11DBB600FF2051 /* Assets.xcassets */; };
 		E369D2452A11DBB600FF2051 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E369D2442A11DBB600FF2051 /* Preview Assets.xcassets */; };
+		E39859AE2A1E92D9007027BA /* LadvAssociationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39859AD2A1E92D9007027BA /* LadvAssociationsClient.swift */; };
+		E39859B02A1E94C8007027BA /* EventsFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39859AF2A1E94C8007027BA /* EventsFilterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,10 +39,15 @@
 		E3496E4C2A14335500104A0B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E3496E4E2A1433DB00104A0B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E3496E4F2A143DE500104A0B /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
+		E3496E512A17DEA400104A0B /* EventsFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterView.swift; sourceTree = "<group>"; };
+		E3496E552A17E30100104A0B /* AssociationsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssociationsClient.swift; sourceTree = "<group>"; };
+		E3496E582A17E33500104A0B /* Association.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Association.swift; sourceTree = "<group>"; };
 		E369D23A2A11DBB500FF2051 /* Athlety.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Athlety.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E369D23D2A11DBB500FF2051 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E369D2412A11DBB600FF2051 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E369D2442A11DBB600FF2051 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E39859AD2A1E92D9007027BA /* LadvAssociationsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadvAssociationsClient.swift; sourceTree = "<group>"; };
+		E39859AF2A1E94C8007027BA /* EventsFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +77,7 @@
 			children = (
 				E3496E332A13EC3F00104A0B /* EventsView.swift */,
 				E3496E4F2A143DE500104A0B /* EventRow.swift */,
+				E3496E512A17DEA400104A0B /* EventsFilterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -75,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				E3496E372A13ECA300104A0B /* EventsViewModel.swift */,
+				E39859AF2A1E94C8007027BA /* EventsFilterViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -94,6 +106,32 @@
 				E3496E472A142BBC00104A0B /* LadvEventsClient.swift */,
 			);
 			path = Clients;
+			sourceTree = "<group>";
+		};
+		E3496E532A17E06A00104A0B /* Associations */ = {
+			isa = PBXGroup;
+			children = (
+				E3496E542A17E27A00104A0B /* Clients */,
+				E3496E572A17E32300104A0B /* Models */,
+			);
+			path = Associations;
+			sourceTree = "<group>";
+		};
+		E3496E542A17E27A00104A0B /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				E3496E552A17E30100104A0B /* AssociationsClient.swift */,
+				E39859AD2A1E92D9007027BA /* LadvAssociationsClient.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		E3496E572A17E32300104A0B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E3496E582A17E33500104A0B /* Association.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E369D2312A11DBB500FF2051 = {
@@ -117,6 +155,7 @@
 			children = (
 				E369D23D2A11DBB500FF2051 /* App.swift */,
 				E3496E452A1423A400104A0B /* Config.swift */,
+				E3496E532A17E06A00104A0B /* Associations */,
 				E3496E312A13EC1900104A0B /* Events */,
 				E369D2412A11DBB600FF2051 /* Assets.xcassets */,
 				E3496E412A141B5F00104A0B /* Config.plist */,
@@ -210,10 +249,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3496E3A2A13ECC300104A0B /* Event.swift in Sources */,
+				E39859AE2A1E92D9007027BA /* LadvAssociationsClient.swift in Sources */,
+				E39859B02A1E94C8007027BA /* EventsFilterViewModel.swift in Sources */,
 				E3496E382A13ECA300104A0B /* EventsViewModel.swift in Sources */,
 				E3496E342A13EC3F00104A0B /* EventsView.swift in Sources */,
+				E3496E522A17DEA400104A0B /* EventsFilterView.swift in Sources */,
 				E3496E502A143DE500104A0B /* EventRow.swift in Sources */,
 				E3496E482A142BBC00104A0B /* LadvEventsClient.swift in Sources */,
+				E3496E562A17E30100104A0B /* AssociationsClient.swift in Sources */,
+				E3496E592A17E33500104A0B /* Association.swift in Sources */,
 				E369D23E2A11DBB500FF2051 /* App.swift in Sources */,
 				E3496E3D2A13F07200104A0B /* EventsClient.swift in Sources */,
 				E3496E462A1423A400104A0B /* Config.swift in Sources */,
@@ -359,7 +403,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Athlety/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = V6Y747LYEV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -388,7 +432,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Athlety/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = V6Y747LYEV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
