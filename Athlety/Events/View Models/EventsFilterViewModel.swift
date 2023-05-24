@@ -11,6 +11,7 @@ import SwiftUI
 class EventsFilterViewModel: ObservableObject {
     
     @Published var associations: [Association] = []
+    @Published var selectedAssociation: Association?
     
     private let client: AssociationsClient = LadvAssociationsClient()
     

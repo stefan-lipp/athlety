@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Association: Identifiable {
+struct Association: Equatable, Identifiable {
     let id: String
     let name: String
 }

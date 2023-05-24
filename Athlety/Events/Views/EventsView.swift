@@ -9,17 +9,18 @@ import SwiftUI
 
 struct EventsView: View {
     
-    @EnvironmentObject var viewModel: EventsViewModel
+    @EnvironmentObject var eventsViewModel: EventsViewModel
+    @EnvironmentObject var eventsFilterViewModel: EventsFilterViewModel
     
     @State private var showFilterView = false
     
     var body: some View {
         NavigationStack {
             List {
-                let sortedEventDates = viewModel.eventsByDate.keys.sorted(by: <)
+                let sortedEventDates = eventsViewModel.eventsByDate.keys.sorted(by: <)
                 ForEach(sortedEventDates, id: \.self) { date in
                     Section(dateFormatter.string(from: date)) {
-                        ForEach(viewModel.eventsByDate[date]!) { event in
+                        ForEach(eventsViewModel.eventsByDate[date]!) { event in
                             EventRow(event: event)
                         }
                     }
@@ -31,14 +32,18 @@ struct EventsView: View {
                 Button {
                     showFilterView = true
                 } label: {
-                    Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
+                    let isFilterApplied = eventsFilterViewModel.selectedAssociation != nil
+                    let imageName = "line.3.horizontal.decrease.circle\(isFilterApplied ? ".fill" : "")"
+                    Label("Filter", systemImage: imageName)
                 }
             }
             .sheet(isPresented: $showFilterView) {
-                EventsFilterView()
+                EventsFilterView() { associationId in
+                    Task { await eventsViewModel.loadUpcomingEvents(for: associationId) }
+                }
             }
         }
-        .task { await viewModel.loadUpcomingEvents() }
+        .task { await eventsViewModel.loadUpcomingEvents(for: nil) }
     }
     
     private var dateFormatter: DateFormatter {

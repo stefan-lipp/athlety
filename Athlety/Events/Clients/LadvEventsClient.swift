@@ -11,11 +11,19 @@ class LadvEventsClient: EventsClient {
     
     private static let baseUrl = Config.shared.ladvBaseUrl
     private static let apiKey = Config.shared.ladvApiKey
-    private static let maxNumberOfEvents = 200
-    private let eventsUrl = URL(string: "\(baseUrl)/\(apiKey)/ausList?&mostCurrent=true&limit=\(maxNumberOfEvents)")!
+    private let eventsUrl = "\(baseUrl)/\(apiKey)/ausList"
     
-    func loadUpcomingEvents() async -> [Event] {
-        let request = URLRequest(url: eventsUrl)
+    func loadUpcomingEvents(for associationId: String?) async -> [Event] {
+        var urlComponents = URLComponents(string: eventsUrl)!
+        urlComponents.queryItems = [
+            URLQueryItem(name: "mostCurrent", value: "true"),
+            URLQueryItem(name: "limit", value: "200")
+        ]
+        if associationId != nil {
+            urlComponents.queryItems?.append(URLQueryItem(name: "lv", value: associationId))
+        }
+        
+        let request = URLRequest(url: urlComponents.url!)
         let (data, response) = try! await URLSession.shared.data(for: request)
         
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return [] }
