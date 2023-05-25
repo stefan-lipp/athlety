@@ -19,6 +19,13 @@ struct EventsFilterView: View {
     var body: some View {
         NavigationStack {
             List {
+                Section {
+                    Text("Select a state association by which events are filtered.")
+                        .foregroundColor(.secondary)
+                        .font(.subheadline)
+                }
+                .listSectionSeparator(.hidden)
+                
                 EventsFilterRow(name: "All",
                                 isSelected: viewModel.selectedAssociationId == nil,
                                 onSelect: { viewModel.selectedAssociationId = nil }
@@ -34,13 +41,12 @@ struct EventsFilterView: View {
             .navigationTitle("Filter")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                Button {
+                EventsFilterToolbar {
+                    dismiss()
+                } onDone: {
                     store.associationId = viewModel.selectedAssociationId
                     onFilter()
                     dismiss()
-                } label: {
-                    Text("Done")
-                        .fontWeight(.semibold)
                 }
             }
         }
