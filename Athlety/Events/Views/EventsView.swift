@@ -24,6 +24,7 @@ struct EventsView: View {
                             EventRow(event: event)
                         }
                     }
+                    .listSectionSeparator(.hidden, edges: [.bottom])
                 }
             }
             .listStyle(.plain)

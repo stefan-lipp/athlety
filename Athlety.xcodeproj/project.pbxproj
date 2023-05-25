@@ -21,6 +21,7 @@
 		E3496E562A17E30100104A0B /* AssociationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3496E552A17E30100104A0B /* AssociationsClient.swift */; };
 		E3496E592A17E33500104A0B /* Association.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3496E582A17E33500104A0B /* Association.swift */; };
 		E35B03B52A1FC41B00D25FF4 /* EventsFilterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35B03B42A1FC41B00D25FF4 /* EventsFilterStore.swift */; };
+		E35B03B72A1FD5CE00D25FF4 /* EventsFilterToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35B03B62A1FD5CE00D25FF4 /* EventsFilterToolbar.swift */; };
 		E369D23E2A11DBB500FF2051 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E369D23D2A11DBB500FF2051 /* App.swift */; };
 		E369D2422A11DBB600FF2051 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E369D2412A11DBB600FF2051 /* Assets.xcassets */; };
 		E369D2452A11DBB600FF2051 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E369D2442A11DBB600FF2051 /* Preview Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		E3496E552A17E30100104A0B /* AssociationsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssociationsClient.swift; sourceTree = "<group>"; };
 		E3496E582A17E33500104A0B /* Association.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Association.swift; sourceTree = "<group>"; };
 		E35B03B42A1FC41B00D25FF4 /* EventsFilterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterStore.swift; sourceTree = "<group>"; };
+		E35B03B62A1FD5CE00D25FF4 /* EventsFilterToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterToolbar.swift; sourceTree = "<group>"; };
 		E369D23A2A11DBB500FF2051 /* Athlety.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Athlety.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E369D23D2A11DBB500FF2051 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E369D2412A11DBB600FF2051 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				E3496E4F2A143DE500104A0B /* EventRow.swift */,
 				E3496E512A17DEA400104A0B /* EventsFilterView.swift */,
 				E3EC56E42A1EAAA400EDAC4D /* EventsFilterRow.swift */,
+				E35B03B62A1FD5CE00D25FF4 /* EventsFilterToolbar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			files = (
 				E3496E3A2A13ECC300104A0B /* Event.swift in Sources */,
 				E39859AE2A1E92D9007027BA /* LadvAssociationsClient.swift in Sources */,
+				E35B03B72A1FD5CE00D25FF4 /* EventsFilterToolbar.swift in Sources */,
 				E39859B02A1E94C8007027BA /* EventsFilterViewModel.swift in Sources */,
 				E3496E382A13ECA300104A0B /* EventsViewModel.swift in Sources */,
 				E35B03B52A1FC41B00D25FF4 /* EventsFilterStore.swift in Sources */,
