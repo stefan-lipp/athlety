@@ -10,7 +10,7 @@ import SwiftUI
 struct EventsView: View {
     
     @EnvironmentObject var eventsViewModel: EventsViewModel
-    @EnvironmentObject var eventsFilterViewModel: EventsFilterViewModel
+    @EnvironmentObject var eventsFilterStore: EventsFilterStore
     
     @State private var showFilterView = false
     
@@ -32,18 +32,18 @@ struct EventsView: View {
                 Button {
                     showFilterView = true
                 } label: {
-                    let isFilterApplied = eventsFilterViewModel.selectedAssociation != nil
+                    let isFilterApplied = eventsFilterStore.associationId != nil
                     let imageName = "line.3.horizontal.decrease.circle\(isFilterApplied ? ".fill" : "")"
                     Label("Filter", systemImage: imageName)
                 }
             }
             .sheet(isPresented: $showFilterView) {
-                EventsFilterView() { associationId in
-                    Task { await eventsViewModel.loadUpcomingEvents(for: associationId) }
+                EventsFilterView() {
+                    Task { await eventsViewModel.loadUpcomingEvents(for: eventsFilterStore.associationId) }
                 }
             }
         }
-        .task { await eventsViewModel.loadUpcomingEvents(for: nil) }
+        .task { await eventsViewModel.loadUpcomingEvents(for: eventsFilterStore.associationId) }
     }
     
     private var dateFormatter: DateFormatter {
@@ -58,6 +58,6 @@ struct EventsView_Previews: PreviewProvider {
     static var previews: some View {
         EventsView()
             .environmentObject(EventsViewModel())
-            .environmentObject(EventsFilterViewModel())
+            .environmentObject(EventsFilterStore())
     }
 }

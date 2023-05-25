@@ -11,12 +11,15 @@ import SwiftUI
 struct AthletyApp: App {
     
     @ObservedObject private var eventsViewModel = EventsViewModel()
+    
+    @ObservedObject private var eventsFilterStore = EventsFilterStore()
     @ObservedObject private var eventsFilterViewModel = EventsFilterViewModel()
     
     var body: some Scene {
         WindowGroup {
             EventsView()
                 .environmentObject(eventsViewModel)
+                .environmentObject(eventsFilterStore)
                 .environmentObject(eventsFilterViewModel)
         }
     }

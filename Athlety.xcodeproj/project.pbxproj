@@ -20,6 +20,7 @@
 		E3496E522A17DEA400104A0B /* EventsFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3496E512A17DEA400104A0B /* EventsFilterView.swift */; };
 		E3496E562A17E30100104A0B /* AssociationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3496E552A17E30100104A0B /* AssociationsClient.swift */; };
 		E3496E592A17E33500104A0B /* Association.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3496E582A17E33500104A0B /* Association.swift */; };
+		E35B03B52A1FC41B00D25FF4 /* EventsFilterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35B03B42A1FC41B00D25FF4 /* EventsFilterStore.swift */; };
 		E369D23E2A11DBB500FF2051 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E369D23D2A11DBB500FF2051 /* App.swift */; };
 		E369D2422A11DBB600FF2051 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E369D2412A11DBB600FF2051 /* Assets.xcassets */; };
 		E369D2452A11DBB600FF2051 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E369D2442A11DBB600FF2051 /* Preview Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		E3496E512A17DEA400104A0B /* EventsFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterView.swift; sourceTree = "<group>"; };
 		E3496E552A17E30100104A0B /* AssociationsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssociationsClient.swift; sourceTree = "<group>"; };
 		E3496E582A17E33500104A0B /* Association.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Association.swift; sourceTree = "<group>"; };
+		E35B03B42A1FC41B00D25FF4 /* EventsFilterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterStore.swift; sourceTree = "<group>"; };
 		E369D23A2A11DBB500FF2051 /* Athlety.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Athlety.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E369D23D2A11DBB500FF2051 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E369D2412A11DBB600FF2051 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			children = (
 				E3496E3F2A13F08900104A0B /* Clients */,
 				E3496E362A13EC6700104A0B /* Models */,
+				E35B03B32A1FC40700D25FF4 /* Stores */,
 				E3496E322A13EC3000104A0B /* Views */,
 				E3496E352A13EC5800104A0B /* View Models */,
 			);
@@ -135,6 +138,14 @@
 				E3496E582A17E33500104A0B /* Association.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E35B03B32A1FC40700D25FF4 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				E35B03B42A1FC41B00D25FF4 /* EventsFilterStore.swift */,
+			);
+			path = Stores;
 			sourceTree = "<group>";
 		};
 		E369D2312A11DBB500FF2051 = {
@@ -255,6 +266,7 @@
 				E39859AE2A1E92D9007027BA /* LadvAssociationsClient.swift in Sources */,
 				E39859B02A1E94C8007027BA /* EventsFilterViewModel.swift in Sources */,
 				E3496E382A13ECA300104A0B /* EventsViewModel.swift in Sources */,
+				E35B03B52A1FC41B00D25FF4 /* EventsFilterStore.swift in Sources */,
 				E3496E342A13EC3F00104A0B /* EventsView.swift in Sources */,
 				E3EC56E52A1EAAA400EDAC4D /* EventsFilterRow.swift in Sources */,
 				E3496E522A17DEA400104A0B /* EventsFilterView.swift in Sources */,
@@ -407,7 +419,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Athlety/Preview Content\"";
-				DEVELOPMENT_TEAM = V6Y747LYEV;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -436,7 +448,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Athlety/Preview Content\"";
-				DEVELOPMENT_TEAM = V6Y747LYEV;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

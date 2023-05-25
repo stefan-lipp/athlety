@@ -29,3 +29,9 @@ struct EventsFilterRow: View {
         }
     }
 }
+
+struct EventsFilterRow_Previews: PreviewProvider {
+    static var previews: some View {
+        EventsFilterRow(name: "All", isSelected: true) { }
+    }
+}
