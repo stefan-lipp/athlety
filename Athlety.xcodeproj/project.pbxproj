@@ -28,6 +28,7 @@
 		E39859AE2A1E92D9007027BA /* LadvAssociationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39859AD2A1E92D9007027BA /* LadvAssociationsClient.swift */; };
 		E39859B02A1E94C8007027BA /* EventsFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39859AF2A1E94C8007027BA /* EventsFilterViewModel.swift */; };
 		E3EC56E52A1EAAA400EDAC4D /* EventsFilterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC56E42A1EAAA400EDAC4D /* EventsFilterRow.swift */; };
+		E3F0FC8A2A215D6B00CC7274 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0FC892A215D6B00CC7274 /* EventDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		E39859AD2A1E92D9007027BA /* LadvAssociationsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadvAssociationsClient.swift; sourceTree = "<group>"; };
 		E39859AF2A1E94C8007027BA /* EventsFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterViewModel.swift; sourceTree = "<group>"; };
 		E3EC56E42A1EAAA400EDAC4D /* EventsFilterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterRow.swift; sourceTree = "<group>"; };
+		E3F0FC892A215D6B00CC7274 /* EventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			children = (
 				E3496E332A13EC3F00104A0B /* EventsView.swift */,
 				E3496E4F2A143DE500104A0B /* EventRow.swift */,
+				E3F0FC892A215D6B00CC7274 /* EventDetailsView.swift */,
 				E3496E512A17DEA400104A0B /* EventsFilterView.swift */,
 				E3EC56E42A1EAAA400EDAC4D /* EventsFilterRow.swift */,
 				E35B03B62A1FD5CE00D25FF4 /* EventsFilterToolbar.swift */,
@@ -267,6 +270,7 @@
 			files = (
 				E3496E3A2A13ECC300104A0B /* Event.swift in Sources */,
 				E39859AE2A1E92D9007027BA /* LadvAssociationsClient.swift in Sources */,
+				E3F0FC8A2A215D6B00CC7274 /* EventDetailsView.swift in Sources */,
 				E35B03B72A1FD5CE00D25FF4 /* EventsFilterToolbar.swift in Sources */,
 				E39859B02A1E94C8007027BA /* EventsFilterViewModel.swift in Sources */,
 				E3496E382A13ECA300104A0B /* EventsViewModel.swift in Sources */,

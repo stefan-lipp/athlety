@@ -21,7 +21,9 @@ struct EventsView: View {
                 ForEach(sortedEventDates, id: \.self) { date in
                     Section(dateFormatter.string(from: date)) {
                         ForEach(eventsViewModel.eventsByDate[date]!) { event in
-                            EventRow(event: event)
+                            NavigationLink(destination: EventDetailsView(event: event)) {
+                                EventRow(event: event)
+                            }
                         }
                     }
                     .listSectionSeparator(.hidden, edges: [.bottom])
@@ -60,5 +62,6 @@ struct EventsView_Previews: PreviewProvider {
         EventsView()
             .environmentObject(EventsViewModel())
             .environmentObject(EventsFilterStore())
+            .environmentObject(EventsFilterViewModel())
     }
 }
