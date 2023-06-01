@@ -25,6 +25,9 @@
 		E369D23E2A11DBB500FF2051 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E369D23D2A11DBB500FF2051 /* App.swift */; };
 		E369D2422A11DBB600FF2051 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E369D2412A11DBB600FF2051 /* Assets.xcassets */; };
 		E369D2452A11DBB600FF2051 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E369D2442A11DBB600FF2051 /* Preview Assets.xcassets */; };
+		E376DB0E2A290D4D00C53058 /* EventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376DB0D2A290D4D00C53058 /* EventDetails.swift */; };
+		E376DB122A290EC400C53058 /* Discipline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376DB112A290EC400C53058 /* Discipline.swift */; };
+		E376DB142A29137C00C53058 /* EventDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376DB132A29137C00C53058 /* EventDetailsViewModel.swift */; };
 		E39859AE2A1E92D9007027BA /* LadvAssociationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39859AD2A1E92D9007027BA /* LadvAssociationsClient.swift */; };
 		E39859B02A1E94C8007027BA /* EventsFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39859AF2A1E94C8007027BA /* EventsFilterViewModel.swift */; };
 		E3EC56E52A1EAAA400EDAC4D /* EventsFilterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC56E42A1EAAA400EDAC4D /* EventsFilterRow.swift */; };
@@ -52,6 +55,9 @@
 		E369D23D2A11DBB500FF2051 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E369D2412A11DBB600FF2051 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E369D2442A11DBB600FF2051 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E376DB0D2A290D4D00C53058 /* EventDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetails.swift; sourceTree = "<group>"; };
+		E376DB112A290EC400C53058 /* Discipline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discipline.swift; sourceTree = "<group>"; };
+		E376DB132A29137C00C53058 /* EventDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewModel.swift; sourceTree = "<group>"; };
 		E39859AD2A1E92D9007027BA /* LadvAssociationsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadvAssociationsClient.swift; sourceTree = "<group>"; };
 		E39859AF2A1E94C8007027BA /* EventsFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterViewModel.swift; sourceTree = "<group>"; };
 		E3EC56E42A1EAAA400EDAC4D /* EventsFilterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterRow.swift; sourceTree = "<group>"; };
@@ -98,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				E3496E372A13ECA300104A0B /* EventsViewModel.swift */,
+				E376DB132A29137C00C53058 /* EventDetailsViewModel.swift */,
 				E39859AF2A1E94C8007027BA /* EventsFilterViewModel.swift */,
 			);
 			path = "View Models";
@@ -107,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				E3496E392A13ECC300104A0B /* Event.swift */,
+				E376DB0D2A290D4D00C53058 /* EventDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -176,6 +184,7 @@
 				E369D23D2A11DBB500FF2051 /* App.swift */,
 				E3496E452A1423A400104A0B /* Config.swift */,
 				E3496E532A17E06A00104A0B /* Associations */,
+				E376DB0F2A290EAC00C53058 /* Disciplines */,
 				E3496E312A13EC1900104A0B /* Events */,
 				E369D2412A11DBB600FF2051 /* Assets.xcassets */,
 				E3496E412A141B5F00104A0B /* Config.plist */,
@@ -192,6 +201,22 @@
 				E369D2442A11DBB600FF2051 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E376DB0F2A290EAC00C53058 /* Disciplines */ = {
+			isa = PBXGroup;
+			children = (
+				E376DB102A290EBA00C53058 /* Models */,
+			);
+			path = Disciplines;
+			sourceTree = "<group>";
+		};
+		E376DB102A290EBA00C53058 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E376DB112A290EC400C53058 /* Discipline.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,17 +294,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3496E3A2A13ECC300104A0B /* Event.swift in Sources */,
+				E376DB0E2A290D4D00C53058 /* EventDetails.swift in Sources */,
 				E39859AE2A1E92D9007027BA /* LadvAssociationsClient.swift in Sources */,
 				E3F0FC8A2A215D6B00CC7274 /* EventDetailsView.swift in Sources */,
 				E35B03B72A1FD5CE00D25FF4 /* EventsFilterToolbar.swift in Sources */,
 				E39859B02A1E94C8007027BA /* EventsFilterViewModel.swift in Sources */,
 				E3496E382A13ECA300104A0B /* EventsViewModel.swift in Sources */,
 				E35B03B52A1FC41B00D25FF4 /* EventsFilterStore.swift in Sources */,
+				E376DB122A290EC400C53058 /* Discipline.swift in Sources */,
 				E3496E342A13EC3F00104A0B /* EventsView.swift in Sources */,
 				E3EC56E52A1EAAA400EDAC4D /* EventsFilterRow.swift in Sources */,
 				E3496E522A17DEA400104A0B /* EventsFilterView.swift in Sources */,
 				E3496E502A143DE500104A0B /* EventRow.swift in Sources */,
 				E3496E482A142BBC00104A0B /* LadvEventsClient.swift in Sources */,
+				E376DB142A29137C00C53058 /* EventDetailsViewModel.swift in Sources */,
 				E3496E562A17E30100104A0B /* AssociationsClient.swift in Sources */,
 				E3496E592A17E33500104A0B /* Association.swift in Sources */,
 				E369D23E2A11DBB500FF2051 /* App.swift in Sources */,
