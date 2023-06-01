@@ -9,15 +9,24 @@ import SwiftUI
 
 struct EventDetailsView: View {
     
-    let event: Event
+    let eventId: Int
+    
+    @EnvironmentObject var viewModel: EventDetailsViewModel
     
     var body: some View {
-        Text(event.name)
+        
+        VStack {
+            if let event = viewModel.event {
+                Text(event.name)
+            }
+        }
+        .task { await viewModel.loadEventDetails(for: eventId) }
     }
 }
 
 struct EventDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        EventDetailsView(event: Event(id: 1, name: "Nachtmeeting", location: "Rheinfelden", date: Date()))
+        EventDetailsView(eventId: 34388)
+            .environmentObject(EventDetailsViewModel())
     }
 }

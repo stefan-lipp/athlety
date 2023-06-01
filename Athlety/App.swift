@@ -11,6 +11,7 @@ import SwiftUI
 struct AthletyApp: App {
     
     @ObservedObject private var eventsViewModel = EventsViewModel()
+    @ObservedObject private var eventDetailsViewModel = EventDetailsViewModel()
     
     @ObservedObject private var eventsFilterStore = EventsFilterStore()
     @ObservedObject private var eventsFilterViewModel = EventsFilterViewModel()
@@ -19,6 +20,7 @@ struct AthletyApp: App {
         WindowGroup {
             EventsView()
                 .environmentObject(eventsViewModel)
+                .environmentObject(eventDetailsViewModel)
                 .environmentObject(eventsFilterStore)
                 .environmentObject(eventsFilterViewModel)
         }
