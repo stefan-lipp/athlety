@@ -51,8 +51,8 @@ struct EventsView: View {
     
     private var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .none
         dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .none
         return dateFormatter
     }
 }

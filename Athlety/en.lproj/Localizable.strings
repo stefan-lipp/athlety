@@ -15,3 +15,5 @@
 "Done" = "Done";
 "All" = "All";
 "Select a state association by which events are filtered." = "Select a state association by which events are filtered.";
+
+"%@ at %@" = "%@ at %@";
