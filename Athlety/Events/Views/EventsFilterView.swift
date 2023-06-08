@@ -41,9 +41,7 @@ struct EventsFilterView: View {
             .navigationTitle("Filter")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                EventsFilterToolbar {
-                    dismiss()
-                } onDone: {
+                EventsFilterToolbar { dismiss() } onDone: {
                     store.associationId = viewModel.selectedAssociationId
                     onFilter()
                     dismiss()

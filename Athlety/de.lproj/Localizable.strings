@@ -15,3 +15,5 @@
 "Done" = "Fertig";
 "All" = "Alle";
 "Select a state association by which events are filtered." = "Wähle einen Landesverband, nach dem Wettkämpfe gefiltert werden sollen.";
+
+"%@ at %@" = "%@ in %@";
