@@ -16,18 +16,30 @@ struct EventDetailsView: View {
     var body: some View {
         List {
             Section {
-                Text(viewModel.event?.name ?? "")
-                    .font(.title)
-                    .fontWeight(.medium)
-                
-                Text("\(date) at \(viewModel.event?.location ?? "")")
+                VStack(alignment: .leading, spacing: 20) {
+                    Text(viewModel.event?.name ?? "")
+                        .font(.title)
+                        .fontWeight(.medium)
+                    
+                    Text("\(date) at \(viewModel.event?.location ?? "")")
+                }
             }
-            .listRowSeparator(.hidden)
             .listSectionSeparator(.hidden)
+            .padding(.bottom, 20)
+            
+            if !(viewModel.event?.attachements.isEmpty ?? true) {
+                Section {
+                    ForEach(viewModel.event!.attachements, id: \.name) { attachement in
+                        Text(attachement.name)
+                    }
+                }
+                .listSectionSeparator(.visible)
+            }
         }
         .listStyle(.plain)
         .navigationBarTitleDisplayMode(.inline)
         .task { await viewModel.loadEventDetails(for: eventId) }
+        .onDisappear { viewModel.event = nil }
     }
     
     private var date: String {

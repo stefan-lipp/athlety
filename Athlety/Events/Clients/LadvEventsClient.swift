@@ -38,6 +38,7 @@ class LadvEventsClient: EventsClient {
         urlComponents.queryItems = [
             URLQueryItem(name: "id", value: "\(eventId)"),
             URLQueryItem(name: "ort", value: "true"),
+            URLQueryItem(name: "attachements", value: "true"),
             URLQueryItem(name: "wettbewerbe", value: "true")
         ]
         
@@ -62,7 +63,24 @@ class LadvEventsClient: EventsClient {
         let dateMillis = ladvEvent.datum
         let dateSeconds = Double(dateMillis) / 1000
         let date = Date(timeIntervalSince1970: dateSeconds)
-        return EventDetails(id: ladvEvent.id, name: ladvEvent.name, location: ladvEvent.ort.name, address: ladvEvent.sportstaette, date: date, disciplines: [])
+        return EventDetails(
+            id: ladvEvent.id,
+            name: ladvEvent.name,
+            location: ladvEvent.ort.name,
+            address: ladvEvent.sportstaette,
+            date: date,
+            attachements: ladvEvent.attachements.compactMap(toAttachement),
+            disciplines: []
+        )
+    }
+    
+    private func toAttachement(_ ladvAttachement: LadvEventAttachement) -> Attachement? {
+        guard let url = URL(string: ladvAttachement.url) else { return nil }
+        return Attachement(
+            name: ladvAttachement.name,
+            url: url,
+            type: ladvAttachement.fileExtension == ".pdf" ? .pdf : .unknown(extension: ladvAttachement.fileExtension)
+        )
     }
     
     
@@ -79,10 +97,24 @@ class LadvEventsClient: EventsClient {
         let ort: LadvEventLocation
         let sportstaette: String
         let datum: Int
+        
+        let attachements: [LadvEventAttachement]
     }
     
     private struct LadvEventLocation: Codable {
         let id: Int
         let name: String
+    }
+    
+    private struct LadvEventAttachement: Codable {
+        let name: String
+        let url: String
+        let fileExtension: String
+        
+        enum CodingKeys: String, CodingKey {
+            case name
+            case url
+            case fileExtension = "extension"
+        }
     }
 }
