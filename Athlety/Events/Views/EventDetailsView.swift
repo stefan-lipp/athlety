@@ -30,7 +30,13 @@ struct EventDetailsView: View {
             if !(viewModel.event?.attachements.isEmpty ?? true) {
                 Section {
                     ForEach(viewModel.event!.attachements, id: \.name) { attachement in
-                        Text(attachement.name)
+                        NavigationLink {
+                            AttachementPDFView(url: attachement.url)
+                                .navigationTitle(attachement.name)
+                        } label: {
+                            Label(attachement.name, systemImage: "doc")
+                        }
+                        .padding(.vertical, 8)
                     }
                 }
                 .listSectionSeparator(.visible)
