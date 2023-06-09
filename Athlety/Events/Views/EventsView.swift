@@ -15,45 +15,23 @@ struct EventsView: View {
     @State private var showFilterView = false
     
     var body: some View {
-        NavigationStack {
-            List {
-                let sortedEventDates = eventsViewModel.eventsByDate.keys.sorted(by: <)
-                ForEach(sortedEventDates, id: \.self) { date in
-                    Section(dateFormatter.string(from: date)) {
-                        ForEach(eventsViewModel.eventsByDate[date]!) { event in
-                            NavigationLink(destination: EventDetailsView(eventId: event.id)) {
-                                EventRow(event: event)
-                            }
-                        }
+        NavigationView {
+            EventsListView()
+                .navigationTitle("Events")
+                .toolbar {
+                    Button {
+                        showFilterView = true
+                    } label: {
+                        Label("Filter", systemImage: "line.3.horizontal.decrease")
+                            .symbolVariant(eventsFilterStore.associationId == nil ? .circle : .circle.fill)
                     }
-                    .listSectionSeparator(.hidden, edges: [.bottom])
                 }
-            }
-            .listStyle(.plain)
-            .navigationTitle("Events")
-            .toolbar {
-                Button {
-                    showFilterView = true
-                } label: {
-                    let isFilterApplied = eventsFilterStore.associationId != nil
-                    let imageName = "line.3.horizontal.decrease.circle\(isFilterApplied ? ".fill" : "")"
-                    Label("Filter", systemImage: imageName)
+                .sheet(isPresented: $showFilterView) {
+                    EventsFilterView() {
+                        Task { await eventsViewModel.loadUpcomingEvents(for: eventsFilterStore.associationId) }
+                    }
                 }
-            }
-            .sheet(isPresented: $showFilterView) {
-                EventsFilterView() {
-                    Task { await eventsViewModel.loadUpcomingEvents(for: eventsFilterStore.associationId) }
-                }
-            }
         }
-        .task { await eventsViewModel.loadUpcomingEvents(for: eventsFilterStore.associationId) }
-    }
-    
-    private var dateFormatter: DateFormatter {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .full
-        dateFormatter.timeStyle = .none
-        return dateFormatter
     }
 }
 
