@@ -16,13 +16,23 @@ struct AthletyApp: App {
     @ObservedObject private var eventsFilterStore = EventsFilterStore()
     @ObservedObject private var eventsFilterViewModel = EventsFilterViewModel()
     
+    @ObservedObject private var profileViewModel = ProfileViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            EventsView()
-                .environmentObject(eventsViewModel)
-                .environmentObject(eventDetailsViewModel)
-                .environmentObject(eventsFilterStore)
-                .environmentObject(eventsFilterViewModel)
+            TabView {
+                EventsView()
+                    .environmentObject(eventsViewModel)
+                    .environmentObject(eventDetailsViewModel)
+                    .environmentObject(eventsFilterStore)
+                    .environmentObject(eventsFilterViewModel)
+                    .tabItem { Label("Events", systemImage: "trophy") }
+                ProfileView()
+                    .environmentObject(profileViewModel)
+                    .tabItem { Label("Profile", systemImage: "person")}
+            }
+            
+            
         }
     }
 }

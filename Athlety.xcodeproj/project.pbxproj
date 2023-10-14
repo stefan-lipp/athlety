@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E300059C2ADB21EC0072F10F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E300059B2ADB21EC0072F10F /* ProfileView.swift */; };
+		E300059E2ADB235D0072F10F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E300059D2ADB235D0072F10F /* Localizable.xcstrings */; };
+		E30005A32ADB25900072F10F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30005A22ADB25900072F10F /* Profile.swift */; };
+		E30005A62ADB26BA0072F10F /* ProfileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30005A52ADB26BA0072F10F /* ProfileClient.swift */; };
+		E30005A82ADB271B0072F10F /* LadvProfileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30005A72ADB271B0072F10F /* LadvProfileClient.swift */; };
+		E30005AB2ADB295D0072F10F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30005AA2ADB295D0072F10F /* ProfileViewModel.swift */; };
 		E30F66072A3354C90066AC01 /* Attachement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F66062A3354C90066AC01 /* Attachement.swift */; };
 		E330221A2A33E10200A998B2 /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33022192A33E10200A998B2 /* EventsListView.swift */; };
 		E330221D2A33E59700A998B2 /* AttachementPDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E330221C2A33E59700A998B2 /* AttachementPDFView.swift */; };
@@ -18,7 +24,6 @@
 		E3496E442A141CBC00104A0B /* Config.sample.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3496E432A141CBC00104A0B /* Config.sample.plist */; };
 		E3496E462A1423A400104A0B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3496E452A1423A400104A0B /* Config.swift */; };
 		E3496E482A142BBC00104A0B /* LadvEventsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3496E472A142BBC00104A0B /* LadvEventsClient.swift */; };
-		E3496E4B2A14335500104A0B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3496E4D2A14335500104A0B /* Localizable.strings */; };
 		E3496E502A143DE500104A0B /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3496E4F2A143DE500104A0B /* EventRow.swift */; };
 		E3496E522A17DEA400104A0B /* EventsFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3496E512A17DEA400104A0B /* EventsFilterView.swift */; };
 		E3496E562A17E30100104A0B /* AssociationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3496E552A17E30100104A0B /* AssociationsClient.swift */; };
@@ -38,6 +43,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E300059B2ADB21EC0072F10F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		E300059D2ADB235D0072F10F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		E30005A22ADB25900072F10F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		E30005A52ADB26BA0072F10F /* ProfileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileClient.swift; sourceTree = "<group>"; };
+		E30005A72ADB271B0072F10F /* LadvProfileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadvProfileClient.swift; sourceTree = "<group>"; };
+		E30005AA2ADB295D0072F10F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		E30F66062A3354C90066AC01 /* Attachement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachement.swift; sourceTree = "<group>"; };
 		E33022192A33E10200A998B2 /* EventsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListView.swift; sourceTree = "<group>"; };
 		E330221C2A33E59700A998B2 /* AttachementPDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachementPDFView.swift; sourceTree = "<group>"; };
@@ -49,8 +60,6 @@
 		E3496E432A141CBC00104A0B /* Config.sample.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.sample.plist; sourceTree = "<group>"; };
 		E3496E452A1423A400104A0B /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		E3496E472A142BBC00104A0B /* LadvEventsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadvEventsClient.swift; sourceTree = "<group>"; };
-		E3496E4C2A14335500104A0B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E3496E4E2A1433DB00104A0B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E3496E4F2A143DE500104A0B /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
 		E3496E512A17DEA400104A0B /* EventsFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterView.swift; sourceTree = "<group>"; };
 		E3496E552A17E30100104A0B /* AssociationsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssociationsClient.swift; sourceTree = "<group>"; };
@@ -81,6 +90,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E300059A2ADB21DE0072F10F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E30005A42ADB25B80072F10F /* Clients */,
+				E300059F2ADB25680072F10F /* Models */,
+				E30005A02ADB256E0072F10F /* Views */,
+				E30005A92ADB294E0072F10F /* View Models */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		E300059F2ADB25680072F10F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E30005A22ADB25900072F10F /* Profile.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E30005A02ADB256E0072F10F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E300059B2ADB21EC0072F10F /* ProfileView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E30005A42ADB25B80072F10F /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				E30005A52ADB26BA0072F10F /* ProfileClient.swift */,
+				E30005A72ADB271B0072F10F /* LadvProfileClient.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		E30005A92ADB294E0072F10F /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				E30005AA2ADB295D0072F10F /* ProfileViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
 		E30F66042A33549D0066AC01 /* Attachements */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,10 +272,11 @@
 				E30F66042A33549D0066AC01 /* Attachements */,
 				E376DB0F2A290EAC00C53058 /* Disciplines */,
 				E3496E312A13EC1900104A0B /* Events */,
+				E300059A2ADB21DE0072F10F /* Profile */,
 				E369D2412A11DBB600FF2051 /* Assets.xcassets */,
 				E3496E412A141B5F00104A0B /* Config.plist */,
 				E3496E432A141CBC00104A0B /* Config.sample.plist */,
-				E3496E4D2A14335500104A0B /* Localizable.strings */,
+				E300059D2ADB235D0072F10F /* Localizable.xcstrings */,
 				E369D2432A11DBB600FF2051 /* Preview Content */,
 			);
 			path = Athlety;
@@ -311,8 +365,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3496E4B2A14335500104A0B /* Localizable.strings in Resources */,
 				E369D2452A11DBB600FF2051 /* Preview Assets.xcassets in Resources */,
+				E300059E2ADB235D0072F10F /* Localizable.xcstrings in Resources */,
 				E3496E422A141B5F00104A0B /* Config.plist in Resources */,
 				E369D2422A11DBB600FF2051 /* Assets.xcassets in Resources */,
 				E3496E442A141CBC00104A0B /* Config.sample.plist in Resources */,
@@ -330,7 +384,9 @@
 				E376DB0E2A290D4D00C53058 /* EventDetails.swift in Sources */,
 				E39859AE2A1E92D9007027BA /* LadvAssociationsClient.swift in Sources */,
 				E3F0FC8A2A215D6B00CC7274 /* EventDetailsView.swift in Sources */,
+				E30005A62ADB26BA0072F10F /* ProfileClient.swift in Sources */,
 				E30F66072A3354C90066AC01 /* Attachement.swift in Sources */,
+				E30005AB2ADB295D0072F10F /* ProfileViewModel.swift in Sources */,
 				E35B03B72A1FD5CE00D25FF4 /* EventsFilterToolbar.swift in Sources */,
 				E39859B02A1E94C8007027BA /* EventsFilterViewModel.swift in Sources */,
 				E3496E382A13ECA300104A0B /* EventsViewModel.swift in Sources */,
@@ -342,29 +398,20 @@
 				E3496E522A17DEA400104A0B /* EventsFilterView.swift in Sources */,
 				E3496E502A143DE500104A0B /* EventRow.swift in Sources */,
 				E3496E482A142BBC00104A0B /* LadvEventsClient.swift in Sources */,
+				E30005A32ADB25900072F10F /* Profile.swift in Sources */,
+				E300059C2ADB21EC0072F10F /* ProfileView.swift in Sources */,
 				E376DB142A29137C00C53058 /* EventDetailsViewModel.swift in Sources */,
 				E330221A2A33E10200A998B2 /* EventsListView.swift in Sources */,
 				E3496E562A17E30100104A0B /* AssociationsClient.swift in Sources */,
 				E3496E592A17E33500104A0B /* Association.swift in Sources */,
 				E369D23E2A11DBB500FF2051 /* App.swift in Sources */,
 				E3496E3D2A13F07200104A0B /* EventsClient.swift in Sources */,
+				E30005A82ADB271B0072F10F /* LadvProfileClient.swift in Sources */,
 				E3496E462A1423A400104A0B /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E3496E4D2A14335500104A0B /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E3496E4C2A14335500104A0B /* en */,
-				E3496E4E2A1433DB00104A0B /* de */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E369D2462A11DBB600FF2051 /* Debug */ = {
@@ -420,6 +467,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -476,6 +524,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
