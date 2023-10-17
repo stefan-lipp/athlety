@@ -10,7 +10,7 @@ import Foundation
 struct EventDetails: Identifiable {
     let id: Int
     let name: String
-    let location: String
+    let location: EventLocation
     let address: String
     let date: Date
     

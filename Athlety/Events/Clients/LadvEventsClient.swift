@@ -66,11 +66,19 @@ class LadvEventsClient: EventsClient {
         return EventDetails(
             id: ladvEvent.id,
             name: ladvEvent.name,
-            location: ladvEvent.ort.name,
+            location: toEventLocation(ladvEvent.ort),
             address: ladvEvent.sportstaette,
             date: date,
             attachements: ladvEvent.attachements.compactMap(toAttachement),
             disciplines: []
+        )
+    }
+    
+    private func toEventLocation(_ ladvEventLocation: LadvEventLocation) -> EventLocation {
+        return EventLocation(
+            name: ladvEventLocation.name,
+            latitude: ladvEventLocation.lat,
+            longitude: ladvEventLocation.lng
         )
     }
     
@@ -104,6 +112,8 @@ class LadvEventsClient: EventsClient {
     private struct LadvEventLocation: Codable {
         let id: Int
         let name: String
+        let lat: Double
+        let lng: Double
     }
     
     private struct LadvEventAttachement: Codable {

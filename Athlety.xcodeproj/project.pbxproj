@@ -36,6 +36,8 @@
 		E376DB0E2A290D4D00C53058 /* EventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376DB0D2A290D4D00C53058 /* EventDetails.swift */; };
 		E376DB122A290EC400C53058 /* Discipline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376DB112A290EC400C53058 /* Discipline.swift */; };
 		E376DB142A29137C00C53058 /* EventDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376DB132A29137C00C53058 /* EventDetailsViewModel.swift */; };
+		E37EC9D42ADF1F6C00F6F4C6 /* EventMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37EC9D32ADF1F6C00F6F4C6 /* EventMapView.swift */; };
+		E37EC9D62ADF205900F6F4C6 /* EventLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37EC9D52ADF205900F6F4C6 /* EventLocation.swift */; };
 		E39859AE2A1E92D9007027BA /* LadvAssociationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39859AD2A1E92D9007027BA /* LadvAssociationsClient.swift */; };
 		E39859B02A1E94C8007027BA /* EventsFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39859AF2A1E94C8007027BA /* EventsFilterViewModel.swift */; };
 		E3EC56E52A1EAAA400EDAC4D /* EventsFilterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC56E42A1EAAA400EDAC4D /* EventsFilterRow.swift */; };
@@ -73,6 +75,8 @@
 		E376DB0D2A290D4D00C53058 /* EventDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetails.swift; sourceTree = "<group>"; };
 		E376DB112A290EC400C53058 /* Discipline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discipline.swift; sourceTree = "<group>"; };
 		E376DB132A29137C00C53058 /* EventDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewModel.swift; sourceTree = "<group>"; };
+		E37EC9D32ADF1F6C00F6F4C6 /* EventMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMapView.swift; sourceTree = "<group>"; };
+		E37EC9D52ADF205900F6F4C6 /* EventLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocation.swift; sourceTree = "<group>"; };
 		E39859AD2A1E92D9007027BA /* LadvAssociationsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadvAssociationsClient.swift; sourceTree = "<group>"; };
 		E39859AF2A1E94C8007027BA /* EventsFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterViewModel.swift; sourceTree = "<group>"; };
 		E3EC56E42A1EAAA400EDAC4D /* EventsFilterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterRow.swift; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 				E3496E512A17DEA400104A0B /* EventsFilterView.swift */,
 				E3EC56E42A1EAAA400EDAC4D /* EventsFilterRow.swift */,
 				E35B03B62A1FD5CE00D25FF4 /* EventsFilterToolbar.swift */,
+				E37EC9D32ADF1F6C00F6F4C6 /* EventMapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 			children = (
 				E3496E392A13ECC300104A0B /* Event.swift */,
 				E376DB0D2A290D4D00C53058 /* EventDetails.swift */,
+				E37EC9D52ADF205900F6F4C6 /* EventLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -393,10 +399,12 @@
 				E35B03B52A1FC41B00D25FF4 /* EventsFilterStore.swift in Sources */,
 				E376DB122A290EC400C53058 /* Discipline.swift in Sources */,
 				E3496E342A13EC3F00104A0B /* EventsView.swift in Sources */,
+				E37EC9D62ADF205900F6F4C6 /* EventLocation.swift in Sources */,
 				E3EC56E52A1EAAA400EDAC4D /* EventsFilterRow.swift in Sources */,
 				E330221D2A33E59700A998B2 /* AttachementPDFView.swift in Sources */,
 				E3496E522A17DEA400104A0B /* EventsFilterView.swift in Sources */,
 				E3496E502A143DE500104A0B /* EventRow.swift in Sources */,
+				E37EC9D42ADF1F6C00F6F4C6 /* EventMapView.swift in Sources */,
 				E3496E482A142BBC00104A0B /* LadvEventsClient.swift in Sources */,
 				E30005A32ADB25900072F10F /* Profile.swift in Sources */,
 				E300059C2ADB21EC0072F10F /* ProfileView.swift in Sources */,

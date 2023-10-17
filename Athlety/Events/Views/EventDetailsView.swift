@@ -21,7 +21,7 @@ struct EventDetailsView: View {
                         .font(.title)
                         .fontWeight(.medium)
                     
-                    Text("\(date) at \(viewModel.event?.location ?? "")")
+                    Text("\(date) at \(viewModel.event?.location.name ?? "")")
                 }
             }
             .listSectionSeparator(.hidden)
@@ -40,6 +40,14 @@ struct EventDetailsView: View {
                     }
                 }
                 .listSectionSeparator(.visible)
+            }
+            
+            Section {
+                if let location = viewModel.event?.location {
+                    EventMapView(latitude: location.latitude, longitude: location.longitude)
+                        .frame(height: 300)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                }
             }
         }
         .listStyle(.plain)
