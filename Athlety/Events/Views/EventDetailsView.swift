@@ -16,12 +16,15 @@ struct EventDetailsView: View {
     var body: some View {
         List {
             Section {
-                VStack(alignment: .leading, spacing: 20) {
-                    Text(viewModel.event?.name ?? "")
-                        .font(.title)
-                        .fontWeight(.medium)
-                    
-                    Text("\(date) at \(viewModel.event?.location.name ?? "")")
+                if let event = viewModel.event {
+                    VStack(alignment: .leading, spacing: 16) {
+                        Text(event.name)
+                            .font(.title)
+                            .fontWeight(.medium)
+                        
+                        Text("\(date) at \(event.location.name)")
+                            .foregroundStyle(.secondary)
+                    }
                 }
             }
             .listSectionSeparator(.hidden)
@@ -31,7 +34,7 @@ struct EventDetailsView: View {
                 Section {
                     ForEach(viewModel.event!.attachements, id: \.name) { attachement in
                         NavigationLink {
-                            AttachementPDFView(url: attachement.url)
+                            AttachementView(url: attachement.url)
                                 .navigationTitle(attachement.name)
                         } label: {
                             Label(attachement.name, systemImage: "doc")
