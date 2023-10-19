@@ -15,42 +15,33 @@ struct EventDetailsView: View {
     
     var body: some View {
         List {
-            Section {
-                if let event = viewModel.event {
+            if let event = viewModel.event {
+                Section {
                     VStack(alignment: .leading, spacing: 16) {
                         Text(event.name)
-                            .font(.title)
                             .fontWeight(.medium)
+                            .font(.title)
                         
                         Text("\(date) at \(event.location.name)")
                             .foregroundStyle(.secondary)
                     }
                 }
+                .listSectionSeparator(.hidden)
+                .padding(.bottom, 20)
             }
-            .listSectionSeparator(.hidden)
-            .padding(.bottom, 20)
             
-            if !(viewModel.event?.attachements.isEmpty ?? true) {
+            if let attachements = viewModel.event?.attachements, !attachements.isEmpty {
                 Section {
-                    ForEach(viewModel.event!.attachements, id: \.name) { attachement in
-                        NavigationLink {
-                            AttachementView(url: attachement.url)
-                                .navigationTitle(attachement.name)
-                        } label: {
-                            Label(attachement.name, systemImage: "doc")
-                        }
-                        .padding(.vertical, 8)
-                    }
+                    EventAttachementsView(attachements: attachements)
                 }
                 .listSectionSeparator(.visible)
             }
             
-            Section {
-                if let location = viewModel.event?.location {
-                    EventMapView(latitude: location.latitude, longitude: location.longitude)
-                        .frame(height: 300)
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
+            if let location = viewModel.event?.location {
+                Section {
+                    EventLocationView(location: location)
                 }
+                .listSectionSeparator(.hidden)
             }
         }
         .listStyle(.plain)

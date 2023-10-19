@@ -30,6 +30,8 @@
 		E3496E592A17E33500104A0B /* Association.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3496E582A17E33500104A0B /* Association.swift */; };
 		E35B03B52A1FC41B00D25FF4 /* EventsFilterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35B03B42A1FC41B00D25FF4 /* EventsFilterStore.swift */; };
 		E35B03B72A1FD5CE00D25FF4 /* EventsFilterToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35B03B62A1FD5CE00D25FF4 /* EventsFilterToolbar.swift */; };
+		E361DE502AE1EE3A003BB538 /* EventLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E361DE4F2AE1EE3A003BB538 /* EventLocationView.swift */; };
+		E361DE522AE1F193003BB538 /* EventAttachementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E361DE512AE1F193003BB538 /* EventAttachementsView.swift */; };
 		E369D23E2A11DBB500FF2051 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E369D23D2A11DBB500FF2051 /* App.swift */; };
 		E369D2422A11DBB600FF2051 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E369D2412A11DBB600FF2051 /* Assets.xcassets */; };
 		E369D2452A11DBB600FF2051 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E369D2442A11DBB600FF2051 /* Preview Assets.xcassets */; };
@@ -69,6 +71,8 @@
 		E35B03B42A1FC41B00D25FF4 /* EventsFilterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterStore.swift; sourceTree = "<group>"; };
 		E35B03B62A1FD5CE00D25FF4 /* EventsFilterToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterToolbar.swift; sourceTree = "<group>"; };
 		E361DE4E2AE1E587003BB538 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E361DE4F2AE1EE3A003BB538 /* EventLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocationView.swift; sourceTree = "<group>"; };
+		E361DE512AE1F193003BB538 /* EventAttachementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAttachementsView.swift; sourceTree = "<group>"; };
 		E369D23A2A11DBB500FF2051 /* Athlety.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Athlety.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E369D23D2A11DBB500FF2051 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E369D2412A11DBB600FF2051 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -179,14 +183,9 @@
 		E3496E322A13EC3000104A0B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E3496E332A13EC3F00104A0B /* EventsView.swift */,
-				E33022192A33E10200A998B2 /* EventsListView.swift */,
-				E3496E4F2A143DE500104A0B /* EventRow.swift */,
-				E3F0FC892A215D6B00CC7274 /* EventDetailsView.swift */,
-				E3496E512A17DEA400104A0B /* EventsFilterView.swift */,
-				E3EC56E42A1EAAA400EDAC4D /* EventsFilterRow.swift */,
-				E35B03B62A1FD5CE00D25FF4 /* EventsFilterToolbar.swift */,
-				E37EC9D32ADF1F6C00F6F4C6 /* EventMapView.swift */,
+				E361DE532AE1F9BE003BB538 /* Details */,
+				E361DE552AE1F9F4003BB538 /* Filter */,
+				E361DE542AE1F9CA003BB538 /* Overview */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -252,6 +251,37 @@
 				E35B03B42A1FC41B00D25FF4 /* EventsFilterStore.swift */,
 			);
 			path = Stores;
+			sourceTree = "<group>";
+		};
+		E361DE532AE1F9BE003BB538 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				E3F0FC892A215D6B00CC7274 /* EventDetailsView.swift */,
+				E361DE512AE1F193003BB538 /* EventAttachementsView.swift */,
+				E361DE4F2AE1EE3A003BB538 /* EventLocationView.swift */,
+				E37EC9D32ADF1F6C00F6F4C6 /* EventMapView.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		E361DE542AE1F9CA003BB538 /* Overview */ = {
+			isa = PBXGroup;
+			children = (
+				E3496E332A13EC3F00104A0B /* EventsView.swift */,
+				E33022192A33E10200A998B2 /* EventsListView.swift */,
+				E3496E4F2A143DE500104A0B /* EventRow.swift */,
+			);
+			path = Overview;
+			sourceTree = "<group>";
+		};
+		E361DE552AE1F9F4003BB538 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				E3496E512A17DEA400104A0B /* EventsFilterView.swift */,
+				E3EC56E42A1EAAA400EDAC4D /* EventsFilterRow.swift */,
+				E35B03B62A1FD5CE00D25FF4 /* EventsFilterToolbar.swift */,
+			);
+			path = Filter;
 			sourceTree = "<group>";
 		};
 		E369D2312A11DBB500FF2051 = {
@@ -402,10 +432,12 @@
 				E376DB122A290EC400C53058 /* Discipline.swift in Sources */,
 				E3496E342A13EC3F00104A0B /* EventsView.swift in Sources */,
 				E37EC9D62ADF205900F6F4C6 /* EventLocation.swift in Sources */,
+				E361DE522AE1F193003BB538 /* EventAttachementsView.swift in Sources */,
 				E3EC56E52A1EAAA400EDAC4D /* EventsFilterRow.swift in Sources */,
 				E330221D2A33E59700A998B2 /* AttachementView.swift in Sources */,
 				E3496E522A17DEA400104A0B /* EventsFilterView.swift in Sources */,
 				E3496E502A143DE500104A0B /* EventRow.swift in Sources */,
+				E361DE502AE1EE3A003BB538 /* EventLocationView.swift in Sources */,
 				E37EC9D42ADF1F6C00F6F4C6 /* EventMapView.swift in Sources */,
 				E3496E482A142BBC00104A0B /* LadvEventsClient.swift in Sources */,
 				E30005A32ADB25900072F10F /* Profile.swift in Sources */,

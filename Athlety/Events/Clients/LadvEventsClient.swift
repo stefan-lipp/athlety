@@ -66,19 +66,19 @@ class LadvEventsClient: EventsClient {
         return EventDetails(
             id: ladvEvent.id,
             name: ladvEvent.name,
-            location: toEventLocation(ladvEvent.ort),
-            address: ladvEvent.sportstaette,
+            location: toEventLocation(ladvEvent),
             date: date,
             attachements: ladvEvent.attachements.compactMap(toAttachement),
             disciplines: []
         )
     }
     
-    private func toEventLocation(_ ladvEventLocation: LadvEventLocation) -> EventLocation {
+    private func toEventLocation(_ ladvEvent: LadvEventDetails) -> EventLocation {
         return EventLocation(
-            name: ladvEventLocation.name,
-            latitude: ladvEventLocation.lat,
-            longitude: ladvEventLocation.lng
+            name: ladvEvent.ort.name,
+            site: ladvEvent.sportstaette,
+            latitude: ladvEvent.ort.lat,
+            longitude: ladvEvent.ort.lng
         )
     }
     

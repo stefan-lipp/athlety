@@ -9,6 +9,7 @@ import Foundation
 
 struct EventLocation {
     let name: String
+    let site: String
     let latitude: Double
     let longitude: Double
 }
