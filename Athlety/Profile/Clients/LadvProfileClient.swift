@@ -22,9 +22,10 @@ class LadvProfileClient : ProfileClient {
         ]
         
         let request = URLRequest(url: urlComponents.url!)
-        let (data, response) = try! await URLSession.shared.data(for: request)
         
+        guard let (data, response) = try? await URLSession.shared.data(for: request) else { return nil }
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return nil }
+        
         let ladvAthletes = try! JSONDecoder().decode([LadvAthlete].self, from: data)
         guard let ladvAthlete = ladvAthletes.first else { return nil }
         return toProfile(ladvAthlete)
