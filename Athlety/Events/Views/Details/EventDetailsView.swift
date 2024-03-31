@@ -27,7 +27,7 @@ struct EventDetailsView: View {
                     }
                 }
                 .listSectionSeparator(.hidden)
-                .padding(.bottom, 20)
+                
             }
             
             if let attachements = viewModel.event?.attachements, !attachements.isEmpty {
@@ -35,6 +35,7 @@ struct EventDetailsView: View {
                     EventAttachementsView(attachements: attachements)
                 }
                 .listSectionSeparator(.visible)
+                .padding(.top, 20)
             }
             
             if let location = viewModel.event?.location {
@@ -46,6 +47,7 @@ struct EventDetailsView: View {
         }
         .listStyle(.plain)
         .navigationBarTitleDisplayMode(.inline)
+        .padding(.bottom, 20)
         .task { await viewModel.loadEventDetails(for: eventId) }
         .onDisappear { viewModel.event = nil }
     }

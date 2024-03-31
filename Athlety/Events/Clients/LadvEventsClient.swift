@@ -84,7 +84,7 @@ class LadvEventsClient: EventsClient {
     }
     
     private func toAttachement(_ ladvAttachement: LadvEventAttachement) -> Attachement? {
-        guard let url = URL(string: ladvAttachement.url) else { return nil }
+        guard let url = URL(string: ladvAttachement.url + "?file=true") else { return nil }
         return Attachement(
             name: ladvAttachement.name,
             url: url,

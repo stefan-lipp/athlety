@@ -14,7 +14,7 @@ struct EventMapView: View {
     let longitude: Double
     
     var body: some View {
-        Map(initialPosition: .region(region))
+        Map(initialPosition: .region(region), interactionModes: [])
     }
     
     private var region: MKCoordinateRegion {
