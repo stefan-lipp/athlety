@@ -16,7 +16,8 @@ struct EventsListView: View {
         List {
             let sortedEventDates = eventsViewModel.eventsByDate.keys.sorted(by: <)
             ForEach(sortedEventDates, id: \.self) { date in
-                Section(dateFormatter.string(from: date)) {
+                let formattedDate = date.formatted(.dateTime.weekday(.wide).day().month(.wide).year())
+                Section(formattedDate) {
                     ForEach(eventsViewModel.eventsByDate[date]!) { event in
                         NavigationLink {
                             EventDetailsView(eventId: event.id)
@@ -30,13 +31,6 @@ struct EventsListView: View {
         }
         .listStyle(.plain)
         .task { await eventsViewModel.loadUpcomingEvents(for: eventsFilterStore.associationId) }
-    }
-    
-    private var dateFormatter: DateFormatter {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .full
-        dateFormatter.timeStyle = .none
-        return dateFormatter
     }
 }
 

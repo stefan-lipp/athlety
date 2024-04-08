@@ -44,6 +44,8 @@
 		E39859B02A1E94C8007027BA /* EventsFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39859AF2A1E94C8007027BA /* EventsFilterViewModel.swift */; };
 		E3EC56E52A1EAAA400EDAC4D /* EventsFilterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC56E42A1EAAA400EDAC4D /* EventsFilterRow.swift */; };
 		E3F0FC8A2A215D6B00CC7274 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0FC892A215D6B00CC7274 /* EventDetailsView.swift */; };
+		E3F84E802BBEF119009EC9D6 /* EventCalendarExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F84E7F2BBEF119009EC9D6 /* EventCalendarExportView.swift */; };
+		E3F84E832BBF0994009EC9D6 /* CalendarAddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F84E822BBF0994009EC9D6 /* CalendarAddEventView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,8 @@
 		E39859AF2A1E94C8007027BA /* EventsFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterViewModel.swift; sourceTree = "<group>"; };
 		E3EC56E42A1EAAA400EDAC4D /* EventsFilterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterRow.swift; sourceTree = "<group>"; };
 		E3F0FC892A215D6B00CC7274 /* EventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
+		E3F84E7F2BBEF119009EC9D6 /* EventCalendarExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCalendarExportView.swift; sourceTree = "<group>"; };
+		E3F84E822BBF0994009EC9D6 /* CalendarAddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAddEventView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +262,7 @@
 			children = (
 				E3F0FC892A215D6B00CC7274 /* EventDetailsView.swift */,
 				E361DE512AE1F193003BB538 /* EventAttachementsView.swift */,
+				E3F84E7F2BBEF119009EC9D6 /* EventCalendarExportView.swift */,
 				E361DE4F2AE1EE3A003BB538 /* EventLocationView.swift */,
 				E37EC9D32ADF1F6C00F6F4C6 /* EventMapView.swift */,
 			);
@@ -307,6 +312,7 @@
 				E3496E452A1423A400104A0B /* Config.swift */,
 				E3496E532A17E06A00104A0B /* Associations */,
 				E30F66042A33549D0066AC01 /* Attachements */,
+				E3F84E812BBF0971009EC9D6 /* Calendar */,
 				E376DB0F2A290EAC00C53058 /* Disciplines */,
 				E3496E312A13EC1900104A0B /* Events */,
 				E300059A2ADB21DE0072F10F /* Profile */,
@@ -344,6 +350,22 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E3F84E812BBF0971009EC9D6 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				E3F84E842BBF09A7009EC9D6 /* Views */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		E3F84E842BBF09A7009EC9D6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E3F84E822BBF0994009EC9D6 /* CalendarAddEventView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -372,7 +394,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					E369D2392A11DBB500FF2051 = {
 						CreatedOnToolsVersion = 14.3;
@@ -421,6 +443,7 @@
 				E3496E3A2A13ECC300104A0B /* Event.swift in Sources */,
 				E376DB0E2A290D4D00C53058 /* EventDetails.swift in Sources */,
 				E39859AE2A1E92D9007027BA /* LadvAssociationsClient.swift in Sources */,
+				E3F84E802BBEF119009EC9D6 /* EventCalendarExportView.swift in Sources */,
 				E3F0FC8A2A215D6B00CC7274 /* EventDetailsView.swift in Sources */,
 				E30005A62ADB26BA0072F10F /* ProfileClient.swift in Sources */,
 				E30F66072A3354C90066AC01 /* Attachement.swift in Sources */,
@@ -442,6 +465,7 @@
 				E3496E482A142BBC00104A0B /* LadvEventsClient.swift in Sources */,
 				E30005A32ADB25900072F10F /* Profile.swift in Sources */,
 				E300059C2ADB21EC0072F10F /* ProfileView.swift in Sources */,
+				E3F84E832BBF0994009EC9D6 /* CalendarAddEventView.swift in Sources */,
 				E376DB142A29137C00C53058 /* EventDetailsViewModel.swift in Sources */,
 				E330221A2A33E10200A998B2 /* EventsListView.swift in Sources */,
 				E3496E562A17E30100104A0B /* AssociationsClient.swift in Sources */,
@@ -460,6 +484,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -523,6 +548,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -588,21 +614,28 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Athlety/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Some description";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.athlety.Athlety;
+				PRODUCT_BUNDLE_IDENTIFIER = app.athlety.Athlety;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -618,21 +651,28 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Athlety/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Some description";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.athlety.Athlety;
+				PRODUCT_BUNDLE_IDENTIFIER = app.athlety.Athlety;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

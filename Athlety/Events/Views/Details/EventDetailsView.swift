@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventKitUI
 
 struct EventDetailsView: View {
     
@@ -27,17 +28,19 @@ struct EventDetailsView: View {
                     }
                 }
                 .listSectionSeparator(.hidden)
+                .listSectionSpacing(.custom(20))
                 
+                Section {
+                    EventCalendarExportView(event: event)
+                }
+                .listSectionSeparator(.hidden)
             }
-            
             if let attachements = viewModel.event?.attachements, !attachements.isEmpty {
                 Section {
                     EventAttachementsView(attachements: attachements)
                 }
-                .listSectionSeparator(.visible)
-                .padding(.top, 20)
+                .listSectionSeparator(.hidden)
             }
-            
             if let location = viewModel.event?.location {
                 Section {
                     EventLocationView(location: location)
@@ -54,14 +57,7 @@ struct EventDetailsView: View {
     
     private var date: String {
         guard let event = viewModel.event else { return "" }
-        return dateFormatter.string(from: event.date)
-    }
-    
-    private var dateFormatter: DateFormatter {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .full
-        dateFormatter.timeStyle = .none
-        return dateFormatter
+        return event.date.formatted(.dateTime.weekday(.wide).day().month(.wide).year())
     }
 }
 

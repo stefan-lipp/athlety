@@ -27,6 +27,16 @@
         }
       }
     },
+    "Add to your Calendar" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zum Kalender hinzufügen"
+          }
+        }
+      }
+    },
     "All" : {
       "localizations" : {
         "de" : {
@@ -68,7 +78,6 @@
       }
     },
     "Events" : {
-      "comment" : "Localizable.strings\n  Athlety\n \n  🇬🇧 - English\n\n  Created by Stefan Cimander on 16.05.23.",
       "localizations" : {
         "de" : {
           "stringUnit" : {
