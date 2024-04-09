@@ -31,8 +31,6 @@ struct AthletyApp: App {
                     .environmentObject(profileViewModel)
                     .tabItem { Label("Profile", systemImage: "person")}
             }
-            
-            
         }
     }
 }

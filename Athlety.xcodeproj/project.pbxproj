@@ -45,7 +45,7 @@
 		E3EC56E52A1EAAA400EDAC4D /* EventsFilterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EC56E42A1EAAA400EDAC4D /* EventsFilterRow.swift */; };
 		E3F0FC8A2A215D6B00CC7274 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0FC892A215D6B00CC7274 /* EventDetailsView.swift */; };
 		E3F84E802BBEF119009EC9D6 /* EventCalendarExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F84E7F2BBEF119009EC9D6 /* EventCalendarExportView.swift */; };
-		E3F84E832BBF0994009EC9D6 /* CalendarAddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F84E822BBF0994009EC9D6 /* CalendarAddEventView.swift */; };
+		E3F84E832BBF0994009EC9D6 /* CalendarEventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F84E822BBF0994009EC9D6 /* CalendarEventEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,7 +89,7 @@
 		E3EC56E42A1EAAA400EDAC4D /* EventsFilterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilterRow.swift; sourceTree = "<group>"; };
 		E3F0FC892A215D6B00CC7274 /* EventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
 		E3F84E7F2BBEF119009EC9D6 /* EventCalendarExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCalendarExportView.swift; sourceTree = "<group>"; };
-		E3F84E822BBF0994009EC9D6 /* CalendarAddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAddEventView.swift; sourceTree = "<group>"; };
+		E3F84E822BBF0994009EC9D6 /* CalendarEventEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,7 +361,7 @@
 		E3F84E842BBF09A7009EC9D6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E3F84E822BBF0994009EC9D6 /* CalendarAddEventView.swift */,
+				E3F84E822BBF0994009EC9D6 /* CalendarEventEditView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -465,7 +465,7 @@
 				E3496E482A142BBC00104A0B /* LadvEventsClient.swift in Sources */,
 				E30005A32ADB25900072F10F /* Profile.swift in Sources */,
 				E300059C2ADB21EC0072F10F /* ProfileView.swift in Sources */,
-				E3F84E832BBF0994009EC9D6 /* CalendarAddEventView.swift in Sources */,
+				E3F84E832BBF0994009EC9D6 /* CalendarEventEditView.swift in Sources */,
 				E376DB142A29137C00C53058 /* EventDetailsViewModel.swift in Sources */,
 				E330221A2A33E10200A998B2 /* EventsListView.swift in Sources */,
 				E3496E562A17E30100104A0B /* AssociationsClient.swift in Sources */,

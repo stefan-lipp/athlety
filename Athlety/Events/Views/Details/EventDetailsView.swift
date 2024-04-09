@@ -31,7 +31,7 @@ struct EventDetailsView: View {
                 .listSectionSpacing(.custom(20))
                 
                 Section {
-                    EventCalendarExportView(event: event)
+                    EventCalendarExportView()
                 }
                 .listSectionSeparator(.hidden)
             }

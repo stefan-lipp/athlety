@@ -1,5 +1,5 @@
 //
-//  CalendarAddEventView.swift
+//  CalendarEventEditView.swift
 //  Athlety
 //
 //  Created by Stefan Lipp on 04.04.24.
@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 import EventKitUI
 
-struct CalendarAddEventView: UIViewControllerRepresentable {
+struct CalendarEventEditView: UIViewControllerRepresentable {
     
     typealias UIViewControllerType = EKEventEditViewController
     
@@ -24,6 +24,7 @@ struct CalendarAddEventView: UIViewControllerRepresentable {
         controller.eventStore = eventStore
         controller.event = event
         controller.editViewDelegate = context.coordinator
+        controller.setNavigationBarHidden(true, animated: true)
         return controller
     }
     
@@ -35,9 +36,9 @@ struct CalendarAddEventView: UIViewControllerRepresentable {
     }
     
     class Coordinator: NSObject, EKEventEditViewDelegate {
-        var parent: CalendarAddEventView
+        var parent: CalendarEventEditView
         
-        init(_ parent: CalendarAddEventView) {
+        init(_ parent: CalendarEventEditView) {
             self.parent = parent
         }
         

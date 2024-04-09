@@ -9,8 +9,6 @@ import SwiftUI
 
 struct EventCalendarExportView: View {
     
-    let event: EventDetails
-    
     @EnvironmentObject private var viewModel: EventDetailsViewModel
     
     var body: some View {
@@ -19,7 +17,7 @@ struct EventCalendarExportView: View {
         })
         .padding(.vertical, 8)
         .sheet(isPresented: $viewModel.showCalendarAddEventView) {
-            CalendarAddEventView(event: $viewModel.calendarEvent, eventStore: viewModel.eventStore)
+            CalendarEventEditView(event: $viewModel.calendarEvent, eventStore: viewModel.eventStore)
         }
     }
 }

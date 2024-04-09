@@ -15,14 +15,14 @@ class LadvAssociationsClient: AssociationsClient {
     
     func loadAssociations() async -> [Association] {
         let request = URLRequest(url: associationsUrl)
-        let (data, response) = try! await URLSession.shared.data(for: request)
         
+        guard let (data, response) = try? await URLSession.shared.data(for: request) else { return [] }
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return [] }
-        let ladvAssociations = try! JSONDecoder().decode([LadvAssociation].self, from: data)
+        guard let ladvAssociations = try? JSONDecoder().decode([LadvAssociation].self, from: data) else { return [] }
         
         return ladvAssociations
             .map { toAssociation($0) }
-            .filter { $0.id != "RS"}
+            .filter { $0.id != "RS" }
             .filter { $0.id != "INT" }
             .sorted { $0.name < $1.name }
     }
