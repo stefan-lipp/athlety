@@ -28,6 +28,7 @@ struct EventLocationView: View {
             
             Text(location.site)
                 .foregroundStyle(.secondary)
+                .padding(.bottom)
         }
     }
 }

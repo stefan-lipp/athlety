@@ -67,8 +67,9 @@ class LadvEventsClient: EventsClient {
         return EventDetails(
             id: ladvEvent.id,
             name: ladvEvent.name,
-            location: toEventLocation(ladvEvent),
             date: date,
+            location: toEventLocation(ladvEvent),
+            registration: toEventRegistration(ladvEvent),
             attachements: ladvEvent.attachements.compactMap(toAttachement),
             disciplines: []
         )
@@ -80,6 +81,16 @@ class LadvEventsClient: EventsClient {
             site: ladvEvent.sportstaette,
             latitude: ladvEvent.ort.lat,
             longitude: ladvEvent.ort.lng
+        )
+    }
+    
+    private func toEventRegistration(_ ladvEvent: LadvEventDetails) -> EventRegistration {
+        let deadlineMillis = ladvEvent.meldDatum
+        let deadlineSeconds = Double(deadlineMillis) / 1000
+        let deadline = Date(timeIntervalSince1970: deadlineSeconds)
+        return EventRegistration(
+            deadline: deadline,
+            email: ladvEvent.meldEmail
         )
     }
     
@@ -106,6 +117,9 @@ class LadvEventsClient: EventsClient {
         let ort: LadvEventLocation
         let sportstaette: String
         let datum: Int
+        
+        let meldEmail: String
+        let meldDatum: Int
         
         let attachements: [LadvEventAttachement]
     }

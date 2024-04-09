@@ -38,12 +38,26 @@ struct EventDetailsView: View {
                 Section {
                     EventLocationView(location: location)
                 }
+            }
+            if let event = viewModel.event {                
+                Section {
+                    EventRegistrationView(registration: event.registration)
+                } header: {
+                    Text("Registration")
+                        .font(.title2)
+                        .fontWeight(.medium)
+                        .padding(.bottom, 8)
+                        .foregroundStyle(.primary)
+                }
                 .listSectionSeparator(.hidden)
             }
+            
+            Color.clear
+                .frame(height: 0)
+                .listSectionSeparator(.hidden)
         }
         .listStyle(.plain)
         .navigationBarTitleDisplayMode(.inline)
-        .padding(.bottom, 20)
         .task { await viewModel.loadEventDetails(for: eventId) }
         .onDisappear { viewModel.event = nil }
     }
