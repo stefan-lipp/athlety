@@ -46,6 +46,7 @@
 		E3F0FC8A2A215D6B00CC7274 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0FC892A215D6B00CC7274 /* EventDetailsView.swift */; };
 		E3F84E802BBEF119009EC9D6 /* EventCalendarExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F84E7F2BBEF119009EC9D6 /* EventCalendarExportView.swift */; };
 		E3F84E832BBF0994009EC9D6 /* CalendarEventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F84E822BBF0994009EC9D6 /* CalendarEventEditView.swift */; };
+		E3FA60B62BC5CBC80058E89C /* EventHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FA60B52BC5CBC80058E89C /* EventHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		E3F0FC892A215D6B00CC7274 /* EventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
 		E3F84E7F2BBEF119009EC9D6 /* EventCalendarExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCalendarExportView.swift; sourceTree = "<group>"; };
 		E3F84E822BBF0994009EC9D6 /* CalendarEventEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventEditView.swift; sourceTree = "<group>"; };
+		E3FA60B52BC5CBC80058E89C /* EventHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,8 +263,9 @@
 			isa = PBXGroup;
 			children = (
 				E3F0FC892A215D6B00CC7274 /* EventDetailsView.swift */,
-				E361DE512AE1F193003BB538 /* EventAttachementsView.swift */,
+				E3FA60B52BC5CBC80058E89C /* EventHeaderView.swift */,
 				E3F84E7F2BBEF119009EC9D6 /* EventCalendarExportView.swift */,
+				E361DE512AE1F193003BB538 /* EventAttachementsView.swift */,
 				E361DE4F2AE1EE3A003BB538 /* EventLocationView.swift */,
 				E37EC9D32ADF1F6C00F6F4C6 /* EventMapView.swift */,
 			);
@@ -445,6 +448,7 @@
 				E39859AE2A1E92D9007027BA /* LadvAssociationsClient.swift in Sources */,
 				E3F84E802BBEF119009EC9D6 /* EventCalendarExportView.swift in Sources */,
 				E3F0FC8A2A215D6B00CC7274 /* EventDetailsView.swift in Sources */,
+				E3FA60B62BC5CBC80058E89C /* EventHeaderView.swift in Sources */,
 				E30005A62ADB26BA0072F10F /* ProfileClient.swift in Sources */,
 				E30F66072A3354C90066AC01 /* Attachement.swift in Sources */,
 				E30005AB2ADB295D0072F10F /* ProfileViewModel.swift in Sources */,

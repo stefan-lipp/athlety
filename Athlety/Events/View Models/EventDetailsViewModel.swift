@@ -28,6 +28,7 @@ class EventDetailsViewModel: ObservableObject {
         
         let newCalendarEvent = EKEvent(eventStore: eventStore)
         newCalendarEvent.title = event.name
+        newCalendarEvent.location = event.location.description
         newCalendarEvent.startDate = event.date
         newCalendarEvent.endDate = event.date
         newCalendarEvent.isAllDay = true

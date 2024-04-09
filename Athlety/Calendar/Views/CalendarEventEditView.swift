@@ -24,7 +24,6 @@ struct CalendarEventEditView: UIViewControllerRepresentable {
         controller.eventStore = eventStore
         controller.event = event
         controller.editViewDelegate = context.coordinator
-        controller.setNavigationBarHidden(true, animated: true)
         return controller
     }
     

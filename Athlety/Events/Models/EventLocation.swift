@@ -7,9 +7,13 @@
 
 import Foundation
 
-struct EventLocation {
+struct EventLocation: CustomStringConvertible {
     let name: String
     let site: String
     let latitude: Double
     let longitude: Double
+    
+    var description: String {
+        "\(site), \(name)"
+    }
 }

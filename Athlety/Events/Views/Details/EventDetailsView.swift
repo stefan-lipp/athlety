@@ -18,14 +18,7 @@ struct EventDetailsView: View {
         List {
             if let event = viewModel.event {
                 Section {
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text(event.name)
-                            .fontWeight(.medium)
-                            .font(.title)
-                        
-                        Text("\(date) at \(event.location.name)")
-                            .foregroundStyle(.secondary)
-                    }
+                    EventHeaderView(event: event)
                 }
                 .listSectionSeparator(.hidden)
                 .listSectionSpacing(.custom(20))
@@ -33,9 +26,9 @@ struct EventDetailsView: View {
                 Section {
                     EventCalendarExportView()
                 }
-                .listSectionSeparator(.hidden)
+                .listSectionSeparator(attachements.isEmpty ? .hidden : .automatic)
             }
-            if let attachements = viewModel.event?.attachements, !attachements.isEmpty {
+            if !attachements.isEmpty {
                 Section {
                     EventAttachementsView(attachements: attachements)
                 }
@@ -55,9 +48,8 @@ struct EventDetailsView: View {
         .onDisappear { viewModel.event = nil }
     }
     
-    private var date: String {
-        guard let event = viewModel.event else { return "" }
-        return event.date.formatted(.dateTime.weekday(.wide).day().month(.wide).year())
+    private var attachements: [Attachement] {
+        viewModel.event?.attachements ?? []
     }
 }
 
