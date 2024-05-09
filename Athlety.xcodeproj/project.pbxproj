@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		E300059C2ADB21EC0072F10F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E300059B2ADB21EC0072F10F /* ProfileView.swift */; };
 		E300059E2ADB235D0072F10F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E300059D2ADB235D0072F10F /* Localizable.xcstrings */; };
-		E30005A32ADB25900072F10F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30005A22ADB25900072F10F /* Profile.swift */; };
-		E30005A62ADB26BA0072F10F /* ProfileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30005A52ADB26BA0072F10F /* ProfileClient.swift */; };
-		E30005A82ADB271B0072F10F /* LadvProfileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30005A72ADB271B0072F10F /* LadvProfileClient.swift */; };
-		E30005AB2ADB295D0072F10F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30005AA2ADB295D0072F10F /* ProfileViewModel.swift */; };
 		E30F66072A3354C90066AC01 /* Attachement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F66062A3354C90066AC01 /* Attachement.swift */; };
 		E330221A2A33E10200A998B2 /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33022192A33E10200A998B2 /* EventsListView.swift */; };
 		E330221D2A33E59700A998B2 /* AttachementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E330221C2A33E59700A998B2 /* AttachementView.swift */; };
@@ -54,10 +50,6 @@
 /* Begin PBXFileReference section */
 		E300059B2ADB21EC0072F10F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E300059D2ADB235D0072F10F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		E30005A22ADB25900072F10F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		E30005A52ADB26BA0072F10F /* ProfileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileClient.swift; sourceTree = "<group>"; };
-		E30005A72ADB271B0072F10F /* LadvProfileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadvProfileClient.swift; sourceTree = "<group>"; };
-		E30005AA2ADB295D0072F10F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		E30F66062A3354C90066AC01 /* Attachement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachement.swift; sourceTree = "<group>"; };
 		E33022192A33E10200A998B2 /* EventsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListView.swift; sourceTree = "<group>"; };
 		E330221C2A33E59700A998B2 /* AttachementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachementView.swift; sourceTree = "<group>"; };
@@ -112,20 +104,9 @@
 		E300059A2ADB21DE0072F10F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				E30005A42ADB25B80072F10F /* Clients */,
-				E300059F2ADB25680072F10F /* Models */,
 				E30005A02ADB256E0072F10F /* Views */,
-				E30005A92ADB294E0072F10F /* View Models */,
 			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		E300059F2ADB25680072F10F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				E30005A22ADB25900072F10F /* Profile.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		E30005A02ADB256E0072F10F /* Views */ = {
@@ -134,23 +115,6 @@
 				E300059B2ADB21EC0072F10F /* ProfileView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		E30005A42ADB25B80072F10F /* Clients */ = {
-			isa = PBXGroup;
-			children = (
-				E30005A52ADB26BA0072F10F /* ProfileClient.swift */,
-				E30005A72ADB271B0072F10F /* LadvProfileClient.swift */,
-			);
-			path = Clients;
-			sourceTree = "<group>";
-		};
-		E30005A92ADB294E0072F10F /* View Models */ = {
-			isa = PBXGroup;
-			children = (
-				E30005AA2ADB295D0072F10F /* ProfileViewModel.swift */,
-			);
-			path = "View Models";
 			sourceTree = "<group>";
 		};
 		E30F66042A33549D0066AC01 /* Attachements */ = {
@@ -457,9 +421,7 @@
 				E3FA60BA2BC5D9700058E89C /* EventRegistrationView.swift in Sources */,
 				E3F0FC8A2A215D6B00CC7274 /* EventDetailsView.swift in Sources */,
 				E3FA60B62BC5CBC80058E89C /* EventHeaderView.swift in Sources */,
-				E30005A62ADB26BA0072F10F /* ProfileClient.swift in Sources */,
 				E30F66072A3354C90066AC01 /* Attachement.swift in Sources */,
-				E30005AB2ADB295D0072F10F /* ProfileViewModel.swift in Sources */,
 				E35B03B72A1FD5CE00D25FF4 /* EventsFilterToolbar.swift in Sources */,
 				E39859B02A1E94C8007027BA /* EventsFilterViewModel.swift in Sources */,
 				E3496E382A13ECA300104A0B /* EventsViewModel.swift in Sources */,
@@ -475,7 +437,6 @@
 				E361DE502AE1EE3A003BB538 /* EventLocationView.swift in Sources */,
 				E37EC9D42ADF1F6C00F6F4C6 /* EventMapView.swift in Sources */,
 				E3496E482A142BBC00104A0B /* LadvEventsClient.swift in Sources */,
-				E30005A32ADB25900072F10F /* Profile.swift in Sources */,
 				E300059C2ADB21EC0072F10F /* ProfileView.swift in Sources */,
 				E3F84E832BBF0994009EC9D6 /* CalendarEventEditView.swift in Sources */,
 				E376DB142A29137C00C53058 /* EventDetailsViewModel.swift in Sources */,
@@ -484,7 +445,6 @@
 				E3496E592A17E33500104A0B /* Association.swift in Sources */,
 				E369D23E2A11DBB500FF2051 /* App.swift in Sources */,
 				E3496E3D2A13F07200104A0B /* EventsClient.swift in Sources */,
-				E30005A82ADB271B0072F10F /* LadvProfileClient.swift in Sources */,
 				E3496E462A1423A400104A0B /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

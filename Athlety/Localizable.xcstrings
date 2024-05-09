@@ -1,22 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%@ %@" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ %2$@"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ %2$@"
-          }
-        }
-      }
-    },
     "%@ at %@" : {
       "localizations" : {
         "de" : {
@@ -143,6 +127,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wähle einen Landesverband, nach dem Wettkämpfe gefiltert werden sollen."
+          }
+        }
+      }
+    },
+    "Your Profile" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Profil"
           }
         }
       }
