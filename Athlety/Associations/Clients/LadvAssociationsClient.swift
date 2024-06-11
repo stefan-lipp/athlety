@@ -7,10 +7,12 @@
 
 import Foundation
 
+@MainActor
 class LadvAssociationsClient: AssociationsClient {
     
     private static let baseUrl = Config.shared.ladvBaseUrl
     private static let apiKey = Config.shared.ladvApiKey
+    
     private let associationsUrl = URL(string: "\(baseUrl)/\(apiKey)/lvList")!
     
     func loadAssociations() async -> [Association] {

@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class LadvEventsClient: EventsClient {
     
     private static let baseUrl = Config.shared.ladvBaseUrl

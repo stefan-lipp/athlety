@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 protocol EventsClient {
     
     func loadUpcomingEvents(for associationId: String?) async -> [Event]

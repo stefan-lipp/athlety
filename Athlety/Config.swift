@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class Config {
     
     let ladvApiKey: String
@@ -17,16 +18,13 @@ class Config {
         self.ladvBaseUrl = ladvBaseUrl
     }
     
-    private static let explanation = "Please refer to the README for more information on how to correctly set up the Config.plist file."
-    
     static var shared: Config = {
         guard let configPath = Bundle.main.path(forResource: "Config", ofType: "plist") else {
             fatalError("A Config.plist file is required within the Athlety directory." + explanation)
         }
-        
+
         do {
             let configData = try Data(contentsOf: URL(fileURLWithPath: configPath))
-            
             guard let config = try PropertyListSerialization.propertyList(from: configData, format: nil) as? [String: Any],
                   let ladvConfig = config["LADV"] as? [String: Any],
                   let ladvApiKey = ladvConfig["APIKey"] as? String, !ladvApiKey.isEmpty,
@@ -34,11 +32,12 @@ class Config {
             else {
                 fatalError("Could not find required keys and values in Config.plist file. " + explanation)
             }
-            
             return Config(ladvApiKey: ladvApiKey, ladvBaseUrl: ladvBaseUrl)
             
         } catch {
             fatalError("Invalid Config.plist file found in Athlety directory." + explanation)
         }
     }()
+    
+    private static let explanation = "Please refer to the README for more information on how to correctly set up the Config.plist file."
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 protocol AssociationsClient {
     func loadAssociations() async -> [Association]
 }

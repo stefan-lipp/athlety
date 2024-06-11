@@ -34,7 +34,8 @@ struct CalendarEventEditView: UIViewControllerRepresentable {
         return Coordinator(self)
     }
     
-    class Coordinator: NSObject, EKEventEditViewDelegate {
+    @MainActor
+    class Coordinator: NSObject, @preconcurrency EKEventEditViewDelegate {
         var parent: CalendarEventEditView
         
         init(_ parent: CalendarEventEditView) {
