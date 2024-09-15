@@ -34,6 +34,12 @@ struct EventDetailsView: View {
                 }
                 .listSectionSeparator(.hidden)
             }
+            if !disciplines.isEmpty {
+                Section {
+                    EventDisciplinesView(disciplines: disciplines)
+                }
+                .listSectionSeparator(.hidden)
+            }
             if let location = viewModel.event?.location {
                 Section {
                     EventLocationView(location: location)
@@ -64,6 +70,10 @@ struct EventDetailsView: View {
     
     private var attachements: [Attachement] {
         viewModel.event?.attachements ?? []
+    }
+    
+    private var disciplines: [Discipline] {
+        viewModel.event?.disciplines ?? []
     }
 }
 

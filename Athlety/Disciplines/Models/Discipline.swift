@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum Discipline {
-    case sprint100m
-    case run800m
-    case longJump
-    case highJump
-    case javelinThrow
-    case shotPut
+enum Discipline: String {
+    case sprint100m = "100 m"
+    case run800m = "800 m"
+    case longJump = "Long Jump"
+    case highJump = "High Jump"
+    case javelinThrow = "Javelin Throw"
+    case shotPut = "Shot Put"
 }

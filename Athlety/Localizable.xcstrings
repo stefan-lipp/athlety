@@ -51,6 +51,16 @@
         }
       }
     },
+    "Disciplines" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disziplinen"
+          }
+        }
+      }
+    },
     "Done" : {
       "localizations" : {
         "de" : {

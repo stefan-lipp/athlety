@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2325AA92C976138009BD8B4 /* LadvDiscipline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2325AA82C976138009BD8B4 /* LadvDiscipline.swift */; };
+		B2BDC6AF2C96E5D60071F6EC /* EventDisciplinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BDC6AE2C96E5D60071F6EC /* EventDisciplinesView.swift */; };
+		B2BDC6B22C9701940071F6EC /* LadvEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BDC6B12C9701940071F6EC /* LadvEvent.swift */; };
 		E300059C2ADB21EC0072F10F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E300059B2ADB21EC0072F10F /* ProfileView.swift */; };
 		E300059E2ADB235D0072F10F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E300059D2ADB235D0072F10F /* Localizable.xcstrings */; };
 		E30F66072A3354C90066AC01 /* Attachement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F66062A3354C90066AC01 /* Attachement.swift */; };
@@ -48,6 +51,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B2325AA82C976138009BD8B4 /* LadvDiscipline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadvDiscipline.swift; sourceTree = "<group>"; };
+		B2BDC6AE2C96E5D60071F6EC /* EventDisciplinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDisciplinesView.swift; sourceTree = "<group>"; };
+		B2BDC6B12C9701940071F6EC /* LadvEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadvEvent.swift; sourceTree = "<group>"; };
 		E300059B2ADB21EC0072F10F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E300059D2ADB235D0072F10F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E30F66062A3354C90066AC01 /* Attachement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachement.swift; sourceTree = "<group>"; };
@@ -101,6 +107,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B2BDC6B02C97017B0071F6EC /* LADV */ = {
+			isa = PBXGroup;
+			children = (
+				E3496E472A142BBC00104A0B /* LadvEventsClient.swift */,
+				B2BDC6B12C9701940071F6EC /* LadvEvent.swift */,
+				B2325AA82C976138009BD8B4 /* LadvDiscipline.swift */,
+			);
+			path = LADV;
+			sourceTree = "<group>";
+		};
 		E300059A2ADB21DE0072F10F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,7 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				E3496E3C2A13F07200104A0B /* EventsClient.swift */,
-				E3496E472A142BBC00104A0B /* LadvEventsClient.swift */,
+				B2BDC6B02C97017B0071F6EC /* LADV */,
 			);
 			path = Clients;
 			sourceTree = "<group>";
@@ -235,9 +251,10 @@
 				E3FA60B52BC5CBC80058E89C /* EventHeaderView.swift */,
 				E3F84E7F2BBEF119009EC9D6 /* EventCalendarExportView.swift */,
 				E361DE512AE1F193003BB538 /* EventAttachementsView.swift */,
-				E3FA60B92BC5D9700058E89C /* EventRegistrationView.swift */,
+				B2BDC6AE2C96E5D60071F6EC /* EventDisciplinesView.swift */,
 				E361DE4F2AE1EE3A003BB538 /* EventLocationView.swift */,
 				E37EC9D32ADF1F6C00F6F4C6 /* EventMapView.swift */,
+				E3FA60B92BC5D9700058E89C /* EventRegistrationView.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -422,6 +439,7 @@
 				E3F0FC8A2A215D6B00CC7274 /* EventDetailsView.swift in Sources */,
 				E3FA60B62BC5CBC80058E89C /* EventHeaderView.swift in Sources */,
 				E30F66072A3354C90066AC01 /* Attachement.swift in Sources */,
+				B2BDC6AF2C96E5D60071F6EC /* EventDisciplinesView.swift in Sources */,
 				E35B03B72A1FD5CE00D25FF4 /* EventsFilterToolbar.swift in Sources */,
 				E39859B02A1E94C8007027BA /* EventsFilterViewModel.swift in Sources */,
 				E3496E382A13ECA300104A0B /* EventsViewModel.swift in Sources */,
@@ -430,6 +448,7 @@
 				E3496E342A13EC3F00104A0B /* EventsView.swift in Sources */,
 				E37EC9D62ADF205900F6F4C6 /* EventLocation.swift in Sources */,
 				E361DE522AE1F193003BB538 /* EventAttachementsView.swift in Sources */,
+				B2BDC6B22C9701940071F6EC /* LadvEvent.swift in Sources */,
 				E3EC56E52A1EAAA400EDAC4D /* EventsFilterRow.swift in Sources */,
 				E330221D2A33E59700A998B2 /* AttachementView.swift in Sources */,
 				E3496E522A17DEA400104A0B /* EventsFilterView.swift in Sources */,
@@ -438,6 +457,7 @@
 				E37EC9D42ADF1F6C00F6F4C6 /* EventMapView.swift in Sources */,
 				E3496E482A142BBC00104A0B /* LadvEventsClient.swift in Sources */,
 				E300059C2ADB21EC0072F10F /* ProfileView.swift in Sources */,
+				B2325AA92C976138009BD8B4 /* LadvDiscipline.swift in Sources */,
 				E3F84E832BBF0994009EC9D6 /* CalendarEventEditView.swift in Sources */,
 				E376DB142A29137C00C53058 /* EventDetailsViewModel.swift in Sources */,
 				E330221A2A33E10200A998B2 /* EventsListView.swift in Sources */,

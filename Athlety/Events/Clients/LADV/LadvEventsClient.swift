@@ -72,7 +72,7 @@ class LadvEventsClient: EventsClient {
             location: toEventLocation(ladvEvent),
             registration: toEventRegistration(ladvEvent),
             attachements: ladvEvent.attachements.compactMap(toAttachement),
-            disciplines: []
+            disciplines: Array(Set(ladvEvent.wettbewerbe.compactMap(toDiscipline)))
         )
     }
     
@@ -104,43 +104,8 @@ class LadvEventsClient: EventsClient {
         )
     }
     
-    
-    private struct LadvEvent: Codable {
-        let id: Int
-        let name: String
-        let ort: String
-        let datum: Int
-    }
-    
-    private struct LadvEventDetails: Codable {
-        let id: Int
-        let name: String
-        let ort: LadvEventLocation
-        let sportstaette: String
-        let datum: Int
-        
-        let meldEmail: String
-        let meldDatum: Int
-        
-        let attachements: [LadvEventAttachement]
-    }
-    
-    private struct LadvEventLocation: Codable {
-        let id: Int
-        let name: String
-        let lat: Double
-        let lng: Double
-    }
-    
-    private struct LadvEventAttachement: Codable {
-        let name: String
-        let url: String
-        let fileExtension: String
-        
-        enum CodingKeys: String, CodingKey {
-            case name
-            case url
-            case fileExtension = "extension"
-        }
+    private func toDiscipline(_ ladvCompetition: LadvEventCompetition) -> Discipline? {
+        let ladvDisciplineCode = ladvCompetition.disziplinNew
+        return Discipline.disciplineForLadvCode[ladvDisciplineCode]
     }
 }
