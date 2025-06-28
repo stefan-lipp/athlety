@@ -8,18 +8,22 @@
 import SwiftUI
 
 struct EventsOverview: View {
-    let events: [Event]
+    
+    @EnvironmentObject var viewModel: EventsOverviewViewModel
     
     var body: some View {
         List {
-            ForEach(events) { event in
+            ForEach(viewModel.events) { event in
                 EventRow(event: event)
             }
+        }
+        .task {
+            await viewModel.loadUpcomingEvents()
         }
     }
 }
 
 #Preview {
-    let events = [Event(id: 44253, name: "Nachtmeeting", location: "Rheinfelden", date: Date())]
-    EventsOverview(events: events)
+    EventsOverview()
+        .environmentObject(EventsOverviewViewModel())
 }

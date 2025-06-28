@@ -10,10 +10,13 @@ import SwiftData
 
 @main
 struct AthletyApp: App {
+    
+    @ObservedObject private var eventsOverviewViewModel = EventsOverviewViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            let events = [Event(id: 44253, name: "Nachtmeeting", location: "Rheinfelden", date: Date())]
-            EventsOverview(events: events)
+            EventsOverview()
+                .environmentObject(eventsOverviewViewModel)
         }
     }
 }
