@@ -1,0 +1,38 @@
+{
+  "fill" : {
+    "solid" : "srgb:0.10782,0.10782,0.10782,1.00000"
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "blend-mode" : "normal",
+          "fill" : "automatic",
+          "glass" : true,
+          "image-name" : "running-shoe.svg",
+          "name" : "running-shoe",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              -16.171875,
+              -14.1015625
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "squares" : [
+      "iOS"
+    ]
+  }
+}
