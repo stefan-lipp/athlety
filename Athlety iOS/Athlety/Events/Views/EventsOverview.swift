@@ -13,8 +13,14 @@ struct EventsOverview: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.events) { event in
-                EventRow(event: event)
+            let sortedEventDates = viewModel.eventsByDate.keys.sorted(by: <)
+            ForEach(sortedEventDates, id: \.self) { date in
+                let formattedDate = date.formatted(.dateTime.weekday(.wide).day().month(.wide).year())
+                Section(formattedDate) {
+                    ForEach(viewModel.eventsByDate[date]!) { event in
+                        EventRow(event: event)
+                    }
+                }
             }
         }
         .task {
