@@ -15,8 +15,11 @@ struct AthletyApp: App {
     
     var body: some Scene {
         WindowGroup {
-            EventsOverview()
-                .environmentObject(eventsOverviewViewModel)
+            NavigationStack {
+                EventsOverview()
+                    .environmentObject(eventsOverviewViewModel)
+                    .navigationTitle("Upcoming Events")
+            }
         }
     }
 }
