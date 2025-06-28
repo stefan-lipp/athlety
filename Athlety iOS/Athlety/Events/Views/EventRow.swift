@@ -42,6 +42,7 @@ struct EventRow: View {
 }
 
 #Preview {
-    EventRow(event: Event(id: 44253, name: "36. Rheinfelder Nachtmeeting", location: "Rheinfelden", date: Date()))
+    let event = Event(id: 44253, name: "36. Rheinfelder Nachtmeeting", location: "Rheinfelden", date: Date())
+    EventRow(event: event)
         .padding()
 }

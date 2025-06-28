@@ -12,14 +12,13 @@ import SwiftData
 struct AthletyApp: App {
     
     @ObservedObject private var eventsOverviewViewModel = EventsOverviewViewModel()
+    @ObservedObject private var eventsFilterViewModel = EventsFilterViewModel()
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                EventsOverview()
-                    .environmentObject(eventsOverviewViewModel)
-                    .navigationTitle("Upcoming Events")
-            }
+            EventsOverview()
+                .environmentObject(eventsOverviewViewModel)
+                .environmentObject(eventsFilterViewModel)
         }
     }
 }

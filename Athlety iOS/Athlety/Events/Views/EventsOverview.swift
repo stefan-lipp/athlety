@@ -9,23 +9,19 @@ import SwiftUI
 
 struct EventsOverview: View {
     
-    @EnvironmentObject var viewModel: EventsOverviewViewModel
+    @EnvironmentObject private var viewModel: EventsOverviewViewModel
+    
+    @State private var showFilter = false
     
     var body: some View {
-        List {
-            let sortedEventDates = viewModel.eventsByDate.keys.sorted(by: <)
-            ForEach(sortedEventDates, id: \.self) { date in
-                
-                Section {
-                    ForEach(viewModel.eventsByDate[date]!) { event in
-                        EventRow(event: event)
-                    }
-                } header: {
-                    sectionHeader(for: date)
+        NavigationStack {
+            EventsList(eventsByDate: viewModel.eventsByDate)
+                .navigationTitle("Events")
+                .toolbar { toolbar }
+                .sheet(isPresented: $showFilter) {
+                    EventsFilterView()
                 }
-            }
         }
-        .listRowSpacing(8)
         .task {
             await viewModel.loadUpcomingEvents()
         }
@@ -37,6 +33,17 @@ struct EventsOverview: View {
             .foregroundColor(.primary)
             .fontWeight(.semibold)
             .padding(.bottom, 4)
+    }
+    
+    @ToolbarContentBuilder
+    private var toolbar: some ToolbarContent {
+        ToolbarItem(placement: .topBarTrailing) {
+            Button {
+                showFilter = true
+            } label: {
+                Label("Filter", systemImage: "line.3.horizontal.decrease")
+            }
+        }
     }
 }
 
