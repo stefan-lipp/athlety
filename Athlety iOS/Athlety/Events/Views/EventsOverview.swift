@@ -9,13 +9,14 @@ import SwiftUI
 
 struct EventsOverview: View {
     
-    @EnvironmentObject private var viewModel: EventsOverviewViewModel
+    @EnvironmentObject private var eventsOverviewViewModel: EventsOverviewViewModel
+    @EnvironmentObject private var eventsFilterViewModel: EventsFilterViewModel
     
     @State private var showFilter = false
     
     var body: some View {
         NavigationStack {
-            EventsList(eventsByDate: viewModel.eventsByDate)
+            EventsList(eventsByDate: eventsOverviewViewModel.eventsByDate)
                 .navigationTitle("Events")
                 .toolbar { toolbar }
                 .sheet(isPresented: $showFilter) {
@@ -23,7 +24,14 @@ struct EventsOverview: View {
                 }
         }
         .task {
-            await viewModel.loadUpcomingEvents()
+            let associationId = eventsFilterViewModel.eventsFilterAssociationId
+            await eventsOverviewViewModel.loadUpcomingEvents(for: associationId)
+        }
+        .onChange(of: eventsFilterViewModel.eventsFilterAssociationId) {
+            Task {
+                let associationId = eventsFilterViewModel.eventsFilterAssociationId
+                await eventsOverviewViewModel.loadUpcomingEvents(for: associationId)
+            }
         }
     }
     

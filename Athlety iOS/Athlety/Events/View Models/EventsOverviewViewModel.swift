@@ -14,8 +14,8 @@ class EventsOverviewViewModel: ObservableObject {
     
     private let client: EventsClient = LadvEventsClient()
     
-    func loadUpcomingEvents() async {
-        let events = await client.loadUpcomingEvents()
+    func loadUpcomingEvents(for associationId: String?) async {
+        let events = await client.loadUpcomingEvents(for: associationId)
         eventsByDate = Dictionary(grouping: events, by: { $0.date })
     }
 }

@@ -14,13 +14,15 @@ class LadvEventsClient: EventsClient {
     
     private let eventsUrl = "\(baseUrl)/\(apiKey)/ausList"
     
-    func loadUpcomingEvents() async -> [Event] {
+    func loadUpcomingEvents(for associationId: String?) async -> [Event] {
         var urlComponents = URLComponents(string: eventsUrl)!
         urlComponents.queryItems = [
             URLQueryItem(name: "mostCurrent", value: "true"),
             URLQueryItem(name: "limit", value: "200")
         ]
-        
+        if let associationId {
+            urlComponents.queryItems?.append(URLQueryItem(name: "lv", value: associationId))
+        }
         let request = URLRequest(url: urlComponents.url!)
         guard let (data, response) = try? await URLSession.shared.data(for: request) else { return [] }
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return [] }

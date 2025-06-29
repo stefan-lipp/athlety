@@ -8,5 +8,5 @@
 import Foundation
 
 protocol EventsClient {
-    func loadUpcomingEvents() async -> [Event]
+    func loadUpcomingEvents(for associationId: String?) async -> [Event]
 }

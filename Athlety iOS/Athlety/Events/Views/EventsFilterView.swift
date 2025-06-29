@@ -13,12 +13,12 @@ struct EventsFilterView: View {
     
     @Environment(\.dismiss) private var dismiss
     
+    @State private var selectedAssociationId: String?
+    
     var body: some View {
         NavigationStack {
             List {
-                ForEach(viewModel.associations) { association in
-                    Text(association.name)
-                }
+                filterRows
             }
             .navigationTitle("Filter")
             .navigationBarTitleDisplayMode(.inline)
@@ -26,6 +26,7 @@ struct EventsFilterView: View {
         }
         .task {
             await viewModel.loadAssociations()
+            selectedAssociationId = viewModel.eventsFilterAssociationId
         }
     }
     
@@ -38,8 +39,25 @@ struct EventsFilterView: View {
         }
         ToolbarItem(placement: .confirmationAction) {
             Button("Done", systemImage: "checkmark") {
+                viewModel.eventsFilterAssociationId = selectedAssociationId
                 dismiss()
             }
+        }
+    }
+    
+    @ViewBuilder
+    private var filterRows: some View {
+        EventsFilterRow(
+            name: "All",
+            isSelected: selectedAssociationId == nil,
+            onSelect: { selectedAssociationId = nil }
+        )
+        ForEach(viewModel.associations) { association in
+            EventsFilterRow(
+                name: LocalizedStringKey(association.name),
+                isSelected: selectedAssociationId == association.id,
+                onSelect: { selectedAssociationId = association.id }
+            )
         }
     }
 }

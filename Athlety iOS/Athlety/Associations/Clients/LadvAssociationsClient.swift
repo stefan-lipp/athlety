@@ -23,6 +23,7 @@ class LadvAssociationsClient: AssociationsClient {
         
         return ladvAssociations
             .map { $0.toAssociation() }
+            .filter { $0.id != "RH" }
             .filter { $0.id != "RS" }
             .filter { $0.id != "INT" }
             .sorted { $0.name < $1.name }
