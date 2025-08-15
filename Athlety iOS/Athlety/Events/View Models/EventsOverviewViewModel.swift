@@ -10,7 +10,7 @@ import Foundation
 
 class EventsOverviewViewModel: ObservableObject {
     
-    @Published var eventsByDate: [Date: [Event]] = [:]
+    @Published private(set) var eventsByDate: [Date: [Event]] = [:]
     
     private let client: EventsClient = LadvEventsClient()
     

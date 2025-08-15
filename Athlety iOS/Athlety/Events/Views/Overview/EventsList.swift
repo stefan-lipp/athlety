@@ -15,7 +15,9 @@ struct EventsList: View {
             ForEach(eventsByDate.keys.sorted(by: <), id: \.self) { date in
                 Section {
                     ForEach(eventsByDate[date]!) { event in
-                        EventRow(event: event)
+                        NavigationLink(destination: EventDetailsView(eventId: event.id)) {
+                            EventRow(event: event)
+                        }
                     }
                 } header: {
                     sectionHeader(for: date)

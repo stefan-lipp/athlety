@@ -10,7 +10,7 @@ import SwiftUI
 
 class EventsFilterViewModel: ObservableObject {
     
-    @Published var associations: [Association] = []
+    @Published private(set) var associations: [Association] = []
     
     @AppStorage("eventsFilterAssociationId") var eventsFilterAssociationId: String?
     
