@@ -14,7 +14,7 @@ struct EventHeaderView: View {
         VStack(alignment: .leading, spacing: 16) {
             Text(event.name)
                 .font(.title)
-                .fontWeight(.semibold)
+                .fontWeight(.medium)
             Text("\(formattedDate) in \(event.location.name)")
                 .font(.headline)
                 .foregroundStyle(.secondary)

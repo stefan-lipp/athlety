@@ -12,17 +12,26 @@ struct EventDetailsView: View {
     @EnvironmentObject private var viewModel: EventDetailsViewModel
     
     var body: some View {
-        ScrollView {
+        List {
             if let event = viewModel.event {
-                VStack(alignment: .leading) {
+                
+                Section {
                     EventHeaderView(event: event)
-                    Divider()
                 }
-                .padding(20)
+                .listSectionSeparator(.hidden)
+                
+                Section {
+                    EventAttachementsView(attachements: event.attachements)
+                }
+                .listSectionSeparator(.hidden)
             }
         }
+        .listStyle(.plain)
         .task {
             await viewModel.loadEventDetails(for: eventId)
+        }
+        .onDisappear {
+            viewModel.event = nil
         }
     }
 }

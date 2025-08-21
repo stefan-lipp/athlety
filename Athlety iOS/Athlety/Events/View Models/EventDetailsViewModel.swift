@@ -9,7 +9,7 @@ import Combine
 
 class EventDetailsViewModel: ObservableObject {
     
-    @Published private(set) var event: EventDetails?
+    @Published var event: EventDetails?
     
     private let client: EventsClient = LadvEventsClient()
     

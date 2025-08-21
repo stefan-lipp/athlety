@@ -94,7 +94,7 @@ private struct LadvEventAttachement: Codable {
     let url: String
     
     func toAttachement() -> Attachement? {
-        guard let url = URL(string: url) else { return nil }
+        guard let url = URL(string: url + "?file=true") else { return nil }
         return Attachement(name: name, url: url)
     }
 }
