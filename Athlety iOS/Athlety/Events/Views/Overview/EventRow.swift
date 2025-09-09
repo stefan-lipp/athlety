@@ -16,6 +16,7 @@ struct EventRow: View {
                 eventLocation
                 Spacer()
                 eventDate
+                chevron
             }
             eventName
         }
@@ -30,6 +31,12 @@ struct EventRow: View {
     
     private var eventDate: some View {
         Text(event.date, format: .dateTime.day().month().year())
+            .font(.footnote)
+            .foregroundStyle(.secondary)
+    }
+    
+    private var chevron: some View {
+        Image(systemName: "chevron.right")
             .font(.footnote)
             .foregroundStyle(.secondary)
     }
