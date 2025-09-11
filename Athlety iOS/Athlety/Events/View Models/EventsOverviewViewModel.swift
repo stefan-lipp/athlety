@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import SwiftData
 
 class EventsOverviewViewModel: ObservableObject {
     
@@ -17,5 +18,10 @@ class EventsOverviewViewModel: ObservableObject {
     func loadUpcomingEvents(for associationId: String?) async {
         let events = await client.loadUpcomingEvents(for: associationId)
         eventsByDate = Dictionary(grouping: events, by: { $0.date })
+    }
+    
+    func saveEventAsBookmark(_ event: Event, in context: ModelContext) {
+        let bookamrk = EventBookmark(event: event)
+        context.insert(bookamrk)
     }
 }

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct EventsOverview: View {
     
+    @Environment(\.modelContext) private var modelContext
+    
     @EnvironmentObject private var eventsOverviewViewModel: EventsOverviewViewModel
     @EnvironmentObject private var eventsFilterViewModel: EventsFilterViewModel
     
@@ -16,12 +18,14 @@ struct EventsOverview: View {
     
     var body: some View {
         NavigationStack {
-            EventsList(eventsByDate: eventsOverviewViewModel.eventsByDate)
-                .navigationTitle("Events")
-                .toolbar { toolbar }
-                .sheet(isPresented: $showFilter) {
-                    EventsFilterView()
-                }
+            EventsList(eventsByDate: eventsOverviewViewModel.eventsByDate) { event in
+                eventsOverviewViewModel.saveEventAsBookmark(event, in: modelContext)
+            }
+            .navigationTitle("Events")
+            .toolbar { toolbar }
+            .sheet(isPresented: $showFilter) {
+                EventsFilterView()
+            }
         }
         .task {
             let associationId = eventsFilterViewModel.eventsFilterAssociationId

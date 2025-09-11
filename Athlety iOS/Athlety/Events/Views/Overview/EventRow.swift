@@ -38,7 +38,8 @@ struct EventRow: View {
     private var chevron: some View {
         Image(systemName: "chevron.right")
             .font(.footnote)
-            .foregroundStyle(.secondary)
+            .fontWeight(.semibold)
+            .foregroundStyle(.tertiary)
     }
     
     private var eventName: some View {

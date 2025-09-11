@@ -5,8 +5,8 @@
 //  Created by Stefan Lipp on 28.06.25.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 @main
 struct AthletyApp: App {
@@ -22,5 +22,6 @@ struct AthletyApp: App {
                 .environmentObject(eventsFilterViewModel)
                 .environmentObject(eventDetailsViewModel)
         }
+        .modelContainer(for: EventBookmark.self)
     }
 }

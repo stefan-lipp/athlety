@@ -9,22 +9,35 @@ import SwiftUI
 
 struct EventsList: View {
     let eventsByDate: [Date: [Event]]
+    let onSave: (Event) -> Void
     
     var body: some View {
         List {
+            Section {
+                NavigationLink(destination: EventBookmarksView()) {
+                    Label("Bookmarks", systemImage: "bookmark")
+                }
+            }
             ForEach(eventsByDate.keys.sorted(by: <), id: \.self) { date in
                 Section {
                     ForEach(eventsByDate[date]!) { event in
                         NavigationLink(destination: EventDetailsView(eventId: event.id)) {
                             EventRow(event: event)
                         }
+                        .contextMenu {
+                            Button {
+                                onSave(event)
+                            } label: {
+                                Label("Save as Bookmark", systemImage: "bookmark")
+                            }
+                        }
                     }
                 } header: {
                     sectionHeader(for: date)
                 }
             }
+            .navigationLinkIndicatorVisibility(.hidden)
         }
-        .navigationLinkIndicatorVisibility(.hidden)
         .listRowSpacing(8)
     }
     
@@ -39,5 +52,5 @@ struct EventsList: View {
 
 #Preview {
     let event = Event(id: 44253, name: "36. Rheinfelder Nachtmeeting", location: "Rheinfelden", date: Date())
-    EventsList(eventsByDate: [event.date: [event]])
+    EventsList(eventsByDate: [event.date: [event]]) { _ in }
 }
