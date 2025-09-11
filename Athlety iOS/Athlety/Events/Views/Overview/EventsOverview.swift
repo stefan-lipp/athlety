@@ -17,7 +17,6 @@ struct EventsOverview: View {
     var body: some View {
         NavigationStack {
             EventsList(eventsByDate: eventsOverviewViewModel.eventsByDate)
-                .navigationLinkIndicatorVisibility(.hidden)
                 .navigationTitle("Events")
                 .toolbar { toolbar }
                 .sheet(isPresented: $showFilter) {
@@ -59,4 +58,6 @@ struct EventsOverview: View {
 #Preview {
     EventsOverview()
         .environmentObject(EventsOverviewViewModel())
+        .environmentObject(EventsFilterViewModel())
+        .environmentObject(EventDetailsViewModel())
 }

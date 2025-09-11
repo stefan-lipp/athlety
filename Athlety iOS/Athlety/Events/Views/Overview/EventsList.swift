@@ -24,6 +24,7 @@ struct EventsList: View {
                 }
             }
         }
+        .navigationLinkIndicatorVisibility(.hidden)
         .listRowSpacing(8)
     }
     
