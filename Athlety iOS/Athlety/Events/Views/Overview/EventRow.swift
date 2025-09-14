@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EventRow: View {
     let event: Event
+    let isSaved: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -18,8 +19,13 @@ struct EventRow: View {
                 eventDate
                 chevron
             }
-            eventName
+            HStack(alignment: .bottom) {
+                eventName
+                Spacer()
+                bookmarkIcon
+            }
         }
+        .padding(.leading, -4)
     }
     
     private var eventLocation: some View {
@@ -27,6 +33,12 @@ struct EventRow: View {
             .font(.subheadline)
             .fontWeight(.semibold)
             .foregroundStyle(.secondary)
+    }
+    
+    private var bookmarkIcon: some View {
+        Image(systemName: "bookmark.fill")
+            .foregroundStyle(isSaved ? .accent : .clear)
+            .padding(.trailing, 14)
     }
     
     private var eventDate: some View {
@@ -51,6 +63,6 @@ struct EventRow: View {
 
 #Preview {
     let event = Event(id: 44253, name: "36. Rheinfelder Nachtmeeting", location: "Rheinfelden", date: Date())
-    EventRow(event: event)
+    EventRow(event: event, isSaved: true)
         .padding()
 }

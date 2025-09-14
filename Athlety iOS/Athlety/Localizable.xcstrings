@@ -27,9 +27,6 @@
         }
       }
     },
-    "Bookmarks" : {
-
-    },
     "Cancel" : {
       "localizations" : {
         "de" : {
@@ -71,6 +68,9 @@
       }
     },
     "Save as Bookmark" : {
+
+    },
+    "Saved Events" : {
 
     }
   },

@@ -5,6 +5,7 @@
 //  Created by Stefan Lipp on 28.06.25.
 //
 
+import SwiftData
 import SwiftUI
 
 struct EventsOverview: View {
@@ -14,11 +15,16 @@ struct EventsOverview: View {
     @EnvironmentObject private var eventsOverviewViewModel: EventsOverviewViewModel
     @EnvironmentObject private var eventsFilterViewModel: EventsFilterViewModel
     
+    @Query private var eventBookmarks: [EventBookmark]
+    
     @State private var showFilter = false
     
     var body: some View {
         NavigationStack {
-            EventsList(eventsByDate: eventsOverviewViewModel.eventsByDate) { event in
+            EventsList(
+                eventsByDate: eventsOverviewViewModel.eventsByDate,
+                eventBookmars: eventBookmarks
+            ) { event in
                 eventsOverviewViewModel.saveEventAsBookmark(event, in: modelContext)
             }
             .navigationTitle("Events")

@@ -27,7 +27,7 @@ struct EventBookmarksView: View {
                 }
                 .onDelete(perform: deleteEventBookmarks)
             }
-            .navigationTitle("Bookmarks")
+            .navigationTitle("Saved Events")
         }
     }
     
