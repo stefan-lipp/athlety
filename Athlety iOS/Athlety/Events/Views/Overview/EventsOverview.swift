@@ -23,10 +23,10 @@ struct EventsOverview: View {
         NavigationStack {
             EventsList(
                 eventsByDate: eventsOverviewViewModel.eventsByDate,
-                eventBookmars: eventBookmarks
-            ) { event in
-                eventsOverviewViewModel.saveEventAsBookmark(event, in: modelContext)
-            }
+                eventBookmars: eventBookmarks,
+                onSaveAsBookmark: { eventsOverviewViewModel.saveEventAsBookmark($0, in: modelContext) },
+                onRemoveFromBookmarks: { eventsOverviewViewModel.removeEventFromBookmarks($0, in: modelContext) }
+            )
             .navigationTitle("Events")
             .toolbar { toolbar }
             .sheet(isPresented: $showFilter) {

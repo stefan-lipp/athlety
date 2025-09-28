@@ -10,7 +10,8 @@ import SwiftUI
 struct EventsList: View {
     let eventsByDate: [Date: [Event]]
     let eventBookmars: [EventBookmark]
-    let onSave: (Event) -> Void
+    let onSaveAsBookmark: (Event) -> Void
+    let onRemoveFromBookmarks: (Event) -> Void
     
     var body: some View {
         List {
@@ -46,16 +47,12 @@ struct EventsList: View {
             ForEach(eventsByDate.keys.sorted(by: <), id: \.self) { date in
                 Section {
                     ForEach(eventsByDate[date]!) { event in
+                        let isSaved = eventBookmars.map(\.id).contains(event.id)
                         NavigationLink(destination: EventDetailsView(eventId: event.id)) {
-                            let isSaved = eventBookmars.map(\.id).contains(event.id)
                             EventRow(event: event, isSaved: isSaved)
                         }
                         .contextMenu {
-                            Button {
-                                onSave(event)
-                            } label: {
-                                Label("Save as Bookmark", systemImage: "bookmark")
-                            }
+                            contextMenu(for: event)
                         }
                     }
                 } header: {
@@ -74,9 +71,20 @@ struct EventsList: View {
             .fontWeight(.semibold)
             .padding(.bottom, 4)
     }
+    
+    private func contextMenu(for event: Event) -> some View {
+        let isSaved = eventBookmars.map(\.id).contains(event.id)
+        let action = isSaved ? onRemoveFromBookmarks : onSaveAsBookmark
+        let title: LocalizedStringKey = isSaved ? "Remove from Bookmarks" : "Save as Bookmark"
+        let image = isSaved ? "bookmark.slash" : "bookmark"
+        
+        return Button(action: { action(event) }) {
+            Label(title, systemImage: image)
+        }
+    }
 }
 
 #Preview {
     let event = Event(id: 44253, name: "36. Rheinfelder Nachtmeeting", location: "Rheinfelden", date: Date())
-    EventsList(eventsByDate: [event.date: [event]], eventBookmars: []) { _ in }
+    EventsList(eventsByDate: [event.date: [event]], eventBookmars: [], onSaveAsBookmark: { _ in }, onRemoveFromBookmarks: { _ in })
 }

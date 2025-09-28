@@ -12,7 +12,7 @@ struct EventRow: View {
     let isSaved: Bool
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .firstTextBaseline) {
                 eventLocation
                 Spacer()
@@ -25,7 +25,6 @@ struct EventRow: View {
                 bookmarkIcon
             }
         }
-        .padding(.leading, -4)
     }
     
     private var eventLocation: some View {
@@ -38,7 +37,6 @@ struct EventRow: View {
     private var bookmarkIcon: some View {
         Image(systemName: "bookmark.fill")
             .foregroundStyle(isSaved ? .accent : .clear)
-            .padding(.trailing, 14)
     }
     
     private var eventDate: some View {
