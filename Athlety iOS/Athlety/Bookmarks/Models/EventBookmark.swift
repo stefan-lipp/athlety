@@ -10,10 +10,10 @@ import SwiftData
 
 @Model
 class EventBookmark {
-    var id: Int
-    var name: String
-    var location: String
-    var date: Date
+    var id: Int = 0
+    var name: String = ""
+    var location: String = ""
+    var date: Date = Date()
     
     init(id: Int, name: String, location: String, date: Date) {
         self.id = id
