@@ -68,13 +68,34 @@
       }
     },
     "Remove from Bookmarks" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aus Favoriten entfernen"
+          }
+        }
+      }
     },
     "Save as Bookmark" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als Favorit speichern"
+          }
+        }
+      }
     },
     "Saved Events" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gespeichert"
+          }
+        }
+      }
     }
   },
   "version" : "1.1"

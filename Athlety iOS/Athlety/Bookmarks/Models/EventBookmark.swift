@@ -22,7 +22,11 @@ class EventBookmark {
         self.date = date
     }
     
-    convenience init (event: Event) {
+    convenience init(event: Event) {
         self.init(id: event.id, name: event.name, location: event.location, date: event.date)
+    }
+    
+    convenience init(event: EventDetails) {
+        self.init(id: event.id, name: event.name, location: event.location.name, date: event.date)
     }
 }
