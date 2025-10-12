@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct EventsList: View {
-    
     let upcomingEvents: [Event]
     let savedEvents: [Event]
     let onSaveAsBookmark: (Event) -> Void
     let onRemoveFromBookmarks: (Event) -> Void
-    
+
     private var eventsByDate: [Date: [Event]] {
         let events = selectedCategory == .upcoming ? upcomingEvents : savedEvents
         return Dictionary(grouping: events, by: { $0.date })
@@ -70,7 +69,7 @@ struct EventsList: View {
             Label(title, systemImage: image)
         }
     }
-    
+
     private func categorySelection(for category: Category) -> some View {
         HStack {
             Image(systemName: category.icon).symbolVariant(.fill)
@@ -91,15 +90,15 @@ struct EventsList: View {
             }
         }
     }
-    
+
     enum Category {
         case upcoming
         case saved
-        
+
         var icon: String {
             self == .upcoming ? "square.stack" : "bookmark"
         }
-        
+
         var title: LocalizedStringKey {
             self == .upcoming ? "Upcoming" : "Saved"
         }

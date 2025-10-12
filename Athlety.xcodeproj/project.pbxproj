@@ -29,9 +29,22 @@
 		E3FB0CD52E0FEF100039B0AC /* AthletyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AthletyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E3FB0CDD2E0FEF100039B0AC /* Exceptions for "Athlety" folder in "Athlety" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E3FB0CB92E0FEF0E0039B0AC /* Athlety */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E3FB0CBC2E0FEF0E0039B0AC /* Athlety */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E3FB0CDD2E0FEF100039B0AC /* Exceptions for "Athlety" folder in "Athlety" target */,
+			);
 			path = Athlety;
 			sourceTree = "<group>";
 		};
