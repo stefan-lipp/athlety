@@ -87,12 +87,22 @@
         }
       }
     },
-    "Saved Events" : {
+    "Saved" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gespeichert"
+          }
+        }
+      }
+    },
+    "Upcoming" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anstehend"
           }
         }
       }

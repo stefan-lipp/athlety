@@ -19,11 +19,15 @@ struct EventsOverview: View {
     
     @State private var showFilter = false
     
+    private var savedEvents: [Event] {
+        eventBookmarks.map { $0.toEvent() }
+    }
+    
     var body: some View {
         NavigationStack {
             EventsList(
-                eventsByDate: eventsOverviewViewModel.eventsByDate,
-                eventBookmars: eventBookmarks,
+                upcomingEvents: eventsOverviewViewModel.upcomingEvents,
+                savedEvents: savedEvents,
                 onSaveAsBookmark: { eventsOverviewViewModel.saveEventAsBookmark($0, in: modelContext) },
                 onRemoveFromBookmarks: { eventsOverviewViewModel.removeEventFromBookmarks($0, in: modelContext) }
             )

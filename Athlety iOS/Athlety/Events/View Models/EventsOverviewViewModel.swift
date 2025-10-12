@@ -10,13 +10,12 @@ import Foundation
 import SwiftData
 
 class EventsOverviewViewModel: ObservableObject {
-    @Published private(set) var eventsByDate: [Date: [Event]] = [:]
+    @Published private(set) var upcomingEvents: [Event] = []
 
     private let client: EventsClient = LadvEventsClient()
 
     func loadUpcomingEvents(for associationId: String?) async {
-        let events = await client.loadUpcomingEvents(for: associationId)
-        eventsByDate = Dictionary(grouping: events, by: { $0.date })
+        upcomingEvents = await client.loadUpcomingEvents(for: associationId)
     }
 
     func saveEventAsBookmark(_ event: Event, in context: ModelContext) {
