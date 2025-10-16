@@ -79,7 +79,7 @@ struct EventsList: View {
         }
         .padding(.horizontal)
         .padding(.vertical, 8)
-        .frame(minHeight: 40)
+        .frame(minWidth: 64, minHeight: 40)
         .foregroundStyle(selectedCategory == category ? .white : .secondary)
         .background(selectedCategory == category ? .accent : Color(UIColor.secondarySystemGroupedBackground))
         .clipShape(Capsule())
