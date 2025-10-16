@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct EventsList: View {
+    
+    @Binding var selectedCategory: EventsOverviewCategory
+    
     let upcomingEvents: [Event]
     let savedEvents: [Event]
     let onSaveAsBookmark: (Event) -> Void
@@ -18,30 +21,14 @@ struct EventsList: View {
         return Dictionary(grouping: events, by: { $0.date })
     }
 
-    @State private var selectedCategory: Category = .upcoming
-
     var body: some View {
         List {
             Section {
-                HStack(spacing: 12) {
-                    categorySelection(for: .upcoming)
-                    categorySelection(for: .saved)
-                }
-                .font(.headline)
-                .listRowBackground(EmptyView())
-                .listRowInsets(.leading, 0)
+                categorySelectionRow
             }
             ForEach(eventsByDate.keys.sorted(by: <), id: \.self) { date in
                 Section {
-                    ForEach(eventsByDate[date]!) { event in
-                        let isSaved = savedEvents.map(\.id).contains(event.id)
-                        NavigationLink(destination: EventDetailsView(eventId: event.id)) {
-                            EventRow(event: event, isSaved: isSaved)
-                        }
-                        .contextMenu {
-                            contextMenu(for: event)
-                        }
-                    }
+                    eventRows(for: date)
                 } header: {
                     sectionHeader(for: date)
                 }
@@ -50,27 +37,18 @@ struct EventsList: View {
         }
         .listRowSpacing(8)
     }
-
-    private func sectionHeader(for date: Date) -> some View {
-        Text(date.formatted(.dateTime.weekday(.wide).day(.twoDigits).month(.wide).year()))
-            .font(.callout)
-            .foregroundColor(.primary)
-            .fontWeight(.semibold)
-            .padding(.bottom, 4)
-    }
-
-    private func contextMenu(for event: Event) -> some View {
-        let isSaved = savedEvents.map(\.id).contains(event.id)
-        let action = isSaved ? onRemoveFromBookmarks : onSaveAsBookmark
-        let title: LocalizedStringKey = isSaved ? "Remove from Bookmarks" : "Save as Bookmark"
-        let image = isSaved ? "bookmark.slash" : "bookmark"
-
-        return Button(action: { action(event) }) {
-            Label(title, systemImage: image)
+    
+    private var categorySelectionRow: some View {
+        HStack(spacing: 12) {
+            categorySelection(for: .upcoming)
+            categorySelection(for: .saved)
         }
+        .font(.headline)
+        .listRowBackground(EmptyView())
+        .listRowInsets(.leading, 0)
     }
-
-    private func categorySelection(for category: Category) -> some View {
+    
+    private func categorySelection(for category: EventsOverviewCategory) -> some View {
         HStack {
             Image(systemName: category.icon).symbolVariant(.fill)
             if selectedCategory == category {
@@ -81,7 +59,7 @@ struct EventsList: View {
         .padding(.vertical, 8)
         .frame(minWidth: 64, minHeight: 40)
         .foregroundStyle(selectedCategory == category ? .white : .secondary)
-        .background(selectedCategory == category ? .accent : Color(UIColor.secondarySystemGroupedBackground))
+        .background(selectedCategory == category ? category.color : Color(UIColor.secondarySystemGroupedBackground))
         .clipShape(Capsule())
         .contentShape(Rectangle())
         .onTapGesture {
@@ -90,22 +68,50 @@ struct EventsList: View {
             }
         }
     }
-
-    enum Category {
-        case upcoming
-        case saved
-
-        var icon: String {
-            self == .upcoming ? "square.stack" : "bookmark"
+    
+    private func eventRows(for date: Date) -> some View {
+        ForEach(eventsByDate[date]!) { event in
+            let isSaved = savedEvents.map(\.id).contains(event.id)
+            NavigationLink(destination: EventDetailsView(eventId: event.id)) {
+                EventRow(event: event, isSaved: isSaved)
+            }
+            .contextMenu {
+                saveOrUnsaveButton(for: event)
+            }
+            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                saveOrUnsaveButton(for: event)
+                    .tint(.orange)
+            }
         }
+    }
 
-        var title: LocalizedStringKey {
-            self == .upcoming ? "Upcoming" : "Saved"
+    private func sectionHeader(for date: Date) -> some View {
+        Text(date.formatted(.dateTime.weekday(.wide).day(.twoDigits).month(.wide).year()))
+            .font(.callout)
+            .foregroundColor(.primary)
+            .fontWeight(.semibold)
+            .padding(.bottom, 4)
+    }
+
+    private func saveOrUnsaveButton(for event: Event) -> some View {
+        let isSaved = savedEvents.map(\.id).contains(event.id)
+        let action = isSaved ? onRemoveFromBookmarks : onSaveAsBookmark
+        let title: LocalizedStringKey = isSaved ? "Remove Bookmark" : "Save as Bookmark"
+        let image = isSaved ? "bookmark.slash" : "bookmark"
+
+        return Button { action(event) } label: {
+            Label(title, systemImage: image)
         }
     }
 }
 
 #Preview {
     let event = Event(id: 44253, name: "36. Rheinfelder Nachtmeeting", location: "Rheinfelden", date: Date())
-    EventsList(upcomingEvents: [event], savedEvents: [], onSaveAsBookmark: { _ in }, onRemoveFromBookmarks: { _ in })
+    EventsList(
+        selectedCategory: .constant(.upcoming),
+        upcomingEvents: [event],
+        savedEvents: [],
+        onSaveAsBookmark: { _ in },
+        onRemoveFromBookmarks: { _ in }
+    )
 }

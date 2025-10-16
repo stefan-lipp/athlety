@@ -18,6 +18,7 @@ struct EventsOverview: View {
     @Query private var eventBookmarks: [EventBookmark]
     
     @State private var showFilter = false
+    @State private var selectedCategory: EventsOverviewCategory = .upcoming
     
     private var savedEvents: [Event] {
         eventBookmarks.map { $0.toEvent() }
@@ -26,6 +27,7 @@ struct EventsOverview: View {
     var body: some View {
         NavigationStack {
             EventsList(
+                selectedCategory: $selectedCategory,
                 upcomingEvents: eventsOverviewViewModel.upcomingEvents,
                 savedEvents: savedEvents,
                 onSaveAsBookmark: { eventsOverviewViewModel.saveEventAsBookmark($0, in: modelContext) },
@@ -60,12 +62,31 @@ struct EventsOverview: View {
     @ToolbarContentBuilder
     private var toolbar: some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {
-            Button {
-                showFilter = true
-            } label: {
-                Label("Filter", systemImage: "line.3.horizontal.decrease")
+            if selectedCategory == .upcoming {
+                Button {
+                    showFilter = true
+                } label: {
+                    Label("Filter", systemImage: "line.3.horizontal.decrease")
+                }
             }
         }
+    }
+}
+
+enum EventsOverviewCategory {
+    case upcoming
+    case saved
+
+    var icon: String {
+        self == .upcoming ? "square.stack" : "bookmark"
+    }
+
+    var title: LocalizedStringKey {
+        self == .upcoming ? "Upcoming" : "Saved"
+    }
+    
+    var color: Color {
+        self == .upcoming ? .accent : .orange
     }
 }
 

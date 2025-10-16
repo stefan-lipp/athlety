@@ -67,12 +67,12 @@
         }
       }
     },
-    "Remove from Bookmarks" : {
+    "Remove Bookmark" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aus Favoriten entfernen"
+            "value" : "Favorit entfernen"
           }
         }
       }
