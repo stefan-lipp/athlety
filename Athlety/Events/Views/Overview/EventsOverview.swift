@@ -61,7 +61,8 @@ struct EventsOverview: View {
     
     @ToolbarContentBuilder
     private var toolbar: some ToolbarContent {
-        ToolbarItem(placement: .topBarTrailing) {
+        let hasActiveFilter = eventsFilterViewModel.eventsFilterAssociationId != nil
+        ToolbarItem(placement: hasActiveFilter ? .confirmationAction : .topBarTrailing) {
             if selectedCategory == .upcoming {
                 Button {
                     showFilter = true
