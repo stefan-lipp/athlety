@@ -59,7 +59,7 @@ struct EventsList: View {
         .padding(.vertical, 8)
         .frame(minWidth: 64, minHeight: 40)
         .foregroundStyle(selectedCategory == category ? .white : .secondary)
-        .background(selectedCategory == category ? category.color : Color(UIColor.secondarySystemGroupedBackground))
+        .background(selectedCategory == category ? .accent : Color(UIColor.secondarySystemGroupedBackground))
         .clipShape(Capsule())
         .contentShape(Rectangle())
         .onTapGesture {
@@ -80,7 +80,7 @@ struct EventsList: View {
             }
             .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                 saveOrUnsaveButton(for: event)
-                    .tint(.orange)
+                    .tint(isSaved ? .accent : .blue)
             }
         }
     }
@@ -92,7 +92,7 @@ struct EventsList: View {
             .fontWeight(.semibold)
             .padding(.bottom, 4)
     }
-
+    
     private func saveOrUnsaveButton(for event: Event) -> some View {
         let isSaved = savedEvents.map(\.id).contains(event.id)
         let action = isSaved ? onRemoveFromBookmarks : onSaveAsBookmark

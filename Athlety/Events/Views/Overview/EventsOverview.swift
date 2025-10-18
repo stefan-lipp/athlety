@@ -84,10 +84,6 @@ enum EventsOverviewCategory {
     var title: LocalizedStringKey {
         self == .upcoming ? "Upcoming" : "Saved"
     }
-    
-    var color: Color {
-        self == .upcoming ? .accent : .orange
-    }
 }
 
 #Preview {
