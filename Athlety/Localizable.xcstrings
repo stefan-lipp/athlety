@@ -67,6 +67,16 @@
         }
       }
     },
+    "No Saved Events" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine gespeicherten Wettkämpfe"
+          }
+        }
+      }
+    },
     "Remove Bookmark" : {
       "localizations" : {
         "de" : {
@@ -83,6 +93,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Als Favorit speichern"
+          }
+        }
+      }
+    },
+    "Save events you're interested in to see them here." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speichere Wettkämpfe, die dich interessieren, um sie hier zu sehen."
           }
         }
       }

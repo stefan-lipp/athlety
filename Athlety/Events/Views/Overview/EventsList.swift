@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct EventsList: View {
-    
     @Binding var selectedCategory: EventsOverviewCategory
-    
+
     let upcomingEvents: [Event]
     let savedEvents: [Event]
     let onSaveAsBookmark: (Event) -> Void
@@ -26,18 +25,45 @@ struct EventsList: View {
             Section {
                 categorySelectionRow
             }
-            ForEach(eventsByDate.keys.sorted(by: <), id: \.self) { date in
+            if selectedCategory == .saved && savedEvents.isEmpty {
                 Section {
-                    eventRows(for: date)
-                } header: {
-                    sectionHeader(for: date)
+                    emptyStateRow
                 }
+            } else {
+                ForEach(eventsByDate.keys.sorted(by: <), id: \.self) { date in
+                    Section {
+                        eventRows(for: date)
+                    } header: {
+                        sectionHeader(for: date)
+                    }
+                }
+                .navigationLinkIndicatorVisibility(.hidden)
             }
-            .navigationLinkIndicatorVisibility(.hidden)
         }
         .listRowSpacing(8)
     }
-    
+
+    private var emptyStateRow: some View {
+        HStack {
+            Spacer()
+            VStack(alignment: .center, spacing: 20) {
+                Image(systemName: "bookmark")
+                    .font(.largeTitle)
+                    .foregroundStyle(.accent)
+                Text("No Saved Events")
+                    .font(.title2)
+                    .fontWeight(.medium)
+                Text("Save events you're interested in to see them here.")
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
+        }
+        .padding(.top, 40)
+        .listRowBackground(EmptyView())
+        .listRowInsets(.init())
+    }
+
     private var categorySelectionRow: some View {
         HStack(spacing: 12) {
             categorySelection(for: .upcoming)
@@ -47,7 +73,7 @@ struct EventsList: View {
         .listRowBackground(EmptyView())
         .listRowInsets(.leading, 0)
     }
-    
+
     private func categorySelection(for category: EventsOverviewCategory) -> some View {
         HStack {
             Image(systemName: category.icon).symbolVariant(.fill)
@@ -68,7 +94,7 @@ struct EventsList: View {
             }
         }
     }
-    
+
     private func eventRows(for date: Date) -> some View {
         ForEach(eventsByDate[date]!) { event in
             let isSaved = savedEvents.map(\.id).contains(event.id)
@@ -92,7 +118,7 @@ struct EventsList: View {
             .fontWeight(.semibold)
             .padding(.bottom, 4)
     }
-    
+
     private func saveOrUnsaveButton(for event: Event) -> some View {
         let isSaved = savedEvents.map(\.id).contains(event.id)
         let action = isSaved ? onRemoveFromBookmarks : onSaveAsBookmark
@@ -108,7 +134,7 @@ struct EventsList: View {
 #Preview {
     let event = Event(id: 44253, name: "36. Rheinfelder Nachtmeeting", location: "Rheinfelden", date: Date())
     EventsList(
-        selectedCategory: .constant(.upcoming),
+        selectedCategory: .constant(.saved),
         upcomingEvents: [event],
         savedEvents: [],
         onSaveAsBookmark: { _ in },
