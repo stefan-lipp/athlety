@@ -10,12 +10,11 @@ import SwiftUI
 
 @main
 struct AthletyApp: App {
-    
-    @ObservedObject private var calendarEventViewModel = CalendarEventViewModel()
-    @ObservedObject private var eventsOverviewViewModel = EventsOverviewViewModel()
-    @ObservedObject private var eventsFilterViewModel = EventsFilterViewModel()
-    @ObservedObject private var eventDetailsViewModel = EventDetailsViewModel()
-    
+    @StateObject private var calendarEventViewModel = CalendarEventViewModel()
+    @StateObject private var eventsOverviewViewModel = EventsOverviewViewModel()
+    @StateObject private var eventsFilterViewModel = EventsFilterViewModel()
+    @StateObject private var eventDetailsViewModel = EventDetailsViewModel()
+
     var body: some Scene {
         WindowGroup {
             EventsOverview()

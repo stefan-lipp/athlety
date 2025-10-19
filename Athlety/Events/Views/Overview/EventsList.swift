@@ -20,6 +20,10 @@ struct EventsList: View {
         return Dictionary(grouping: events, by: { $0.date })
     }
 
+    @EnvironmentObject private var calendarEventViewModel: CalendarEventViewModel
+    
+    @State private var showCalendarEventEditView = false
+
     var body: some View {
         List {
             Section {
@@ -40,6 +44,12 @@ struct EventsList: View {
                 .navigationLinkIndicatorVisibility(.hidden)
             }
         }
+        .sheet(isPresented: $showCalendarEventEditView, content: {
+            CalendarEventEditView(
+                event: calendarEventViewModel.calendarEvent,
+                eventStore: calendarEventViewModel.calendarEventStore
+            )
+        })
         .listRowSpacing(8)
     }
 
@@ -103,6 +113,7 @@ struct EventsList: View {
             }
             .contextMenu {
                 saveOrUnsaveButton(for: event)
+                addToCalendarButton(for: event)
             }
             .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                 saveOrUnsaveButton(for: event)
@@ -129,6 +140,15 @@ struct EventsList: View {
             Label(title, systemImage: image)
         }
     }
+
+    private func addToCalendarButton(for event: Event) -> some View {
+        Button {
+            calendarEventViewModel.addEventToCalendar(event)
+            showCalendarEventEditView = true
+        } label: {
+            Label("Add to Calendar", systemImage: "calendar.badge.plus")
+        }
+    }
 }
 
 #Preview {
@@ -140,4 +160,5 @@ struct EventsList: View {
         onSaveAsBookmark: { _ in },
         onRemoveFromBookmarks: { _ in }
     )
+    .environmentObject(CalendarEventViewModel())
 }

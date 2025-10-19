@@ -8,20 +8,22 @@
 import SwiftUI
 
 struct EventCalendarExportView: View {
-    
     let event: EventDetails
+
+    @EnvironmentObject private var calendarEventViewModel: CalendarEventViewModel
     
-    @EnvironmentObject private var viewModel: CalendarEventViewModel
-    
+    @State private var showCalendarEventEditView = false
+
     var body: some View {
         Button {
-            viewModel.addEventToCalendar(event)
+            calendarEventViewModel.addEventToCalendar(Event(event: event))
+            showCalendarEventEditView = true
         } label: {
             Label("Add to Calendar", systemImage: "calendar.badge.plus")
         }
         .padding(.vertical, 8)
-        .sheet(isPresented: $viewModel.showCalendarEventEditView) {
-            CalendarEventEditView(event: viewModel.calendarEvent, eventStore: viewModel.calendarEventStore)
+        .sheet(isPresented: $showCalendarEventEditView) {
+            CalendarEventEditView(event: calendarEventViewModel.calendarEvent, eventStore: calendarEventViewModel.calendarEventStore)
         }
     }
 }

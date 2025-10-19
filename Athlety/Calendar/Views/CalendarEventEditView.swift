@@ -21,7 +21,7 @@ struct CalendarEventEditView: UIViewControllerRepresentable {
         return viewController
     }
 
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context _: Context) {}
+    func updateUIViewController(_: UIViewControllerType, context _: Context) {}
 
     func makeCoordinator() -> Coordinator {
         Coordinator()
