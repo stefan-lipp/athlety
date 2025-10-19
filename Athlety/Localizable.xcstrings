@@ -17,6 +17,16 @@
         }
       }
     },
+    "Add to Calendar" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zum Kalender hinzufügen"
+          }
+        }
+      }
+    },
     "All" : {
       "localizations" : {
         "de" : {

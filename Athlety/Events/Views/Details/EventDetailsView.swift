@@ -22,6 +22,7 @@ struct EventDetailsView: View {
                 .listSectionSeparator(.hidden)
                 
                 Section {
+                    EventCalendarExportView(event: event)
                     EventAttachementsView(attachements: event.attachements)
                 }
                 .listSectionSeparator(.hidden)
