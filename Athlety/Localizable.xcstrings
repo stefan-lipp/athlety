@@ -57,6 +57,16 @@
         }
       }
     },
+    "Event Location" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veranstaltungsort"
+          }
+        }
+      }
+    },
     "Events" : {
       "localizations" : {
         "de" : {

@@ -26,6 +26,11 @@ struct EventDetailsView: View {
                     EventAttachementsView(attachements: event.attachements)
                 }
                 .listSectionSeparator(.hidden)
+                
+                Section {
+                    EventLocationView(location: event.location)
+                }
+                .listSectionSeparator(.hidden)
             }
         }
         .listStyle(.plain)
