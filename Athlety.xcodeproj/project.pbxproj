@@ -6,27 +6,8 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXContainerItemProxy section */
-		E3FB0CCC2E0FEF100039B0AC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E3FB0CB22E0FEF0E0039B0AC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E3FB0CB92E0FEF0E0039B0AC;
-			remoteInfo = Athlety;
-		};
-		E3FB0CD62E0FEF100039B0AC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E3FB0CB22E0FEF0E0039B0AC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E3FB0CB92E0FEF0E0039B0AC;
-			remoteInfo = Athlety;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		E3FB0CBA2E0FEF0E0039B0AC /* Athlety.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Athlety.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3FB0CCB2E0FEF100039B0AC /* AthletyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AthletyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3FB0CD52E0FEF100039B0AC /* AthletyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AthletyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -48,34 +29,10 @@
 			path = Athlety;
 			sourceTree = "<group>";
 		};
-		E3FB0CCE2E0FEF100039B0AC /* AthletyTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = AthletyTests;
-			sourceTree = "<group>";
-		};
-		E3FB0CD82E0FEF100039B0AC /* AthletyUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = AthletyUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E3FB0CB72E0FEF0E0039B0AC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3FB0CC82E0FEF100039B0AC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3FB0CD22E0FEF100039B0AC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -89,8 +46,6 @@
 			isa = PBXGroup;
 			children = (
 				E3FB0CBC2E0FEF0E0039B0AC /* Athlety */,
-				E3FB0CCE2E0FEF100039B0AC /* AthletyTests */,
-				E3FB0CD82E0FEF100039B0AC /* AthletyUITests */,
 				E3FB0CBB2E0FEF0E0039B0AC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,8 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				E3FB0CBA2E0FEF0E0039B0AC /* Athlety.app */,
-				E3FB0CCB2E0FEF100039B0AC /* AthletyTests.xctest */,
-				E3FB0CD52E0FEF100039B0AC /* AthletyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,52 +83,6 @@
 			productReference = E3FB0CBA2E0FEF0E0039B0AC /* Athlety.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E3FB0CCA2E0FEF100039B0AC /* AthletyTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E3FB0CE32E0FEF100039B0AC /* Build configuration list for PBXNativeTarget "AthletyTests" */;
-			buildPhases = (
-				E3FB0CC72E0FEF100039B0AC /* Sources */,
-				E3FB0CC82E0FEF100039B0AC /* Frameworks */,
-				E3FB0CC92E0FEF100039B0AC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E3FB0CCD2E0FEF100039B0AC /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				E3FB0CCE2E0FEF100039B0AC /* AthletyTests */,
-			);
-			name = AthletyTests;
-			packageProductDependencies = (
-			);
-			productName = AthletyTests;
-			productReference = E3FB0CCB2E0FEF100039B0AC /* AthletyTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		E3FB0CD42E0FEF100039B0AC /* AthletyUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E3FB0CE62E0FEF100039B0AC /* Build configuration list for PBXNativeTarget "AthletyUITests" */;
-			buildPhases = (
-				E3FB0CD12E0FEF100039B0AC /* Sources */,
-				E3FB0CD22E0FEF100039B0AC /* Frameworks */,
-				E3FB0CD32E0FEF100039B0AC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E3FB0CD72E0FEF100039B0AC /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				E3FB0CD82E0FEF100039B0AC /* AthletyUITests */,
-			);
-			name = AthletyUITests;
-			packageProductDependencies = (
-			);
-			productName = AthletyUITests;
-			productReference = E3FB0CD52E0FEF100039B0AC /* AthletyUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -188,14 +95,6 @@
 				TargetAttributes = {
 					E3FB0CB92E0FEF0E0039B0AC = {
 						CreatedOnToolsVersion = 26.0;
-					};
-					E3FB0CCA2E0FEF100039B0AC = {
-						CreatedOnToolsVersion = 26.0;
-						TestTargetID = E3FB0CB92E0FEF0E0039B0AC;
-					};
-					E3FB0CD42E0FEF100039B0AC = {
-						CreatedOnToolsVersion = 26.0;
-						TestTargetID = E3FB0CB92E0FEF0E0039B0AC;
 					};
 				};
 			};
@@ -215,28 +114,12 @@
 			projectRoot = "";
 			targets = (
 				E3FB0CB92E0FEF0E0039B0AC /* Athlety */,
-				E3FB0CCA2E0FEF100039B0AC /* AthletyTests */,
-				E3FB0CD42E0FEF100039B0AC /* AthletyUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E3FB0CB82E0FEF0E0039B0AC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3FB0CC92E0FEF100039B0AC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3FB0CD32E0FEF100039B0AC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,34 +136,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E3FB0CC72E0FEF100039B0AC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3FB0CD12E0FEF100039B0AC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E3FB0CCD2E0FEF100039B0AC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E3FB0CB92E0FEF0E0039B0AC /* Athlety */;
-			targetProxy = E3FB0CCC2E0FEF100039B0AC /* PBXContainerItemProxy */;
-		};
-		E3FB0CD72E0FEF100039B0AC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E3FB0CB92E0FEF0E0039B0AC /* Athlety */;
-			targetProxy = E3FB0CD62E0FEF100039B0AC /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		E3FB0CDF2E0FEF100039B0AC /* Debug */ = {
@@ -486,86 +342,6 @@
 			};
 			name = Release;
 		};
-		E3FB0CE42E0FEF100039B0AC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V6Y747LYEV;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.stefanlipp.AthletyTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Athlety.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Athlety";
-			};
-			name = Debug;
-		};
-		E3FB0CE52E0FEF100039B0AC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V6Y747LYEV;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.stefanlipp.AthletyTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Athlety.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Athlety";
-			};
-			name = Release;
-		};
-		E3FB0CE72E0FEF100039B0AC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V6Y747LYEV;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.stefanlipp.AthletyUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Athlety;
-			};
-			name = Debug;
-		};
-		E3FB0CE82E0FEF100039B0AC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V6Y747LYEV;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.stefanlipp.AthletyUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Athlety;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -583,24 +359,6 @@
 			buildConfigurations = (
 				E3FB0CDF2E0FEF100039B0AC /* Debug */,
 				E3FB0CE02E0FEF100039B0AC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E3FB0CE32E0FEF100039B0AC /* Build configuration list for PBXNativeTarget "AthletyTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E3FB0CE42E0FEF100039B0AC /* Debug */,
-				E3FB0CE52E0FEF100039B0AC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E3FB0CE62E0FEF100039B0AC /* Build configuration list for PBXNativeTarget "AthletyUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E3FB0CE72E0FEF100039B0AC /* Debug */,
-				E3FB0CE82E0FEF100039B0AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
