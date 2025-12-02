@@ -30,6 +30,16 @@ struct EventDetailsView: View {
                 Section {
                     EventLocationView(location: event.location)
                 }
+                
+                Section {
+                    EventRegistrationView(registration: event.registration)
+                } header: {
+                    Text("Registration")
+                        .font(.title2)
+                        .fontWeight(.medium)
+                        .padding(.bottom, 4)
+                        .foregroundStyle(.primary)
+                }
                 .listSectionSeparator(.hidden)
             }
         }

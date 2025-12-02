@@ -12,5 +12,6 @@ struct EventDetails: Identifiable {
     let name: String
     let date: Date
     let location: EventLocation
+    let registration: EventRegistration
     let attachements: [Attachement]
 }

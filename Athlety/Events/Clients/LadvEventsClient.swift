@@ -70,15 +70,27 @@ private struct LadvEventDetails: Codable {
     let ort: LadvEventLocation
     let sportstaette: String
     let datum: Int
+    let meldEmail: String
+    let meldDatum: Int
     let attachements: [LadvEventAttachement]
     
     func toEventDetails() -> EventDetails {
-        let dateMillis = datum
-        let dateSeconds = Double(dateMillis) / 1000
-        let date = Date(timeIntervalSince1970: dateSeconds)
         let location = EventLocation(name: ort.name, site: sportstaette, latitude: ort.lat, longitude: ort.lng)
         let attachements = attachements.compactMap { $0.toAttachement() }
-        return EventDetails(id: id, name: name, date: date, location: location, attachements: attachements)
+        return EventDetails(id: id, name: name, date: date, location: location, registration: registration, attachements: attachements)
+    }
+    
+    private var date: Date {
+        let dateMillis = datum
+        let dateSeconds = Double(dateMillis) / 1000
+        return Date(timeIntervalSince1970: dateSeconds)
+    }
+    
+    private var registration: EventRegistration {
+        let deadlineMillis = meldDatum
+        let deadlineSeconds = Double(deadlineMillis) / 1000
+        let deadline = Date(timeIntervalSince1970: deadlineSeconds)
+        return EventRegistration(deadline: deadline, email: meldEmail)
     }
 }
 
