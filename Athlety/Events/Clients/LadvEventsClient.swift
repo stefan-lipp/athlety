@@ -37,6 +37,7 @@ class LadvEventsClient: EventsClient {
         urlComponents.queryItems = [
             URLQueryItem(name: "id", value: "\(eventId)"),
             URLQueryItem(name: "ort", value: "true"),
+            URLQueryItem(name: "links", value: "true"),
             URLQueryItem(name: "attachements", value: "true")
         ]
         
@@ -72,12 +73,14 @@ private struct LadvEventDetails: Codable {
     let datum: Int
     let meldEmail: String
     let meldDatum: Int
+    let links: [LadvEventLink]
     let attachements: [LadvEventAttachement]
     
     func toEventDetails() -> EventDetails {
         let location = EventLocation(name: ort.name, site: sportstaette, latitude: ort.lat, longitude: ort.lng)
+        let links = links.compactMap { $0.toLink() }
         let attachements = attachements.compactMap { $0.toAttachement() }
-        return EventDetails(id: id, name: name, date: date, location: location, registration: registration, attachements: attachements)
+        return EventDetails(id: id, name: name, date: date, location: location, registration: registration, links: links, attachements: attachements)
     }
     
     private var date: Date {
@@ -101,12 +104,22 @@ private struct LadvEventLocation: Codable {
     let lng: Double
 }
 
+private struct LadvEventLink: Codable {
+    let name: String
+    let url: String
+    
+    func toLink() -> EventLink? {
+        guard let url = URL(string: url) else { return nil }
+        return EventLink(name: name, url: url)
+    }
+}
+
 private struct LadvEventAttachement: Codable {
     let name: String
     let url: String
     
-    func toAttachement() -> Attachement? {
+    func toAttachement() -> EventAttachement? {
         guard let url = URL(string: url + "?file=true") else { return nil }
-        return Attachement(name: name, url: url)
+        return EventAttachement(name: name, url: url)
     }
 }

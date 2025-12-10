@@ -9,7 +9,7 @@ import SwiftUI
 import WebKit
 
 struct EventAttachementsView: View {
-    let attachements: [Attachement]
+    let attachements: [EventAttachement]
     
     var body: some View {
         ForEach(attachements, id: \.name) { attachement in
