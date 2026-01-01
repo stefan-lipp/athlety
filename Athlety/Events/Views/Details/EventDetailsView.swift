@@ -28,18 +28,18 @@ struct EventDetailsView: View {
                 }
                 .listSectionSeparator(.hidden)
                 
+                if let note = event.note {
+                    Section {
+                        EventNoteView(note: note)
+                    }
+                }
+                
                 Section {
                     EventLocationView(location: event.location)
                 }
                 
                 Section {
                     EventRegistrationView(registration: event.registration)
-                } header: {
-                    Text("Registration")
-                        .font(.title2)
-                        .fontWeight(.medium)
-                        .padding(.bottom, 4)
-                        .foregroundStyle(.primary)
                 }
                 .listSectionSeparator(.hidden)
             }

@@ -28,8 +28,8 @@ class LadvEventsClient: EventsClient {
         guard let (data, response) = try? await URLSession.shared.data(for: request) else { return [] }
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return [] }
         
-        let ladvEvents = try! JSONDecoder().decode([LadvEvent].self, from: data)
-        return ladvEvents.map { $0.toEvent() }
+        let ladvEvents = try? JSONDecoder().decode([LadvEvent].self, from: data)
+        return ladvEvents?.compactMap { $0.toEvent() } ?? []
     }
     
     func loadEventDetails(for eventId: Int) async -> EventDetails? {
@@ -46,8 +46,8 @@ class LadvEventsClient: EventsClient {
         guard let (data, response) = try? await URLSession.shared.data(for: request) else { return nil }
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return nil }
         
-        let ladvEvents = try! JSONDecoder().decode([LadvEventDetails].self, from: data)
-        return ladvEvents.first?.toEventDetails()
+        let ladvEvents = try? JSONDecoder().decode([LadvEventDetails].self, from: data)
+        return ladvEvents?.first?.toEventDetails()
     }
 }
 
@@ -68,6 +68,7 @@ private struct LadvEvent: Codable {
 private struct LadvEventDetails: Codable {
     let id: Int
     let name: String
+    let beschreibung: String
     let ort: LadvEventLocation
     let sportstaette: String
     let datum: Int
@@ -77,10 +78,11 @@ private struct LadvEventDetails: Codable {
     let attachements: [LadvEventAttachement]
     
     func toEventDetails() -> EventDetails {
+        let note = beschreibung.isEmpty ? nil : beschreibung
         let location = EventLocation(name: ort.name, site: sportstaette, latitude: ort.lat, longitude: ort.lng)
         let links = links.compactMap { $0.toLink() }
         let attachements = attachements.compactMap { $0.toAttachement() }
-        return EventDetails(id: id, name: name, date: date, location: location, registration: registration, links: links, attachements: attachements)
+        return EventDetails(id: id, name: name, date: date, note: note, location: location, registration: registration, links: links, attachements: attachements)
     }
     
     private var date: Date {

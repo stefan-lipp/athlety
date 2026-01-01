@@ -12,6 +12,12 @@ struct EventRegistrationView: View {
     let registration: EventRegistration
     
     var body: some View {
+        Text("Registration")
+            .fontWeight(.medium)
+            .font(.title2)
+            .padding(.top)
+            .listRowSeparator(.hidden)
+        
         if let url = URL(string: "mailto:\(registration.email)") {
             Link(destination: url, label: {
                 HStack(alignment: .center) {
@@ -20,7 +26,7 @@ struct EventRegistrationView: View {
                     Text(registration.email)
                 }
             })
-            .padding(.vertical, 8)
+            .padding(.bottom, 8)
         }
         
         HStack {

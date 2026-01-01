@@ -31,7 +31,7 @@ struct EventCalendarExportView: View {
 #Preview {
     let location = EventLocation(name: "Rheinfelden", site: "Europastadion", latitude: 47.5611, longitude: 7.79167)
     let registration = EventRegistration(deadline: Date(), email: "anmeldung@nachtmeeting.de")
-    let event = EventDetails(id: 44253, name: "Nachmeeting", date: Date(), location: location, registration: registration, links: [], attachements: [])
+    let event = EventDetails(id: 44253, name: "Nachmeeting", date: Date(), note: nil, location: location, registration: registration, links: [], attachements: [])
     
     EventCalendarExportView(event: event)
         .environmentObject(CalendarEventViewModel())
