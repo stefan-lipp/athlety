@@ -15,11 +15,9 @@ struct EventsOverview: View {
     @EnvironmentObject private var eventsOverviewViewModel: EventsOverviewViewModel
     @EnvironmentObject private var eventsFilterViewModel: EventsFilterViewModel
     
-    @Query private var eventBookmarks: [EventBookmark]
-    
-    @State private var showSettings = false
-    @State private var showFilter = false
     @State private var selectedCategory: EventsOverviewCategory = .upcoming
+    
+    @Query private var eventBookmarks: [EventBookmark]
     
     private var savedEvents: [Event] {
         eventBookmarks.map { $0.toEvent() }
@@ -35,12 +33,9 @@ struct EventsOverview: View {
                 onRemoveFromBookmarks: { eventsOverviewViewModel.removeEventFromBookmarks($0, in: modelContext) }
             )
             .navigationTitle("Events")
-            .toolbar { toolbar }
-            .sheet(isPresented: $showSettings) {
-                SettingsView()
-            }
-            .sheet(isPresented: $showFilter) {
-                EventsFilterView()
+            .toolbar {
+                let hasActiveFilter = eventsFilterViewModel.eventsFilterAssociationId != nil
+                EventsToolbar(selectedCategory: selectedCategory, hasActiveFilter: hasActiveFilter)
             }
         }
         .task {
@@ -61,30 +56,6 @@ struct EventsOverview: View {
             .foregroundColor(.primary)
             .fontWeight(.semibold)
             .padding(.bottom, 4)
-    }
-    
-    @ToolbarContentBuilder
-    private var toolbar: some ToolbarContent {
-        ToolbarItem(placement: .topBarTrailing) {
-            Button {
-                showSettings = true
-            } label: {
-                Label("Settings", systemImage: "person")
-            }
-        }
-        ToolbarItem(placement: .bottomBar) {
-            let hasActiveFilter = Binding<Bool> {
-                eventsFilterViewModel.eventsFilterAssociationId != nil
-            } set: { _ in
-                showFilter = true
-            }
-            if selectedCategory == .upcoming {
-                Toggle(isOn: hasActiveFilter) {
-                    Label("Filter", systemImage: "line.3.horizontal.decrease")
-                }
-            }
-        }
-        ToolbarSpacer(placement: .bottomBar)
     }
 }
 
