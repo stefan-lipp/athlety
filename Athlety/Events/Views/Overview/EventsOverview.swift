@@ -17,6 +17,7 @@ struct EventsOverview: View {
     
     @Query private var eventBookmarks: [EventBookmark]
     
+    @State private var showSettings = false
     @State private var showFilter = false
     @State private var selectedCategory: EventsOverviewCategory = .upcoming
     
@@ -35,6 +36,9 @@ struct EventsOverview: View {
             )
             .navigationTitle("Events")
             .toolbar { toolbar }
+            .sheet(isPresented: $showSettings) {
+                SettingsView()
+            }
             .sheet(isPresented: $showFilter) {
                 EventsFilterView()
             }
@@ -61,16 +65,26 @@ struct EventsOverview: View {
     
     @ToolbarContentBuilder
     private var toolbar: some ToolbarContent {
-        let hasActiveFilter = eventsFilterViewModel.eventsFilterAssociationId != nil
-        ToolbarItem(placement: hasActiveFilter ? .confirmationAction : .topBarTrailing) {
+        ToolbarItem(placement: .topBarTrailing) {
+            Button {
+                showSettings = true
+            } label: {
+                Label("Settings", systemImage: "person")
+            }
+        }
+        ToolbarItem(placement: .bottomBar) {
+            let hasActiveFilter = Binding<Bool> {
+                eventsFilterViewModel.eventsFilterAssociationId != nil
+            } set: { _ in
+                showFilter = true
+            }
             if selectedCategory == .upcoming {
-                Button {
-                    showFilter = true
-                } label: {
+                Toggle(isOn: hasActiveFilter) {
                     Label("Filter", systemImage: "line.3.horizontal.decrease")
                 }
             }
         }
+        ToolbarSpacer(placement: .bottomBar)
     }
 }
 
