@@ -13,20 +13,56 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
-                
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("Settings")
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Label("Cancel", systemImage: "xmark")
-                    }
+                Section {
+                    aboutAthletyRow
+                    rateAppRow
+                    feedbackRow
                 }
+                .listSectionSeparator(.hidden)
+            }
+            .listStyle(.plain)
+            .navigationTitle("Settings")
+            .navigationBarTitleDisplayMode(.inline)
+            .scrollContentBackground(.visible)
+            .toolbar { toolbar }
+        }
+    }
+    
+    @ToolbarContentBuilder
+    private var toolbar: some ToolbarContent {
+        ToolbarItem(placement: .cancellationAction) {
+            Button("Cancel", systemImage: "xmark") {
+                dismiss()
             }
         }
+    }
+    
+    private var aboutAthletyRow: some View {
+        NavigationLink {
+            AboutView()
+        } label: {
+            Label("About Athlety", systemImage: "info.circle")
+        }
+        .padding(.vertical, 8)
+    }
+    
+    @ViewBuilder
+    private var rateAppRow: some View {
+        // TODO: Provide correct App Store review URL
+        let reviewUrl = URL(string: "https://apps.apple.com/app/<AppId>?action=write-review")!
+        Link(destination: reviewUrl) {
+            Label("Rate the App", systemImage: "star")
+        }
+        .padding(.vertical, 8)
+    }
+    
+    @ViewBuilder
+    private var feedbackRow: some View {
+        let url = URL(string: "mailto:hello@athlety.app")!
+        Link(destination: url) {
+            Label("Feedback & Support", systemImage: "questionmark.circle")
+        }
+        .padding(.vertical, 8)
     }
 }
 

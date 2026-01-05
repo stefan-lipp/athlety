@@ -19,13 +19,13 @@ struct EventRegistrationView: View {
             .listRowSeparator(.hidden)
         
         if let url = URL(string: "mailto:\(registration.email)") {
-            Link(destination: url, label: {
+            Link(destination: url) {
                 HStack(alignment: .center) {
                     Label("Email", systemImage: "paperplane")
                     Spacer()
                     Text(registration.email)
                 }
-            })
+            }
             .padding(.bottom, 8)
         }
         

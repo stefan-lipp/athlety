@@ -17,7 +17,7 @@ struct EventDetailsView: View {
         List {
             if let event = viewModel.event {
                 Section {
-                    EventHeaderView(event: event)
+                    EventHeaderView(name: event.name, date: event.date, location: event.location.name)
                 }
                 .listSectionSeparator(.hidden)
                 

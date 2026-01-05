@@ -17,6 +17,16 @@
         }
       }
     },
+    "About Athlety" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über Athlety"
+          }
+        }
+      }
+    },
     "Add to Calendar" : {
       "localizations" : {
         "de" : {
@@ -33,6 +43,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alle"
+          }
+        }
+      }
+    },
+    "Athlety" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Athlety"
           }
         }
       }
@@ -97,6 +117,16 @@
         }
       }
     },
+    "Feedback & Support" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback & Support"
+          }
+        }
+      }
+    },
     "Filter" : {
       "localizations" : {
         "de" : {
@@ -123,6 +153,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hinweis"
+          }
+        }
+      }
+    },
+    "Rate the App" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bewerte die App"
           }
         }
       }
@@ -193,6 +233,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Anstehend"
+          }
+        }
+      }
+    },
+    "v%@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "v%@"
           }
         }
       }
