@@ -77,4 +77,5 @@ enum EventsOverviewCategory {
         .environmentObject(EventsOverviewViewModel())
         .environmentObject(EventsFilterViewModel())
         .environmentObject(EventDetailsViewModel())
+        .environmentObject(SettingsStore())
 }

@@ -14,6 +14,8 @@ struct AthletyApp: App {
     @StateObject private var eventsOverviewViewModel = EventsOverviewViewModel()
     @StateObject private var eventsFilterViewModel = EventsFilterViewModel()
     @StateObject private var eventDetailsViewModel = EventDetailsViewModel()
+    
+    @StateObject private var settingsStore = SettingsStore()
 
     var body: some Scene {
         WindowGroup {
@@ -22,6 +24,8 @@ struct AthletyApp: App {
                 .environmentObject(eventsOverviewViewModel)
                 .environmentObject(eventsFilterViewModel)
                 .environmentObject(eventDetailsViewModel)
+                .environmentObject(settingsStore)
+                .preferredColorScheme(settingsStore.colorScheme)
         }
         .modelContainer(for: EventBookmark.self)
     }

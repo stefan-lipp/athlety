@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EventsToolbar: ToolbarContent {
+    @Environment(\.colorScheme) private var colorScheme
     
     let selectedCategory: EventsOverviewCategory
     let hasActiveFilter: Bool
@@ -35,6 +36,7 @@ struct EventsToolbar: ToolbarContent {
                 }
                 .sheet(isPresented: $showFilter) {
                     EventsFilterView()
+                        .preferredColorScheme(colorScheme)
                 }
             }
         }
@@ -50,6 +52,7 @@ struct EventsToolbar: ToolbarContent {
             }
             .sheet(isPresented: $showSettings) {
                 SettingsView()
+                    .preferredColorScheme(colorScheme)
             }
         }
     }

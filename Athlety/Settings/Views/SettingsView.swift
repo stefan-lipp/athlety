@@ -10,9 +10,17 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     
+    @EnvironmentObject private var settingsStore: SettingsStore
+    
     var body: some View {
         NavigationStack {
             List {
+                Section {
+                    ListSectionHeader(title: "General")
+                    appearanceRow
+                }
+                .listSectionSeparator(.hidden)
+                
                 Section {
                     ListSectionHeader(title: "Recommend")
                     tellFriendRow
@@ -42,6 +50,21 @@ struct SettingsView: View {
                 dismiss()
             }
         }
+    }
+    
+    private var appearanceRow: some View {
+        Picker(selection: $settingsStore.appAppearance) {
+            ForEach(Appearance.allCases) { appearance in
+                Text(appearance.localized)
+                    .tag(appearance)
+            }
+        } label: {
+            Label("Appearance", systemImage: "sun.max")
+        }
+        .pickerStyle(.menu)
+        .menuIndicator(.hidden)
+        .buttonStyle(.bordered)
+        .padding(.vertical, 8)
     }
     
     @ViewBuilder
@@ -84,4 +107,5 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
+        .environmentObject(SettingsStore())
 }

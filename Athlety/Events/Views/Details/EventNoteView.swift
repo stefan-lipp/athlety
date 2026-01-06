@@ -15,7 +15,8 @@ struct EventNoteView: View {
             ListSectionHeader(title: "Note")
             
             Text(note)
-                .padding(.vertical)
+                .padding(.top, 4)
+                .padding(.bottom)
         }
     }
 }
