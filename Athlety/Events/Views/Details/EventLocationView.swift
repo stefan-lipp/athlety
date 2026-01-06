@@ -15,15 +15,12 @@ struct EventLocationView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Event Location")
-                .fontWeight(.medium)
-                .font(.title2)
-                .padding(.vertical)
+            ListSectionHeader(title: "Event Location")
             
             EventMapView(latitude: location.latitude, longitude: location.longitude)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .frame(height: 256)
-                .padding(.bottom)
+                .padding(.vertical)
             
             Text(location.name)
                 .fontWeight(.medium)

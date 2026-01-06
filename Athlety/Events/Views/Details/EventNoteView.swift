@@ -12,13 +12,10 @@ struct EventNoteView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Note")
-                .fontWeight(.medium)
-                .font(.title2)
-                .padding(.bottom)
+            ListSectionHeader(title: "Note")
             
             Text(note)
-                .padding(.bottom)
+                .padding(.vertical)
         }
     }
 }

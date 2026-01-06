@@ -12,11 +12,7 @@ struct EventRegistrationView: View {
     let registration: EventRegistration
     
     var body: some View {
-        Text("Registration")
-            .fontWeight(.medium)
-            .font(.title2)
-            .padding(.top)
-            .listRowSeparator(.hidden)
+        ListSectionHeader(title: "Registration")
         
         if let url = URL(string: "mailto:\(registration.email)") {
             Link(destination: url) {
