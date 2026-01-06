@@ -53,6 +53,7 @@ struct SettingsView: View {
         ShareLink(item: websiteUrl) {
             Label("Recommend", systemImage: "hand.thumbsup")
         }
+        .padding(.vertical, 8)
     }
     
     @ViewBuilder
