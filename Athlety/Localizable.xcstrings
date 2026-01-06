@@ -167,6 +167,16 @@
         }
       }
     },
+    "Recommend" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empfehlen"
+          }
+        }
+      }
+    },
     "Registration" : {
       "localizations" : {
         "de" : {

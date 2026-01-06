@@ -15,6 +15,7 @@ struct SettingsView: View {
             List {
                 Section {
                     aboutAthletyRow
+                    recommendRow
                     rateAppRow
                     feedbackRow
                 }
@@ -44,6 +45,14 @@ struct SettingsView: View {
             Label("About Athlety", systemImage: "info.circle")
         }
         .padding(.vertical, 8)
+    }
+    
+    @ViewBuilder
+    private var recommendRow: some View {
+        let websiteUrl = URL(string: "https://www.athlety.app")!
+        ShareLink(item: websiteUrl) {
+            Label("Recommend", systemImage: "hand.thumbsup")
+        }
     }
     
     @ViewBuilder
