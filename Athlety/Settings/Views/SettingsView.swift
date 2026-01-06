@@ -12,30 +12,35 @@ struct SettingsView: View {
     
     @EnvironmentObject private var settingsStore: SettingsStore
     
+    // MARK: - Body
+    
     var body: some View {
         NavigationStack {
             List {
                 Section {
-                    ListSectionHeader(title: "General")
                     appearanceRow
+                } header: {
+                    sectionHeader(for: "General")
                 }
                 .listSectionSeparator(.hidden)
                 
                 Section {
-                    ListSectionHeader(title: "Recommend")
                     tellFriendRow
                     rateAppRow
+                } header: {
+                    sectionHeader(for: "Recommend")
                 }
                 .listSectionSeparator(.hidden)
                 
                 Section {
-                    ListSectionHeader(title: "Information")
                     aboutAthletyRow
                     feedbackRow
+                } header: {
+                    sectionHeader(for: "Information")
                 }
                 .listSectionSeparator(.hidden)
             }
-            .listStyle(.plain)
+            .listStyle(.insetGrouped)
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
             .scrollContentBackground(.visible)
@@ -52,6 +57,16 @@ struct SettingsView: View {
         }
     }
     
+    private func sectionHeader(for title: LocalizedStringKey) -> some View {
+        Text(title)
+            .font(.callout)
+            .foregroundColor(.primary)
+            .fontWeight(.semibold)
+            .padding(.bottom, 4)
+    }
+    
+    // MARK: - Rows
+    
     private var appearanceRow: some View {
         Picker(selection: $settingsStore.appAppearance) {
             ForEach(Appearance.allCases) { appearance in
@@ -64,7 +79,7 @@ struct SettingsView: View {
         .pickerStyle(.menu)
         .menuIndicator(.hidden)
         .buttonStyle(.bordered)
-        .padding(.vertical, 8)
+        .padding(.vertical, rowPadding)
     }
     
     @ViewBuilder
@@ -73,7 +88,8 @@ struct SettingsView: View {
         ShareLink(item: websiteUrl) {
             Label("Tell a friend!", systemImage: "hand.thumbsup")
         }
-        .padding(.vertical, 8)
+        .buttonStyle(.plain)
+        .padding(.vertical, rowPadding)
     }
     
     @ViewBuilder
@@ -83,7 +99,8 @@ struct SettingsView: View {
         Link(destination: reviewUrl) {
             Label("Rate the App", systemImage: "star")
         }
-        .padding(.vertical, 8)
+        .buttonStyle(.plain)
+        .padding(.vertical, rowPadding)
     }
     
     private var aboutAthletyRow: some View {
@@ -92,7 +109,7 @@ struct SettingsView: View {
         } label: {
             Label("About Athlety", systemImage: "info.circle")
         }
-        .padding(.vertical, 8)
+        .padding(.vertical, rowPadding)
     }
     
     @ViewBuilder
@@ -101,8 +118,13 @@ struct SettingsView: View {
         Link(destination: url) {
             Label("Feedback & Support", systemImage: "questionmark.circle")
         }
-        .padding(.vertical, 8)
+        .buttonStyle(.plain)
+        .padding(.vertical, rowPadding)
     }
+    
+    // MARK: - Constants
+    
+    private let rowPadding: CGFloat = 4
 }
 
 #Preview {

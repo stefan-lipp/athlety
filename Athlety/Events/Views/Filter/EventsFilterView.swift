@@ -52,12 +52,15 @@ struct EventsFilterView: View {
             isSelected: selectedAssociationId == nil,
             onSelect: { selectedAssociationId = nil }
         )
+        .padding(.vertical, 4)
+        
         ForEach(viewModel.associations) { association in
             EventsFilterRow(
                 name: LocalizedStringKey(association.name),
                 isSelected: selectedAssociationId == association.id,
                 onSelect: { selectedAssociationId = association.id }
             )
+            .padding(.vertical, 4)
         }
     }
 }
