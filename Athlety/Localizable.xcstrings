@@ -77,6 +77,16 @@
         }
       }
     },
+    "Copyright © 2026 Stefan Lipp." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright © 2026 Stefan Lipp."
+          }
+        }
+      }
+    },
     "Dark" : {
       "localizations" : {
         "de" : {
@@ -307,6 +317,16 @@
         }
       }
     },
+    "Track & Field Events" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leichtathletik Wettkämpfe"
+          }
+        }
+      }
+    },
     "Upcoming" : {
       "localizations" : {
         "de" : {
@@ -323,6 +343,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "v%@"
+          }
+        }
+      }
+    },
+    "www.athlety.app" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "www.athlety.app"
           }
         }
       }

@@ -40,6 +40,7 @@ struct SettingsView: View {
                 }
                 .listSectionSeparator(.hidden)
             }
+            .foregroundStyle(.primary)
             .listStyle(.insetGrouped)
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
