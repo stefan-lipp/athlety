@@ -67,6 +67,16 @@
         }
       }
     },
+    "Athlety is an app for track and field athletes, coaches, and anyone interested in athletics in Germany.\n\nThe app provides an overview of upcoming competitions and events and allows you to save important dates for quick access. It is designed to help you stay organized throughout the athletics season.\n\nAthlety is developed and published by Stefan Lipp in Regensburg, Germany. Your feedback and suggestions are always welcome and help improve the app." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Athlety ist eine App für Leichtathleten, Trainerinnen und Trainer und alle, die sich für Leichtathletik in Deutschland interessieren.\n\nDie App bietet eine Übersicht über kommende Wettkämpfe und Veranstaltungen und ermöglicht es, wichtige Termine für einen schnellen Zugriff zu speichern. Sie hilft dabei, während der Leichtathletik-Saison den Überblick zu behalten.\n\nAthlety wird von Stefan Lipp in Regensburg entwickelt und veröffentlicht. Feedback und Vorschläge sind jederzeit willkommen und helfen, die App weiter zu verbessern."
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "de" : {
@@ -322,7 +332,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Leichtathletik Wettkämpfe"
+            "value" : "Leichtathletik-Wettkämpfe"
           }
         }
       }

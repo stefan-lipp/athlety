@@ -57,14 +57,20 @@ struct AboutView: View {
             .foregroundStyle(.secondary)
     }
     
+    @ViewBuilder
     private var aboutText: some View {
-        Text("Athlety is an app for track and field athletes, coaches, and anyone interested in athletics in Germany.\n\n" +
-             "The app provides an overview of upcoming competitions and events and allows you to save important dates for quick access. " +
-             "It is designed to help you stay organized throughout the athletics season.\n\n" +
-             "Athlety is developed and published by Stefan Lipp in Regensburg, Germany. " +
-             "Your feedback and suggestions are always welcome and help improve the app."
-        )
-        .padding(20)
+        let description: LocalizedStringKey = """
+            Athlety is an app for track and field athletes, coaches, and anyone interested in athletics in Germany.
+            
+            The app provides an overview of upcoming competitions and events and allows you to save important dates for quick access. \
+            It is designed to help you stay organized throughout the athletics season.
+            
+            Athlety is developed and published by Stefan Lipp in Regensburg, Germany. \
+            Your feedback and suggestions are always welcome and help improve the app.
+            """
+        
+        Text(description)
+            .padding(20)
     }
     
     private var copyright: some View {
