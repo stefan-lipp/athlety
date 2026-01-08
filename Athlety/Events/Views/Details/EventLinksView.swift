@@ -13,7 +13,10 @@ struct EventLinksView: View {
     
     var body: some View {
         ForEach(links, id: \.name) { link in
-            Link(destination: link.url) {
+            NavigationLink {
+                WebView(url: link.url)
+                    .navigationTitle(link.name)
+            } label: {
                 Label(link.name, systemImage: "network")
             }
             .padding(.vertical, 8)

@@ -49,14 +49,6 @@ struct EventsOverview: View {
             }
         }
     }
-    
-    private func sectionHeader(for date: Date) -> some View {
-        Text(date.formatted(.dateTime.weekday(.wide).day(.twoDigits).month(.wide).year()))
-            .font(.callout)
-            .foregroundColor(.primary)
-            .fontWeight(.semibold)
-            .padding(.bottom, 4)
-    }
 }
 
 enum EventsOverviewCategory {
