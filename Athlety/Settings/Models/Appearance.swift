@@ -12,6 +12,8 @@ enum Appearance: String, CaseIterable, Identifiable {
     case light = "Light"
     case dark = "Dark"
     
+    var id: String { rawValue }
+    
     var localized: LocalizedStringKey {
         switch self {
         case .system: "System"
@@ -19,6 +21,4 @@ enum Appearance: String, CaseIterable, Identifiable {
         case .dark: "Dark"
         }
     }
-    
-    var id: String { rawValue }
 }

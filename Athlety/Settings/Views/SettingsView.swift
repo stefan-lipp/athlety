@@ -19,6 +19,7 @@ struct SettingsView: View {
             List {
                 Section {
                     appearanceRow
+                    languageRow
                 } header: {
                     sectionHeader(for: "General")
                 }
@@ -84,12 +85,20 @@ struct SettingsView: View {
     }
     
     @ViewBuilder
+    private var languageRow: some View {
+        let appSettingsUrl = URL(string: UIApplication.openSettingsURLString)!
+        Link(destination: appSettingsUrl) {
+            Label("Language", systemImage: "globe.desk")
+        }
+        .padding(.vertical, rowPadding)
+    }
+    
+    @ViewBuilder
     private var tellFriendRow: some View {
         let websiteUrl = URL(string: "https://www.athlety.app")!
         ShareLink(item: websiteUrl) {
             Label("Tell a friend!", systemImage: "hand.thumbsup")
         }
-        .buttonStyle(.plain)
         .padding(.vertical, rowPadding)
     }
     
@@ -100,7 +109,6 @@ struct SettingsView: View {
         Link(destination: reviewUrl) {
             Label("Rate the App", systemImage: "star")
         }
-        .buttonStyle(.plain)
         .padding(.vertical, rowPadding)
     }
     
@@ -119,7 +127,6 @@ struct SettingsView: View {
         Link(destination: url) {
             Label("Feedback & Support", systemImage: "questionmark.circle")
         }
-        .buttonStyle(.plain)
         .padding(.vertical, rowPadding)
     }
     
