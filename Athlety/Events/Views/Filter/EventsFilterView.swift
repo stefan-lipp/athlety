@@ -22,6 +22,7 @@ struct EventsFilterView: View {
             }
             .navigationTitle("Filter")
             .navigationBarTitleDisplayMode(.inline)
+            .environment(\.defaultMinListRowHeight, 56)
             .toolbar { toolbar }
         }
         .task {
@@ -52,7 +53,6 @@ struct EventsFilterView: View {
             isSelected: selectedAssociationId == nil,
             onSelect: { selectedAssociationId = nil }
         )
-        .padding(.vertical, 4)
         
         ForEach(viewModel.associations) { association in
             EventsFilterRow(
@@ -60,7 +60,6 @@ struct EventsFilterView: View {
                 isSelected: selectedAssociationId == association.id,
                 onSelect: { selectedAssociationId = association.id }
             )
-            .padding(.vertical, 4)
         }
     }
 }

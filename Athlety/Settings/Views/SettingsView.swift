@@ -45,6 +45,7 @@ struct SettingsView: View {
             .listStyle(.insetGrouped)
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
+            .environment(\.defaultMinListRowHeight, 56)
             .scrollContentBackground(.visible)
             .toolbar { toolbar }
         }
@@ -81,7 +82,6 @@ struct SettingsView: View {
         .pickerStyle(.menu)
         .menuIndicator(.hidden)
         .buttonStyle(.bordered)
-        .padding(.vertical, rowPadding)
     }
     
     @ViewBuilder
@@ -90,7 +90,6 @@ struct SettingsView: View {
         Link(destination: appSettingsUrl) {
             Label("Language", systemImage: "globe.desk")
         }
-        .padding(.vertical, rowPadding)
     }
     
     @ViewBuilder
@@ -99,7 +98,6 @@ struct SettingsView: View {
         ShareLink(item: websiteUrl) {
             Label("Tell a friend!", systemImage: "hand.thumbsup")
         }
-        .padding(.vertical, rowPadding)
     }
     
     @ViewBuilder
@@ -109,7 +107,6 @@ struct SettingsView: View {
         Link(destination: reviewUrl) {
             Label("Rate the App", systemImage: "star")
         }
-        .padding(.vertical, rowPadding)
     }
     
     private var aboutAthletyRow: some View {
@@ -118,7 +115,6 @@ struct SettingsView: View {
         } label: {
             Label("About Athlety", systemImage: "info.circle")
         }
-        .padding(.vertical, rowPadding)
     }
     
     @ViewBuilder
@@ -127,12 +123,7 @@ struct SettingsView: View {
         Link(destination: url) {
             Label("Feedback & Support", systemImage: "questionmark.circle")
         }
-        .padding(.vertical, rowPadding)
     }
-    
-    // MARK: - Constants
-    
-    private let rowPadding: CGFloat = 4
 }
 
 #Preview {
