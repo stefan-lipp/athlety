@@ -36,19 +36,7 @@ struct EventDetailsView: View {
                 
                 if !event.deduplicatedDisciplines.isEmpty {
                     Section {
-                        VStack(alignment: .leading) {
-                            ListSectionHeader(title: "Disciplines")
-                            
-                            ForEach(event.deduplicatedDisciplines) { discipline in
-                                Text(discipline.localized)
-                                    .padding(.horizontal, 12)
-                                    .padding(.vertical, 8)
-                                    .background {
-                                        Capsule()
-                                            .fill(Color(UIColor.tertiarySystemFill))
-                                    }
-                            }
-                        }
+                        EventDisciplineTagsView(disciplines: event.deduplicatedDisciplines)
                     }
                     .listSectionSeparator(.hidden)
                 }
