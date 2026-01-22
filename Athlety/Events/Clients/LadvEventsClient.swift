@@ -38,7 +38,8 @@ class LadvEventsClient: EventsClient {
             URLQueryItem(name: "id", value: "\(eventId)"),
             URLQueryItem(name: "ort", value: "true"),
             URLQueryItem(name: "links", value: "true"),
-            URLQueryItem(name: "attachements", value: "true")
+            URLQueryItem(name: "attachements", value: "true"),
+            URLQueryItem(name: "wettbewerbe", value: "true")
         ]
         
         let request = URLRequest(url: urlComponents.url!)
@@ -76,19 +77,30 @@ private struct LadvEventDetails: Codable {
     let meldDatum: Int
     let links: [LadvEventLink]
     let attachements: [LadvEventAttachement]
+    let wettbewerbe: [LadvEventDiscipline]
     
     func toEventDetails() -> EventDetails {
-        let note = beschreibung.isEmpty ? nil : beschreibung
-        let location = EventLocation(name: ort.name, site: sportstaette, latitude: ort.lat, longitude: ort.lng)
-        let links = links.compactMap { $0.toLink() }
-        let attachements = attachements.compactMap { $0.toAttachement() }
-        return EventDetails(id: id, name: name, date: date, note: note, location: location, registration: registration, links: links, attachements: attachements)
+        return EventDetails(
+            id: id,
+            name: name,
+            date: date,
+            note: beschreibung.isEmpty ? nil : beschreibung,
+            location: location,
+            registration: registration,
+            links: links.compactMap { $0.toLink() },
+            attachements: attachements.compactMap { $0.toAttachement() },
+            disciplines: wettbewerbe.compactMap { $0.toDiscipline() }
+        )
     }
     
     private var date: Date {
         let dateMillis = datum
         let dateSeconds = Double(dateMillis) / 1000
         return Date(timeIntervalSince1970: dateSeconds)
+    }
+    
+    private var location: EventLocation {
+        EventLocation(name: ort.name, site: sportstaette, latitude: ort.lat, longitude: ort.lng)
     }
     
     private var registration: EventRegistration {
@@ -123,5 +135,36 @@ private struct LadvEventAttachement: Codable {
     func toAttachement() -> EventAttachement? {
         guard let url = URL(string: url + "?file=true") else { return nil }
         return EventAttachement(name: name, url: url)
+    }
+}
+
+private struct LadvEventDiscipline: Codable {
+    let disziplinNew: String
+    let klasseNew: String
+    
+    var discipline: Discipline? {
+        switch disziplinNew {
+        case "L60": .sprint60m
+        case "L100": .sprint100m
+        case "L200": .sprint200m
+        case "L400": .sprint400m
+            
+        case "L800": .running800m
+        case "L3K0": .running3000m
+        case "L5K0": .running5000m
+            
+        case "THOC": .highJump
+        case "TWEI": .longJump
+            
+        case "TKUG_7260": .shotPut
+        case "TSPE_0800": .javelinThrow
+            
+        default: nil
+        }
+    }
+    
+    func toDiscipline() -> EventDiscipline? {
+        guard let discipline else { return nil }
+        return EventDiscipline(discipline: discipline, ageGroup: klasseNew)
     }
 }

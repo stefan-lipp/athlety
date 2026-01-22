@@ -16,4 +16,10 @@ struct EventDetails: Identifiable {
     let registration: EventRegistration
     let links: [EventLink]
     let attachements: [EventAttachement]
+    let disciplines: [EventDiscipline]
+    
+    var deduplicatedDisciplines: [Discipline] {
+        let uniqueDisciplines = disciplines.map { $0.discipline }.unique()
+        return Discipline.allCases.filter { uniqueDisciplines.contains($0) }
+    }
 }

@@ -8,11 +8,11 @@ import SwiftUI
 
 struct EventDetailsView: View {
     let eventId: Int
-    
+
     @Environment(\.modelContext) private var modelContext
-    
+
     @EnvironmentObject private var viewModel: EventDetailsViewModel
-    
+
     var body: some View {
         List {
             if let event = viewModel.event {
@@ -20,24 +20,43 @@ struct EventDetailsView: View {
                     EventHeaderView(name: event.name, date: event.date, location: event.location.name)
                 }
                 .listSectionSeparator(.hidden)
-                
+
                 Section {
                     EventCalendarExportView(event: event)
                     EventLinksView(links: event.links)
                     EventAttachementsView(attachements: event.attachements)
                 }
                 .listSectionSeparator(.hidden)
-                
+
                 if let note = event.note {
                     Section {
                         EventNoteView(note: note)
                     }
                 }
                 
+                if !event.deduplicatedDisciplines.isEmpty {
+                    Section {
+                        VStack(alignment: .leading) {
+                            ListSectionHeader(title: "Disciplines")
+                            
+                            ForEach(event.deduplicatedDisciplines) { discipline in
+                                Text(discipline.localized)
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 8)
+                                    .background {
+                                        Capsule()
+                                            .fill(Color(UIColor.tertiarySystemFill))
+                                    }
+                            }
+                        }
+                    }
+                    .listSectionSeparator(.hidden)
+                }
+
                 Section {
                     EventLocationView(location: event.location)
                 }
-                
+
                 Section {
                     EventRegistrationView(registration: event.registration)
                 }
@@ -55,7 +74,7 @@ struct EventDetailsView: View {
             toolbar
         }
     }
-    
+
     private var toolbar: some ToolbarContent {
         ToolbarItem {
             Button {

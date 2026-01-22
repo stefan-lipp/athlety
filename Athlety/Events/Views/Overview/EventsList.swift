@@ -21,7 +21,7 @@ struct EventsList: View {
     }
 
     @EnvironmentObject private var calendarEventViewModel: CalendarEventViewModel
-    
+
     @State private var showCalendarEventEditView = false
 
     var body: some View {
