@@ -20,7 +20,7 @@ struct EventDisciplineTagsView: View {
                     tag(for: discipline)
                 }
             }
-            .padding(.vertical)
+            .padding(.top)
         }
     }
     

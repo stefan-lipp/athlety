@@ -34,9 +34,10 @@ struct EventDetailsView: View {
                     }
                 }
                 
-                if !event.deduplicatedDisciplines.isEmpty {
+                let disciplines = event.deduplicatedDisciplines
+                if !disciplines.isEmpty {
                     Section {
-                        EventDisciplineTagsView(disciplines: event.deduplicatedDisciplines)
+                        EventDisciplineTagsView(disciplines: disciplines)
                     }
                     .listSectionSeparator(.hidden)
                 }
