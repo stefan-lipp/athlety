@@ -27,6 +27,16 @@
         }
       }
     },
+    "%lldm Hurdles" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lldm Hürden"
+          }
+        }
+      }
+    },
     "About Athlety" : {
       "localizations" : {
         "de" : {
@@ -97,12 +107,32 @@
         }
       }
     },
+    "Children's Athletics" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kinderleichtathletik"
+          }
+        }
+      }
+    },
     "Copyright © 2026 Stefan Lipp." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Copyright © 2026 Stefan Lipp."
+          }
+        }
+      }
+    },
+    "Cross Country" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crosslauf"
           }
         }
       }
@@ -207,9 +237,17 @@
         }
       }
     },
+    "Hammer Throw" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hammerwurf"
+          }
+        }
+      }
+    },
     "High Jump" : {
-      "extractionState" : "manual",
-      "generatesSymbol" : false,
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -285,6 +323,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hinweis"
+          }
+        }
+      }
+    },
+    "Pentathlon" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5-Kampf"
+          }
+        }
+      }
+    },
+    "Pole Vault" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stabhochsprung"
+          }
+        }
+      }
+    },
+    "Quadrathlon" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4-Kampf"
           }
         }
       }

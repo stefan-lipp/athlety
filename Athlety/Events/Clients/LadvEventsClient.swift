@@ -148,16 +148,34 @@ private struct LadvEventDiscipline: Codable {
         case "L100": .sprint100m
         case "L200": .sprint200m
         case "L400": .sprint400m
-            
+        
+        case "L600": .running600m
         case "L800": .running800m
+        case "L1K5": .running1500m
+        case "L2K0": .running2000m
         case "L3K0": .running3000m
         case "L5K0": .running5000m
             
+        case "H60_0838": .hurdles60m
+            
         case "THOC": .highJump
         case "TWEI": .longJump
+        case "TSTA": .poleVault
             
         case "TKUG_7260": .shotPut
         case "TSPE_0800": .javelinThrow
+        
+        case "THAM_3000",
+             "THAM_4000",
+             "THAM_6000",
+             "THAM_7260": .hammerThrow
+            
+        case "M4K": .quadrathlon
+        case "M5K": .pentathlon
+            
+        case "KKILA": .childrensAthletics
+            
+        case "SCR": .crossCountry
             
         default: nil
         }
