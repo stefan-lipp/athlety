@@ -144,19 +144,37 @@ private struct LadvEventDiscipline: Codable {
     
     var discipline: Discipline? {
         switch disziplinNew {
+        case "L30": .sprint30m
+        case "L40": .sprint40m
+        case "L50": .sprint50m
         case "L60": .sprint60m
+        case "L75": .sprint75m
+        case "L80": .sprint80m
         case "L100": .sprint100m
+        case "L150": .sprint150m
         case "L200": .sprint200m
+        case "L300": .sprint300m
         case "L400": .sprint400m
         
+        case "L500": .running500m
         case "L600": .running600m
         case "L800": .running800m
         case "L1K5": .running1500m
         case "L2K0": .running2000m
         case "L3K0": .running3000m
         case "L5K0": .running5000m
+
+        case "H60_0600",
+             "H60_0686",
+             "H60_0762",
+             "H60_0838",
+             "H60_0914",
+             "H60_0991",
+             "H60_1067": .hurdles60m
             
-        case "H60_0838": .hurdles60m
+        case "H100": .hurdles100m
+        case "H110": .hurdles110m
+        case "H400": .hurdles400m
             
         case "THOC": .highJump
         case "TWEI": .longJump
