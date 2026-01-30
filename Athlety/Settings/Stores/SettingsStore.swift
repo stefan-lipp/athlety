@@ -10,6 +10,8 @@ import SwiftUI
 
 class SettingsStore: ObservableObject {
     
+    @AppStorage("showOnboarding") var showAppOnboarding = true
+    
     @AppStorage("appAppearance") var appAppearance: Appearance = .system
     
     var colorScheme: ColorScheme? {

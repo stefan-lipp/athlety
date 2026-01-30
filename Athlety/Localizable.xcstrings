@@ -77,6 +77,16 @@
         }
       }
     },
+    "Apply custom event filters to only show events that match your preferences." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wende eigene Suchfilter an, um nur Wettkämpfe anzuzeigen, die deinen Kriterien entsprechen."
+          }
+        }
+      }
+    },
     "Athlety" : {
       "localizations" : {
         "de" : {
@@ -97,6 +107,16 @@
         }
       }
     },
+    "Bookamrks" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lesezeichen"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "de" : {
@@ -113,6 +133,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kinderleichtathletik"
+          }
+        }
+      }
+    },
+    "Continue" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter"
           }
         }
       }
@@ -207,6 +237,16 @@
         }
       }
     },
+    "Events Filter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suchfilter"
+          }
+        }
+      }
+    },
     "Feedback & Support" : {
       "localizations" : {
         "de" : {
@@ -233,6 +273,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Allgemein"
+          }
+        }
+      }
+    },
+    "Get a quick overview about upcoming track and field events." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verschaffe dir einen schnellen Überblick über bevorstehende Leichtathletikwettkämpfe."
           }
         }
       }
@@ -417,6 +467,16 @@
         }
       }
     },
+    "Save your favorite events as bookmarks for quick access." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speichere Wettkämpfe als Lesezeichen, um schnell darauf zugreifen zu können."
+          }
+        }
+      }
+    },
     "Saved" : {
       "localizations" : {
         "de" : {
@@ -487,12 +547,32 @@
         }
       }
     },
+    "Upcoming Events" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anstehende Wettkämpfe"
+          }
+        }
+      }
+    },
     "v%@" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "v%@"
+          }
+        }
+      }
+    },
+    "Welcome to" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Willkommen bei"
           }
         }
       }

@@ -26,6 +26,9 @@ struct AthletyApp: App {
                 .environmentObject(eventDetailsViewModel)
                 .environmentObject(settingsStore)
                 .preferredColorScheme(settingsStore.colorScheme)
+                .sheet(isPresented: $settingsStore.showAppOnboarding) {
+                    WelcomeView()
+                }
         }
         .modelContainer(for: EventBookmark.self)
     }
