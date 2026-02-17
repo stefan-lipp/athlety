@@ -22,11 +22,6 @@ class EventDetailsViewModel: ObservableObject {
         isSavedAsBookmark = eventBookmark != nil
     }
     
-    func resetEventDetails() {
-        event = nil
-        isSavedAsBookmark = false
-    }
-    
     func saveEventAsBookmark(in context: ModelContext) {
         guard let event else { return }
         let bookmark = EventBookmark(event: event)

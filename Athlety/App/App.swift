@@ -13,7 +13,6 @@ struct AthletyApp: App {
     @StateObject private var calendarEventViewModel = CalendarEventViewModel()
     @StateObject private var eventsOverviewViewModel = EventsOverviewViewModel()
     @StateObject private var eventsFilterViewModel = EventsFilterViewModel()
-    @StateObject private var eventDetailsViewModel = EventDetailsViewModel()
     
     @StateObject private var settingsStore = SettingsStore()
 
@@ -23,7 +22,6 @@ struct AthletyApp: App {
                 .environmentObject(calendarEventViewModel)
                 .environmentObject(eventsOverviewViewModel)
                 .environmentObject(eventsFilterViewModel)
-                .environmentObject(eventDetailsViewModel)
                 .environmentObject(settingsStore)
                 .preferredColorScheme(settingsStore.colorScheme)
                 .sheet(isPresented: $settingsStore.showAppOnboarding) {

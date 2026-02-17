@@ -11,7 +11,7 @@ struct EventDetailsView: View {
 
     @Environment(\.modelContext) private var modelContext
 
-    @EnvironmentObject private var viewModel: EventDetailsViewModel
+    @StateObject private var viewModel = EventDetailsViewModel()
 
     var body: some View {
         List {
@@ -33,7 +33,7 @@ struct EventDetailsView: View {
                         EventNoteView(note: note)
                     }
                 }
-                
+
                 let disciplines = event.deduplicatedDisciplines
                 if !disciplines.isEmpty {
                     Section {
@@ -55,9 +55,6 @@ struct EventDetailsView: View {
         .listStyle(.plain)
         .task {
             await viewModel.loadEventDetails(for: eventId, with: modelContext)
-        }
-        .onDisappear {
-            viewModel.resetEventDetails()
         }
         .toolbar {
             toolbar
@@ -84,6 +81,5 @@ struct EventDetailsView: View {
 #Preview {
     NavigationStack {
         EventDetailsView(eventId: 44253)
-            .environmentObject(EventDetailsViewModel())
     }
 }
