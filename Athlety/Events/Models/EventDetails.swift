@@ -15,7 +15,7 @@ struct EventDetails: Identifiable {
     let location: EventLocation
     let registration: EventRegistration
     let links: [EventLink]
-    let attachements: [EventAttachement]
+    let attachments: [EventAttachment]
     let disciplines: [EventDiscipline]
     
     var deduplicatedDisciplines: [Discipline] {

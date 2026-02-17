@@ -69,27 +69,35 @@ private struct LadvEvent: Codable {
 private struct LadvEventDetails: Codable {
     let id: Int
     let name: String
-    let beschreibung: String
+    let note: String
     let ort: LadvEventLocation
-    let sportstaette: String
+    let site: String
     let datum: Int
     let meldEmail: String
     let meldDatum: Int
     let links: [LadvEventLink]
-    let attachements: [LadvEventAttachement]
-    let wettbewerbe: [LadvEventDiscipline]
+    let attachments: [LadvEventAttachment]
+    let disciplines: [LadvEventDiscipline]
+    
+    private enum CodingKeys: String, CodingKey {
+        case id, name, ort, datum, meldEmail, meldDatum, links
+        case note = "beschreibung"
+        case site = "sportstaette"
+        case attachments = "attachements"
+        case disciplines = "wettbewerbe"
+    }
     
     func toEventDetails() -> EventDetails {
         return EventDetails(
             id: id,
             name: name,
             date: date,
-            note: beschreibung.isEmpty ? nil : beschreibung,
+            note: note.isEmpty ? nil : note,
             location: location,
             registration: registration,
             links: links.compactMap { $0.toLink() },
-            attachements: attachements.compactMap { $0.toAttachement() },
-            disciplines: wettbewerbe.compactMap { $0.toDiscipline() }
+            attachments: attachments.compactMap { $0.toAttachment() },
+            disciplines: disciplines.compactMap { $0.toDiscipline() }
         )
     }
     
@@ -100,7 +108,7 @@ private struct LadvEventDetails: Codable {
     }
     
     private var location: EventLocation {
-        EventLocation(name: ort.name, site: sportstaette, latitude: ort.lat, longitude: ort.lng)
+        EventLocation(name: ort.name, site: site, latitude: ort.lat, longitude: ort.lng)
     }
     
     private var registration: EventRegistration {
@@ -128,13 +136,13 @@ private struct LadvEventLink: Codable {
     }
 }
 
-private struct LadvEventAttachement: Codable {
+private struct LadvEventAttachment: Codable {
     let name: String
     let url: String
     
-    func toAttachement() -> EventAttachement? {
+    func toAttachment() -> EventAttachment? {
         guard let url = URL(string: url + "?file=true") else { return nil }
-        return EventAttachement(name: name, url: url)
+        return EventAttachment(name: name, url: url)
     }
 }
 
