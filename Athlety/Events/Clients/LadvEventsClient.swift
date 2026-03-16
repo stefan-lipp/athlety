@@ -209,13 +209,16 @@ private struct LadvEventDiscipline: Codable {
         case "TDRE": .tripleJump
         case "TSTA": .poleVault
 
-        case "TKUG_7260": .shotPut
+        case "TKUG_3000",
+             "TKUG_7260": .shotPut
+
         case "TDIS",
              "TDIS_0750",
              "TDIS_1000",
              "TDIS_1500",
              "TDIS_1750",
              "TDIS_2000": .discusThrow
+
         case "TSPE_0800": .javelinThrow
 
         case "THAM_3000",
