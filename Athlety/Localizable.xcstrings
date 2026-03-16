@@ -37,6 +37,16 @@
         }
       }
     },
+    "%lld m Steeplechase" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld m Hindernis"
+          }
+        }
+      }
+    },
     "About Athlety" : {
       "localizations" : {
         "de" : {
@@ -163,6 +173,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Crosslauf"
+          }
+        }
+      }
+    },
+    "Discus Throw" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diskuswurf"
           }
         }
       }
@@ -533,6 +553,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Leichtathletik-Wettkämpfe"
+          }
+        }
+      }
+    },
+    "Triple Jump" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dreisprung"
           }
         }
       }
