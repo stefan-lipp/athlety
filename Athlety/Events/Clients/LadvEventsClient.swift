@@ -183,6 +183,9 @@ private struct LadvEventDiscipline: Codable {
              "H60_0991",
              "H60_1067": .hurdles60m
 
+        case "H1K5",
+             "H1K5_0762": .steeplechase1500m
+
         case "H2K0",
              "H2K0_0762",
              "H2K0_0838",
@@ -191,6 +194,11 @@ private struct LadvEventDiscipline: Codable {
         case "H3K0",
              "H3K0_0762",
              "H3K0_0914": .steeplechase3000m
+
+        case "H80",
+             "H80_0686",
+             "H80_0762",
+             "H80_0838": .hurdles80m
 
         case "H100": .hurdles100m
         case "H110": .hurdles110m
@@ -215,8 +223,17 @@ private struct LadvEventDiscipline: Codable {
              "THAM_6000",
              "THAM_7260": .hammerThrow
 
+        case "X4X1": .relay4x100m
+        case "X4X4": .relay4x400m
+
+        case "M3K": .triathlon
         case "M4K": .quadrathlon
         case "M5K": .pentathlon
+        case "M6K": .hexathlon
+        case "M7K": .heptathlon
+        case "M8K": .octathlon
+        case "M9K": .nonathlon
+        case "M10K": .decathlon
 
         case "KKILA": .childrensAthletics
 

@@ -47,6 +47,26 @@
         }
       }
     },
+    "4×100 m Relay" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4×100 m Staffel"
+          }
+        }
+      }
+    },
+    "4×400 m Relay" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4×400 m Staffel"
+          }
+        }
+      }
+    },
     "About Athlety" : {
       "localizations" : {
         "de" : {
@@ -173,6 +193,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Crosslauf"
+          }
+        }
+      }
+    },
+    "Decathlon" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10-Kampf"
           }
         }
       }
@@ -317,6 +347,26 @@
         }
       }
     },
+    "Heptathlon" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7-Kampf"
+          }
+        }
+      }
+    },
+    "Hexathlon" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6-Kampf"
+          }
+        }
+      }
+    },
     "High Jump" : {
       "localizations" : {
         "de" : {
@@ -387,12 +437,32 @@
         }
       }
     },
+    "Nonathlon" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9-Kampf"
+          }
+        }
+      }
+    },
     "Note" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hinweis"
+          }
+        }
+      }
+    },
+    "Octathlon" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8-Kampf"
           }
         }
       }
@@ -563,6 +633,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dreisprung"
+          }
+        }
+      }
+    },
+    "Triathlon" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3-Kampf"
           }
         }
       }

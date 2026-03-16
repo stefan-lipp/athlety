@@ -31,12 +31,17 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
     case running10000m
 
     case hurdles60m
+    case hurdles80m
     case hurdles100m
     case hurdles110m
     case hurdles400m
-    
+
+    case steeplechase1500m
     case steeplechase2000m
     case steeplechase3000m
+
+    case relay4x100m
+    case relay4x400m
     
     case highJump
     case longJump
@@ -48,8 +53,14 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
     case javelinThrow
     case hammerThrow
     
+    case triathlon
     case quadrathlon
     case pentathlon
+    case hexathlon
+    case heptathlon
+    case octathlon
+    case nonathlon
+    case decathlon
     
     case childrensAthletics
     
@@ -84,12 +95,17 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
         case .running10000m: "\(10000) m"
 
         case .hurdles60m: "\(60) m Hurdles"
+        case .hurdles80m: "\(80) m Hurdles"
         case .hurdles100m: "\(100) m Hurdles"
         case .hurdles110m: "\(110) m Hurdles"
         case .hurdles400m: "\(400) m Hurdles"
 
+        case .steeplechase1500m: "\(1500) m Steeplechase"
         case .steeplechase2000m: "\(2000) m Steeplechase"
         case .steeplechase3000m: "\(3000) m Steeplechase"
+
+        case .relay4x100m: "4×100 m Relay"
+        case .relay4x400m: "4×400 m Relay"
 
         case .highJump: "High Jump"
         case .longJump: "Long Jump"
@@ -101,8 +117,14 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
         case .javelinThrow: "Javelin Throw"
         case .hammerThrow: "Hammer Throw"
 
+        case .triathlon: "Triathlon"
         case .quadrathlon: "Quadrathlon"
         case .pentathlon: "Pentathlon"
+        case .hexathlon: "Hexathlon"
+        case .heptathlon: "Heptathlon"
+        case .octathlon: "Octathlon"
+        case .nonathlon: "Nonathlon"
+        case .decathlon: "Decathlon"
 
         case .childrensAthletics: "Children's Athletics"
 
