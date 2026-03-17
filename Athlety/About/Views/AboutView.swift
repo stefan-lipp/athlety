@@ -70,6 +70,7 @@ struct AboutView: View {
             """
         
         Text(description)
+            .font(.body)
             .padding(20)
     }
     
