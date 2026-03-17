@@ -23,3 +23,34 @@ struct EventDetails: Identifiable {
         return Discipline.allCases.filter { uniqueDisciplines.contains($0) }
     }
 }
+
+struct EventLocation: CustomStringConvertible {
+    let name: String
+    let site: String
+    let latitude: Double
+    let longitude: Double
+    
+    var description: String {
+        "\(site), \(name)"
+    }
+}
+
+struct EventRegistration {
+    let deadline: Date
+    let email: String
+}
+
+struct EventLink {
+    let name: String
+    let url: URL
+}
+
+struct EventAttachment {
+    let name: String
+    let url: URL
+}
+
+struct EventDiscipline {
+    let discipline: Discipline
+    let ageGroup: String
+}
