@@ -11,6 +11,7 @@ struct EventDetails: Identifiable {
     let id: Int
     let name: String
     let date: Date
+    let isCancelled: Bool
     let note: String?
     let location: EventLocation
     let registration: EventRegistration

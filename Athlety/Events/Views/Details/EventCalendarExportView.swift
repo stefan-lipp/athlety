@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EventCalendarExportView: View {
-    let event: EventDetails
+    let event: Event
 
     @EnvironmentObject private var calendarEventViewModel: CalendarEventViewModel
     
@@ -16,7 +16,7 @@ struct EventCalendarExportView: View {
 
     var body: some View {
         Button {
-            calendarEventViewModel.addEventToCalendar(Event(event: event))
+            calendarEventViewModel.addEventToCalendar(event)
             showCalendarEventEditView = true
         } label: {
             Label("Add to Calendar", systemImage: "calendar.badge.plus")
@@ -29,9 +29,7 @@ struct EventCalendarExportView: View {
 }
 
 #Preview {
-    let location = EventLocation(name: "Rheinfelden", site: "Europastadion", latitude: 47.5611, longitude: 7.79167)
-    let registration = EventRegistration(deadline: Date(), email: "anmeldung@nachtmeeting.de")
-    let event = EventDetails(id: 44253, name: "Nachmeeting", date: Date(), note: nil, location: location, registration: registration, links: [], attachments: [], disciplines: [])
+    let event = Event(id: 44253, name: "Nachmeeting", location: "Rheinfelden", date: Date(), isCancelled: false)
     
     EventCalendarExportView(event: event)
         .environmentObject(CalendarEventViewModel())

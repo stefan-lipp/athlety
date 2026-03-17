@@ -57,12 +57,21 @@ private struct LadvEvent: Codable {
     let name: String
     let ort: String
     let datum: Int
+    let isCancelled: Bool?
     
+    private enum CodingKeys: String, CodingKey {
+        case id, name, ort, datum
+        case isCancelled = "abgesagt"
+    }
+
     func toEvent() -> Event {
+        Event(id: id, name: name, location: ort, date: date, isCancelled: isCancelled ?? false)
+    }
+    
+    private var date: Date {
         let dateMillis = datum
         let dateSeconds = Double(dateMillis) / 1000
-        let date = Date(timeIntervalSince1970: dateSeconds)
-        return Event(id: id, name: name, location: ort, date: date)
+        return Date(timeIntervalSince1970: dateSeconds)
     }
 }
 
@@ -70,6 +79,7 @@ private struct LadvEventDetails: Codable {
     let id: Int
     let name: String
     let note: String
+    let isCancelled: Bool?
     let ort: LadvEventLocation
     let site: String
     let datum: Int
@@ -78,20 +88,22 @@ private struct LadvEventDetails: Codable {
     let links: [LadvEventLink]
     let attachments: [LadvEventAttachment]
     let disciplines: [LadvEventDiscipline]
-    
+
     private enum CodingKeys: String, CodingKey {
         case id, name, ort, datum, meldEmail, meldDatum, links
+        case isCancelled = "abgesagt"
         case note = "beschreibung"
         case site = "sportstaette"
         case attachments = "attachements"
         case disciplines = "wettbewerbe"
     }
-    
+
     func toEventDetails() -> EventDetails {
-        return EventDetails(
+        EventDetails(
             id: id,
             name: name,
             date: date,
+            isCancelled: isCancelled ?? false,
             note: note.isEmpty ? nil : note,
             location: location,
             registration: registration,

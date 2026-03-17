@@ -13,8 +13,11 @@ struct EventRow: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack(alignment: .firstTextBaseline) {
+            HStack(alignment: .center) {
                 eventLocation
+                if event.isCancelled {
+                    cancelledLabel
+                }
                 Spacer()
                 eventDate
                 chevron
@@ -56,11 +59,20 @@ struct EventRow: View {
         Text(event.name)
             .fontWeight(.semibold)
     }
-    
+
+    private var cancelledLabel: some View {
+        Text("Cancelled")
+            .font(.caption)
+            .fontWeight(.semibold)
+            .foregroundStyle(.white)
+            .padding(.horizontal, 6)
+            .padding(.vertical, 2)
+            .background(.accent, in: Capsule())
+    }
 }
 
 #Preview {
-    let event = Event(id: 44253, name: "36. Rheinfelder Nachtmeeting", location: "Rheinfelden", date: Date())
+    let event = Event(id: 44253, name: "36. Rheinfelder Nachtmeeting", location: "Rheinfelden", date: Date(), isCancelled: true)
     EventRow(event: event, isSaved: true)
         .padding()
 }

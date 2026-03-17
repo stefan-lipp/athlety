@@ -153,7 +153,7 @@ struct EventsList: View {
 
 #Preview {
     @Previewable @State var selectedCategory: EventsOverviewCategory = .upcoming
-    let event = Event(id: 44253, name: "36. Rheinfelder Nachtmeeting", location: "Rheinfelden", date: Date())
+    let event = Event(id: 44253, name: "36. Rheinfelder Nachtmeeting", location: "Rheinfelden", date: Date(), isCancelled: false)
     EventsList(
         selectedCategory: $selectedCategory,
         upcomingEvents: [event],

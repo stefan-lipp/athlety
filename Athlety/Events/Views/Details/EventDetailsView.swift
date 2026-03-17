@@ -1,3 +1,4 @@
+//
 //  EventDetailsView.swift
 //  Athlety
 //
@@ -22,16 +23,17 @@ struct EventDetailsView: View {
                 .listSectionSeparator(.hidden)
 
                 Section {
-                    EventCalendarExportView(event: event)
+                    EventCalendarExportView(event: Event(event: event))
                     EventLinksView(links: event.links)
                     EventAttachmentsView(attachments: event.attachments)
                 }
                 .listSectionSeparator(.hidden)
 
-                if let note = event.note {
+                if event.isCancelled || event.note != nil {
                     Section {
-                        EventNoteView(note: note)
+                        EventNoteView(isCancelled: event.isCancelled, note: event.note)
                     }
+                    .listSectionSeparator(event.isCancelled ? .hidden : .visible)
                 }
 
                 let disciplines = event.deduplicatedDisciplines

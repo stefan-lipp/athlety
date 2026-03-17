@@ -8,15 +8,30 @@
 import SwiftUI
 
 struct EventNoteView: View {
-    let note: String
+    let isCancelled: Bool
+    let note: String?
     
     var body: some View {
         VStack(alignment: .leading) {
             ListSectionHeader(title: "Note")
             
-            Text(note)
-                .padding(.top, 4)
-                .padding(.bottom)
+            if isCancelled {
+                cancellationNote
+            } else if let note {
+                noteText(note)
+            }
         }
+    }
+    
+    private var cancellationNote: some View {
+        Label("The event was cancelled.", systemImage: "xmark.circle")
+            .padding(.top, 12)
+            .padding(.bottom)
+    }
+    
+    private func noteText(_ note: String) -> some View {
+        Text(note)
+            .padding(.top, 4)
+            .padding(.bottom)
     }
 }

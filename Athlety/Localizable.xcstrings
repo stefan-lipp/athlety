@@ -157,6 +157,16 @@
         }
       }
     },
+    "Cancelled" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abgesagt"
+          }
+        }
+      }
+    },
     "Children's Athletics" : {
       "localizations" : {
         "de" : {
@@ -197,26 +207,6 @@
         }
       }
     },
-    "Decathlon" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "10-Kampf"
-          }
-        }
-      }
-    },
-    "Discus Throw" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diskuswurf"
-          }
-        }
-      }
-    },
     "Dark" : {
       "localizations" : {
         "de" : {
@@ -237,12 +227,32 @@
         }
       }
     },
+    "Decathlon" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10-Kampf"
+          }
+        }
+      }
+    },
     "Disciplines" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Disziplinen"
+          }
+        }
+      }
+    },
+    "Discus Throw" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diskuswurf"
           }
         }
       }
@@ -617,6 +627,16 @@
         }
       }
     },
+    "The event was cancelled." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Wettkampf wurde abgesagt."
+          }
+        }
+      }
+    },
     "Track & Field Events" : {
       "localizations" : {
         "de" : {
@@ -627,22 +647,22 @@
         }
       }
     },
-    "Triple Jump" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dreisprung"
-          }
-        }
-      }
-    },
     "Triathlon" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "3-Kampf"
+          }
+        }
+      }
+    },
+    "Triple Jump" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dreisprung"
           }
         }
       }
