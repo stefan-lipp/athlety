@@ -48,7 +48,7 @@ struct EventsToolbar: ToolbarContent {
             Button {
                 showSettings = true
             } label: {
-                Label("Settings", systemImage: "person")
+                Label("Settings", systemImage: "gearshape")
             }
             .sheet(isPresented: $showSettings) {
                 SettingsView()
