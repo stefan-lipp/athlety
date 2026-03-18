@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 90;
 	objects = {
 
 /* Begin PBXFileReference section */
@@ -34,10 +34,8 @@
 /* Begin PBXFrameworksBuildPhase section */
 		E3FB0CB72E0FEF0E0039B0AC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -71,14 +69,10 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			fileSystemSynchronizedGroups = (
 				E3FB0CBC2E0FEF0E0039B0AC /* Athlety */,
 			);
 			name = Athlety;
-			packageProductDependencies = (
-			);
 			productName = Athlety;
 			productReference = E3FB0CBA2E0FEF0E0039B0AC /* Athlety.app */;
 			productType = "com.apple.product-type.application";
@@ -108,7 +102,7 @@
 			);
 			mainGroup = E3FB0CB12E0FEF0E0039B0AC;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
+			preferredProjectObjectVersion = 90;
 			productRefGroup = E3FB0CBB2E0FEF0E0039B0AC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -121,25 +115,21 @@
 /* Begin PBXResourcesBuildPhase section */
 		E3FB0CB82E0FEF0E0039B0AC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E3FB0CB62E0FEF0E0039B0AC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		E3FB0CDF2E0FEF100039B0AC /* Debug */ = {
+		E3FB0CDF2E0FEF100039B0AC /* Debug configuration for PBXNativeTarget "Athlety" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -177,7 +167,7 @@
 			};
 			name = Debug;
 		};
-		E3FB0CE02E0FEF100039B0AC /* Release */ = {
+		E3FB0CE02E0FEF100039B0AC /* Release configuration for PBXNativeTarget "Athlety" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -215,7 +205,7 @@
 			};
 			name = Release;
 		};
-		E3FB0CE12E0FEF100039B0AC /* Debug */ = {
+		E3FB0CE12E0FEF100039B0AC /* Debug configuration for PBXProject "Athlety" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -282,7 +272,7 @@
 			};
 			name = Debug;
 		};
-		E3FB0CE22E0FEF100039B0AC /* Release */ = {
+		E3FB0CE22E0FEF100039B0AC /* Release configuration for PBXProject "Athlety" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -348,19 +338,17 @@
 		E3FB0CB52E0FEF0E0039B0AC /* Build configuration list for PBXProject "Athlety" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E3FB0CE12E0FEF100039B0AC /* Debug */,
-				E3FB0CE22E0FEF100039B0AC /* Release */,
+				E3FB0CE12E0FEF100039B0AC /* Debug configuration for PBXProject "Athlety" */,
+				E3FB0CE22E0FEF100039B0AC /* Release configuration for PBXProject "Athlety" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		E3FB0CDE2E0FEF100039B0AC /* Build configuration list for PBXNativeTarget "Athlety" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E3FB0CDF2E0FEF100039B0AC /* Debug */,
-				E3FB0CE02E0FEF100039B0AC /* Release */,
+				E3FB0CDF2E0FEF100039B0AC /* Debug configuration for PBXNativeTarget "Athlety" */,
+				E3FB0CE02E0FEF100039B0AC /* Release configuration for PBXNativeTarget "Athlety" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
