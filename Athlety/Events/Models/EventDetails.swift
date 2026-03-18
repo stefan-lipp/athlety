@@ -38,8 +38,9 @@ struct EventLocation: CustomStringConvertible {
 }
 
 struct EventRegistration {
-    let deadline: Date
+    let host: String
     let email: String
+    let deadline: Date
 }
 
 struct EventLink {

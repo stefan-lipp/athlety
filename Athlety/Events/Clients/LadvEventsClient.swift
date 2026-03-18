@@ -85,6 +85,7 @@ private struct LadvEventDetails: Codable {
     let datum: Int
     let meldEmail: String
     let meldDatum: Int
+    let host: String
     let url: String
     let links: [LadvEventLink]
     let attachments: [LadvEventAttachment]
@@ -93,6 +94,7 @@ private struct LadvEventDetails: Codable {
     private enum CodingKeys: String, CodingKey {
         case id, name, ort, datum, meldEmail, meldDatum, url, links
         case isCancelled = "abgesagt"
+        case host = "ausrichter"
         case note = "beschreibung"
         case site = "sportstaette"
         case attachments = "attachements"
@@ -129,7 +131,7 @@ private struct LadvEventDetails: Codable {
         let deadlineMillis = meldDatum
         let deadlineSeconds = Double(deadlineMillis) / 1000
         let deadline = Date(timeIntervalSince1970: deadlineSeconds)
-        return EventRegistration(deadline: deadline, email: meldEmail)
+        return EventRegistration(host: host, email: meldEmail, deadline: deadline)
     }
 }
 

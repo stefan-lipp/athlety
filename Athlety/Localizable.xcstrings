@@ -387,6 +387,16 @@
         }
       }
     },
+    "Host" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausrichter"
+          }
+        }
+      }
+    },
     "Information" : {
       "localizations" : {
         "de" : {

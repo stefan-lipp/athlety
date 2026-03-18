@@ -14,6 +14,13 @@ struct EventRegistrationView: View {
     var body: some View {
         ListSectionHeader(title: "Registration")
 
+        HStack {
+            Label("Host", systemImage: "mappin.and.ellipse")
+            Spacer()
+            Text(registration.host)
+        }
+        .padding(.vertical, 8)
+
         if let url = URL(string: "mailto:\(registration.email)") {
             Link(destination: url) {
                 HStack(alignment: .center) {
@@ -24,7 +31,7 @@ struct EventRegistrationView: View {
             }
             .padding(.vertical, 8)
         }
-        
+
         HStack {
             Label("Deadline", systemImage: "calendar.badge.exclamationmark")
             Spacer()
@@ -39,6 +46,6 @@ struct EventRegistrationView: View {
 }
 
 #Preview {
-    let registration = EventRegistration(deadline: Date(), email: "registration@event.de")
+    let registration = EventRegistration(host: "LG Stadtwerke München", email: "registration@event.de", deadline: Date())
     return EventRegistrationView(registration: registration)
 }
