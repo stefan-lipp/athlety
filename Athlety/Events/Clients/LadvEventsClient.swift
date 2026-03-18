@@ -85,12 +85,13 @@ private struct LadvEventDetails: Codable {
     let datum: Int
     let meldEmail: String
     let meldDatum: Int
+    let url: String
     let links: [LadvEventLink]
     let attachments: [LadvEventAttachment]
     let disciplines: [LadvEventDiscipline]
 
     private enum CodingKeys: String, CodingKey {
-        case id, name, ort, datum, meldEmail, meldDatum, links
+        case id, name, ort, datum, meldEmail, meldDatum, url, links
         case isCancelled = "abgesagt"
         case note = "beschreibung"
         case site = "sportstaette"
@@ -106,6 +107,7 @@ private struct LadvEventDetails: Codable {
             isCancelled: isCancelled ?? false,
             note: note.isEmpty ? nil : note,
             location: location,
+            url: URL(string: url),
             registration: registration,
             links: links.compactMap { $0.toLink() },
             attachments: attachments.compactMap { $0.toAttachment() },

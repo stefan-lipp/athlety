@@ -24,7 +24,7 @@ struct EventDetailsView: View {
 
                 Section {
                     EventCalendarExportView(event: Event(event: event))
-                    EventLinksView(links: event.links)
+                    EventLinksView(url: event.url, links: event.links)
                     EventAttachmentsView(attachments: event.attachments)
                 }
                 .listSectionSeparator(.hidden)

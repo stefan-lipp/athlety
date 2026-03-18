@@ -407,6 +407,16 @@
         }
       }
     },
+    "LADV" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LADV"
+          }
+        }
+      }
+    },
     "Language" : {
       "localizations" : {
         "de" : {
@@ -473,6 +483,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "8-Kampf"
+          }
+        }
+      }
+    },
+    "Open on LADV" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auf LADV öffnen"
           }
         }
       }

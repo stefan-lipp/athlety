@@ -9,9 +9,20 @@ import SwiftUI
 import WebKit
 
 struct EventLinksView: View {
+    let url: URL?
     let links: [EventLink]
-    
+
     var body: some View {
+        if let url {
+            NavigationLink {
+                WebView(url: url)
+                    .navigationTitle("LADV")
+            } label: {
+                Label("Open on LADV", systemImage: "network")
+            }
+            .padding(.vertical, 8)
+        }
+
         ForEach(links, id: \.name) { link in
             NavigationLink {
                 WebView(url: link.url)

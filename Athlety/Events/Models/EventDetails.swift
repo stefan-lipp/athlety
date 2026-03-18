@@ -14,6 +14,7 @@ struct EventDetails: Identifiable {
     let isCancelled: Bool
     let note: String?
     let location: EventLocation
+    let url: URL?
     let registration: EventRegistration
     let links: [EventLink]
     let attachments: [EventAttachment]

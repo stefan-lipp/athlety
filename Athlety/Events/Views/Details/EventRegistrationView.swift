@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct EventRegistrationView: View {
-    
+
     let registration: EventRegistration
-    
+
     var body: some View {
         ListSectionHeader(title: "Registration")
-        
+
         if let url = URL(string: "mailto:\(registration.email)") {
             Link(destination: url) {
                 HStack(alignment: .center) {
@@ -22,7 +22,7 @@ struct EventRegistrationView: View {
                     Text(registration.email)
                 }
             }
-            .padding(.bottom, 8)
+            .padding(.vertical, 8)
         }
         
         HStack {
@@ -32,7 +32,7 @@ struct EventRegistrationView: View {
         }
         .padding(.vertical, 8)
     }
-    
+
     private var formattedDeadline: String {
         registration.deadline.formatted(.dateTime.weekday(.wide).day().month(.wide).year())
     }
