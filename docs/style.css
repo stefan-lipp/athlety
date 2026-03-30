@@ -189,6 +189,48 @@ nav a:hover {
   font-size: 1.1rem;
 }
 
+/* Legal pages */
+
+.legal {
+  text-align: left;
+}
+
+.legal h3 {
+  font-size: 1.15rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.legal p,
+.legal ul {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.legal ul {
+  padding-left: 1.5rem;
+}
+
+.legal li {
+  margin-bottom: 0.35rem;
+}
+
+.legal a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.legal a:hover {
+  text-decoration: underline;
+}
+
+.legal-updated {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
 /* Footer */
 
 footer {
