@@ -20,6 +20,9 @@ body {
   color: var(--color-text);
   background: var(--color-bg);
   line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Nav */
@@ -189,6 +192,15 @@ nav a:hover {
   font-size: 1.1rem;
 }
 
+.download a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.download a:hover {
+  text-decoration: underline;
+}
+
 /* Legal pages */
 
 .legal {
@@ -231,12 +243,17 @@ nav a:hover {
   margin-bottom: 1.5rem;
 }
 
+main {
+  flex: 1;
+}
+
 /* Footer */
 
 footer {
   border-top: 1px solid #e0e0e0;
   max-width: var(--max-width);
   margin: 0 auto;
+  width: 100%;
   padding: 2rem 1.5rem;
   display: flex;
   justify-content: space-between;
