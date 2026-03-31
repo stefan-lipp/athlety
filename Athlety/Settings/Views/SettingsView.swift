@@ -102,8 +102,7 @@ struct SettingsView: View {
     
     @ViewBuilder
     private var rateAppRow: some View {
-        // TODO: Provide correct App ID for review URL
-        let reviewUrl = URL(string: "https://apps.apple.com/app/<AppId>?action=write-review")!
+        let reviewUrl = URL(string: "https://apps.apple.com/app/id6761119486?action=write-review")!
         Link(destination: reviewUrl) {
             Label("Rate the App", systemImage: "star")
         }
