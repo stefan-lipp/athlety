@@ -47,22 +47,18 @@
         }
       }
     },
-    "4×100 m Relay" : {
+    "%lld×%lld m Relay" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "4×100 m Staffel"
+            "value" : "%1$lld×%2$lld m Staffel"
           }
-        }
-      }
-    },
-    "4×400 m Relay" : {
-      "localizations" : {
-        "de" : {
+        },
+        "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "4×400 m Staffel"
+            "state" : "new",
+            "value" : "%1$lld×%2$lld m Relay"
           }
         }
       }
@@ -573,6 +569,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Favorit entfernen"
+          }
+        }
+      }
+    },
+    "Road Running" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Straßenlauf"
           }
         }
       }

@@ -40,8 +40,12 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
     case steeplechase2000m
     case steeplechase3000m
 
+    case relay4x50m
+    case relay4x75m
     case relay4x100m
     case relay4x400m
+    case relay3x800m
+    case relay3x1000m
     
     case highJump
     case longJump
@@ -65,7 +69,8 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
     case childrensAthletics
     
     case crossCountry
-    
+    case roadRunning
+
     var id: String {
         return rawValue
     }
@@ -104,8 +109,12 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
         case .steeplechase2000m: "\(2000) m Steeplechase"
         case .steeplechase3000m: "\(3000) m Steeplechase"
 
-        case .relay4x100m: "4×100 m Relay"
-        case .relay4x400m: "4×400 m Relay"
+        case .relay4x50m: "\(4)×\(50) m Relay"
+        case .relay4x75m: "\(4)×\(75) m Relay"
+        case .relay4x100m: "\(4)×\(100) m Relay"
+        case .relay4x400m: "\(4)×\(400) m Relay"
+        case .relay3x800m: "\(3)×\(800) m Relay"
+        case .relay3x1000m: "\(3)×\(1000) m Relay"
 
         case .highJump: "High Jump"
         case .longJump: "Long Jump"
@@ -129,6 +138,7 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
         case .childrensAthletics: "Children's Athletics"
 
         case .crossCountry: "Cross Country"
+        case .roadRunning: "Road Running"
         }
     }
 }

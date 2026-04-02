@@ -191,77 +191,32 @@ private struct LadvEventDiscipline: Codable {
         case "L5K0": .running5000m
         case "L10K": .running10000m
 
-        case "H60",
-             "H60_0600",
-             "H60_0686",
-             "H60_0762",
-             "H60_0838",
-             "H60_0914",
-             "H60_0991",
-             "H60_1067": .hurdles60m
+        case "H60", "H60_0600", "H60_0686", "H60_0762", "H60_0838", "H60_0914", "H60_0991", "H60_1067": .hurdles60m
+        case "H80", "H80_0600", "H80_0686", "H80_0762", "H80_0838", "H80_0914": .hurdles80m
+        case "H100", "H100_0686", "H100_0762", "H100_0838", "H100_0914": .hurdles100m
+        case "H110", "H110_0686", "H110_0762", "H110_0838", "H110_0914", "H110_0991", "H110_1067": .hurdles110m
+        case "H400", "H400_0762", "H400_0838", "H400_0914": .hurdles400m
 
-        case "H80",
-             "H80_0600",
-             "H80_0686",
-             "H80_0762",
-             "H80_0838",
-             "H80_0914": .hurdles80m
-
-        case "H100",
-             "H100_0686",
-             "H100_0762",
-             "H100_0838",
-             "H100_0914": .hurdles100m
-
-        case "H110",
-             "H110_0686",
-             "H110_0762",
-             "H110_0838",
-             "H110_0914",
-             "H110_0991",
-             "H110_1067": .hurdles110m
-
-        case "H400",
-             "H400_0762",
-             "H400_0838",
-             "H400_0914": .hurdles400m
-
-        case "H1K5",
-             "H1K5_0762": .steeplechase1500m
-
-        case "H2K0",
-             "H2K0_0762",
-             "H2K0_0838",
-             "H2K0_0914": .steeplechase2000m
-
-        case "H3K0",
-             "H3K0_0762",
-             "H3K0_0914": .steeplechase3000m
+        case "H1K5", "H1K5_0762": .steeplechase1500m
+        case "H2K0", "H2K0_0762", "H2K0_0838", "H2K0_0914": .steeplechase2000m
+        case "H3K0", "H3K0_0762", "H3K0_0914": .steeplechase3000m
 
         case "THOC": .highJump
         case "TWEI": .longJump
         case "TDRE": .tripleJump
         case "TSTA": .poleVault
 
-        case "TKUG_3000",
-             "TKUG_7260": .shotPut
-
-        case "TDIS",
-             "TDIS_0750",
-             "TDIS_1000",
-             "TDIS_1500",
-             "TDIS_1750",
-             "TDIS_2000": .discusThrow
-
+        case "TKUG_3000", "TKUG_7260": .shotPut
+        case "TDIS", "TDIS_0750", "TDIS_1000", "TDIS_1500", "TDIS_1750", "TDIS_2000": .discusThrow
         case "TSPE_0800": .javelinThrow
+        case "THAM_3000", "THAM_4000", "THAM_6000", "THAM_7260": .hammerThrow
 
-        case "THAM_3000",
-             "THAM_4000",
-             "THAM_6000",
-             "THAM_7260": .hammerThrow
-
+        case "X4X5": .relay4x50m
+        case "X4X7": .relay4x75m
         case "X4X1": .relay4x100m
         case "X4X4": .relay4x400m
+        case "X3X8": .relay3x800m
+        case "X3X1": .relay3x1000m
 
         case "M3K": .triathlon
         case "M4K": .quadrathlon
@@ -275,6 +230,7 @@ private struct LadvEventDiscipline: Codable {
         case "KKILA": .childrensAthletics
 
         case "SCR": .crossCountry
+        case "SL", "SLK", "SLL": .roadRunning
 
         default: nil
         }
