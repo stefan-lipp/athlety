@@ -52,6 +52,7 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
     case tripleJump
     case poleVault
     
+    case ballThrow
     case shotPut
     case discusThrow
     case javelinThrow
@@ -65,7 +66,14 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
     case octathlon
     case nonathlon
     case decathlon
-    
+
+    case blockSprint
+    case blockRun
+    case blockThrow
+    case blockTeam
+    case blockIndividual
+    case blockBasic
+
     case childrensAthletics
     
     case crossCountry
@@ -121,6 +129,7 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
         case .tripleJump: "Triple Jump"
         case .poleVault: "Pole Vault"
 
+        case .ballThrow: "Ball Throw"
         case .shotPut: "Shot Put"
         case .discusThrow: "Discus Throw"
         case .javelinThrow: "Javelin Throw"
@@ -134,6 +143,13 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
         case .octathlon: "Octathlon"
         case .nonathlon: "Nonathlon"
         case .decathlon: "Decathlon"
+
+        case .blockSprint: "Block Sprint/Jump"
+        case .blockRun: "Block Running"
+        case .blockThrow: "Block Throwing"
+        case .blockTeam: "Block Team"
+        case .blockIndividual: "Block Individual"
+        case .blockBasic: "Block Basic"
 
         case .childrensAthletics: "Children's Athletics"
 

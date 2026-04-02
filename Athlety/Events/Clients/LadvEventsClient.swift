@@ -206,10 +206,11 @@ private struct LadvEventDiscipline: Codable {
         case "TDRE": .tripleJump
         case "TSTA": .poleVault
 
-        case "TKUG_3000", "TKUG_7260": .shotPut
+        case "TBAL_0200": .ballThrow
+        case "TKUG", "TKUG_2000", "TKUG_3000", "TKUG_4000", "TKUG_5000", "TKUG_6000", "TKUG_7260": .shotPut
         case "TDIS", "TDIS_0750", "TDIS_1000", "TDIS_1500", "TDIS_1750", "TDIS_2000": .discusThrow
-        case "TSPE_0800": .javelinThrow
-        case "THAM_3000", "THAM_4000", "THAM_6000", "THAM_7260": .hammerThrow
+        case "TSPE", "TSPE_0400", "TSPE_0500", "TSPE_0600", "TSPE_0700", "TSPE_0800": .javelinThrow
+        case "THAM", "THAM_2000", "THAM_3000", "THAM_4000", "THAM_5000", "THAM_6000", "THAM_7260": .hammerThrow
 
         case "X4X5": .relay4x50m
         case "X4X7": .relay4x75m
@@ -226,6 +227,13 @@ private struct LadvEventDiscipline: Codable {
         case "M8K": .octathlon
         case "M9K": .nonathlon
         case "M10K": .decathlon
+
+        case "MBLS": .blockSprint
+        case "MBLL": .blockRun
+        case "MBLW": .blockThrow
+        case "MBLM": .blockTeam
+        case "MBLE": .blockIndividual
+        case "MBLB": .blockBasic
 
         case "KKILA": .childrensAthletics
 

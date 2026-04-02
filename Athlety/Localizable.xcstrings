@@ -133,6 +133,76 @@
         }
       }
     },
+    "Ball Throw" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ballwurf"
+          }
+        }
+      }
+    },
+    "Block Basic" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Block Basis"
+          }
+        }
+      }
+    },
+    "Block Individual" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Block Einzel"
+          }
+        }
+      }
+    },
+    "Block Running" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Block Lauf"
+          }
+        }
+      }
+    },
+    "Block Sprint/Jump" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Block Sprint/Sprung"
+          }
+        }
+      }
+    },
+    "Block Team" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Block Mannschaft"
+          }
+        }
+      }
+    },
+    "Block Throwing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Block Wurf"
+          }
+        }
+      }
+    },
     "Bookamrks" : {
       "localizations" : {
         "de" : {
