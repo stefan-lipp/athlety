@@ -14,8 +14,8 @@ class EventsOverviewViewModel: ObservableObject {
 
     private let client: EventsClient = LadvEventsClient()
 
-    func loadUpcomingEvents(for associationId: String?) async {
-        upcomingEvents = await client.loadUpcomingEvents(for: associationId)
+    func loadUpcomingEvents(for associationId: String?, and discipline: Discipline?) async {
+        upcomingEvents = await client.loadUpcomingEvents(for: associationId, and: discipline)
     }
 
     func saveEventAsBookmark(_ event: Event, in context: ModelContext) {

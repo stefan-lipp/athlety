@@ -13,6 +13,7 @@ class EventsFilterViewModel: ObservableObject {
     @Published private(set) var associations: [Association] = []
     
     @AppStorage("eventsFilterAssociationId") var eventsFilterAssociationId: String?
+    @AppStorage("eventsFilterDiscipline") var eventsFilterDiscipline: Discipline?
     
     private let client: AssociationsClient = LadvAssociationsClient()
     

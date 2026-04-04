@@ -15,7 +15,7 @@ class LadvEventsClient: EventsClient {
     private let eventsUrl = "\(baseUrl)/\(apiKey)/ausList"
     private let eventDetailsUrl = "\(baseUrl)/\(apiKey)/ausDetail"
     
-    func loadUpcomingEvents(for associationId: String?) async -> [Event] {
+    func loadUpcomingEvents(for associationId: String?, and discipline: Discipline?) async -> [Event] {
         var urlComponents = URLComponents(string: eventsUrl)!
         urlComponents.queryItems = [
             URLQueryItem(name: "mostCurrent", value: "true"),
@@ -23,6 +23,9 @@ class LadvEventsClient: EventsClient {
         ]
         if let associationId {
             urlComponents.queryItems?.append(URLQueryItem(name: "lv", value: associationId))
+        }
+        if let discipline {
+            urlComponents.queryItems?.append(URLQueryItem(name: "disziplin", value: discipline.disziplin))
         }
         let request = URLRequest(url: urlComponents.url!)
         guard let (data, response) = try? await URLSession.shared.data(for: request) else { return [] }
@@ -225,7 +228,6 @@ private struct LadvEventDiscipline: Codable {
         case "M6K": .hexathlon
         case "M7K": .heptathlon
         case "M8K": .octathlon
-        case "M9K": .nonathlon
         case "M10K": .decathlon
 
         case "MBLS": .blockSprint
@@ -247,5 +249,84 @@ private struct LadvEventDiscipline: Codable {
     func toDiscipline() -> EventDiscipline? {
         guard let discipline else { return nil }
         return EventDiscipline(discipline: discipline, ageGroup: klasseNew)
+    }
+}
+
+extension Discipline {
+    
+    var disziplin: String {
+        switch self {
+            
+        case .sprint30m: "30"
+        case .sprint40m: "40"
+        case .sprint50m: "50"
+        case .sprint60m: "60"
+        case .sprint75m: "75"
+        case .sprint80m: "80"
+        case .sprint100m: "100"
+        case .sprint150m: "150"
+        case .sprint200m: "200"
+        case .sprint300m: "300"
+        case .sprint400m: "400"
+            
+        case .running500m: "500"
+        case .running600m: "600"
+        case .running800m: "800"
+        case .running1000m: "1K0"
+        case .running1500m: "1K5"
+        case .running2000m: "2K0"
+        case .running3000m: "3K0"
+        case .running5000m: "5K0"
+        case .running10000m: "10K"
+        
+        case .hurdles60m: "60H"
+        case .hurdles80m: "80H"
+        case .hurdles100m: "100H"
+        case .hurdles110m: "110H"
+        case .hurdles400m: "400H"
+
+        case .steeplechase1500m: "1K5H"
+        case .steeplechase2000m: "2K0H"
+        case .steeplechase3000m: "3K0H"
+
+        case .relay4x50m: "4X5"
+        case .relay4x75m: "4X7"
+        case .relay4x100m: "4X1"
+        case .relay4x400m: "4X4"
+        case .relay3x800m: "3X8"
+        case .relay3x1000m: "3X1"
+        
+        case .highJump: "HOC"
+        case .longJump: "WEI"
+        case .tripleJump: "DRE"
+        case .poleVault: "STA"
+        
+        case .ballThrow: "SCH"
+        case .shotPut: "KUG"
+        case .discusThrow: "DIS"
+        case .javelinThrow: "SPE"
+        case .hammerThrow: "HAM"
+        
+        case .triathlon: "3-K"
+        case .quadrathlon: "4-K"
+        case .pentathlon: "5-K"
+        case .hexathlon: "6-K"
+        case .heptathlon: "7-K"
+        case .octathlon: "8-K"
+        case .nonathlon: "9-K"
+        case .decathlon: "10-K"
+
+        case .blockSprint: "BLS"
+        case .blockRun: "BLL"
+        case .blockThrow: "BLW"
+        case .blockTeam: "BLM"
+        case .blockIndividual: "BLE"
+        case .blockBasic: "BLB"
+
+        case .childrensAthletics: "KILA"
+        
+        case .crossCountry: "CROS"
+        case .roadRunning: "SL"
+        }
     }
 }

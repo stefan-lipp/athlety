@@ -39,15 +39,20 @@ struct EventsOverview: View {
             }
         }
         .task {
-            let associationId = eventsFilterViewModel.eventsFilterAssociationId
-            await eventsOverviewViewModel.loadUpcomingEvents(for: associationId)
+            await reloadEvents()
         }
         .onChange(of: eventsFilterViewModel.eventsFilterAssociationId) {
-            Task {
-                let associationId = eventsFilterViewModel.eventsFilterAssociationId
-                await eventsOverviewViewModel.loadUpcomingEvents(for: associationId)
-            }
+            Task { await reloadEvents() }
         }
+        .onChange(of: eventsFilterViewModel.eventsFilterDiscipline) {
+            Task { await reloadEvents() }
+        }
+    }
+    
+    private func reloadEvents() async {
+        let associationId = eventsFilterViewModel.eventsFilterAssociationId
+        let discipline = eventsFilterViewModel.eventsFilterDiscipline
+        await eventsOverviewViewModel.loadUpcomingEvents(for: associationId, and: discipline)
     }
 }
 
