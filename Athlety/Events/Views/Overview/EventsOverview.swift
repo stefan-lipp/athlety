@@ -23,6 +23,11 @@ struct EventsOverview: View {
         eventBookmarks.map { $0.toEvent() }
     }
     
+    private var hasActiveFilter: Bool {
+        eventsFilterViewModel.eventsFilterAssociationId != nil ||
+        eventsFilterViewModel.eventsFilterDiscipline != nil
+    }
+    
     var body: some View {
         NavigationStack {
             EventsList(
@@ -34,7 +39,6 @@ struct EventsOverview: View {
             )
             .navigationTitle("Events")
             .toolbar {
-                let hasActiveFilter = eventsFilterViewModel.eventsFilterAssociationId != nil
                 EventsToolbar(selectedCategory: selectedCategory, hasActiveFilter: hasActiveFilter)
             }
         }

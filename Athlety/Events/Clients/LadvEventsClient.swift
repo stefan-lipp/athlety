@@ -193,6 +193,9 @@ private struct LadvEventDiscipline: Codable {
         case "L1K0": .running1000m
         case "L5K0": .running5000m
         case "L10K": .running10000m
+        
+        case "SL", "SLK", "SLL": .roadRunning
+        case "SCR": .crossCountry
 
         case "H60", "H60_0600", "H60_0686", "H60_0762", "H60_0838", "H60_0914", "H60_0991", "H60_1067": .hurdles60m
         case "H80", "H80_0600", "H80_0686", "H80_0762", "H80_0838", "H80_0914": .hurdles80m
@@ -234,13 +237,8 @@ private struct LadvEventDiscipline: Codable {
         case "MBLL": .blockRun
         case "MBLW": .blockThrow
         case "MBLM": .blockTeam
-        case "MBLE": .blockIndividual
-        case "MBLB": .blockBasic
 
         case "KKILA": .childrensAthletics
-
-        case "SCR": .crossCountry
-        case "SL", "SLK", "SLL": .roadRunning
 
         default: nil
         }
@@ -278,6 +276,9 @@ extension Discipline {
         case .running3000m: "3K0"
         case .running5000m: "5K0"
         case .running10000m: "10K"
+        
+        case .roadRunning: "SL"
+        case .crossCountry: "CROS"
         
         case .hurdles60m: "60H"
         case .hurdles80m: "80H"
@@ -320,13 +321,8 @@ extension Discipline {
         case .blockRun: "BLL"
         case .blockThrow: "BLW"
         case .blockTeam: "BLM"
-        case .blockIndividual: "BLE"
-        case .blockBasic: "BLB"
 
         case .childrensAthletics: "KILA"
-        
-        case .crossCountry: "CROS"
-        case .roadRunning: "SL"
         }
     }
 }

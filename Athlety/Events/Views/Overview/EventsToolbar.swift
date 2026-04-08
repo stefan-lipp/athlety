@@ -21,7 +21,7 @@ struct EventsToolbar: ToolbarContent {
         ToolbarSpacer()
         settingsButton
     }
-    
+     
     @ToolbarContentBuilder
     private var filterButton: some ToolbarContent {
         ToolbarItem {

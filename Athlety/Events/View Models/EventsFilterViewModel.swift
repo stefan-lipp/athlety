@@ -20,4 +20,8 @@ class EventsFilterViewModel: ObservableObject {
     func loadAssociations() async {
         associations = await client.loadAssociations()
     }
+    
+    func association(withId associationId: String) -> Association? {
+        associations.first(where: { $0.id == associationId })
+    }
 }

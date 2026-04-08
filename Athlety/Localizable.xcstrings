@@ -113,6 +113,16 @@
         }
       }
     },
+    "Association" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Landesverband"
+          }
+        }
+      }
+    },
     "Athlety" : {
       "localizations" : {
         "de" : {
@@ -143,22 +153,12 @@
         }
       }
     },
-    "Block Basic" : {
+    "Block Events" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Block Basis"
-          }
-        }
-      }
-    },
-    "Block Individual" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Block Einzel"
+            "value" : "Blockwettkämpfe"
           }
         }
       }
@@ -233,6 +233,17 @@
         }
       }
     },
+    "Children" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kinder"
+          }
+        }
+      }
+    },
     "Children's Athletics" : {
       "localizations" : {
         "de" : {
@@ -299,6 +310,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "10-Kampf"
+          }
+        }
+      }
+    },
+    "Discipline" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disziplin"
           }
         }
       }
@@ -463,6 +484,16 @@
         }
       }
     },
+    "Hurdles" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hürden"
+          }
+        }
+      }
+    },
     "Information" : {
       "localizations" : {
         "de" : {
@@ -479,6 +510,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Speerwurf"
+          }
+        }
+      }
+    },
+    "Jumps" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sprünge"
           }
         }
       }
@@ -519,6 +560,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Weitsprung"
+          }
+        }
+      }
+    },
+    "Multi-Events" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehrkämpfe"
           }
         }
       }
@@ -633,6 +684,16 @@
         }
       }
     },
+    "Relays" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Staffeln"
+          }
+        }
+      }
+    },
     "Remove Bookmark" : {
       "localizations" : {
         "de" : {
@@ -649,6 +710,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Straßenlauf"
+          }
+        }
+      }
+    },
+    "Running" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lauf"
           }
         }
       }
@@ -713,6 +784,26 @@
         }
       }
     },
+    "Sprint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sprint"
+          }
+        }
+      }
+    },
+    "Steeplechase" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hindernis"
+          }
+        }
+      }
+    },
     "System" : {
       "localizations" : {
         "de" : {
@@ -739,6 +830,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Der Wettkampf wurde abgesagt."
+          }
+        }
+      }
+    },
+    "Throws" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wurf"
           }
         }
       }

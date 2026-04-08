@@ -29,6 +29,9 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
     case running3000m
     case running5000m
     case running10000m
+    
+    case roadRunning
+    case crossCountry
 
     case hurdles60m
     case hurdles80m
@@ -71,16 +74,63 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
     case blockRun
     case blockThrow
     case blockTeam
-    case blockIndividual
-    case blockBasic
 
     case childrensAthletics
-    
-    case crossCountry
-    case roadRunning
+
+    enum Category: String, CaseIterable, Identifiable {
+        case sprint, running, hurdles, steeplechase, relays, jumps, throwing, multiEvents, blockEvents
+
+        var id: String { rawValue }
+
+        var localized: LocalizedStringKey {
+            switch self {
+            case .sprint: "Sprint"
+            case .running: "Running"
+            case .hurdles: "Hurdles"
+            case .steeplechase: "Steeplechase"
+            case .relays: "Relays"
+            case .jumps: "Jumps"
+            case .throwing: "Throws"
+            case .multiEvents: "Multi-Events"
+            case .blockEvents: "Block Events"
+            }
+        }
+    }
 
     var id: String {
         return rawValue
+    }
+
+    var category: Category? {
+        switch self {
+        case .sprint30m, .sprint40m, .sprint50m, .sprint60m, .sprint75m, .sprint80m,
+             .sprint100m, .sprint150m, .sprint200m, .sprint300m, .sprint400m:
+            .sprint
+        case .running500m, .running600m, .running800m, .running1000m, .running1500m,
+             .running2000m, .running3000m, .running5000m, .running10000m, .crossCountry, .roadRunning:
+            .running
+        case .hurdles60m, .hurdles80m, .hurdles100m, .hurdles110m, .hurdles400m:
+            .hurdles
+        case .steeplechase1500m, .steeplechase2000m, .steeplechase3000m:
+            .steeplechase
+        case .relay4x50m, .relay4x75m, .relay4x100m, .relay4x400m, .relay3x800m, .relay3x1000m:
+            .relays
+        case .highJump, .longJump, .tripleJump, .poleVault:
+            .jumps
+        case .ballThrow, .shotPut, .discusThrow, .javelinThrow, .hammerThrow:
+            .throwing
+        case .triathlon, .quadrathlon, .pentathlon, .hexathlon, .heptathlon,
+             .octathlon, .nonathlon, .decathlon:
+            .multiEvents
+        case .blockSprint, .blockRun, .blockThrow, .blockTeam:
+            .blockEvents
+        default:
+            nil
+        }
+    }
+
+    static func disciplines(for category: Category) -> [Discipline] {
+        allCases.filter { $0.category == category }
     }
     
     var localized: LocalizedStringKey {
@@ -106,6 +156,9 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
         case .running3000m: "\(3000) m"
         case .running5000m: "\(5000) m"
         case .running10000m: "\(10000) m"
+            
+        case .roadRunning: "Road Running"
+        case .crossCountry: "Cross Country"
 
         case .hurdles60m: "\(60) m Hurdles"
         case .hurdles80m: "\(80) m Hurdles"
@@ -148,13 +201,8 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
         case .blockRun: "Block Running"
         case .blockThrow: "Block Throwing"
         case .blockTeam: "Block Team"
-        case .blockIndividual: "Block Individual"
-        case .blockBasic: "Block Basic"
 
         case .childrensAthletics: "Children's Athletics"
-
-        case .crossCountry: "Cross Country"
-        case .roadRunning: "Road Running"
         }
     }
 }
