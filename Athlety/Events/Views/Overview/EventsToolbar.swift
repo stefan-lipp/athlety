@@ -9,19 +9,19 @@ import SwiftUI
 
 struct EventsToolbar: ToolbarContent {
     @Environment(\.colorScheme) private var colorScheme
-    
+
     let selectedCategory: EventsOverviewCategory
     let hasActiveFilter: Bool
-    
+
     @State private var showFilter = false
     @State private var showSettings = false
-    
+
     var body: some ToolbarContent {
         filterButton
         ToolbarSpacer()
         settingsButton
     }
-     
+
     @ToolbarContentBuilder
     private var filterButton: some ToolbarContent {
         ToolbarItem {
@@ -41,7 +41,7 @@ struct EventsToolbar: ToolbarContent {
             }
         }
     }
-    
+
     @ToolbarContentBuilder
     private var settingsButton: some ToolbarContent {
         ToolbarItem {

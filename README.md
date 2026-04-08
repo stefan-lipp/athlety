@@ -12,7 +12,7 @@ Your feedback and suggestions are always welcome and help improve the app.
 
 Athley currently supports the following functionality:
 - Get an overview about upcoming track & field events in Germany
-- Filter upcoming events by state association
+- Filter upcoming events by state association or discipline
 - View documents like the official announcement or schedule for events
 - Export individual events to your personal calendar
 - Save events for quick access as bookmarks on device

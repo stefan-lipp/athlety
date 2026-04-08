@@ -33,7 +33,7 @@ Before building, copy `Athlety/AppConfig.sample.plist` to `Athlety/AppConfig.pli
 | `Bookmarks/` | SwiftData `EventBookmark` model for persisting saved events (synced via iCloud) |
 | `Associations/` | State association data for filtering events by region |
 | `Calendar/` | EventKit integration for exporting events |
-| `Disciplines/` | `Discipline` enum (~30 athletic disciplines) |
+| `Disciplines/` | `Discipline` enum (~50 athletic disciplines) with `Category`-based grouping |
 | `Settings/` | `SettingsStore` (@AppStorage), appearance preferences |
 | `Welcome/` | Onboarding flow |
 | `Library/` | Shared utilities: `WrappingHStack` (custom Layout), extensions |
