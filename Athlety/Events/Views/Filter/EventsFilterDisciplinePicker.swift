@@ -10,12 +10,14 @@ import SwiftUI
 struct EventsFilterDisciplinePicker: View {
     @Binding var selectedDiscipline: Discipline?
 
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {
         List {
             EventsFilterRow(
                 name: "All",
                 isSelected: selectedDiscipline == nil,
-                onSelect: { selectedDiscipline = nil }
+                onSelect: { selectDiscipline(nil) }
             )
 
             ForEach(Discipline.Category.allCases) { category in
@@ -24,7 +26,7 @@ struct EventsFilterDisciplinePicker: View {
                         EventsFilterRow(
                             name: discipline.localized,
                             isSelected: selectedDiscipline == discipline,
-                            onSelect: { selectedDiscipline = discipline }
+                            onSelect: { selectDiscipline(discipline) }
                         )
                     }
                 }
@@ -33,10 +35,15 @@ struct EventsFilterDisciplinePicker: View {
             EventsFilterRow(
                 name: "Children's Athletics",
                 isSelected: selectedDiscipline == .childrensAthletics,
-                onSelect: { selectedDiscipline = .childrensAthletics }
+                onSelect: { selectDiscipline(.childrensAthletics) }
             )
         }
         .navigationTitle("Discipline")
         .environment(\.defaultMinListRowHeight, 56)
+    }
+    
+    private func selectDiscipline(_ discipline: Discipline?) {
+        selectedDiscipline = discipline
+        dismiss()
     }
 }

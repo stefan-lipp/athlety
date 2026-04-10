@@ -12,8 +12,8 @@ struct EventsOverview: View {
     
     @Environment(\.modelContext) private var modelContext
     
-    @EnvironmentObject private var eventsOverviewViewModel: EventsOverviewViewModel
-    @EnvironmentObject private var eventsFilterViewModel: EventsFilterViewModel
+    @EnvironmentObject private var overviewViewModel: EventsOverviewViewModel
+    @EnvironmentObject private var filterViewModel: EventsFilterViewModel
     
     @State private var selectedCategory: EventsOverviewCategory = .upcoming
     
@@ -24,18 +24,18 @@ struct EventsOverview: View {
     }
     
     private var hasActiveFilter: Bool {
-        eventsFilterViewModel.eventsFilterAssociationId != nil ||
-        eventsFilterViewModel.eventsFilterDiscipline != nil
+        filterViewModel.associationId != nil ||
+        filterViewModel.discipline != nil
     }
     
     var body: some View {
         NavigationStack {
             EventsList(
                 selectedCategory: $selectedCategory,
-                upcomingEvents: eventsOverviewViewModel.upcomingEvents,
+                upcomingEvents: overviewViewModel.upcomingEvents,
                 savedEvents: savedEvents,
-                onSaveAsBookmark: { eventsOverviewViewModel.saveEventAsBookmark($0, in: modelContext) },
-                onRemoveFromBookmarks: { eventsOverviewViewModel.removeEventFromBookmarks($0, in: modelContext) }
+                onSaveAsBookmark: { overviewViewModel.saveEventAsBookmark($0, in: modelContext) },
+                onRemoveFromBookmarks: { overviewViewModel.removeEventFromBookmarks($0, in: modelContext) }
             )
             .navigationTitle("Events")
             .toolbar {
@@ -45,18 +45,18 @@ struct EventsOverview: View {
         .task {
             await reloadEvents()
         }
-        .onChange(of: eventsFilterViewModel.eventsFilterAssociationId) {
+        .onChange(of: filterViewModel.associationId) {
             Task { await reloadEvents() }
         }
-        .onChange(of: eventsFilterViewModel.eventsFilterDiscipline) {
+        .onChange(of: filterViewModel.discipline) {
             Task { await reloadEvents() }
         }
     }
     
     private func reloadEvents() async {
-        let associationId = eventsFilterViewModel.eventsFilterAssociationId
-        let discipline = eventsFilterViewModel.eventsFilterDiscipline
-        await eventsOverviewViewModel.loadUpcomingEvents(for: associationId, and: discipline)
+        let associationId = filterViewModel.associationId
+        let discipline = filterViewModel.discipline
+        await overviewViewModel.loadUpcomingEvents(for: associationId, and: discipline)
     }
 }
 

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EventsFilterView: View {
 
-    @EnvironmentObject private var viewModel: EventsFilterViewModel
+    @EnvironmentObject private var filterViewModel: EventsFilterViewModel
 
     @Environment(\.dismiss) private var dismiss
 
@@ -21,7 +21,7 @@ struct EventsFilterView: View {
             List {
                 NavigationLink {
                     EventsFilterAssociationPicker(
-                        associations: viewModel.associations,
+                        associations: filterViewModel.associations,
                         selectedAssociationId: $selectedAssociationId
                     )
                 } label: {
@@ -47,9 +47,9 @@ struct EventsFilterView: View {
             .toolbar { toolbar }
         }
         .task {
-            await viewModel.loadAssociations()
-            selectedAssociationId = viewModel.eventsFilterAssociationId
-            selectedDiscipline = viewModel.eventsFilterDiscipline
+            await filterViewModel.loadAssociations()
+            selectedAssociationId = filterViewModel.associationId
+            selectedDiscipline = filterViewModel.discipline
         }
     }
 
@@ -62,15 +62,15 @@ struct EventsFilterView: View {
         }
         ToolbarItem(placement: .confirmationAction) {
             Button("Done", systemImage: "checkmark") {
-                viewModel.eventsFilterAssociationId = selectedAssociationId
-                viewModel.eventsFilterDiscipline = selectedDiscipline
+                filterViewModel.associationId = selectedAssociationId
+                filterViewModel.discipline = selectedDiscipline
                 dismiss()
             }
         }
     }
 
     private var associationDisplayName: LocalizedStringKey {
-        if let id = selectedAssociationId, let association = viewModel.association(withId: id) {
+        if let id = selectedAssociationId, let association = filterViewModel.association(withId: id) {
             return LocalizedStringKey(association.name)
         }
         return "All"
