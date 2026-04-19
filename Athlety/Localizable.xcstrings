@@ -123,6 +123,16 @@
         }
       }
     },
+    "Association not found" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Landesverband nicht gefunden"
+          }
+        }
+      }
+    },
     "Athlety" : {
       "localizations" : {
         "de" : {
@@ -233,17 +243,6 @@
         }
       }
     },
-    "Children" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kinder"
-          }
-        }
-      }
-    },
     "Children's Athletics" : {
       "localizations" : {
         "de" : {
@@ -320,6 +319,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Disziplin"
+          }
+        }
+      }
+    },
+    "Discipline not found" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disziplin nicht gefunden"
           }
         }
       }

@@ -82,17 +82,17 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
 
         var id: String { rawValue }
 
-        var localized: LocalizedStringKey {
+        var displayName: String {
             switch self {
-            case .sprint: "Sprint"
-            case .running: "Running"
-            case .hurdles: "Hurdles"
-            case .steeplechase: "Steeplechase"
-            case .relays: "Relays"
-            case .jumps: "Jumps"
-            case .throwing: "Throws"
-            case .multiEvents: "Multi-Events"
-            case .blockEvents: "Block Events"
+            case .sprint: String(localized: "Sprint")
+            case .running: String(localized: "Running")
+            case .hurdles: String(localized: "Hurdles")
+            case .steeplechase: String(localized: "Steeplechase")
+            case .relays: String(localized: "Relays")
+            case .jumps: String(localized: "Jumps")
+            case .throwing: String(localized: "Throws")
+            case .multiEvents: String(localized: "Multi-Events")
+            case .blockEvents: String(localized: "Block Events")
             }
         }
     }
@@ -133,76 +133,76 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
         allCases.filter { $0.category == category }
     }
     
-    var localized: LocalizedStringKey {
+    var displayName: String {
         switch self {
-        case .sprint30m: "\(30) m"
-        case .sprint40m: "\(40) m"
-        case .sprint50m: "\(50) m"
-        case .sprint60m: "\(60) m"
-        case .sprint75m: "\(75) m"
-        case .sprint80m: "\(80) m"
-        case .sprint100m: "\(100) m"
-        case .sprint150m: "\(150) m"
-        case .sprint200m: "\(200) m"
-        case .sprint300m: "\(300) m"
-        case .sprint400m: "\(400) m"
+        case .sprint30m: String(localized: "\(30) m")
+        case .sprint40m: String(localized: "\(40) m")
+        case .sprint50m: String(localized: "\(50) m")
+        case .sprint60m: String(localized: "\(60) m")
+        case .sprint75m: String(localized: "\(75) m")
+        case .sprint80m: String(localized: "\(80) m")
+        case .sprint100m: String(localized: "\(100) m")
+        case .sprint150m: String(localized: "\(150) m")
+        case .sprint200m: String(localized: "\(200) m")
+        case .sprint300m: String(localized: "\(300) m")
+        case .sprint400m: String(localized: "\(400) m")
 
-        case .running500m: "\(500) m"
-        case .running600m: "\(600) m"
-        case .running800m: "\(800) m"
-        case .running1000m: "\(1000) m"
-        case .running1500m: "\(1500) m"
-        case .running2000m: "\(2000) m"
-        case .running3000m: "\(3000) m"
-        case .running5000m: "\(5000) m"
-        case .running10000m: "\(10000) m"
-            
-        case .roadRunning: "Road Running"
-        case .crossCountry: "Cross Country"
+        case .running500m: String(localized: "\(500) m")
+        case .running600m: String(localized: "\(600) m")
+        case .running800m: String(localized: "\(800) m")
+        case .running1000m: String(localized: "\(1000) m")
+        case .running1500m: String(localized: "\(1500) m")
+        case .running2000m: String(localized: "\(2000) m")
+        case .running3000m: String(localized: "\(3000) m")
+        case .running5000m: String(localized: "\(5000) m")
+        case .running10000m: String(localized: "\(10000) m")
 
-        case .hurdles60m: "\(60) m Hurdles"
-        case .hurdles80m: "\(80) m Hurdles"
-        case .hurdles100m: "\(100) m Hurdles"
-        case .hurdles110m: "\(110) m Hurdles"
-        case .hurdles400m: "\(400) m Hurdles"
+        case .roadRunning: String(localized: "Road Running")
+        case .crossCountry: String(localized: "Cross Country")
 
-        case .steeplechase1500m: "\(1500) m Steeplechase"
-        case .steeplechase2000m: "\(2000) m Steeplechase"
-        case .steeplechase3000m: "\(3000) m Steeplechase"
+        case .hurdles60m: String(localized: "\(60) m Hurdles")
+        case .hurdles80m: String(localized: "\(80) m Hurdles")
+        case .hurdles100m: String(localized: "\(100) m Hurdles")
+        case .hurdles110m: String(localized: "\(110) m Hurdles")
+        case .hurdles400m: String(localized: "\(400) m Hurdles")
 
-        case .relay4x50m: "\(4)×\(50) m Relay"
-        case .relay4x75m: "\(4)×\(75) m Relay"
-        case .relay4x100m: "\(4)×\(100) m Relay"
-        case .relay4x400m: "\(4)×\(400) m Relay"
-        case .relay3x800m: "\(3)×\(800) m Relay"
-        case .relay3x1000m: "\(3)×\(1000) m Relay"
+        case .steeplechase1500m: String(localized: "\(1500) m Steeplechase")
+        case .steeplechase2000m: String(localized: "\(2000) m Steeplechase")
+        case .steeplechase3000m: String(localized: "\(3000) m Steeplechase")
 
-        case .highJump: "High Jump"
-        case .longJump: "Long Jump"
-        case .tripleJump: "Triple Jump"
-        case .poleVault: "Pole Vault"
+        case .relay4x50m: String(localized: "\(4)×\(50) m Relay")
+        case .relay4x75m: String(localized: "\(4)×\(75) m Relay")
+        case .relay4x100m: String(localized: "\(4)×\(100) m Relay")
+        case .relay4x400m: String(localized: "\(4)×\(400) m Relay")
+        case .relay3x800m: String(localized: "\(3)×\(800) m Relay")
+        case .relay3x1000m: String(localized: "\(3)×\(1000) m Relay")
 
-        case .ballThrow: "Ball Throw"
-        case .shotPut: "Shot Put"
-        case .discusThrow: "Discus Throw"
-        case .javelinThrow: "Javelin Throw"
-        case .hammerThrow: "Hammer Throw"
+        case .highJump: String(localized: "High Jump")
+        case .longJump: String(localized: "Long Jump")
+        case .tripleJump: String(localized: "Triple Jump")
+        case .poleVault: String(localized: "Pole Vault")
 
-        case .triathlon: "Triathlon"
-        case .quadrathlon: "Quadrathlon"
-        case .pentathlon: "Pentathlon"
-        case .hexathlon: "Hexathlon"
-        case .heptathlon: "Heptathlon"
-        case .octathlon: "Octathlon"
-        case .nonathlon: "Nonathlon"
-        case .decathlon: "Decathlon"
+        case .ballThrow: String(localized: "Ball Throw")
+        case .shotPut: String(localized: "Shot Put")
+        case .discusThrow: String(localized: "Discus Throw")
+        case .javelinThrow: String(localized: "Javelin Throw")
+        case .hammerThrow: String(localized: "Hammer Throw")
 
-        case .blockSprint: "Block Sprint/Jump"
-        case .blockRun: "Block Running"
-        case .blockThrow: "Block Throwing"
-        case .blockTeam: "Block Team"
+        case .triathlon: String(localized: "Triathlon")
+        case .quadrathlon: String(localized: "Quadrathlon")
+        case .pentathlon: String(localized: "Pentathlon")
+        case .hexathlon: String(localized: "Hexathlon")
+        case .heptathlon: String(localized: "Heptathlon")
+        case .octathlon: String(localized: "Octathlon")
+        case .nonathlon: String(localized: "Nonathlon")
+        case .decathlon: String(localized: "Decathlon")
 
-        case .childrensAthletics: "Children's Athletics"
+        case .blockSprint: String(localized: "Block Sprint/Jump")
+        case .blockRun: String(localized: "Block Running")
+        case .blockThrow: String(localized: "Block Throwing")
+        case .blockTeam: String(localized: "Block Team")
+
+        case .childrensAthletics: String(localized: "Children's Athletics")
         }
     }
 }

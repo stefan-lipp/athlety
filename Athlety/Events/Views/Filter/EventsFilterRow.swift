@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EventsFilterRow: View {
-    let name: LocalizedStringKey
+    let name: String
     let isSelected: Bool
     let onSelect: () -> Void
     
