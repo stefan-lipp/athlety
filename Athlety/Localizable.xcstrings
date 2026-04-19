@@ -704,6 +704,16 @@
         }
       }
     },
+    "Reset" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zurücksetzen"
+          }
+        }
+      }
+    },
     "Road Running" : {
       "localizations" : {
         "de" : {

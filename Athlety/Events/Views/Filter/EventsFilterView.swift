@@ -60,6 +60,13 @@ struct EventsFilterView: View {
                 dismiss()
             }
         }
+        ToolbarItem {
+            Button("Reset", systemImage: "arrow.counterclockwise") {
+                selectedAssociationId = nil
+                selectedDiscipline = nil
+            }
+            .disabled(selectedAssociationId == nil && selectedDiscipline == nil)
+        }
         ToolbarItem(placement: .confirmationAction) {
             Button("Done", systemImage: "checkmark") {
                 filterViewModel.associationId = selectedAssociationId
