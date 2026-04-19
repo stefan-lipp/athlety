@@ -723,6 +723,26 @@
         }
       }
     },
+    "Half Marathon" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halbmarathon"
+          }
+        }
+      }
+    },
+    "Marathon" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marathon"
+          }
+        }
+      }
+    },
     "Road Running" : {
       "localizations" : {
         "de" : {

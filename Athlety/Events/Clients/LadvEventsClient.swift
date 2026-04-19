@@ -194,6 +194,8 @@ private struct LadvEventDiscipline: Codable {
         case "L5K0": .running5000m
         case "L10K": .running10000m
         
+        case "SHAL": .halfMarathon
+        case "SMAR": .marathon
         case "SL", "SLK", "SLL": .roadRunning
         case "SCR": .crossCountry
 
@@ -277,6 +279,8 @@ extension Discipline {
         case .running5000m: "5K0"
         case .running10000m: "10K"
         
+        case .halfMarathon: "HAL"
+        case .marathon: "MAR"
         case .roadRunning: "SL"
         case .crossCountry: "CROS"
         
