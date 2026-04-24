@@ -9,11 +9,11 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
-    
+
     @EnvironmentObject private var settingsStore: SettingsStore
-    
+
     // MARK: - Body
-    
+
     var body: some View {
         NavigationStack {
             List {
@@ -24,7 +24,7 @@ struct SettingsView: View {
                     sectionHeader(for: "General")
                 }
                 .listSectionSeparator(.hidden)
-                
+
                 Section {
                     tellFriendRow
                     rateAppRow
@@ -32,7 +32,7 @@ struct SettingsView: View {
                     sectionHeader(for: "Recommend")
                 }
                 .listSectionSeparator(.hidden)
-                
+
                 Section {
                     aboutAthletyRow
                     feedbackRow
@@ -50,7 +50,7 @@ struct SettingsView: View {
             .toolbar { toolbar }
         }
     }
-    
+
     @ToolbarContentBuilder
     private var toolbar: some ToolbarContent {
         ToolbarItem(placement: .cancellationAction) {
@@ -59,7 +59,7 @@ struct SettingsView: View {
             }
         }
     }
-    
+
     private func sectionHeader(for title: LocalizedStringKey) -> some View {
         Text(title)
             .font(.callout)
@@ -67,9 +67,9 @@ struct SettingsView: View {
             .fontWeight(.semibold)
             .padding(.bottom, 4)
     }
-    
+
     // MARK: - Rows
-    
+
     private var appearanceRow: some View {
         Picker(selection: $settingsStore.appAppearance) {
             ForEach(Appearance.allCases) { appearance in
@@ -83,7 +83,7 @@ struct SettingsView: View {
         .menuIndicator(.hidden)
         .buttonStyle(.bordered)
     }
-    
+
     @ViewBuilder
     private var languageRow: some View {
         let appSettingsUrl = URL(string: UIApplication.openSettingsURLString)!
@@ -91,7 +91,7 @@ struct SettingsView: View {
             Label("Language", systemImage: "globe.desk")
         }
     }
-    
+
     @ViewBuilder
     private var tellFriendRow: some View {
         let websiteUrl = URL(string: "https://www.athlety.app")!
@@ -99,7 +99,7 @@ struct SettingsView: View {
             Label("Tell a friend!", systemImage: "hand.thumbsup")
         }
     }
-    
+
     @ViewBuilder
     private var rateAppRow: some View {
         let reviewUrl = URL(string: "https://apps.apple.com/app/id6761119486?action=write-review")!
@@ -107,7 +107,7 @@ struct SettingsView: View {
             Label("Rate the App", systemImage: "star")
         }
     }
-    
+
     private var aboutAthletyRow: some View {
         NavigationLink {
             AboutView()
@@ -115,7 +115,7 @@ struct SettingsView: View {
             Label("About Athlety", systemImage: "info.circle")
         }
     }
-    
+
     @ViewBuilder
     private var feedbackRow: some View {
         let url = URL(string: "mailto:hello@athlety.app")!

@@ -11,7 +11,7 @@ struct EventsFilterRow: View {
     let name: String
     let isSelected: Bool
     let onSelect: () -> Void
-    
+
     var body: some View {
         Button {
             onSelect()

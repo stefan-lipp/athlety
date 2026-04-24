@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct WelcomeView: View {
-    
     @Environment(\.dismiss) private var dismiss
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             ScrollView {
@@ -24,7 +23,7 @@ struct WelcomeView: View {
             continueButton
         }
     }
-    
+
     private var header: some View {
         VStack(alignment: .leading) {
             Text("Welcome to")
@@ -39,7 +38,7 @@ struct WelcomeView: View {
         .padding(.top, 80)
         .padding(.bottom, 40)
     }
-    
+
     private var features: some View {
         VStack(alignment: .leading, spacing: 32) {
             feature(image: "square.stack", title: "Upcoming Events", description: "Get a quick overview about upcoming track and field events.")
@@ -48,8 +47,7 @@ struct WelcomeView: View {
         }
         .padding(.bottom, 40)
     }
-    
-    @ViewBuilder
+
     private func feature(image: String, title: LocalizedStringKey, description: LocalizedStringKey) -> some View {
         HStack(alignment: .top, spacing: 24) {
             Image(systemName: image)
@@ -57,7 +55,7 @@ struct WelcomeView: View {
                 .foregroundStyle(.accent)
                 .frame(width: 38, height: 38)
                 .offset(y: 4)
-            
+
             VStack(alignment: .leading, spacing: 8) {
                 Text(title)
                     .font(.headline)
@@ -67,7 +65,7 @@ struct WelcomeView: View {
             }
         }
     }
-    
+
     private var continueButton: some View {
         Button {
             dismiss()

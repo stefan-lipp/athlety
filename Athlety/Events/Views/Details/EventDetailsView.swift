@@ -5,8 +5,8 @@
 //  Created by Stefan Lipp on 28.06.25.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct EventDetailsView: View {
     let eventId: Int

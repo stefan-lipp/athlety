@@ -38,7 +38,7 @@ struct EventsFilterDisciplinePicker: View {
         .searchable(text: $searchText)
         .overlay { disciplineNotFoundOverlay }
     }
-    
+
     private var searchResults: some View {
         ForEach(filteredDisciplines) { discipline in
             EventsFilterRow(
@@ -48,7 +48,7 @@ struct EventsFilterDisciplinePicker: View {
             )
         }
     }
-    
+
     @ViewBuilder
     private var disciplineSections: some View {
         Section {
@@ -77,7 +77,7 @@ struct EventsFilterDisciplinePicker: View {
             )
         }
     }
-    
+
     @ViewBuilder
     private var disciplineNotFoundOverlay: some View {
         if isSearching && filteredDisciplines.isEmpty {
@@ -85,7 +85,7 @@ struct EventsFilterDisciplinePicker: View {
                 .foregroundStyle(.secondary)
         }
     }
-    
+
     // MARK: - Actions
 
     private func selectDiscipline(_ discipline: Discipline?) {

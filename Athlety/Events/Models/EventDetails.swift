@@ -19,7 +19,7 @@ struct EventDetails: Identifiable {
     let links: [EventLink]
     let attachments: [EventAttachment]
     let disciplines: [EventDiscipline]
-    
+
     var deduplicatedDisciplines: [Discipline] {
         let uniqueDisciplines = disciplines.map { $0.discipline }.unique()
         return Discipline.allCases.filter { uniqueDisciplines.contains($0) }
@@ -31,7 +31,7 @@ struct EventLocation: CustomStringConvertible {
     let site: String
     let latitude: Double
     let longitude: Double
-    
+
     var description: String {
         "\(site), \(name)"
     }

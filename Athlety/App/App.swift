@@ -13,7 +13,7 @@ struct AthletyApp: App {
     @StateObject private var calendarEventViewModel = CalendarEventViewModel()
     @StateObject private var eventsOverviewViewModel = EventsOverviewViewModel()
     @StateObject private var eventsFilterViewModel = EventsFilterViewModel()
-    
+
     @StateObject private var settingsStore = SettingsStore()
 
     var body: some Scene {

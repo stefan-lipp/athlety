@@ -11,9 +11,11 @@ enum Appearance: String, CaseIterable, Identifiable {
     case system = "System"
     case light = "Light"
     case dark = "Dark"
-    
-    var id: String { rawValue }
-    
+
+    var id: String {
+        rawValue
+    }
+
     var localized: LocalizedStringKey {
         switch self {
         case .system: "System"

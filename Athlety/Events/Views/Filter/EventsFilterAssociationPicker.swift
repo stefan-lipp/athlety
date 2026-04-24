@@ -12,7 +12,7 @@ struct EventsFilterAssociationPicker: View {
     @Binding var selectedAssociationId: String?
 
     @Environment(\.dismiss) private var dismiss
-    
+
     @State private var searchText = ""
 
     private var isSearching: Bool {
@@ -39,7 +39,7 @@ struct EventsFilterAssociationPicker: View {
         .searchable(text: $searchText)
         .overlay { associationNotFoundOverlay }
     }
-    
+
     private var searchResults: some View {
         ForEach(filteredAssociations) { association in
             EventsFilterRow(
@@ -49,7 +49,7 @@ struct EventsFilterAssociationPicker: View {
             )
         }
     }
-    
+
     @ViewBuilder
     private var associationSections: some View {
         Section {
@@ -67,7 +67,7 @@ struct EventsFilterAssociationPicker: View {
             )
         }
     }
-    
+
     @ViewBuilder
     private var associationNotFoundOverlay: some View {
         if isSearching && filteredAssociations.isEmpty {
@@ -75,9 +75,9 @@ struct EventsFilterAssociationPicker: View {
                 .foregroundStyle(.secondary)
         }
     }
-    
+
     // MARK: - Actions
-    
+
     private func selectAssociation(withId associationId: String?) {
         selectedAssociationId = associationId
         dismiss()

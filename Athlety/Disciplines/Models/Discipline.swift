@@ -19,7 +19,6 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
     case sprint200m
     case sprint300m
     case sprint400m
-    
     case running500m
     case running600m
     case running800m
@@ -29,40 +28,33 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
     case running3000m
     case running5000m
     case running10000m
-    
     case halfMarathon
     case marathon
     case roadRunning
     case crossCountry
-
     case hurdles60m
     case hurdles80m
     case hurdles100m
     case hurdles110m
     case hurdles400m
-
     case steeplechase1500m
     case steeplechase2000m
     case steeplechase3000m
-
     case relay4x50m
     case relay4x75m
     case relay4x100m
     case relay4x400m
     case relay3x800m
     case relay3x1000m
-    
     case highJump
     case longJump
     case tripleJump
     case poleVault
-    
     case ballThrow
     case shotPut
     case discusThrow
     case javelinThrow
     case hammerThrow
-    
     case triathlon
     case quadrathlon
     case pentathlon
@@ -71,18 +63,18 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
     case octathlon
     case nonathlon
     case decathlon
-
     case blockSprint
     case blockRun
     case blockThrow
     case blockTeam
-
     case childrensAthletics
 
     enum Category: String, CaseIterable, Identifiable {
         case sprint, running, hurdles, steeplechase, relays, jumps, throwing, multiEvents, blockEvents
 
-        var id: String { rawValue }
+        var id: String {
+            rawValue
+        }
 
         var displayName: String {
             switch self {
@@ -135,7 +127,7 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
     static func disciplines(for category: Category) -> [Discipline] {
         allCases.filter { $0.category == category }
     }
-    
+
     var displayName: String {
         switch self {
         case .sprint30m: String(localized: "\(30) m")
@@ -149,7 +141,6 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
         case .sprint200m: String(localized: "\(200) m")
         case .sprint300m: String(localized: "\(300) m")
         case .sprint400m: String(localized: "\(400) m")
-
         case .running500m: String(localized: "\(500) m")
         case .running600m: String(localized: "\(600) m")
         case .running800m: String(localized: "\(800) m")
@@ -159,40 +150,33 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
         case .running3000m: String(localized: "\(3000) m")
         case .running5000m: String(localized: "\(5000) m")
         case .running10000m: String(localized: "\(10000) m")
-
         case .halfMarathon: String(localized: "Half Marathon")
         case .marathon: String(localized: "Marathon")
         case .roadRunning: String(localized: "Road Running")
         case .crossCountry: String(localized: "Cross Country")
-
         case .hurdles60m: String(localized: "\(60) m Hurdles")
         case .hurdles80m: String(localized: "\(80) m Hurdles")
         case .hurdles100m: String(localized: "\(100) m Hurdles")
         case .hurdles110m: String(localized: "\(110) m Hurdles")
         case .hurdles400m: String(localized: "\(400) m Hurdles")
-
         case .steeplechase1500m: String(localized: "\(1500) m Steeplechase")
         case .steeplechase2000m: String(localized: "\(2000) m Steeplechase")
         case .steeplechase3000m: String(localized: "\(3000) m Steeplechase")
-
         case .relay4x50m: String(localized: "\(4)×\(50) m Relay")
         case .relay4x75m: String(localized: "\(4)×\(75) m Relay")
         case .relay4x100m: String(localized: "\(4)×\(100) m Relay")
         case .relay4x400m: String(localized: "\(4)×\(400) m Relay")
         case .relay3x800m: String(localized: "\(3)×\(800) m Relay")
         case .relay3x1000m: String(localized: "\(3)×\(1000) m Relay")
-
         case .highJump: String(localized: "High Jump")
         case .longJump: String(localized: "Long Jump")
         case .tripleJump: String(localized: "Triple Jump")
         case .poleVault: String(localized: "Pole Vault")
-
         case .ballThrow: String(localized: "Ball Throw")
         case .shotPut: String(localized: "Shot Put")
         case .discusThrow: String(localized: "Discus Throw")
         case .javelinThrow: String(localized: "Javelin Throw")
         case .hammerThrow: String(localized: "Hammer Throw")
-
         case .triathlon: String(localized: "Triathlon")
         case .quadrathlon: String(localized: "Quadrathlon")
         case .pentathlon: String(localized: "Pentathlon")
@@ -201,12 +185,10 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
         case .octathlon: String(localized: "Octathlon")
         case .nonathlon: String(localized: "Nonathlon")
         case .decathlon: String(localized: "Decathlon")
-
         case .blockSprint: String(localized: "Block Sprint/Jump")
         case .blockRun: String(localized: "Block Running")
         case .blockThrow: String(localized: "Block Throwing")
         case .blockTeam: String(localized: "Block Team")
-
         case .childrensAthletics: String(localized: "Children's Athletics")
         }
     }

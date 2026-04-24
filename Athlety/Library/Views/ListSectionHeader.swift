@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListSectionHeader: View {
     let title: LocalizedStringKey
-    
+
     var body: some View {
         Text(title)
             .fontWeight(.medium)

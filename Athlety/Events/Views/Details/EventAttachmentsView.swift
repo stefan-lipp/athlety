@@ -10,7 +10,7 @@ import WebKit
 
 struct EventAttachmentsView: View {
     let attachments: [EventAttachment]
-    
+
     var body: some View {
         ForEach(attachments, id: \.name) { attachment in
             NavigationLink {

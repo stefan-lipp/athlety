@@ -11,7 +11,7 @@ struct EventHeaderView: View {
     let name: String
     let date: Date
     let location: String
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text(name)
@@ -22,14 +22,14 @@ struct EventHeaderView: View {
                 .foregroundStyle(.secondary)
         }
     }
-    
+
     private var formattedDate: String {
         date.formatted(.dateTime.weekday(.wide).day().month(.wide).year())
     }
 }
 
 #Preview {
-    let date = Date(timeIntervalSince1970: 1753999200)
+    let date = Date(timeIntervalSince1970: 1_753_999_200)
     EventHeaderView(name: "36. Rheinfelder Nachtmeeting ~ Die Finale Blaue Nacht ~", date: date, location: "Rheinfelden")
         .padding()
 }

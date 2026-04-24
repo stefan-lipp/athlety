@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct EventDisciplineTagsView: View {
-    
     let disciplines: [Discipline]
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             ListSectionHeader(title: "Disciplines")
-            
+
             WrappingHStack(alignment: .leading) {
                 ForEach(disciplines) { discipline in
                     tag(for: discipline)
@@ -23,14 +22,14 @@ struct EventDisciplineTagsView: View {
             .padding(.top)
         }
     }
-    
+
     private func tag(for discipline: Discipline) -> some View {
         Text(discipline.displayName)
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
             .background { tagBackground }
     }
-    
+
     private var tagBackground: some View {
         Capsule().fill(Color(UIColor.tertiarySystemFill))
     }
@@ -40,7 +39,7 @@ struct EventDisciplineTagsView: View {
     let disciplines: [Discipline] = [
         .sprint100m, .sprint200m, .sprint400m,
         .running800m, .running3000m, .running5000m,
-        .highJump, .longJump, .shotPut, .javelinThrow
+        .highJump, .longJump, .shotPut, .javelinThrow,
     ]
     EventDisciplineTagsView(disciplines: disciplines)
         .padding()

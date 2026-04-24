@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct EventRegistrationView: View {
-
     let registration: EventRegistration
 
     var body: some View {

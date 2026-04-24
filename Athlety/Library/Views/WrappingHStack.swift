@@ -35,7 +35,8 @@ public struct WrappingHStack: Layout {
     @inlinable public init(alignment: Alignment = .center,
                            horizontalSpacing: CGFloat? = nil,
                            verticalSpacing: CGFloat? = nil,
-                           fitContentWidth: Bool = false) {
+                           fitContentWidth: Bool = false)
+    {
         self.alignment = alignment
         self.horizontalSpacing = horizontalSpacing
         self.verticalSpacing = verticalSpacing
@@ -51,7 +52,6 @@ public struct WrappingHStack: Layout {
 
     /// A shared computation between `sizeThatFits` and `placeSubviews`.
     public struct Cache {
-
         /// The minimal size of the view.
         var minSize: CGSize
 
@@ -69,7 +69,8 @@ public struct WrappingHStack: Layout {
 
     public func sizeThatFits(proposal: ProposedViewSize,
                              subviews: Subviews,
-                             cache: inout Cache) -> CGSize {
+                             cache: inout Cache) -> CGSize
+    {
         let rows = arrangeRows(proposal: proposal, subviews: subviews, cache: &cache)
 
         if rows.isEmpty { return cache.minSize }
@@ -91,7 +92,8 @@ public struct WrappingHStack: Layout {
     public func placeSubviews(in bounds: CGRect,
                               proposal: ProposedViewSize,
                               subviews: Subviews,
-                              cache: inout Cache) {
+                              cache: inout Cache)
+    {
         let rows = arrangeRows(proposal: proposal, subviews: subviews, cache: &cache)
 
         let anchor = UnitPoint(alignment)
@@ -118,13 +120,15 @@ extension WrappingHStack {
 
     private func arrangeRows(proposal: ProposedViewSize,
                              subviews: Subviews,
-                             cache: inout Cache) -> [Row] {
+                             cache: inout Cache) -> [Row]
+    {
         if subviews.isEmpty {
             return []
         }
 
         if cache.minSize.width > proposal.width ?? .infinity,
-           cache.minSize.height > proposal.height ?? .infinity {
+           cache.minSize.height > proposal.height ?? .infinity
+        {
             return []
         }
 
@@ -132,7 +136,8 @@ extension WrappingHStack {
 
         let hash = computeHash(proposal: proposal, sizes: sizes)
         if let (oldHash, oldRows) = cache.rows,
-           oldHash == hash {
+           oldHash == hash
+        {
             return oldRows
         }
 
@@ -149,7 +154,8 @@ extension WrappingHStack {
             let size = sizes[index]
 
             if currentX + size.width + spacing > proposal.width ?? .infinity,
-               !currentRow.elements.isEmpty {
+               !currentRow.elements.isEmpty
+            {
                 currentRow.width = currentX
                 rows.append(currentRow)
                 currentRow = Row()

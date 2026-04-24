@@ -9,25 +9,23 @@ import SwiftData
 import SwiftUI
 
 struct EventsOverview: View {
-    
     @Environment(\.modelContext) private var modelContext
-    
+
     @EnvironmentObject private var overviewViewModel: EventsOverviewViewModel
     @EnvironmentObject private var filterViewModel: EventsFilterViewModel
-    
+
     @State private var selectedCategory: EventsOverviewCategory = .upcoming
-    
+
     @Query private var eventBookmarks: [EventBookmark]
-    
+
     private var savedEvents: [Event] {
         eventBookmarks.map { $0.toEvent() }
     }
-    
+
     private var hasActiveFilter: Bool {
-        filterViewModel.associationId != nil ||
-        filterViewModel.discipline != nil
+        filterViewModel.associationId != nil || filterViewModel.discipline != nil
     }
-    
+
     var body: some View {
         NavigationStack {
             EventsList(
@@ -52,7 +50,7 @@ struct EventsOverview: View {
             Task { await reloadEvents() }
         }
     }
-    
+
     private func reloadEvents() async {
         let associationId = filterViewModel.associationId
         let discipline = filterViewModel.discipline

@@ -11,7 +11,7 @@ struct EventCalendarExportView: View {
     let event: Event
 
     @EnvironmentObject private var calendarEventViewModel: CalendarEventViewModel
-    
+
     @State private var showCalendarEventEditView = false
 
     var body: some View {
@@ -30,7 +30,7 @@ struct EventCalendarExportView: View {
 
 #Preview {
     let event = Event(id: 44253, name: "Nachmeeting", location: "Rheinfelden", date: Date(), isCancelled: false)
-    
+
     EventCalendarExportView(event: event)
         .environmentObject(CalendarEventViewModel())
 }

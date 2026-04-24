@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct EventsFilterView: View {
-
     @EnvironmentObject private var filterViewModel: EventsFilterViewModel
 
     @Environment(\.dismiss) private var dismiss
