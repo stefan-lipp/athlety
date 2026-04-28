@@ -443,6 +443,16 @@
         }
       }
     },
+    "Half Marathon" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halbmarathon"
+          }
+        }
+      }
+    },
     "Hammer Throw" : {
       "localizations" : {
         "de" : {
@@ -573,12 +583,32 @@
         }
       }
     },
+    "Marathon" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marathon"
+          }
+        }
+      }
+    },
     "Multi-Events" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mehrkämpfe"
+          }
+        }
+      }
+    },
+    "No Events Found" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Wettkämpfe gefunden"
           }
         }
       }
@@ -719,26 +749,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zurücksetzen"
-          }
-        }
-      }
-    },
-    "Half Marathon" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Halbmarathon"
-          }
-        }
-      }
-    },
-    "Marathon" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Marathon"
           }
         }
       }
@@ -909,6 +919,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dreisprung"
+          }
+        }
+      }
+    },
+    "Try changing your filter options to see upcoming events." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versuche es mit anderen Filtereinstellungen, um anstehende Wettkämpfe zu finden."
           }
         }
       }

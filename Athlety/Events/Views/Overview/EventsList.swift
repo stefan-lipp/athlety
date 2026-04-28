@@ -19,6 +19,11 @@ struct EventsList: View {
         let events = selectedCategory == .upcoming ? upcomingEvents : savedEvents
         return Dictionary(grouping: events, by: { $0.date })
     }
+    
+    private var showEmptyStateRow: Bool {
+        selectedCategory == .upcoming && upcomingEvents.isEmpty ||
+        selectedCategory == .saved && savedEvents.isEmpty
+    }
 
     @EnvironmentObject private var calendarEventViewModel: CalendarEventViewModel
 
@@ -29,7 +34,7 @@ struct EventsList: View {
             Section {
                 categorySelectionRow
             }
-            if selectedCategory == .saved && savedEvents.isEmpty {
+            if showEmptyStateRow {
                 Section {
                     emptyStateRow
                 }
@@ -57,13 +62,17 @@ struct EventsList: View {
         HStack {
             Spacer()
             VStack(alignment: .center, spacing: 20) {
-                Image(systemName: "bookmark")
+                Image(systemName:  selectedCategory.icon)
                     .font(.largeTitle)
                     .foregroundStyle(.accent)
-                Text("No Saved Events")
+                Text(selectedCategory == .upcoming ? "No Events Found" : "No Saved Events")
                     .font(.title2)
                     .fontWeight(.medium)
-                Text("Save events you're interested in to see them here.")
+                
+                let description: LocalizedStringKey = selectedCategory == .upcoming
+                    ? "Try changing your filter options to see upcoming events."
+                    : "Save events you're interested in to see them here."
+                Text(description)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(.secondary)
             }
