@@ -10,7 +10,7 @@ Your feedback and suggestions are always welcome and help improve the app.
 
 ## Features
 
-Athley currently supports the following functionality:
+Athlety currently supports the following functionality:
 - Get an overview about upcoming track & field events in Germany
 - Filter upcoming events by state association or discipline
 - View documents like the official announcement or schedule for events
