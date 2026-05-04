@@ -32,6 +32,7 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
     case marathon
     case roadRunning
     case crossCountry
+    case mountainRunning
     case hurdles60m
     case hurdles80m
     case hurdles100m
@@ -102,7 +103,7 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
             .sprint
         case .running500m, .running600m, .running800m, .running1000m, .running1500m,
              .running2000m, .running3000m, .running5000m, .running10000m,
-             .halfMarathon, .marathon, .roadRunning, .crossCountry:
+             .halfMarathon, .marathon, .roadRunning, .crossCountry,  .mountainRunning:
             .running
         case .hurdles60m, .hurdles80m, .hurdles100m, .hurdles110m, .hurdles400m:
             .hurdles
@@ -154,6 +155,7 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
         case .marathon: String(localized: "Marathon")
         case .roadRunning: String(localized: "Road Running")
         case .crossCountry: String(localized: "Cross Country")
+        case .mountainRunning: String(localized: "Mountain Running")
         case .hurdles60m: String(localized: "\(60) m Hurdles")
         case .hurdles80m: String(localized: "\(80) m Hurdles")
         case .hurdles100m: String(localized: "\(100) m Hurdles")

@@ -193,7 +193,8 @@ private struct LadvEventDiscipline: Codable {
         case "SHAL": .halfMarathon
         case "SMAR": .marathon
         case "SL", "SLK", "SLL": .roadRunning
-        case "SCR": .crossCountry
+        case "SCR", "SCRK", "SCRM", "SCRL": .crossCountry
+        case "SBRG": .mountainRunning
         case "H60", "H60_0600", "H60_0686", "H60_0762", "H60_0838", "H60_0914", "H60_0991", "H60_1067": .hurdles60m
         case "H80", "H80_0600", "H80_0686", "H80_0762", "H80_0838", "H80_0914": .hurdles80m
         case "H100", "H100_0686", "H100_0762", "H100_0838", "H100_0914": .hurdles100m
@@ -266,6 +267,7 @@ extension Discipline {
         case .marathon: "MAR"
         case .roadRunning: "SL"
         case .crossCountry: "CROS"
+        case .mountainRunning: "BRG"
         case .hurdles60m: "60H"
         case .hurdles80m: "80H"
         case .hurdles100m: "100H"
