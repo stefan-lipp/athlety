@@ -37,6 +37,7 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
     case hurdles80m
     case hurdles100m
     case hurdles110m
+    case hurdles300m
     case hurdles400m
     case steeplechase1500m
     case steeplechase2000m
@@ -103,9 +104,9 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
             .sprint
         case .running500m, .running600m, .running800m, .running1000m, .running1500m,
              .running2000m, .running3000m, .running5000m, .running10000m,
-             .halfMarathon, .marathon, .roadRunning, .crossCountry,  .mountainRunning:
+             .halfMarathon, .marathon, .roadRunning, .crossCountry, .mountainRunning:
             .running
-        case .hurdles60m, .hurdles80m, .hurdles100m, .hurdles110m, .hurdles400m:
+        case .hurdles60m, .hurdles80m, .hurdles100m, .hurdles110m, .hurdles300m, .hurdles400m:
             .hurdles
         case .steeplechase1500m, .steeplechase2000m, .steeplechase3000m:
             .steeplechase
@@ -160,6 +161,7 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
         case .hurdles80m: String(localized: "\(80) m Hurdles")
         case .hurdles100m: String(localized: "\(100) m Hurdles")
         case .hurdles110m: String(localized: "\(110) m Hurdles")
+        case .hurdles300m: String(localized: "\(300) m Hurdles")
         case .hurdles400m: String(localized: "\(400) m Hurdles")
         case .steeplechase1500m: String(localized: "\(1500) m Steeplechase")
         case .steeplechase2000m: String(localized: "\(2000) m Steeplechase")

@@ -199,6 +199,7 @@ private struct LadvEventDiscipline: Codable {
         case "H80", "H80_0600", "H80_0686", "H80_0762", "H80_0838", "H80_0914": .hurdles80m
         case "H100", "H100_0686", "H100_0762", "H100_0838", "H100_0914": .hurdles100m
         case "H110", "H110_0686", "H110_0762", "H110_0838", "H110_0914", "H110_0991", "H110_1067": .hurdles110m
+        case "H300", "H300_0686", "H300_0762", "H300_0838", "H300_0914": .hurdles300m
         case "H400", "H400_0762", "H400_0838", "H400_0914": .hurdles400m
         case "H1K5", "H1K5_0762": .steeplechase1500m
         case "H2K0", "H2K0_0762", "H2K0_0838", "H2K0_0914": .steeplechase2000m
@@ -272,6 +273,7 @@ extension Discipline {
         case .hurdles80m: "80H"
         case .hurdles100m: "100H"
         case .hurdles110m: "110H"
+        case .hurdles300m: "300H"
         case .hurdles400m: "400H"
         case .steeplechase1500m: "1K5H"
         case .steeplechase2000m: "2K0H"
