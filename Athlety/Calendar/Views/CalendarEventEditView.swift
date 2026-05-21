@@ -17,7 +17,6 @@ struct CalendarEventEditView: UIViewControllerRepresentable {
         viewController.event = event
         viewController.eventStore = eventStore
         viewController.editViewDelegate = context.coordinator
-        viewController.navigationController?.navigationBar.tintColor = .accent
         return viewController
     }
 

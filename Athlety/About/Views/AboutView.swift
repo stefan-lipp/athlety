@@ -23,7 +23,7 @@ struct AboutView: View {
     }
 
     private var appIcon: some View {
-        Image("AthletyAppIcon")
+        Image(.athletyAppIcon)
             .resizable()
             .aspectRatio(1, contentMode: .fit)
             .frame(maxWidth: 84)
@@ -50,7 +50,7 @@ struct AboutView: View {
 
     @ViewBuilder
     private var versionText: some View {
-        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "—"
         Text("v\(version)")
             .font(.subheadline)
             .foregroundStyle(.secondary)

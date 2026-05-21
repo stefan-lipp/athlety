@@ -43,7 +43,7 @@ struct WelcomeView: View {
         VStack(alignment: .leading, spacing: 32) {
             feature(image: "square.stack", title: "Upcoming Events", description: "Get a quick overview about upcoming track and field events.")
             feature(image: "magnifyingglass", title: "Events Filter", description: "Apply custom event filters to only show events that match your preferences.")
-            feature(image: "bookmark", title: "Bookamrks", description: "Save your favorite events as bookmarks for quick access.")
+            feature(image: "bookmark", title: "Bookmarks", description: "Save your favorite events as bookmarks for quick access.")
         }
         .padding(.bottom, 40)
     }
@@ -51,9 +51,9 @@ struct WelcomeView: View {
     private func feature(image: String, title: LocalizedStringKey, description: LocalizedStringKey) -> some View {
         HStack(alignment: .top, spacing: 24) {
             Image(systemName: image)
-                .font(.system(size: 38, weight: .light))
+                .font(.largeTitle.weight(.light))
                 .foregroundStyle(.accent)
-                .frame(width: 38, height: 38)
+                .frame(minWidth: 38, minHeight: 38)
                 .offset(y: 4)
 
             VStack(alignment: .leading, spacing: 8) {

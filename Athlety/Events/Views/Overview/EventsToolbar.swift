@@ -25,13 +25,8 @@ struct EventsToolbar: ToolbarContent {
     @ToolbarContentBuilder
     private var filterButton: some ToolbarContent {
         ToolbarItem {
-            let hasActiveFilter = Binding<Bool> {
-                self.hasActiveFilter
-            } set: { _ in
-                showFilter = true
-            }
             if selectedCategory == .upcoming {
-                Toggle(isOn: hasActiveFilter) {
+                Toggle(isOn: Binding { hasActiveFilter } set: { _ in showFilter = true }) {
                     Label("Filter", systemImage: "line.3.horizontal.decrease")
                 }
                 .sheet(isPresented: $showFilter) {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AppConfig {
+final class AppConfig: Sendable {
     let ladvBaseUrl: String
     let ladvApiKey: String
 
@@ -16,7 +16,7 @@ class AppConfig {
         self.ladvApiKey = ladvApiKey
     }
 
-    static var shared: AppConfig = {
+    static let shared: AppConfig = {
         guard let appConfigPath = Bundle.main.path(forResource: "AppConfig", ofType: "plist") else {
             fatalError("An AppConfig.plist file is required within the Athlety directory. " + explanation)
         }

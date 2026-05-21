@@ -31,7 +31,7 @@ struct EventDisciplineTagsView: View {
     }
 
     private var tagBackground: some View {
-        Capsule().fill(Color(UIColor.tertiarySystemFill))
+        Capsule().fill(Color(.tertiarySystemFill))
     }
 }
 

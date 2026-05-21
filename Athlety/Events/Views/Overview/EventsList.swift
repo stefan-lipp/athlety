@@ -15,14 +15,16 @@ struct EventsList: View {
     let onSaveAsBookmark: (Event) -> Void
     let onRemoveFromBookmarks: (Event) -> Void
 
-    private var eventsByDate: [Date: [Event]] {
+    private var sortedEventGroups: [(date: Date, events: [Event])] {
         let events = selectedCategory == .upcoming ? upcomingEvents : savedEvents
-        return Dictionary(grouping: events, by: { $0.date })
+        return Dictionary(grouping: events, by: \.date)
+            .map { (date: $0.key, events: $0.value) }
+            .sorted { $0.date < $1.date }
     }
-    
+
     private var showEmptyStateRow: Bool {
         selectedCategory == .upcoming && upcomingEvents.isEmpty ||
-        selectedCategory == .saved && savedEvents.isEmpty
+            selectedCategory == .saved && savedEvents.isEmpty
     }
 
     @Environment(CalendarEventViewModel.self) private var calendarEventViewModel
@@ -39,11 +41,11 @@ struct EventsList: View {
                     emptyStateRow
                 }
             } else {
-                ForEach(eventsByDate.keys.sorted(by: <), id: \.self) { date in
+                ForEach(sortedEventGroups, id: \.date) { group in
                     Section {
-                        eventRows(for: date)
+                        eventRows(for: group.events)
                     } header: {
-                        sectionHeader(for: date)
+                        sectionHeader(for: group.date)
                     }
                 }
                 .navigationLinkIndicatorVisibility(.hidden)
@@ -62,13 +64,13 @@ struct EventsList: View {
         HStack {
             Spacer()
             VStack(alignment: .center, spacing: 20) {
-                Image(systemName:  selectedCategory.icon)
+                Image(systemName: selectedCategory.icon)
                     .font(.largeTitle)
                     .foregroundStyle(.accent)
                 Text(selectedCategory == .upcoming ? "No Events Found" : "No Saved Events")
                     .font(.title2)
                     .fontWeight(.medium)
-                
+
                 let description: LocalizedStringKey = selectedCategory == .upcoming
                     ? "Try changing your filter options to see upcoming events."
                     : "Save events you're interested in to see them here."
@@ -94,28 +96,33 @@ struct EventsList: View {
     }
 
     private func categorySelection(for category: EventsOverviewCategory) -> some View {
-        HStack {
-            Image(systemName: category.icon).symbolVariant(.fill)
-            if selectedCategory == category {
-                Text(category.title)
-            }
-        }
-        .padding(.horizontal)
-        .padding(.vertical, 8)
-        .frame(minWidth: 64, minHeight: 40)
-        .foregroundStyle(selectedCategory == category ? .white : .secondary)
-        .background(selectedCategory == category ? .accent : Color(UIColor.secondarySystemGroupedBackground))
-        .clipShape(Capsule())
-        .contentShape(Rectangle())
-        .onTapGesture {
+        let isSelected = selectedCategory == category
+        return Button {
             withAnimation(.bouncy) {
                 selectedCategory = category
             }
+        } label: {
+            HStack {
+                Image(systemName: category.icon).symbolVariant(.fill)
+                if isSelected {
+                    Text(category.title)
+                }
+            }
+            .padding(.horizontal)
+            .padding(.vertical, 8)
+            .frame(minWidth: 64, minHeight: 40)
+            .foregroundStyle(isSelected ? .white : .secondary)
+            .background(isSelected ? Color.accentColor : Color(.secondarySystemGroupedBackground))
+            .clipShape(Capsule())
+            .contentShape(Capsule())
         }
+        .buttonStyle(.plain)
+        .accessibilityLabel(category.title)
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 
-    private func eventRows(for date: Date) -> some View {
-        ForEach(eventsByDate[date]!) { event in
+    private func eventRows(for events: [Event]) -> some View {
+        ForEach(events) { event in
             let isSaved = savedEvents.map(\.id).contains(event.id)
             NavigationLink(destination: EventDetailsView(eventId: event.id)) {
                 EventRow(event: event, isSaved: isSaved)
@@ -134,7 +141,7 @@ struct EventsList: View {
     private func sectionHeader(for date: Date) -> some View {
         Text(date.formatted(.dateTime.weekday(.wide).day(.twoDigits).month(.wide).year()))
             .font(.callout)
-            .foregroundColor(.primary)
+            .foregroundStyle(.primary)
             .fontWeight(.semibold)
             .padding(.bottom, 4)
     }
