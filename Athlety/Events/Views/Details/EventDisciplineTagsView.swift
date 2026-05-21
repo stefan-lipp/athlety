@@ -24,7 +24,7 @@ struct EventDisciplineTagsView: View {
     }
 
     private func tag(for discipline: Discipline) -> some View {
-        Text(discipline.displayName)
+        Text(discipline.name)
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
             .background { tagBackground }

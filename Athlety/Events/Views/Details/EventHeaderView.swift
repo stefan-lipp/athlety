@@ -17,14 +17,10 @@ struct EventHeaderView: View {
             Text(name)
                 .font(.title)
                 .fontWeight(.medium)
-            Text("\(formattedDate) in \(location)")
+            Text("\(date, format: .dateTime.weekday(.wide).day().month(.wide).year()) in \(location)")
                 .font(.headline)
                 .foregroundStyle(.secondary)
         }
-    }
-
-    private var formattedDate: String {
-        date.formatted(.dateTime.weekday(.wide).day().month(.wide).year())
     }
 }
 

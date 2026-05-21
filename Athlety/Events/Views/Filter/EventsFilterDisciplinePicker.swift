@@ -21,7 +21,7 @@ struct EventsFilterDisciplinePicker: View {
     private var filteredDisciplines: [Discipline] {
         let trimmedSearchText = searchText.trimmingCharacters(in: .whitespaces)
         return Discipline.allCases.filter { discipline in
-            discipline.displayName.localizedCaseInsensitiveContains(trimmedSearchText)
+            discipline.name.localizedStandardContains(trimmedSearchText)
         }
     }
 
@@ -42,7 +42,7 @@ struct EventsFilterDisciplinePicker: View {
     private var searchResults: some View {
         ForEach(filteredDisciplines) { discipline in
             EventsFilterRow(
-                name: discipline.displayName,
+                name: discipline.name,
                 isSelected: selectedDiscipline == discipline,
                 onSelect: { selectDiscipline(discipline) }
             )
@@ -59,10 +59,10 @@ struct EventsFilterDisciplinePicker: View {
             )
         }
         ForEach(Discipline.Category.allCases) { category in
-            Section(category.displayName) {
+            Section(category.name) {
                 ForEach(Discipline.disciplines(for: category)) { discipline in
                     EventsFilterRow(
-                        name: discipline.displayName,
+                        name: discipline.name,
                         isSelected: selectedDiscipline == discipline,
                         onSelect: { selectDiscipline(discipline) }
                     )
@@ -71,7 +71,7 @@ struct EventsFilterDisciplinePicker: View {
         }
         Section {
             EventsFilterRow(
-                name: Discipline.childrensAthletics.displayName,
+                name: Discipline.childrensAthletics.name,
                 isSelected: selectedDiscipline == .childrensAthletics,
                 onSelect: { selectDiscipline(.childrensAthletics) }
             )

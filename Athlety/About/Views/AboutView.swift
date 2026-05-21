@@ -15,7 +15,7 @@ struct AboutView: View {
                 title
                 subtitle
                 versionText
-                webisteLink
+                websiteLink
                 aboutText
                 copyright
             }
@@ -41,22 +41,18 @@ struct AboutView: View {
             .fontWeight(.medium)
     }
 
-    @ViewBuilder
-    private var webisteLink: some View {
-        let websiteUrl = URL(string: "https://www.athlety.app")!
-        Link("www.athlety.app", destination: websiteUrl)
+    private var websiteLink: some View {
+        Link("www.athlety.app", destination: URL(string: "https://www.athlety.app")!)
             .padding(.top)
     }
 
-    @ViewBuilder
     private var versionText: some View {
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "—"
-        Text("v\(version)")
+        return Text("v\(version)")
             .font(.subheadline)
             .foregroundStyle(.secondary)
     }
 
-    @ViewBuilder
     private var aboutText: some View {
         let description: LocalizedStringKey = """
         Athlety is an app for track and field athletes, coaches, and anyone interested in athletics in Germany.
@@ -68,7 +64,7 @@ struct AboutView: View {
         Your feedback and suggestions are always welcome and help improve the app.
         """
 
-        Text(description)
+        return Text(description)
             .font(.body)
             .padding(20)
     }

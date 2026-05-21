@@ -13,34 +13,30 @@ struct EventRegistrationView: View {
     var body: some View {
         ListSectionHeader(title: "Registration")
 
-        HStack {
-            Label("Host", systemImage: "mappin.and.ellipse")
-            Spacer()
+        LabeledContent {
             Text(registration.host)
+        } label: {
+            Label("Host", systemImage: "mappin.and.ellipse")
         }
         .padding(.vertical, 8)
 
         if let url = URL(string: "mailto:\(registration.email)") {
             Link(destination: url) {
-                HStack(alignment: .center) {
-                    Label("Email", systemImage: "paperplane")
-                    Spacer()
+                LabeledContent {
                     Text(registration.email)
+                } label: {
+                    Label("Email", systemImage: "paperplane")
                 }
             }
             .padding(.vertical, 8)
         }
 
-        HStack {
+        LabeledContent {
+            Text(registration.deadline, format: .dateTime.weekday(.wide).day().month(.wide).year())
+        } label: {
             Label("Deadline", systemImage: "calendar.badge.exclamationmark")
-            Spacer()
-            Text(formattedDeadline)
         }
         .padding(.vertical, 8)
-    }
-
-    private var formattedDeadline: String {
-        registration.deadline.formatted(.dateTime.weekday(.wide).day().month(.wide).year())
     }
 }
 

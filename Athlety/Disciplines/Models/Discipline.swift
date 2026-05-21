@@ -78,7 +78,7 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
             rawValue
         }
 
-        var displayName: String {
+        var name: String {
             switch self {
             case .sprint: String(localized: "Sprint")
             case .running: String(localized: "Running")
@@ -130,7 +130,7 @@ enum Discipline: String, CaseIterable, Identifiable, Hashable {
         allCases.filter { $0.category == category }
     }
 
-    var displayName: String {
+    var name: String {
         switch self {
         case .sprint30m: String(localized: "\(30) m")
         case .sprint40m: String(localized: "\(40) m")

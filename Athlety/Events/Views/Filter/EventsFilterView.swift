@@ -88,7 +88,7 @@ struct EventsFilterView: View {
     }
 
     private var disciplineDisplayName: String {
-        selectedDiscipline?.displayName ?? String(localized: "All")
+        selectedDiscipline?.name ?? String(localized: "All")
     }
 }
 

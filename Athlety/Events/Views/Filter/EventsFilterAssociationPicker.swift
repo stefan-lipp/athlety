@@ -22,7 +22,7 @@ struct EventsFilterAssociationPicker: View {
     private var filteredAssociations: [Association] {
         let trimmedSearchText = searchText.trimmingCharacters(in: .whitespaces)
         return associations.filter { association in
-            association.name.localizedCaseInsensitiveContains(trimmedSearchText)
+            association.name.localizedStandardContains(trimmedSearchText)
         }
     }
 

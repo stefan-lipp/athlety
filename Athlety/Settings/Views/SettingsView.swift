@@ -84,26 +84,20 @@ struct SettingsView: View {
         .buttonStyle(.bordered)
     }
 
-    @ViewBuilder
     private var languageRow: some View {
-        let appSettingsUrl = URL(string: UIApplication.openSettingsURLString)!
-        Link(destination: appSettingsUrl) {
+        Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
             Label("Language", systemImage: "globe.desk")
         }
     }
 
-    @ViewBuilder
     private var tellFriendRow: some View {
-        let websiteUrl = URL(string: "https://www.athlety.app")!
-        ShareLink(item: websiteUrl) {
+        ShareLink(item: URL(string: "https://www.athlety.app")!) {
             Label("Tell a friend!", systemImage: "hand.thumbsup")
         }
     }
 
-    @ViewBuilder
     private var rateAppRow: some View {
-        let reviewUrl = URL(string: "https://apps.apple.com/app/id6761119486?action=write-review")!
-        Link(destination: reviewUrl) {
+        Link(destination: URL(string: "https://apps.apple.com/app/id6761119486?action=write-review")!) {
             Label("Rate the App", systemImage: "star")
         }
     }
@@ -116,10 +110,8 @@ struct SettingsView: View {
         }
     }
 
-    @ViewBuilder
     private var feedbackRow: some View {
-        let url = URL(string: "mailto:hello@athlety.app")!
-        Link(destination: url) {
+        Link(destination: URL(string: "mailto:hello@athlety.app")!) {
             Label("Feedback & Support", systemImage: "questionmark.circle")
         }
     }
