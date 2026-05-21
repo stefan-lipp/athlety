@@ -5,17 +5,27 @@
 //  Created by Stefan Lipp on 28.06.25.
 //
 
-import Combine
 import Foundation
 import SwiftData
 
-class EventsOverviewViewModel: ObservableObject {
-    @Published private(set) var upcomingEvents: [Event] = []
+@Observable
+final class EventsOverviewViewModel {
+    private(set) var upcomingEvents: [Event] = []
+    private(set) var associations: [Association] = []
 
-    private let client: EventsClient = LadvEventsClient()
+    private let eventsClient: EventsClient = LadvEventsClient()
+    private let associationsClient: AssociationsClient = LadvAssociationsClient()
 
     func loadUpcomingEvents(for associationId: String?, and discipline: Discipline?) async {
-        upcomingEvents = await client.loadUpcomingEvents(for: associationId, and: discipline)
+        upcomingEvents = await eventsClient.loadUpcomingEvents(for: associationId, and: discipline)
+    }
+
+    func loadAssociations() async {
+        associations = await associationsClient.loadAssociations()
+    }
+
+    func association(withId associationId: String) -> Association? {
+        associations.first(where: { $0.id == associationId })
     }
 
     func saveEventAsBookmark(_ event: Event, in context: ModelContext) {

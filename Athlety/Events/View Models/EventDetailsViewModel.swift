@@ -5,13 +5,13 @@
 //  Created by Stefan Lipp on 11.07.25.
 //
 
-import Combine
 import Foundation
 import SwiftData
 
-class EventDetailsViewModel: ObservableObject {
-    @Published private(set) var event: EventDetails?
-    @Published private(set) var isSavedAsBookmark = false
+@Observable
+final class EventDetailsViewModel {
+    private(set) var event: EventDetails?
+    private(set) var isSavedAsBookmark = false
 
     private let client: EventsClient = LadvEventsClient()
 

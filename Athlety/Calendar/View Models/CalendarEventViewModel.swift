@@ -5,14 +5,13 @@
 //  Created by Stefan Lipp on 19.10.25.
 //
 
-import Combine
 import EventKit
 
-@MainActor
-class CalendarEventViewModel: ObservableObject {
-    private(set) var calendarEventStore = EKEventStore()
+@Observable
+final class CalendarEventViewModel {
+    let calendarEventStore = EKEventStore()
 
-    @Published var calendarEvent: EKEvent?
+    var calendarEvent: EKEvent?
 
     func addEventToCalendar(_ event: Event) {
         let newCalendarEvent = EKEvent(eventStore: calendarEventStore)

@@ -10,21 +10,19 @@ import SwiftUI
 
 @main
 struct AthletyApp: App {
-    @StateObject private var calendarEventViewModel = CalendarEventViewModel()
-    @StateObject private var eventsOverviewViewModel = EventsOverviewViewModel()
-    @StateObject private var eventsFilterViewModel = EventsFilterViewModel()
+    @State private var calendarEventViewModel = CalendarEventViewModel()
+    @State private var eventsOverviewViewModel = EventsOverviewViewModel()
 
-    @StateObject private var settingsStore = SettingsStore()
+    @AppStorage("showOnboarding") private var showAppOnboarding = true
+    @AppStorage("appAppearance") private var appAppearance: Appearance = .system
 
     var body: some Scene {
         WindowGroup {
             EventsOverview()
-                .environmentObject(calendarEventViewModel)
-                .environmentObject(eventsOverviewViewModel)
-                .environmentObject(eventsFilterViewModel)
-                .environmentObject(settingsStore)
-                .preferredColorScheme(settingsStore.colorScheme)
-                .sheet(isPresented: $settingsStore.showAppOnboarding) {
+                .environment(calendarEventViewModel)
+                .environment(eventsOverviewViewModel)
+                .preferredColorScheme(appAppearance.colorScheme)
+                .sheet(isPresented: $showAppOnboarding) {
                     WelcomeView()
                 }
         }

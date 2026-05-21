@@ -23,4 +23,12 @@ enum Appearance: String, CaseIterable, Identifiable {
         case .dark: "Dark"
         }
     }
+
+    var colorScheme: ColorScheme? {
+        switch self {
+        case .light: .light
+        case .dark: .dark
+        case .system: nil
+        }
+    }
 }

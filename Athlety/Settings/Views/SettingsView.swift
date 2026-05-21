@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
 
-    @EnvironmentObject private var settingsStore: SettingsStore
+    @AppStorage("appAppearance") private var appAppearance: Appearance = .system
 
     // MARK: - Body
 
@@ -44,9 +44,9 @@ struct SettingsView: View {
             .foregroundStyle(.primary)
             .listStyle(.insetGrouped)
             .navigationTitle("Settings")
-            .navigationBarTitleDisplayMode(.inline)
             .environment(\.defaultMinListRowHeight, 56)
             .scrollContentBackground(.visible)
+            .toolbarTitleDisplayMode(.inline)
             .toolbar { toolbar }
         }
     }
@@ -63,7 +63,7 @@ struct SettingsView: View {
     private func sectionHeader(for title: LocalizedStringKey) -> some View {
         Text(title)
             .font(.callout)
-            .foregroundColor(.primary)
+            .foregroundStyle(.primary)
             .fontWeight(.semibold)
             .padding(.bottom, 4)
     }
@@ -71,7 +71,7 @@ struct SettingsView: View {
     // MARK: - Rows
 
     private var appearanceRow: some View {
-        Picker(selection: $settingsStore.appAppearance) {
+        Picker(selection: $appAppearance) {
             ForEach(Appearance.allCases) { appearance in
                 Text(appearance.localized)
                     .tag(appearance)
@@ -127,5 +127,4 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
-        .environmentObject(SettingsStore())
 }

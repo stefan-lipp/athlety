@@ -11,8 +11,10 @@ import SwiftUI
 struct EventsOverview: View {
     @Environment(\.modelContext) private var modelContext
 
-    @EnvironmentObject private var overviewViewModel: EventsOverviewViewModel
-    @EnvironmentObject private var filterViewModel: EventsFilterViewModel
+    @Environment(EventsOverviewViewModel.self) private var viewModel
+
+    @AppStorage("eventsFilterAssociationId") private var filterAssociationId: String?
+    @AppStorage("eventsFilterDiscipline") private var filterDiscipline: Discipline?
 
     @State private var selectedCategory: EventsOverviewCategory = .upcoming
 
@@ -23,17 +25,17 @@ struct EventsOverview: View {
     }
 
     private var hasActiveFilter: Bool {
-        filterViewModel.associationId != nil || filterViewModel.discipline != nil
+        filterAssociationId != nil || filterDiscipline != nil
     }
 
     var body: some View {
         NavigationStack {
             EventsList(
                 selectedCategory: $selectedCategory,
-                upcomingEvents: overviewViewModel.upcomingEvents,
+                upcomingEvents: viewModel.upcomingEvents,
                 savedEvents: savedEvents,
-                onSaveAsBookmark: { overviewViewModel.saveEventAsBookmark($0, in: modelContext) },
-                onRemoveFromBookmarks: { overviewViewModel.removeEventFromBookmarks($0, in: modelContext) }
+                onSaveAsBookmark: { viewModel.saveEventAsBookmark($0, in: modelContext) },
+                onRemoveFromBookmarks: { viewModel.removeEventFromBookmarks($0, in: modelContext) }
             )
             .navigationTitle("Events")
             .toolbar {
@@ -43,37 +45,21 @@ struct EventsOverview: View {
         .task {
             await reloadEvents()
         }
-        .onChange(of: filterViewModel.associationId) {
+        .onChange(of: filterAssociationId) {
             Task { await reloadEvents() }
         }
-        .onChange(of: filterViewModel.discipline) {
+        .onChange(of: filterDiscipline) {
             Task { await reloadEvents() }
         }
     }
 
     private func reloadEvents() async {
-        let associationId = filterViewModel.associationId
-        let discipline = filterViewModel.discipline
-        await overviewViewModel.loadUpcomingEvents(for: associationId, and: discipline)
-    }
-}
-
-enum EventsOverviewCategory {
-    case upcoming
-    case saved
-
-    var icon: String {
-        self == .upcoming ? "square.stack" : "bookmark"
-    }
-
-    var title: LocalizedStringKey {
-        self == .upcoming ? "Upcoming" : "Saved"
+        await viewModel.loadUpcomingEvents(for: filterAssociationId, and: filterDiscipline)
     }
 }
 
 #Preview {
     EventsOverview()
-        .environmentObject(EventsOverviewViewModel())
-        .environmentObject(EventsFilterViewModel())
-        .environmentObject(SettingsStore())
+        .environment(EventsOverviewViewModel())
+        .environment(CalendarEventViewModel())
 }

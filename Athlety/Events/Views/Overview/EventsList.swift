@@ -25,7 +25,7 @@ struct EventsList: View {
         selectedCategory == .saved && savedEvents.isEmpty
     }
 
-    @EnvironmentObject private var calendarEventViewModel: CalendarEventViewModel
+    @Environment(CalendarEventViewModel.self) private var calendarEventViewModel
 
     @State private var showCalendarEventEditView = false
 
@@ -170,5 +170,5 @@ struct EventsList: View {
         onSaveAsBookmark: { _ in },
         onRemoveFromBookmarks: { _ in }
     )
-    .environmentObject(CalendarEventViewModel())
+    .environment(CalendarEventViewModel())
 }

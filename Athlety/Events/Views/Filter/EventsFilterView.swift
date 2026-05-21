@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct EventsFilterView: View {
-    @EnvironmentObject private var filterViewModel: EventsFilterViewModel
+    @Environment(EventsOverviewViewModel.self) private var viewModel
 
     @Environment(\.dismiss) private var dismiss
+
+    @AppStorage("eventsFilterAssociationId") private var associationId: String?
+    @AppStorage("eventsFilterDiscipline") private var discipline: Discipline?
 
     @State private var selectedAssociationId: String?
     @State private var selectedDiscipline: Discipline?
@@ -20,7 +23,7 @@ struct EventsFilterView: View {
             List {
                 NavigationLink {
                     EventsFilterAssociationPicker(
-                        associations: filterViewModel.associations,
+                        associations: viewModel.associations,
                         selectedAssociationId: $selectedAssociationId
                     )
                 } label: {
@@ -42,13 +45,15 @@ struct EventsFilterView: View {
                 }
             }
             .navigationTitle("Filter")
-            .navigationBarTitleDisplayMode(.inline)
+            .toolbarTitleDisplayMode(.inline)
             .toolbar { toolbar }
         }
         .task {
-            await filterViewModel.loadAssociations()
-            selectedAssociationId = filterViewModel.associationId
-            selectedDiscipline = filterViewModel.discipline
+            if viewModel.associations.isEmpty {
+                await viewModel.loadAssociations()
+            }
+            selectedAssociationId = associationId
+            selectedDiscipline = discipline
         }
     }
 
@@ -68,15 +73,15 @@ struct EventsFilterView: View {
         }
         ToolbarItem(placement: .confirmationAction) {
             Button("Done", systemImage: "checkmark") {
-                filterViewModel.associationId = selectedAssociationId
-                filterViewModel.discipline = selectedDiscipline
+                associationId = selectedAssociationId
+                discipline = selectedDiscipline
                 dismiss()
             }
         }
     }
 
     private var associationDisplayName: LocalizedStringKey {
-        if let id = selectedAssociationId, let association = filterViewModel.association(withId: id) {
+        if let id = selectedAssociationId, let association = viewModel.association(withId: id) {
             return LocalizedStringKey(association.name)
         }
         return "All"
@@ -89,5 +94,5 @@ struct EventsFilterView: View {
 
 #Preview {
     EventsFilterView()
-        .environmentObject(EventsFilterViewModel())
+        .environment(EventsOverviewViewModel())
 }

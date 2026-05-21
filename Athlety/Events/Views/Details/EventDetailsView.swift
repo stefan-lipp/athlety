@@ -13,7 +13,7 @@ struct EventDetailsView: View {
 
     @Environment(\.modelContext) private var modelContext
 
-    @StateObject private var viewModel = EventDetailsViewModel()
+    @State private var viewModel = EventDetailsViewModel()
 
     var body: some View {
         List {

@@ -10,7 +10,7 @@ import SwiftUI
 struct EventCalendarExportView: View {
     let event: Event
 
-    @EnvironmentObject private var calendarEventViewModel: CalendarEventViewModel
+    @Environment(CalendarEventViewModel.self) private var calendarEventViewModel
 
     @State private var showCalendarEventEditView = false
 
@@ -32,5 +32,5 @@ struct EventCalendarExportView: View {
     let event = Event(id: 44253, name: "Nachmeeting", location: "Rheinfelden", date: Date(), isCancelled: false)
 
     EventCalendarExportView(event: event)
-        .environmentObject(CalendarEventViewModel())
+        .environment(CalendarEventViewModel())
 }
