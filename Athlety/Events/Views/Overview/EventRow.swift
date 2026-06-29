@@ -43,7 +43,7 @@ struct EventRow: View {
     }
 
     private var eventDate: some View {
-        Text(event.date, format: .dateTime.day().month().year())
+        Text(event.date, format: .dateTime.day().month())
             .font(.footnote)
             .foregroundStyle(.secondary)
     }
