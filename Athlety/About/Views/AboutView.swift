@@ -36,7 +36,7 @@ struct AboutView: View {
     }
 
     private var subtitle: some View {
-        Text("Track & Field Events")
+        Text("Track & Field Planner")
             .font(.title3)
             .fontWeight(.medium)
     }

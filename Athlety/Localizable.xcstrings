@@ -573,6 +573,16 @@
         }
       }
     },
+    "Loading events" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wettkämpfe werden geladen"
+          }
+        }
+      }
+    },
     "Long Jump" : {
       "localizations" : {
         "de" : {
@@ -599,16 +609,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Berglauf"
-          }
-        }
-      }
-    },
-    "Loading events" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wettkämpfe werden geladen"
           }
         }
       }
@@ -913,12 +913,12 @@
         }
       }
     },
-    "Track & Field Events" : {
+    "Track & Field Planner" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Leichtathletik-Wettkämpfe"
+            "value" : "Leichtathletik Planer"
           }
         }
       }
