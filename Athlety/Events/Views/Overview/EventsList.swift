@@ -43,7 +43,7 @@ struct EventsList: View {
     var body: some View {
         List {
             Section {
-                categorySelectionRow
+                EventsCategorySelection(selectedCategory: $selectedCategory)
             }
             if showLoadingRows {
                 EventsLoadingRows()
@@ -98,42 +98,6 @@ struct EventsList: View {
         .padding(.top, 40)
         .listRowBackground(EmptyView())
         .listRowInsets(.init())
-    }
-
-    private var categorySelectionRow: some View {
-        HStack(spacing: 12) {
-            categorySelection(for: .upcoming)
-            categorySelection(for: .saved)
-        }
-        .font(.headline)
-        .listRowBackground(EmptyView())
-        .listRowInsets(.leading, 0)
-    }
-
-    private func categorySelection(for category: EventsOverviewCategory) -> some View {
-        let isSelected = selectedCategory == category
-        return Button {
-            withAnimation(.bouncy) {
-                selectedCategory = category
-            }
-        } label: {
-            HStack {
-                Image(systemName: category.icon).symbolVariant(.fill)
-                if isSelected {
-                    Text(category.title)
-                }
-            }
-            .padding(.horizontal)
-            .padding(.vertical, 8)
-            .frame(minWidth: 64, minHeight: 40)
-            .foregroundStyle(isSelected ? .white : .secondary)
-            .background(isSelected ? Color.accentColor : Color(.secondarySystemGroupedBackground))
-            .clipShape(Capsule())
-            .contentShape(Capsule())
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel(category.title)
-        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 
     private func eventRows(for events: [Event]) -> some View {
