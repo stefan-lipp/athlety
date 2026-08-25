@@ -24,8 +24,8 @@ struct EventsOverview: View {
         eventBookmarks.map { $0.toEvent() }
     }
 
-    private var hasActiveFilter: Bool {
-        filterAssociationId != nil || filterDiscipline != nil
+    private var filter: EventsFilter {
+        EventsFilter(associationId: filterAssociationId, discipline: filterDiscipline)
     }
 
     var body: some View {
@@ -40,22 +40,12 @@ struct EventsOverview: View {
             )
             .navigationTitle("Events")
             .toolbar {
-                EventsToolbar(selectedCategory: selectedCategory, hasActiveFilter: hasActiveFilter)
+                EventsToolbar(selectedCategory: selectedCategory, hasActiveFilter: filter.isActive)
             }
         }
-        .task {
-            await reloadEvents()
+        .task(id: filter) {
+            await viewModel.loadUpcomingEvents(for: filter)
         }
-        .onChange(of: filterAssociationId) {
-            Task { await reloadEvents() }
-        }
-        .onChange(of: filterDiscipline) {
-            Task { await reloadEvents() }
-        }
-    }
-
-    private func reloadEvents() async {
-        await viewModel.loadUpcomingEvents(for: filterAssociationId, and: filterDiscipline)
     }
 }
 

@@ -17,10 +17,14 @@ final class EventsOverviewViewModel {
     private let eventsClient: EventsClient = LadvEventsClient()
     private let associationsClient: AssociationsClient = LadvAssociationsClient()
 
-    func loadUpcomingEvents(for associationId: String?, and discipline: Discipline?) async {
+    /// Loads the upcoming events matching `filter`.
+    func loadUpcomingEvents(for filter: EventsFilter) async {
         isLoadingUpcomingEvents = true
-        defer { isLoadingUpcomingEvents = false }
-        upcomingEvents = await eventsClient.loadUpcomingEvents(for: associationId, and: discipline)
+        let events = await eventsClient.loadUpcomingEvents(for: filter.associationId, and: filter.discipline)
+        
+        guard !Task.isCancelled else { return }
+        upcomingEvents = events
+        isLoadingUpcomingEvents = false
     }
 
     func loadAssociations() async {
