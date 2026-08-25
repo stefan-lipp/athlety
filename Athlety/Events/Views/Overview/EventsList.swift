@@ -23,6 +23,10 @@ struct EventsList: View {
             .sorted { $0.date < $1.date }
     }
 
+    private var savedEventIds: Set<Int> {
+        Set(savedEvents.map(\.id))
+    }
+
     private var showLoadingRows: Bool {
         selectedCategory == .upcoming && isLoadingUpcomingEvents
     }
@@ -134,7 +138,7 @@ struct EventsList: View {
 
     private func eventRows(for events: [Event]) -> some View {
         ForEach(events) { event in
-            let isSaved = savedEvents.map(\.id).contains(event.id)
+            let isSaved = savedEventIds.contains(event.id)
             NavigationLink(destination: EventDetailsView(eventId: event.id)) {
                 EventRow(event: event, isSaved: isSaved)
             }
@@ -150,7 +154,7 @@ struct EventsList: View {
     }
 
     private func saveOrUnsaveButton(for event: Event) -> some View {
-        let isSaved = savedEvents.map(\.id).contains(event.id)
+        let isSaved = savedEventIds.contains(event.id)
         let action = isSaved ? onRemoveFromBookmarks : onSaveAsBookmark
         let title: LocalizedStringKey = isSaved ? "Remove Bookmark" : "Save as Bookmark"
         let image = isSaved ? "bookmark.slash" : "bookmark"
