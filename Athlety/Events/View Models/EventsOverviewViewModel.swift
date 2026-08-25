@@ -12,11 +12,14 @@ import SwiftData
 final class EventsOverviewViewModel {
     private(set) var upcomingEvents: [Event] = []
     private(set) var associations: [Association] = []
+    private(set) var isLoadingUpcomingEvents = false
 
     private let eventsClient: EventsClient = LadvEventsClient()
     private let associationsClient: AssociationsClient = LadvAssociationsClient()
 
     func loadUpcomingEvents(for associationId: String?, and discipline: Discipline?) async {
+        isLoadingUpcomingEvents = true
+        defer { isLoadingUpcomingEvents = false }
         upcomingEvents = await eventsClient.loadUpcomingEvents(for: associationId, and: discipline)
     }
 

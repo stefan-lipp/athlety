@@ -12,6 +12,7 @@ struct EventsList: View {
 
     let upcomingEvents: [Event]
     let savedEvents: [Event]
+    let isLoadingUpcomingEvents: Bool
     let onSaveAsBookmark: (Event) -> Void
     let onRemoveFromBookmarks: (Event) -> Void
 
@@ -20,6 +21,10 @@ struct EventsList: View {
         return Dictionary(grouping: events, by: \.date)
             .map { (date: $0.key, events: $0.value) }
             .sorted { $0.date < $1.date }
+    }
+
+    private var showLoadingRows: Bool {
+        selectedCategory == .upcoming && isLoadingUpcomingEvents
     }
 
     private var showEmptyStateRow: Bool {
@@ -36,21 +41,27 @@ struct EventsList: View {
             Section {
                 categorySelectionRow
             }
-            if showEmptyStateRow {
+            if showLoadingRows {
+                EventsLoadingRows()
+                    .transition(.opacity)
+            } else if showEmptyStateRow {
                 Section {
                     emptyStateRow
                 }
+                .transition(.opacity)
             } else {
                 ForEach(sortedEventGroups, id: \.date) { group in
                     Section {
                         eventRows(for: group.events)
                     } header: {
-                        sectionHeader(for: group.date)
+                        EventsSectionHeader(date: group.date)
                     }
                 }
                 .navigationLinkIndicatorVisibility(.hidden)
+                .transition(.opacity)
             }
         }
+        .animation(.easeInOut, value: showLoadingRows)
         .sheet(isPresented: $showCalendarEventEditView, content: {
             CalendarEventEditView(
                 event: calendarEventViewModel.calendarEvent,
@@ -138,14 +149,6 @@ struct EventsList: View {
         }
     }
 
-    private func sectionHeader(for date: Date) -> some View {
-        Text(date.formatted(.dateTime.weekday(.wide).day(.twoDigits).month(.wide).year()))
-            .font(.callout)
-            .foregroundStyle(.primary)
-            .fontWeight(.semibold)
-            .padding(.bottom, 4)
-    }
-
     private func saveOrUnsaveButton(for event: Event) -> some View {
         let isSaved = savedEvents.map(\.id).contains(event.id)
         let action = isSaved ? onRemoveFromBookmarks : onSaveAsBookmark
@@ -167,13 +170,27 @@ struct EventsList: View {
     }
 }
 
-#Preview {
+#Preview("Loaded") {
     @Previewable @State var selectedCategory: EventsOverviewCategory = .upcoming
     let event = Event(id: 44253, name: "36. Rheinfelder Nachtmeeting", location: "Rheinfelden", date: Date(), isCancelled: false)
     EventsList(
         selectedCategory: $selectedCategory,
         upcomingEvents: [event],
         savedEvents: [],
+        isLoadingUpcomingEvents: false,
+        onSaveAsBookmark: { _ in },
+        onRemoveFromBookmarks: { _ in }
+    )
+    .environment(CalendarEventViewModel())
+}
+
+#Preview("Loading") {
+    @Previewable @State var selectedCategory: EventsOverviewCategory = .upcoming
+    EventsList(
+        selectedCategory: $selectedCategory,
+        upcomingEvents: [],
+        savedEvents: [],
+        isLoadingUpcomingEvents: true,
         onSaveAsBookmark: { _ in },
         onRemoveFromBookmarks: { _ in }
     )

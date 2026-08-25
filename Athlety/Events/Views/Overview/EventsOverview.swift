@@ -34,6 +34,7 @@ struct EventsOverview: View {
                 selectedCategory: $selectedCategory,
                 upcomingEvents: viewModel.upcomingEvents,
                 savedEvents: savedEvents,
+                isLoadingUpcomingEvents: viewModel.isLoadingUpcomingEvents,
                 onSaveAsBookmark: { viewModel.saveEventAsBookmark($0, in: modelContext) },
                 onRemoveFromBookmarks: { viewModel.removeEventFromBookmarks($0, in: modelContext) }
             )

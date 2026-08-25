@@ -603,6 +603,16 @@
         }
       }
     },
+    "Loading events" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wettkämpfe werden geladen"
+          }
+        }
+      }
+    },
     "Multi-Events" : {
       "localizations" : {
         "de" : {
