@@ -993,6 +993,16 @@
         }
       }
     },
+    "World Ranking Competitions Only" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nur World Ranking Competitions"
+          }
+        }
+      }
+    },
     "WRC" : {
       "localizations" : {
         "de" : {

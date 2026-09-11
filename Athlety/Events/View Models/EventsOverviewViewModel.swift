@@ -20,7 +20,11 @@ final class EventsOverviewViewModel {
     /// Loads the upcoming events matching `filter`.
     func loadUpcomingEvents(for filter: EventsFilter) async {
         isLoadingUpcomingEvents = true
-        let events = await eventsClient.loadUpcomingEvents(for: filter.associationId, and: filter.discipline)
+        let events = await eventsClient.loadUpcomingEvents(
+            for: filter.associationId,
+            and: filter.discipline,
+            isWorldRankingsCompetition: filter.isWorldRankingsCompetition
+        )
 
         guard !Task.isCancelled else { return }
         upcomingEvents = events

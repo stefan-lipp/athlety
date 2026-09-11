@@ -14,7 +14,11 @@ class LadvEventsClient: EventsClient {
     private let eventsUrl = "\(baseUrl)/\(apiKey)/ausList"
     private let eventDetailsUrl = "\(baseUrl)/\(apiKey)/ausDetail"
 
-    func loadUpcomingEvents(for associationId: String?, and discipline: Discipline?) async -> [Event] {
+    func loadUpcomingEvents(
+        for associationId: String?,
+        and discipline: Discipline?,
+        isWorldRankingsCompetition: Bool
+    ) async -> [Event] {
         var urlComponents = URLComponents(string: eventsUrl)!
         urlComponents.queryItems = [
             URLQueryItem(name: "mostCurrent", value: "true"),
@@ -25,6 +29,9 @@ class LadvEventsClient: EventsClient {
         }
         if let discipline {
             urlComponents.queryItems?.append(URLQueryItem(name: "disziplin", value: discipline.disziplin))
+        }
+        if isWorldRankingsCompetition {
+            urlComponents.queryItems?.append(URLQueryItem(name: "wrc", value: "true"))
         }
         let request = URLRequest(url: urlComponents.url!)
         guard let (data, response) = try? await URLSession.shared.data(for: request) else { return [] }

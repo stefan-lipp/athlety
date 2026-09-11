@@ -15,6 +15,7 @@ struct EventsOverview: View {
 
     @AppStorage("eventsFilterAssociationId") private var filterAssociationId: String?
     @AppStorage("eventsFilterDiscipline") private var filterDiscipline: Discipline?
+    @AppStorage("eventsFilterWorldRankingsCompetition") private var filterIsWorldRankingsCompetition = false
 
     @State private var selectedCategory: EventsOverviewCategory = .upcoming
 
@@ -25,7 +26,11 @@ struct EventsOverview: View {
     }
 
     private var filter: EventsFilter {
-        EventsFilter(associationId: filterAssociationId, discipline: filterDiscipline)
+        EventsFilter(
+            associationId: filterAssociationId,
+            discipline: filterDiscipline,
+            isWorldRankingsCompetition: filterIsWorldRankingsCompetition
+        )
     }
 
     var body: some View {

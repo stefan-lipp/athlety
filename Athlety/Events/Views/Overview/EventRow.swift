@@ -18,7 +18,7 @@ struct EventRow: View {
                 if event.isCancelled {
                     eventLabel("Cancelled", fontWeight: .semibold, background: .accent)
                 } else if event.isWorldRankingsCompetition {
-                    eventLabel("WRC", fontWeight: .bold, background: worldRankingGradient)
+                    eventLabel("WRC", fontWeight: .bold, background: .wrcPurple)
                 }
                 Spacer()
                 eventDate
@@ -62,7 +62,7 @@ struct EventRow: View {
             .fontWeight(.semibold)
     }
 
-    private func eventLabel<S: ShapeStyle>(_ title: LocalizedStringKey, fontWeight: Font.Weight, background: S) -> some View {
+    private func eventLabel(_ title: LocalizedStringKey, fontWeight: Font.Weight, background: Color) -> some View {
         Text(title)
             .font(.caption)
             .fontWeight(fontWeight)
@@ -71,18 +71,29 @@ struct EventRow: View {
             .padding(.vertical, 2)
             .background(background, in: Capsule())
     }
-
-    private var worldRankingGradient: LinearGradient {
-        LinearGradient(
-            colors: [.wrcOrange, .wrcLilac, .wrcPurple],
-            startPoint: .bottomLeading,
-            endPoint: .topTrailing
-        )
-    }
 }
 
-#Preview {
-    let event = Event(id: 44253, name: "36. Rheinfelder Nachtmeeting", location: "Rheinfelden", date: Date(), isCancelled: true)
+#Preview("Saved") {
+    let event = Event(id: 44253, name: "36. Rheinfelder Nachtmeeting", location: "Rheinfelden", date: Date(), isCancelled: false)
     EventRow(event: event, isSaved: true)
+        .padding()
+}
+
+#Preview("Cancelled") {
+    let event = Event(id: 44253, name: "36. Rheinfelder Nachtmeeting", location: "Rheinfelden", date: Date(), isCancelled: true)
+    EventRow(event: event, isSaved: false)
+        .padding()
+}
+
+#Preview("World Rankings Competition") {
+    let event = Event(
+        id: 44253,
+        name: "36. Rheinfelder Nachtmeeting",
+        location: "Rheinfelden",
+        date: Date(),
+        isCancelled: false,
+        isWorldRankingsCompetition: true
+    )
+    EventRow(event: event, isSaved: false)
         .padding()
 }

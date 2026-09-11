@@ -8,6 +8,10 @@
 import Foundation
 
 protocol EventsClient {
-    func loadUpcomingEvents(for associationId: String?, and discipline: Discipline?) async -> [Event]
+    func loadUpcomingEvents(
+        for associationId: String?,
+        and discipline: Discipline?,
+        isWorldRankingsCompetition: Bool
+    ) async -> [Event]
     func loadEventDetails(for eventId: Int) async -> EventDetails?
 }

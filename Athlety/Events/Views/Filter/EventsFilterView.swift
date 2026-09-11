@@ -14,9 +14,19 @@ struct EventsFilterView: View {
 
     @AppStorage("eventsFilterAssociationId") private var associationId: String?
     @AppStorage("eventsFilterDiscipline") private var discipline: Discipline?
+    @AppStorage("eventsFilterWorldRankingsCompetition") private var isWorldRankingsCompetition = false
 
     @State private var selectedAssociationId: String?
     @State private var selectedDiscipline: Discipline?
+    @State private var selectedIsWorldRankingsCompetition = false
+
+    private var filter: EventsFilter {
+        EventsFilter(
+            associationId: selectedAssociationId,
+            discipline: selectedDiscipline,
+            isWorldRankingsCompetition: selectedIsWorldRankingsCompetition
+        )
+    }
 
     var body: some View {
         NavigationStack {
@@ -43,6 +53,9 @@ struct EventsFilterView: View {
                         Text("Discipline")
                     }
                 }
+
+                Toggle("World Ranking Competitions Only", isOn: $selectedIsWorldRankingsCompetition)
+                    .tint(.accent)
             }
             .navigationTitle("Filter")
             .toolbarTitleDisplayMode(.inline)
@@ -54,6 +67,7 @@ struct EventsFilterView: View {
             }
             selectedAssociationId = associationId
             selectedDiscipline = discipline
+            selectedIsWorldRankingsCompetition = isWorldRankingsCompetition
         }
     }
 
@@ -68,13 +82,15 @@ struct EventsFilterView: View {
             Button("Reset", systemImage: "arrow.counterclockwise") {
                 selectedAssociationId = nil
                 selectedDiscipline = nil
+                selectedIsWorldRankingsCompetition = false
             }
-            .disabled(selectedAssociationId == nil && selectedDiscipline == nil)
+            .disabled(!filter.isActive)
         }
         ToolbarItem(placement: .confirmationAction) {
             Button("Done", systemImage: "checkmark") {
                 associationId = selectedAssociationId
                 discipline = selectedDiscipline
+                isWorldRankingsCompetition = selectedIsWorldRankingsCompetition
                 dismiss()
             }
         }

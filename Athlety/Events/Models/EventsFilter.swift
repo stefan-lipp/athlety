@@ -11,8 +11,9 @@ import Foundation
 struct EventsFilter: Hashable {
     let associationId: String?
     let discipline: Discipline?
+    let isWorldRankingsCompetition: Bool
 
     var isActive: Bool {
-        associationId != nil || discipline != nil
+        associationId != nil || discipline != nil || isWorldRankingsCompetition
     }
 }
