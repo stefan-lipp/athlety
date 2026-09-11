@@ -16,7 +16,9 @@ struct EventRow: View {
             HStack(alignment: .center) {
                 eventLocation
                 if event.isCancelled {
-                    cancelledLabel
+                    eventLabel("Cancelled", fontWeight: .semibold, background: .accent)
+                } else if event.isWorldRankingsCompetition {
+                    eventLabel("WRC", fontWeight: .bold, background: worldRankingGradient)
                 }
                 Spacer()
                 eventDate
@@ -59,15 +61,23 @@ struct EventRow: View {
         Text(event.name)
             .fontWeight(.semibold)
     }
-
-    private var cancelledLabel: some View {
-        Text("Cancelled")
+    
+    private func eventLabel<S>(_ title: LocalizedStringKey, fontWeight: Font.Weight, background: S) -> some View where S: ShapeStyle {
+        Text(title)
             .font(.caption)
-            .fontWeight(.semibold)
+            .fontWeight(fontWeight)
             .foregroundStyle(.white)
             .padding(.horizontal, 6)
             .padding(.vertical, 2)
-            .background(.accent, in: Capsule())
+            .background(background, in: Capsule())
+    }
+    
+    private var worldRankingGradient: LinearGradient {
+        LinearGradient(
+            colors: [.wrcOrange, .wrcLilac, .wrcPurple],
+            startPoint: .bottomLeading,
+            endPoint: .topTrailing
+        )
     }
 }
 

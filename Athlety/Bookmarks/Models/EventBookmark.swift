@@ -15,24 +15,47 @@ class EventBookmark {
     var location: String = ""
     var date: Date = Date()
     var isCancelled: Bool = false
+    var isWorldRankingsCompetition: Bool = false
 
-    init(id: Int, name: String, location: String, date: Date, isCancelled: Bool) {
+    init(id: Int, name: String, location: String, date: Date, isCancelled: Bool, isWorldRankingsCompetition: Bool = false) {
         self.id = id
         self.name = name
         self.location = location
         self.date = date
         self.isCancelled = isCancelled
+        self.isWorldRankingsCompetition = isWorldRankingsCompetition
     }
 
     convenience init(event: Event) {
-        self.init(id: event.id, name: event.name, location: event.location, date: event.date, isCancelled: event.isCancelled)
+        self.init(
+            id: event.id,
+            name: event.name,
+            location: event.location,
+            date: event.date,
+            isCancelled: event.isCancelled,
+            isWorldRankingsCompetition: event.isWorldRankingsCompetition
+        )
     }
 
     convenience init(event: EventDetails) {
-        self.init(id: event.id, name: event.name, location: event.location.name, date: event.date, isCancelled: event.isCancelled)
+        self.init(
+            id: event.id,
+            name: event.name,
+            location: event.location.name,
+            date: event.date,
+            isCancelled: event.isCancelled,
+            isWorldRankingsCompetition: event.isWorldRankingsCompetition
+        )
     }
 
     func toEvent() -> Event {
-        Event(id: id, name: name, location: location, date: date, isCancelled: isCancelled)
+        Event(
+            id: id,
+            name: name,
+            location: location,
+            date: date,
+            isCancelled: isCancelled,
+            isWorldRankingsCompetition: isWorldRankingsCompetition
+        )
     }
 }

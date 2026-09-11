@@ -993,6 +993,16 @@
         }
       }
     },
+    "WRC" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WRC"
+          }
+        }
+      }
+    },
     "www.athlety.app" : {
       "localizations" : {
         "de" : {

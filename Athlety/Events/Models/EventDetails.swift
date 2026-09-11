@@ -12,6 +12,7 @@ struct EventDetails: Identifiable {
     let name: String
     let date: Date
     let isCancelled: Bool
+    let isWorldRankingsCompetition: Bool
     let note: String?
     let location: EventLocation
     let url: URL?
