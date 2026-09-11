@@ -15,12 +15,12 @@ struct EventsLoadingRows: View {
         [
             Event(id: -1, name: "Sportfest der Leichtathleten", location: "Rheinfelden", date: .now, isCancelled: false),
             Event(id: -2, name: "Abendsportfest", location: "Karlsruhe", date: .now, isCancelled: false),
-            Event(id: -3, name: "Kreismeisterschaften Mehrkampf", location: "Freiburg im Breisgau", date: .now, isCancelled: false)
+            Event(id: -3, name: "Kreismeisterschaften Mehrkampf", location: "Freiburg im Breisgau", date: .now, isCancelled: false),
         ],
         [
             Event(id: -4, name: "Läufermeeting", location: "Offenburg", date: .now, isCancelled: false),
-            Event(id: -5, name: "Landesmeisterschaften der Aktiven", location: "Mannheim", date: .now, isCancelled: false)
-        ]
+            Event(id: -5, name: "Landesmeisterschaften der Aktiven", location: "Mannheim", date: .now, isCancelled: false),
+        ],
     ]
 
     var body: some View {

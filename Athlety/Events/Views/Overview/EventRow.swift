@@ -61,8 +61,8 @@ struct EventRow: View {
         Text(event.name)
             .fontWeight(.semibold)
     }
-    
-    private func eventLabel<S>(_ title: LocalizedStringKey, fontWeight: Font.Weight, background: S) -> some View where S: ShapeStyle {
+
+    private func eventLabel<S: ShapeStyle>(_ title: LocalizedStringKey, fontWeight: Font.Weight, background: S) -> some View {
         Text(title)
             .font(.caption)
             .fontWeight(fontWeight)
@@ -71,7 +71,7 @@ struct EventRow: View {
             .padding(.vertical, 2)
             .background(background, in: Capsule())
     }
-    
+
     private var worldRankingGradient: LinearGradient {
         LinearGradient(
             colors: [.wrcOrange, .wrcLilac, .wrcPurple],

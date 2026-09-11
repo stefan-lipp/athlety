@@ -73,7 +73,9 @@ public struct WrappingHStack: Layout {
     {
         let rows = arrangeRows(proposal: proposal, subviews: subviews, cache: &cache)
 
-        if rows.isEmpty { return cache.minSize }
+        if rows.isEmpty {
+            return cache.minSize
+        }
 
         var width: CGFloat = rows.map { $0.width }.reduce(.zero) { max($0, $1) }
 
@@ -218,13 +220,17 @@ extension WrappingHStack {
     }
 
     private func horizontalSpacing(_ lhs: LayoutSubview, _ rhs: LayoutSubview) -> CGFloat {
-        if let horizontalSpacing { return horizontalSpacing }
+        if let horizontalSpacing {
+            return horizontalSpacing
+        }
 
         return lhs.spacing.distance(to: rhs.spacing, along: .horizontal)
     }
 
     private func verticalSpacing(_ lhs: LayoutSubview, _ rhs: LayoutSubview) -> CGFloat {
-        if let verticalSpacing { return verticalSpacing }
+        if let verticalSpacing {
+            return verticalSpacing
+        }
 
         return lhs.spacing.distance(to: rhs.spacing, along: .vertical)
     }
