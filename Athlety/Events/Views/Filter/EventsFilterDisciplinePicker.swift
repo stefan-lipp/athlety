@@ -80,7 +80,7 @@ struct EventsFilterDisciplinePicker: View {
 
     @ViewBuilder
     private var disciplineNotFoundOverlay: some View {
-        if isSearching && filteredDisciplines.isEmpty {
+        if isSearching, filteredDisciplines.isEmpty {
             ContentUnavailableView("Discipline not found", systemImage: "magnifyingglass")
                 .foregroundStyle(.secondary)
         }

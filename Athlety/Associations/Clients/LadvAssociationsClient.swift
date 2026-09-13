@@ -14,7 +14,7 @@ nonisolated struct LadvAssociationsClient: AssociationsClient, Sendable {
         baseUrl: String = AppConfig.shared.ladvBaseUrl,
         apiKey: String = AppConfig.shared.ladvApiKey
     ) {
-        self.associationsUrl = URL(string: "\(baseUrl)/\(apiKey)/lvList")!
+        associationsUrl = URL(string: "\(baseUrl)/\(apiKey)/lvList")!
     }
 
     @concurrent
@@ -34,11 +34,11 @@ nonisolated struct LadvAssociationsClient: AssociationsClient, Sendable {
     }
 }
 
-nonisolated private struct LadvAssociation: Codable, Sendable {
+private nonisolated struct LadvAssociation: Codable, Sendable {
     let id: String
     let name: String
 
     func toAssociation() -> Association {
-        return Association(id: id, name: name)
+        Association(id: id, name: name)
     }
 }

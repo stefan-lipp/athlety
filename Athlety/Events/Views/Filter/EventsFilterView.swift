@@ -55,7 +55,7 @@ struct EventsFilterView: View {
                         }
                     }
                 }
-                
+
                 Section {
                     Toggle("World Ranking Competitions Only", isOn: $selectedIsWorldRankingsCompetition)
                         .tint(.accent)

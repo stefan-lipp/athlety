@@ -15,8 +15,8 @@ nonisolated struct LadvEventsClient: EventsClient, Sendable {
         baseUrl: String = AppConfig.shared.ladvBaseUrl,
         apiKey: String = AppConfig.shared.ladvApiKey
     ) {
-        self.eventsUrl = "\(baseUrl)/\(apiKey)/ausList"
-        self.eventDetailsUrl = "\(baseUrl)/\(apiKey)/ausDetail"
+        eventsUrl = "\(baseUrl)/\(apiKey)/ausList"
+        eventDetailsUrl = "\(baseUrl)/\(apiKey)/ausDetail"
     }
 
     @concurrent
@@ -68,7 +68,7 @@ nonisolated struct LadvEventsClient: EventsClient, Sendable {
     }
 }
 
-nonisolated private struct LadvEvent: Codable, Sendable {
+private nonisolated struct LadvEvent: Codable, Sendable {
     let id: Int
     let name: String
     let ort: String
@@ -100,7 +100,7 @@ nonisolated private struct LadvEvent: Codable, Sendable {
     }
 }
 
-nonisolated private struct LadvEventDetails: Codable, Sendable {
+private nonisolated struct LadvEventDetails: Codable, Sendable {
     let id: Int
     let name: String
     let note: String
@@ -163,14 +163,14 @@ nonisolated private struct LadvEventDetails: Codable, Sendable {
     }
 }
 
-nonisolated private struct LadvEventLocation: Codable, Sendable {
+private nonisolated struct LadvEventLocation: Codable, Sendable {
     let id: Int
     let name: String
     let lat: Double
     let lng: Double
 }
 
-nonisolated private struct LadvEventLink: Codable, Sendable {
+private nonisolated struct LadvEventLink: Codable, Sendable {
     let name: String
     let url: String
 
@@ -180,7 +180,7 @@ nonisolated private struct LadvEventLink: Codable, Sendable {
     }
 }
 
-nonisolated private struct LadvEventAttachment: Codable, Sendable {
+private nonisolated struct LadvEventAttachment: Codable, Sendable {
     let name: String
     let url: String
 
@@ -190,7 +190,7 @@ nonisolated private struct LadvEventAttachment: Codable, Sendable {
     }
 }
 
-nonisolated private struct LadvEventDiscipline: Codable, Sendable {
+private nonisolated struct LadvEventDiscipline: Codable, Sendable {
     let disziplinNew: String
     let klasseNew: String
 

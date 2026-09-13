@@ -22,7 +22,7 @@ nonisolated struct EventDetails: Identifiable, Sendable {
     let disciplines: [EventDiscipline]
 
     var deduplicatedDisciplines: [Discipline] {
-        let uniqueDisciplines = disciplines.map { $0.discipline }.unique()
+        let uniqueDisciplines = disciplines.map(\.discipline).unique()
         return Discipline.allCases.filter { uniqueDisciplines.contains($0) }
     }
 }

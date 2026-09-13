@@ -70,7 +70,7 @@ struct EventsFilterAssociationPicker: View {
 
     @ViewBuilder
     private var associationNotFoundOverlay: some View {
-        if isSearching && filteredAssociations.isEmpty {
+        if isSearching, filteredAssociations.isEmpty {
             ContentUnavailableView("Association not found", systemImage: "magnifyingglass")
                 .foregroundStyle(.secondary)
         }

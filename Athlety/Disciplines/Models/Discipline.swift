@@ -94,7 +94,7 @@ nonisolated enum Discipline: String, CaseIterable, Identifiable, Hashable, Senda
     }
 
     var id: String {
-        return rawValue
+        rawValue
     }
 
     var category: Category? {

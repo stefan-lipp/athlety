@@ -7,7 +7,7 @@
 
 import Foundation
 
-nonisolated final class AppConfig: Sendable {
+final nonisolated class AppConfig: Sendable {
     let ladvBaseUrl: String
     let ladvApiKey: String
 
