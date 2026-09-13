@@ -31,31 +31,35 @@ struct EventsFilterView: View {
     var body: some View {
         NavigationStack {
             List {
-                NavigationLink {
-                    EventsFilterAssociationPicker(
-                        associations: viewModel.associations,
-                        selectedAssociationId: $selectedAssociationId
-                    )
-                } label: {
-                    LabeledContent {
-                        Text(associationDisplayName)
+                Section {
+                    NavigationLink {
+                        EventsFilterAssociationPicker(
+                            associations: viewModel.associations,
+                            selectedAssociationId: $selectedAssociationId
+                        )
                     } label: {
-                        Text("Association")
+                        LabeledContent {
+                            Text(associationDisplayName)
+                        } label: {
+                            Text("Association")
+                        }
+                    }
+
+                    NavigationLink {
+                        EventsFilterDisciplinePicker(selectedDiscipline: $selectedDiscipline)
+                    } label: {
+                        LabeledContent {
+                            Text(disciplineDisplayName)
+                        } label: {
+                            Text("Discipline")
+                        }
                     }
                 }
-
-                NavigationLink {
-                    EventsFilterDisciplinePicker(selectedDiscipline: $selectedDiscipline)
-                } label: {
-                    LabeledContent {
-                        Text(disciplineDisplayName)
-                    } label: {
-                        Text("Discipline")
-                    }
+                
+                Section {
+                    Toggle("World Ranking Competitions Only", isOn: $selectedIsWorldRankingsCompetition)
+                        .tint(.accent)
                 }
-
-                Toggle("World Ranking Competitions Only", isOn: $selectedIsWorldRankingsCompetition)
-                    .tint(.accent)
             }
             .navigationTitle("Filter")
             .toolbarTitleDisplayMode(.inline)
