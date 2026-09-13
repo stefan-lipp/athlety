@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum Discipline: String, CaseIterable, Identifiable, Hashable {
+nonisolated enum Discipline: String, CaseIterable, Identifiable, Hashable, Sendable {
     case sprint30m
     case sprint40m
     case sprint50m

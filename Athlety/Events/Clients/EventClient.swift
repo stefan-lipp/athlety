@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol EventsClient {
+nonisolated protocol EventsClient: Sendable {
     func loadUpcomingEvents(
         for associationId: String?,
         and discipline: Discipline?,

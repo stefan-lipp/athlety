@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol AssociationsClient {
+nonisolated protocol AssociationsClient: Sendable {
     func loadAssociations() async -> [Association]
 }

@@ -7,12 +7,17 @@
 
 import Foundation
 
-class LadvAssociationsClient: AssociationsClient {
-    private static let baseUrl = AppConfig.shared.ladvBaseUrl
-    private static let apiKey = AppConfig.shared.ladvApiKey
+nonisolated struct LadvAssociationsClient: AssociationsClient, Sendable {
+    private let associationsUrl: URL
 
-    private let associationsUrl = URL(string: "\(baseUrl)/\(apiKey)/lvList")!
+    init(
+        baseUrl: String = AppConfig.shared.ladvBaseUrl,
+        apiKey: String = AppConfig.shared.ladvApiKey
+    ) {
+        self.associationsUrl = URL(string: "\(baseUrl)/\(apiKey)/lvList")!
+    }
 
+    @concurrent
     func loadAssociations() async -> [Association] {
         let request = URLRequest(url: associationsUrl)
 
@@ -29,7 +34,7 @@ class LadvAssociationsClient: AssociationsClient {
     }
 }
 
-private struct LadvAssociation: Codable {
+nonisolated private struct LadvAssociation: Codable, Sendable {
     let id: String
     let name: String
 

@@ -8,7 +8,7 @@
 import Foundation
 
 /// The criteria the upcoming events request is narrowed down by.
-struct EventsFilter: Hashable {
+nonisolated struct EventsFilter: Hashable, Sendable {
     let associationId: String?
     let discipline: Discipline?
     let isWorldRankingsCompetition: Bool

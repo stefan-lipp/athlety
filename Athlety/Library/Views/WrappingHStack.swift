@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// A view that arranges its subviews in horizontal line and wraps them to the next lines if necessary.
-public struct WrappingHStack: Layout {
+nonisolated public struct WrappingHStack: Layout {
     /// The guide for aligning the subviews in this stack. This guide has the same screen coordinate for every subview.
     public var alignment: Alignment
 
@@ -236,13 +236,13 @@ extension WrappingHStack {
     }
 }
 
-private extension CGSize {
+nonisolated private extension CGSize {
     static var infinity: Self {
         .init(width: CGFloat.infinity, height: CGFloat.infinity)
     }
 }
 
-private extension UnitPoint {
+nonisolated private extension UnitPoint {
     init(_ alignment: Alignment) {
         switch alignment {
         case .leading:

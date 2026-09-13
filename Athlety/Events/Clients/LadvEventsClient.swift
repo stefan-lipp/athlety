@@ -7,13 +7,19 @@
 
 import Foundation
 
-class LadvEventsClient: EventsClient {
-    private static let baseUrl = AppConfig.shared.ladvBaseUrl
-    private static let apiKey = AppConfig.shared.ladvApiKey
+nonisolated struct LadvEventsClient: EventsClient, Sendable {
+    private let eventsUrl: String
+    private let eventDetailsUrl: String
 
-    private let eventsUrl = "\(baseUrl)/\(apiKey)/ausList"
-    private let eventDetailsUrl = "\(baseUrl)/\(apiKey)/ausDetail"
+    init(
+        baseUrl: String = AppConfig.shared.ladvBaseUrl,
+        apiKey: String = AppConfig.shared.ladvApiKey
+    ) {
+        self.eventsUrl = "\(baseUrl)/\(apiKey)/ausList"
+        self.eventDetailsUrl = "\(baseUrl)/\(apiKey)/ausDetail"
+    }
 
+    @concurrent
     func loadUpcomingEvents(
         for associationId: String?,
         and discipline: Discipline?,
@@ -41,6 +47,7 @@ class LadvEventsClient: EventsClient {
         return ladvEvents?.compactMap { $0.toEvent() } ?? []
     }
 
+    @concurrent
     func loadEventDetails(for eventId: Int) async -> EventDetails? {
         var urlComponents = URLComponents(string: eventDetailsUrl)!
         urlComponents.queryItems = [
@@ -61,7 +68,7 @@ class LadvEventsClient: EventsClient {
     }
 }
 
-private struct LadvEvent: Codable {
+nonisolated private struct LadvEvent: Codable, Sendable {
     let id: Int
     let name: String
     let ort: String
@@ -93,7 +100,7 @@ private struct LadvEvent: Codable {
     }
 }
 
-private struct LadvEventDetails: Codable {
+nonisolated private struct LadvEventDetails: Codable, Sendable {
     let id: Int
     let name: String
     let note: String
@@ -156,14 +163,14 @@ private struct LadvEventDetails: Codable {
     }
 }
 
-private struct LadvEventLocation: Codable {
+nonisolated private struct LadvEventLocation: Codable, Sendable {
     let id: Int
     let name: String
     let lat: Double
     let lng: Double
 }
 
-private struct LadvEventLink: Codable {
+nonisolated private struct LadvEventLink: Codable, Sendable {
     let name: String
     let url: String
 
@@ -173,7 +180,7 @@ private struct LadvEventLink: Codable {
     }
 }
 
-private struct LadvEventAttachment: Codable {
+nonisolated private struct LadvEventAttachment: Codable, Sendable {
     let name: String
     let url: String
 
@@ -183,7 +190,7 @@ private struct LadvEventAttachment: Codable {
     }
 }
 
-private struct LadvEventDiscipline: Codable {
+nonisolated private struct LadvEventDiscipline: Codable, Sendable {
     let disziplinNew: String
     let klasseNew: String
 
@@ -260,7 +267,7 @@ private struct LadvEventDiscipline: Codable {
     }
 }
 
-extension Discipline {
+nonisolated extension Discipline {
     var disziplin: String {
         switch self {
         case .sprint30m: "30"

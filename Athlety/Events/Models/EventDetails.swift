@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EventDetails: Identifiable {
+nonisolated struct EventDetails: Identifiable, Sendable {
     let id: Int
     let name: String
     let date: Date
@@ -27,7 +27,7 @@ struct EventDetails: Identifiable {
     }
 }
 
-struct EventLocation: CustomStringConvertible {
+nonisolated struct EventLocation: CustomStringConvertible, Sendable {
     let name: String
     let site: String
     let latitude: Double
@@ -38,23 +38,23 @@ struct EventLocation: CustomStringConvertible {
     }
 }
 
-struct EventRegistration {
+nonisolated struct EventRegistration: Sendable {
     let host: String
     let email: String
     let deadline: Date
 }
 
-struct EventLink {
+nonisolated struct EventLink: Sendable {
     let name: String
     let url: URL
 }
 
-struct EventAttachment {
+nonisolated struct EventAttachment: Sendable {
     let name: String
     let url: URL
 }
 
-struct EventDiscipline {
+nonisolated struct EventDiscipline: Sendable {
     let discipline: Discipline
     let ageGroup: String
 }

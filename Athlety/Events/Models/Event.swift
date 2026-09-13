@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Event: Identifiable {
+nonisolated struct Event: Identifiable, Sendable {
     let id: Int
     let name: String
     let location: String
