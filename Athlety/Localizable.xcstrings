@@ -253,6 +253,16 @@
         }
       }
     },
+    "Choose an event from the list to see its details." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle einen Wettkampf aus der Liste, um die Details zu sehen."
+          }
+        }
+      }
+    },
     "Continue" : {
       "localizations" : {
         "de" : {
@@ -829,6 +839,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gespeichert"
+          }
+        }
+      }
+    },
+    "Select an Event" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wettkampf auswählen"
           }
         }
       }

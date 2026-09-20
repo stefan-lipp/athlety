@@ -56,26 +56,16 @@ struct EventDetailsView: View {
             }
         }
         .listStyle(.plain)
-        .task {
+        .task(id: eventId) {
             await viewModel.loadEventDetails(for: eventId, with: modelContext)
         }
         .toolbar {
-            toolbar
-        }
-    }
-
-    private var toolbar: some ToolbarContent {
-        ToolbarItem {
-            Button {
+            EventDetailsToolbar(isSavedAsBookmark: viewModel.isSavedAsBookmark) {
                 if viewModel.isSavedAsBookmark {
                     viewModel.removeEventFromBookmarks(in: modelContext)
                 } else {
                     viewModel.saveEventAsBookmark(in: modelContext)
                 }
-            } label: {
-                Image(systemName: "bookmark")
-                    .symbolVariant(viewModel.isSavedAsBookmark ? .fill : .none)
-                    .foregroundStyle(viewModel.isSavedAsBookmark ? .accent : .primary)
             }
         }
     }

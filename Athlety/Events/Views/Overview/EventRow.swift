@@ -10,6 +10,7 @@ import SwiftUI
 struct EventRow: View {
     let event: Event
     let isSaved: Bool
+    let isSelected: Bool
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -30,6 +31,7 @@ struct EventRow: View {
                 bookmarkIcon
             }
         }
+        .listRowBackground(rowBackground)
     }
 
     private var eventLocation: some View {
@@ -71,17 +73,22 @@ struct EventRow: View {
             .padding(.vertical, 2)
             .background(background, in: Capsule())
     }
+
+    private var rowBackground: some View {
+        let color: Color = isSelected ? Color(.tertiaryLabel) : Color(.tertiarySystemFill)
+        return color.clipShape(RoundedRectangle(cornerRadius: 14))
+    }
 }
 
 #Preview("Saved") {
     let event = Event(id: 44253, name: "36. Rheinfelder Nachtmeeting", location: "Rheinfelden", date: Date(), isCancelled: false)
-    EventRow(event: event, isSaved: true)
+    EventRow(event: event, isSaved: true, isSelected: false)
         .padding()
 }
 
 #Preview("Cancelled") {
     let event = Event(id: 44253, name: "36. Rheinfelder Nachtmeeting", location: "Rheinfelden", date: Date(), isCancelled: true)
-    EventRow(event: event, isSaved: false)
+    EventRow(event: event, isSaved: false, isSelected: false)
         .padding()
 }
 
@@ -94,6 +101,6 @@ struct EventRow: View {
         isCancelled: false,
         isWorldRankingsCompetition: true
     )
-    EventRow(event: event, isSaved: false)
+    EventRow(event: event, isSaved: false, isSelected: false)
         .padding()
 }

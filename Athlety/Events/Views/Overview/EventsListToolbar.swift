@@ -1,5 +1,5 @@
 //
-//  EventsToolbar.swift
+//  EventsListToolbar.swift
 //  Athlety
 //
 //  Created by Stefan Lipp on 03.01.26.
@@ -7,19 +7,21 @@
 
 import SwiftUI
 
-struct EventsToolbar: ToolbarContent {
+struct EventsListToolbar: ToolbarContent {
     @Environment(\.colorScheme) private var colorScheme
 
     let selectedCategory: EventsOverviewCategory
     let hasActiveFilter: Bool
+    let showSettingsButton: Bool
 
     @State private var showFilter = false
-    @State private var showSettings = false
 
     var body: some ToolbarContent {
         filterButton
-        ToolbarSpacer()
-        settingsButton
+        if showSettingsButton {
+            ToolbarSpacer()
+            SettingsToolbarButton()
+        }
     }
 
     @ToolbarContentBuilder
@@ -33,21 +35,6 @@ struct EventsToolbar: ToolbarContent {
                     EventsFilterView()
                         .preferredColorScheme(colorScheme)
                 }
-            }
-        }
-    }
-
-    @ToolbarContentBuilder
-    private var settingsButton: some ToolbarContent {
-        ToolbarItem {
-            Button {
-                showSettings = true
-            } label: {
-                Label("Settings", systemImage: "gearshape")
-            }
-            .sheet(isPresented: $showSettings) {
-                SettingsView()
-                    .preferredColorScheme(colorScheme)
             }
         }
     }

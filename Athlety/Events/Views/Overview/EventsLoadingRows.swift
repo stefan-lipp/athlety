@@ -27,7 +27,7 @@ struct EventsLoadingRows: View {
         ForEach(Array(Self.sampleEvents.enumerated()), id: \.offset) { _, events in
             Section {
                 ForEach(events) { event in
-                    EventRow(event: event, isSaved: false)
+                    EventRow(event: event, isSaved: false, isSelected: false)
                 }
             } header: {
                 EventsSectionHeader(date: .now)

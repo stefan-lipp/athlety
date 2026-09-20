@@ -10,6 +10,7 @@ import SwiftUI
 
 struct EventsOverview: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     @Environment(EventsOverviewViewModel.self) private var viewModel
 
@@ -18,6 +19,7 @@ struct EventsOverview: View {
     @AppStorage("eventsFilterWorldRankingsCompetition") private var filterIsWorldRankingsCompetition = false
 
     @State private var selectedCategory: EventsOverviewCategory = .upcoming
+    @State private var selectedEventId: Int?
 
     @Query private var eventBookmarks: [EventBookmark]
 
@@ -34,9 +36,10 @@ struct EventsOverview: View {
     }
 
     var body: some View {
-        NavigationStack {
+        NavigationSplitView {
             EventsList(
                 selectedCategory: $selectedCategory,
+                selectedEventId: $selectedEventId,
                 upcomingEvents: viewModel.upcomingEvents,
                 savedEvents: savedEvents,
                 isLoadingUpcomingEvents: viewModel.isLoadingUpcomingEvents,
@@ -45,7 +48,23 @@ struct EventsOverview: View {
             )
             .navigationTitle("Events")
             .toolbar {
-                EventsToolbar(selectedCategory: selectedCategory, hasActiveFilter: filter.isActive)
+                EventsListToolbar(
+                    selectedCategory: selectedCategory,
+                    hasActiveFilter: filter.isActive,
+                    showSettingsButton: horizontalSizeClass == .compact
+                )
+            }
+        } detail: {
+            NavigationStack {
+                if let selectedEventId {
+                    EventDetailsView(eventId: selectedEventId)
+                } else {
+                    EventsPlaceholderView(
+                        icon: "calendar",
+                        title: "Select an Event",
+                        description: "Choose an event from the list to see its details."
+                    )
+                }
             }
         }
         .task(id: filter) {
