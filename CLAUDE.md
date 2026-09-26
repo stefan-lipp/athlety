@@ -4,51 +4,58 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Athlety is a native iOS app (Swift/SwiftUI) for track and field athletes in Germany. It fetches upcoming competition data from the LADV (Leichtathletik-Datenverarbeitung) API and lets users browse, filter, bookmark, and export events to their calendar.
+Athlety is a native iOS app (Swift/SwiftUI, iOS 26+) for track and field athletes in Germany. It fetches upcoming competitions from the LADV (Leichtathletik-Datenverarbeitung) API and lets users browse, filter, bookmark, and export events to their calendar. There are no external dependencies, only Apple frameworks (SwiftUI, SwiftData, EventKit, MapKit, Foundation).
 
-## Build & Run
+## Commands
 
-This is an Xcode project (no SPM package, no external dependencies). Build and run using:
+Plain Xcode project (no SPM package). Build:
 
 ```bash
 xcodebuild -project Athlety.xcodeproj -scheme Athlety -destination 'platform=iOS Simulator,name=iPhone 17 Pro' build
 ```
 
-There are no tests in the project currently.
+Formatting uses SwiftFormat with default rules (no `.swiftformat` file; `.swift-version` pins Swift 6.0):
 
-### Setup Requirement
+```bash
+swiftformat --lint .   # check
+swiftformat .          # apply
+```
 
-Before building, copy `Athlety/AppConfig.sample.plist` to `Athlety/AppConfig.plist` and add your LADV API key. The `AppConfig.plist` is gitignored.
+There is no test target.
+
+### Setup
+
+Copy `Athlety/AppConfig.sample.plist` to `Athlety/AppConfig.plist` (gitignored) and fill in the LADV API key. `AppConfig.shared` calls `fatalError` if the file or its `LADV.BaseURL` / `LADV.APIKey` values are missing.
 
 ## Architecture
 
-**Pattern:** MVVM with protocol-based API clients and SwiftData persistence.
+MVVM with protocol-based API clients and SwiftData persistence, organized by feature under `Athlety/` (`Events/` is the core feature; `Bookmarks/`, `Associations/`, `Calendar/`, `Disciplines/`, `Settings/`, `About/`, `Welcome/`, and the shared `Library/`).
 
-**Language / concurrency:** Swift 6 language mode with Approachable Concurrency and default actor isolation `MainActor`. UI, ViewModels, and SwiftData stay on the main actor. Networking clients are `nonisolated` + `Sendable` with `@concurrent` async methods so fetch/decode run off the main actor. Domain models that cross that boundary are `nonisolated` + `Sendable`.
+Outside the app target, `LADV/` holds the LADV API documentation (PDF) and `docs/` is the static athlety.app website (privacy policy, imprint).
 
-**Feature-based structure** — each feature lives in its own directory under `Athlety/`:
+### Concurrency
 
-| Directory | Purpose |
-|-----------|---------|
-| `App/` | Entry point (`AthletyApp`), `AppConfig` singleton for API credentials |
-| `Events/` | Core feature: fetching, displaying, and filtering events (Clients, Models, ViewModels, Views) |
-| `Bookmarks/` | SwiftData `EventBookmark` model for persisting saved events (synced via iCloud) |
-| `Associations/` | State association data for filtering events by region |
-| `Calendar/` | EventKit integration for exporting events |
-| `Disciplines/` | `Discipline` enum (~50 athletic disciplines) with `Category`-based grouping |
-| `Settings/` | Appearance preferences via `@AppStorage` |
-| `Welcome/` | Onboarding flow |
-| `Library/` | Shared utilities: `WrappingHStack` (custom Layout), extensions |
+Swift 6 language mode with Approachable Concurrency and default actor isolation `MainActor`. Views, ViewModels, and SwiftData stay on the main actor. API clients are `nonisolated` + `Sendable` with `@concurrent` async methods so fetching and decoding run off the main actor. Domain models that cross that boundary (`Event`, `EventDetails`, `EventsFilter`, `Discipline`, `Association`) are `nonisolated` + `Sendable`.
 
-### Key Patterns
+### Data flow
 
-- **API clients** follow a protocol/implementation split: `EventsClient` protocol → `LadvEventsClient` implementation; `AssociationsClient` → `LadvAssociationsClient`. Clients take LADV base URL/API key in `init` (defaults from `AppConfig.shared`).
-- **ViewModels** are `@Observable` classes (MainActor by default), injected at the app root with `@State` and consumed via `.environment(...)`.
-- **Persistence** uses SwiftData with a `.modelContainer(for: EventBookmark.self)` on the app's WindowGroup.
-- **Networking** uses async/await with URLSession directly (no third-party HTTP library); client methods are `@concurrent`.
-- **Localization** uses a string catalog (`Localizable.xcstrings`).
-- **No external dependencies** — only Apple frameworks (SwiftUI, SwiftData, EventKit, Foundation).
+LADV API → `LadvEventsClient` / `LadvAssociationsClient` → `Sendable` domain models → `@Observable` ViewModels → SwiftUI views.
 
-### Data Flow
+- Clients implement a protocol (`EventsClient`, `AssociationsClient`) and take the base URL and API key in `init`, defaulting to `AppConfig.shared`. They use `URLSession` directly and swallow network and decoding errors, returning an empty array or `nil`.
+- LADV response models are `Ladv*` structs, private to the client file, and mapped to domain models there.
+- App-wide ViewModels (`EventsOverviewViewModel`, `CalendarEventViewModel`) are created with `@State` in `AthletyApp` and passed down via `.environment(...)`. Screen-local ones (`EventDetailsViewModel`) are owned by their view.
 
-LADV API → `LadvEventsClient` (`@concurrent`) → `Sendable` domain models (`Event`, `EventDetails`) → MainActor ViewModels → SwiftUI Views. API response models are prefixed with `Ladv*` and mapped to domain models in the client layer.
+### Navigation and filtering
+
+- `EventsOverview` is a `NavigationSplitView`. The list's `selectedEventId` drives the detail column, and `EventDetailsView` reloads with `.task(id: eventId)`. The settings button sits in the list toolbar on compact width and in the detail toolbar otherwise (`SettingsToolbarButton`).
+- The filter lives in `@AppStorage` under the `eventsFilter*` keys, read by both `EventsFilterView` and `EventsOverview`. The filter sheet edits a local draft and only writes to `@AppStorage` on "Done". `EventsOverview` builds an `EventsFilter` from those keys and loads with `.task(id: filter)`, so changing the filter cancels the outdated request.
+
+### Persistence
+
+`EventBookmark` is the only SwiftData model (`.modelContainer(for: EventBookmark.self)` on the `WindowGroup`) and syncs through CloudKit. CloudKit requires every property to have a default value and doesn't allow unique constraints.
+
+Adding a field to events usually touches the `Ladv*` response model and its mapping, `Event` / `EventDetails`, and `EventBookmark` (a stored property with a default, both convenience inits, and `toEvent()`) so saved events keep the field.
+
+### Localization
+
+`Localizable.xcstrings` uses English as the source language with German translations. Every new user-facing string needs a German translation. German copy calls events "Wettkämpfe".
