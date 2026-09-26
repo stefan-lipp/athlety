@@ -12,14 +12,29 @@ struct EventMapView: View {
     let latitude: Double
     let longitude: Double
 
-    var body: some View {
-        Map(initialPosition: .region(region), interactionModes: [])
+    @State private var position: MapCameraPosition
+
+    init(latitude: Double, longitude: Double) {
+        self.latitude = latitude
+        self.longitude = longitude
+        _position = State(
+            initialValue: EventMapView.regionPosition(latitude: latitude, longitude: longitude)
+        )
     }
 
-    private var region: MKCoordinateRegion {
-        MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
-            span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+    var body: some View {
+        Map(position: $position, interactionModes: [])
+            .onChange(of: [latitude, longitude]) {
+                position = EventMapView.regionPosition(latitude: latitude, longitude: longitude)
+            }
+    }
+
+    private static func regionPosition(latitude: Double, longitude: Double) -> MapCameraPosition {
+        .region(
+            MKCoordinateRegion(
+                center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
+                span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+            )
         )
     }
 }
