@@ -19,6 +19,7 @@ nonisolated struct EventDetails: Identifiable, Sendable {
     let registration: EventRegistration
     let links: [EventLink]
     let attachments: [EventAttachment]
+    let results: [EventResult]
     let disciplines: [EventDiscipline]
 
     var deduplicatedDisciplines: [Discipline] {
@@ -50,6 +51,11 @@ nonisolated struct EventLink: Sendable {
 }
 
 nonisolated struct EventAttachment: Sendable {
+    let name: String
+    let url: URL
+}
+
+nonisolated struct EventResult: Sendable {
     let name: String
     let url: URL
 }

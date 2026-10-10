@@ -10,6 +10,7 @@ import Foundation
 nonisolated struct LadvEventsClient: EventsClient, Sendable {
     private let eventsUrl: String
     private let eventDetailsUrl: String
+    private let resultDetailsUrl: String
 
     init(
         baseUrl: String = AppConfig.shared.ladvBaseUrl,
@@ -17,6 +18,7 @@ nonisolated struct LadvEventsClient: EventsClient, Sendable {
     ) {
         eventsUrl = "\(baseUrl)/\(apiKey)/ausList"
         eventDetailsUrl = "\(baseUrl)/\(apiKey)/ausDetail"
+        resultDetailsUrl = "\(baseUrl)/\(apiKey)/vedDetail"
     }
 
     @concurrent
@@ -55,6 +57,7 @@ nonisolated struct LadvEventsClient: EventsClient, Sendable {
             URLQueryItem(name: "ort", value: "true"),
             URLQueryItem(name: "links", value: "true"),
             URLQueryItem(name: "attachements", value: "true"),
+            URLQueryItem(name: "veranstaltungen", value: "true"),
             URLQueryItem(name: "wettbewerbe", value: "true"),
         ]
 
@@ -64,7 +67,34 @@ nonisolated struct LadvEventsClient: EventsClient, Sendable {
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return nil }
 
         let ladvEvents = try? JSONDecoder().decode([LadvEventDetails].self, from: data)
-        return ladvEvents?.first?.toEventDetails()
+        guard let ladvEvent = ladvEvents?.first else { return nil }
+
+        var results: [EventResult] = []
+        if ladvEvent.date < .now, let resultEvents = ladvEvent.resultEvents, !resultEvents.isEmpty {
+            results = await loadResults(for: resultEvents.map(\.id))
+        }
+        return ladvEvent.toEventDetails(results: results)
+    }
+
+    @concurrent
+    private func loadResults(for resultEventIds: [Int]) async -> [EventResult] {
+        // The API accepts at most 10 ids per request
+        let ids = resultEventIds.prefix(10).map(String.init).joined(separator: ",")
+        var urlComponents = URLComponents(string: resultDetailsUrl)!
+        urlComponents.queryItems = [
+            URLQueryItem(name: "id", value: ids),
+            URLQueryItem(name: "ergebnisse", value: "true"),
+        ]
+
+        let request = URLRequest(url: urlComponents.url!)
+
+        guard let (data, response) = try? await URLSession.shared.data(for: request) else { return [] }
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return [] }
+
+        let resultEvents = try? JSONDecoder().decode([LadvResultEvent].self, from: data)
+        return resultEvents?
+            .flatMap { $0.files ?? [] }
+            .compactMap { $0.toResult() } ?? []
     }
 }
 
@@ -115,6 +145,7 @@ private nonisolated struct LadvEventDetails: Codable, Sendable {
     let url: String
     let links: [LadvEventLink]
     let attachments: [LadvEventAttachment]
+    let resultEvents: [LadvEventResultReference]?
     let disciplines: [LadvEventDiscipline]
 
     private enum CodingKeys: String, CodingKey {
@@ -125,10 +156,11 @@ private nonisolated struct LadvEventDetails: Codable, Sendable {
         case note = "beschreibung"
         case site = "sportstaette"
         case attachments = "attachements"
+        case resultEvents = "veranstaltungen"
         case disciplines = "wettbewerbe"
     }
 
-    func toEventDetails() -> EventDetails {
+    func toEventDetails(results: [EventResult]) -> EventDetails {
         EventDetails(
             id: id,
             name: name,
@@ -141,11 +173,12 @@ private nonisolated struct LadvEventDetails: Codable, Sendable {
             registration: registration,
             links: links.compactMap { $0.toLink() },
             attachments: attachments.compactMap { $0.toAttachment() },
+            results: results,
             disciplines: disciplines.compactMap { $0.toDiscipline() }
         )
     }
 
-    private var date: Date {
+    var date: Date {
         let dateMillis = datum
         let dateSeconds = Double(dateMillis) / 1000
         return Date(timeIntervalSince1970: dateSeconds)
@@ -187,6 +220,34 @@ private nonisolated struct LadvEventAttachment: Codable, Sendable {
     func toAttachment() -> EventAttachment? {
         guard let url = URL(string: url + "?file=true") else { return nil }
         return EventAttachment(name: name, url: url)
+    }
+}
+
+private nonisolated struct LadvEventResultReference: Codable, Sendable {
+    let id: Int
+}
+
+private nonisolated struct LadvResultEvent: Codable, Sendable {
+    let files: [LadvResultFile]?
+
+    private enum CodingKeys: String, CodingKey {
+        case files = "ergebnisse"
+    }
+}
+
+private nonisolated struct LadvResultFile: Codable, Sendable {
+    let name: String
+    let type: String?
+    let url: String
+    let obsolete: Bool?
+
+    private static let documentTypes: Set<String> = ["PDF", "XLS", "XLSX", "DOC", "DOCX", "CSV", "TXT"]
+
+    func toResult() -> EventResult? {
+        guard obsolete != true,
+              let type, Self.documentTypes.contains(type.uppercased()),
+              let url = URL(string: url + "?file=true") else { return nil }
+        return EventResult(name: name, url: url)
     }
 }
 
