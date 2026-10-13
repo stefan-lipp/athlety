@@ -180,9 +180,18 @@ nav a.logo {
 }
 
 .feature-icon {
-  font-size: 2rem;
   display: block;
-  margin-bottom: 0.75rem;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--color-primary) 14%, transparent);
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .feature-card h3 {
