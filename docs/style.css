@@ -68,6 +68,9 @@ nav {
   font-weight: 700;
   font-size: 1.25rem;
   margin-right: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 nav a {
@@ -113,19 +116,18 @@ nav a.logo {
   max-width: 480px;
 }
 
-.cta-button {
+.app-store-badge {
   display: inline-block;
-  background: var(--color-primary);
-  color: #fff;
-  padding: 0.75rem 2rem;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
   transition: opacity 0.2s;
 }
 
-.cta-button:hover {
+.app-store-badge img {
+  display: block;
+  height: 48px;
+  width: auto;
+}
+
+.app-store-badge:hover {
   opacity: 0.85;
 }
 
