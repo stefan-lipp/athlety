@@ -44,7 +44,8 @@ struct EventsOverview: View {
                 savedEvents: savedEvents,
                 isLoadingUpcomingEvents: viewModel.isLoadingUpcomingEvents,
                 onSaveAsBookmark: { viewModel.saveEventAsBookmark($0, in: modelContext) },
-                onRemoveFromBookmarks: { viewModel.removeEventFromBookmarks($0, in: modelContext) }
+                onRemoveFromBookmarks: { viewModel.removeEventFromBookmarks($0, in: modelContext) },
+                showsDisclosureIndicator: horizontalSizeClass == .compact
             )
             .navigationTitle("Events")
             .toolbar {

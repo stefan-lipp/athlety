@@ -16,6 +16,7 @@ struct EventsList: View {
     let isLoadingUpcomingEvents: Bool
     let onSaveAsBookmark: (Event) -> Void
     let onRemoveFromBookmarks: (Event) -> Void
+    var showsDisclosureIndicator = true
 
     private var sortedEventGroups: [(date: Date, events: [Event])] {
         let events = selectedCategory == .upcoming ? upcomingEvents : savedEvents
@@ -48,7 +49,7 @@ struct EventsList: View {
             }
             .selectionDisabled()
             if showLoadingRows {
-                EventsLoadingRows()
+                EventsLoadingRows(showsDisclosureIndicator: showsDisclosureIndicator)
                     .selectionDisabled()
                     .transition(.opacity)
             } else if showEmptyStateRow {
@@ -100,19 +101,24 @@ struct EventsList: View {
         ForEach(events) { event in
             let isSaved = savedEventIds.contains(event.id)
             let isSelected = event.id == selectedEventId
-            EventRow(event: event, isSaved: isSaved, isSelected: isSelected)
-                .tag(event.id)
-                .selectionDisabled()
-                .contentShape(.rect)
-                .onTapGesture { selectedEventId = event.id }
-                .contextMenu {
-                    saveOrUnsaveButton(for: event)
-                    addToCalendarButton(for: event)
-                }
-                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                    saveOrUnsaveButton(for: event)
-                        .tint(isSaved ? .accent : .blue)
-                }
+            EventRow(
+                event: event,
+                isSaved: isSaved,
+                isSelected: isSelected,
+                showsDisclosureIndicator: showsDisclosureIndicator
+            )
+            .tag(event.id)
+            .selectionDisabled()
+            .contentShape(.rect)
+            .onTapGesture { selectedEventId = event.id }
+            .contextMenu {
+                saveOrUnsaveButton(for: event)
+                addToCalendarButton(for: event)
+            }
+            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                saveOrUnsaveButton(for: event)
+                    .tint(isSaved ? .accent : .blue)
+            }
         }
     }
 

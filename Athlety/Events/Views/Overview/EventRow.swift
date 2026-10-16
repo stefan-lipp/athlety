@@ -11,6 +11,7 @@ struct EventRow: View {
     let event: Event
     let isSaved: Bool
     let isSelected: Bool
+    var showsDisclosureIndicator = true
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -23,7 +24,9 @@ struct EventRow: View {
                 }
                 Spacer()
                 eventDate
-                chevron
+                if showsDisclosureIndicator {
+                    chevron
+                }
             }
             HStack(alignment: .bottom) {
                 eventName

@@ -11,6 +11,8 @@ import SwiftUI
 ///
 /// Reuses ``EventRow`` so the skeleton always matches the real row layout.
 struct EventsLoadingRows: View {
+    var showsDisclosureIndicator = true
+
     private static let sampleEvents: [[Event]] = [
         [
             Event(id: -1, name: "Sportfest der Leichtathleten", location: "Rheinfelden", date: .now, isCancelled: false),
@@ -27,7 +29,12 @@ struct EventsLoadingRows: View {
         ForEach(Array(Self.sampleEvents.enumerated()), id: \.offset) { _, events in
             Section {
                 ForEach(events) { event in
-                    EventRow(event: event, isSaved: false, isSelected: false)
+                    EventRow(
+                        event: event,
+                        isSaved: false,
+                        isSelected: false,
+                        showsDisclosureIndicator: showsDisclosureIndicator
+                    )
                 }
             } header: {
                 EventsSectionHeader(date: .now)
