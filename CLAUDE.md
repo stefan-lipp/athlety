@@ -11,7 +11,7 @@ Athlety is a native iOS app (Swift/SwiftUI, iOS 26+) for track and field athlete
 Plain Xcode project (no SPM package). Build:
 
 ```bash
-xcodebuild -project Athlety.xcodeproj -scheme Athlety -destination 'platform=iOS Simulator,name=iPhone 17 Pro' build
+xcodebuild -project Athlety.xcodeproj -scheme Athlety -destination 'platform=iOS Simulator,name=iPhone 18 Pro' build
 ```
 
 Formatting uses SwiftFormat with default rules (no `.swiftformat` file; `.swift-version` pins Swift 6.0):
