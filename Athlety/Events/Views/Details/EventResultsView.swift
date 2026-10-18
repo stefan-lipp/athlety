@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import WebKit
 
 struct EventResultsView: View {
     let results: [EventResult]
@@ -14,8 +13,7 @@ struct EventResultsView: View {
     var body: some View {
         ForEach(results, id: \.url) { result in
             NavigationLink {
-                WebView(url: result.url)
-                    .navigationTitle(result.name)
+                EventWebView(name: result.name, url: result.url)
             } label: {
                 Label(result.name, systemImage: "list.number")
             }

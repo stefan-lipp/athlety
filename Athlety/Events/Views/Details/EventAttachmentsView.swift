@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import WebKit
 
 struct EventAttachmentsView: View {
     let attachments: [EventAttachment]
@@ -14,8 +13,7 @@ struct EventAttachmentsView: View {
     var body: some View {
         ForEach(attachments, id: \.name) { attachment in
             NavigationLink {
-                WebView(url: attachment.url)
-                    .navigationTitle(attachment.name)
+                EventWebView(name: attachment.name, url: attachment.url)
             } label: {
                 Label(attachment.name, systemImage: "doc")
             }

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import WebKit
 
 struct EventLinksView: View {
     let url: URL?
@@ -15,8 +14,7 @@ struct EventLinksView: View {
     var body: some View {
         if let url {
             NavigationLink {
-                WebView(url: url)
-                    .navigationTitle("LADV")
+                EventWebView(name: "LADV", url: url)
             } label: {
                 Label("Open on LADV", systemImage: "network")
             }
@@ -25,8 +23,7 @@ struct EventLinksView: View {
 
         ForEach(links, id: \.name) { link in
             NavigationLink {
-                WebView(url: link.url)
-                    .navigationTitle(link.name)
+                EventWebView(name: link.name, url: link.url)
             } label: {
                 Label(link.name, systemImage: "network")
             }

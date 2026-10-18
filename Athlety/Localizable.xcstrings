@@ -553,16 +553,6 @@
         }
       }
     },
-    "LADV" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "LADV"
-          }
-        }
-      }
-    },
     "Language" : {
       "localizations" : {
         "de" : {
