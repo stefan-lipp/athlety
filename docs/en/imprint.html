@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+  (function(){var K='athlety-lang',l=document.documentElement.lang,p=location.pathname,f=p.replace(/^\/en\//,'/').replace(/^\//,'').replace(/^index\.html$/,'');function u(x){return(x==='en'?'/en/':'/')+f;}var s=null;try{s=localStorage.getItem(K);}catch(e){}var w=s||((navigator.language||'').toLowerCase().indexOf('de')===0?'de':'en');if(w!==l){location.replace(u(w));return;}document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('[data-lang-switch]');if(b)b.addEventListener('click',function(){try{localStorage.setItem(K,l==='de'?'en':'de');}catch(e){}});});})();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal Notice - Athlety</title>
+  <link rel="alternate" hreflang="de" href="https://athlety.app/imprint.html">
+  <link rel="alternate" hreflang="en" href="https://athlety.app/en/imprint.html">
+  <link rel="alternate" hreflang="x-default" href="https://athlety.app/imprint.html">
+  <link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="./" class="logo"><img src="../app-icon.webp" alt="" width="28" height="28"> Athlety</a>
+      <a href="/imprint.html" class="lang-switch" data-lang-switch hreflang="de">DE</a>
+    </nav>
+  </header>
+  <main>
+    <section class="download legal">
+      <h2>Legal Notice</h2>
+
+      <h3>Information pursuant to &sect; 5 DDG (German Digital Services Act)</h3>
+      <p>
+        Stefan Lipp<br>
+        Udetstra&szlig;e 4<br>
+        93049 Regensburg<br>
+        Germany
+      </p>
+
+      <h3>Contact</h3>
+      <p>Email: <a href="mailto:hello@athlety.app">hello@athlety.app</a></p>
+
+      <h3>Liability for Links</h3>
+      <p>This website contains links to external third-party websites over whose content we have no influence. The respective provider is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Such links will be removed immediately if any legal violations become known.</p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2026 Stefan Lipp</p>
+    <nav>
+      <a href="privacy.html">Privacy</a>
+      <a href="imprint.html">Legal Notice</a>
+    </nav>
+  </footer>
+</body>
+</html>

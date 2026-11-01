@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+  (function(){var K='athlety-lang',l=document.documentElement.lang,p=location.pathname,f=p.replace(/^\/en\//,'/').replace(/^\//,'').replace(/^index\.html$/,'');function u(x){return(x==='en'?'/en/':'/')+f;}var s=null;try{s=localStorage.getItem(K);}catch(e){}var w=s||((navigator.language||'').toLowerCase().indexOf('de')===0?'de':'en');if(w!==l){location.replace(u(w));return;}document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('[data-lang-switch]');if(b)b.addEventListener('click',function(){try{localStorage.setItem(K,l==='de'?'en':'de');}catch(e){}});});})();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy - Athlety</title>
+  <link rel="alternate" hreflang="de" href="https://athlety.app/privacy.html">
+  <link rel="alternate" hreflang="en" href="https://athlety.app/en/privacy.html">
+  <link rel="alternate" hreflang="x-default" href="https://athlety.app/privacy.html">
+  <link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="./" class="logo"><img src="../app-icon.webp" alt="" width="28" height="28"> Athlety</a>
+      <a href="/privacy.html" class="lang-switch" data-lang-switch hreflang="de">DE</a>
+    </nav>
+  </header>
+  <main>
+    <section class="download legal">
+      <h2>Privacy Policy</h2>
+      <p class="legal-updated">Last updated: October 13, 2026</p>
+
+      <h3>Controller</h3>
+      <p>Details about the data controller can be found in the <a href="imprint.html">Legal Notice</a>.</p>
+
+      <h3>Data Processing in the App</h3>
+      <p>Athlety does not collect any personal data. There are no user accounts, no registration, and no sign-in. The app can be used entirely anonymously.</p>
+
+      <h3>Network Connections</h3>
+      <p>The app retrieves publicly available competition data through the interface of the Leichtathletik-Datenverarbeitung (LADV). In doing so, only technical parameters (e.g. an API key and optional filter settings) are transmitted &mdash; no data that identifies you as a person. All communication is encrypted via HTTPS.</p>
+
+      <h3>Local Data Storage</h3>
+      <p>Athlety stores the following data locally on your device:</p>
+      <ul>
+        <li>Settings such as the selected appearance (light/dark/system) and your filter settings (regional association, discipline, world ranking competitions)</li>
+        <li>Competitions you have bookmarked, including name, location, and date</li>
+      </ul>
+
+      <h3>iCloud Sync</h3>
+      <p>Your bookmarks are synced between your devices via Apple's iCloud infrastructure, provided you have enabled iCloud on your device. The processing of this data is subject to <a href="https://www.apple.com/legal/privacy/en-ww/" target="_blank" rel="noopener">Apple's Privacy Policy</a>.</p>
+
+      <h3>Calendar Access</h3>
+      <p>When you export a competition to your calendar, the app asks for permission to access your calendar. Calendar entries are created only as a result of your explicit action. There is no automatic or background access to your calendar.</p>
+
+      <h3>Map Display</h3>
+      <p>In the competition details, Athlety shows the venue on a map. To do this, the app loads map data via Apple Maps (MapKit). In the process, Apple receives the coordinates of the displayed map section as well as technical connection data such as your IP address. The app does not access your own location. <a href="https://www.apple.com/legal/privacy/en-ww/" target="_blank" rel="noopener">Apple's Privacy Policy</a> applies.</p>
+
+      <h3>External Websites</h3>
+      <p>Athlety opens LADV competition pages, event announcements, additional links, and results lists in an in-app browser. These pages are loaded directly from the respective providers, which receive technical data such as your IP address and may set cookies. The privacy policies of the respective providers apply to these pages.</p>
+
+      <h3>No Analytics or Tracking Services</h3>
+      <p>Athlety does not use any analytics, advertising, or tracking services. No usage data, device information, or crash reports are transmitted to third parties.</p>
+
+      <h3>Contact by Email</h3>
+      <p>If you send an email to <a href="mailto:hello@athlety.app">hello@athlety.app</a>, your email address and the content of your message will be used solely to process your request (Art. 6(1)(f) GDPR). The data will be deleted as soon as it is no longer needed for that purpose and no statutory retention obligations prevent deletion.</p>
+
+      <h3>Website</h3>
+      <p>This website is a static site without cookies, analytics tools, or contact forms. It is hosted via GitHub Pages by GitHub, Inc. (USA). When the site is accessed, GitHub may automatically collect server log data (e.g. IP address, browser type, time of access). The legal basis is the legitimate interest in providing the website securely and reliably (Art. 6(1)(f) GDPR). In this process, data may be transferred to the USA. GitHub is certified under the EU-U.S. Data Privacy Framework, which forms the basis for the transfer. Further details are set out in <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub's Privacy Statement</a>.</p>
+
+      <h3>Your Rights</h3>
+      <p>Under the GDPR, you have, among others, the right to access, rectification, erasure, and restriction of the processing of your data, as well as the right to lodge a complaint with a supervisory authority. Since Athlety does not collect any personal data, these rights generally only concern emails you have sent to the support address.</p>
+
+      <h3>Changes</h3>
+      <p>This privacy policy may be updated from time to time. The current version is always available on this page.</p>
+
+      <h3>Contact</h3>
+      <p>If you have any questions about privacy, please contact the address listed in the <a href="imprint.html">Legal Notice</a>.</p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2026 Stefan Lipp</p>
+    <nav>
+      <a href="privacy.html">Privacy</a>
+      <a href="imprint.html">Legal Notice</a>
+    </nav>
+  </footer>
+</body>
+</html>

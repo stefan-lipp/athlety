@@ -2,10 +2,16 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
+  <script>
+  (function(){var K='athlety-lang',l=document.documentElement.lang,p=location.pathname,f=p.replace(/^\/en\//,'/').replace(/^\//,'').replace(/^index\.html$/,'');function u(x){return(x==='en'?'/en/':'/')+f;}var s=null;try{s=localStorage.getItem(K);}catch(e){}var w=s||((navigator.language||'').toLowerCase().indexOf('de')===0?'de':'en');if(w!==l){location.replace(u(w));return;}document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('[data-lang-switch]');if(b)b.addEventListener('click',function(){try{localStorage.setItem(K,l==='de'?'en':'de');}catch(e){}});});})();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Athlety - Leichtathletik-Planer für iOS</title>
   <meta name="description" content="Athlety ist dein Leichtathletik-Planer. Finde, filtere und speichere Wettkämpfe in Deutschland direkt auf deinem iPhone.">
   <meta name="apple-itunes-app" content="app-id=6761119486">
+  <link rel="alternate" hreflang="de" href="https://athlety.app/">
+  <link rel="alternate" hreflang="en" href="https://athlety.app/en/">
+  <link rel="alternate" hreflang="x-default" href="https://athlety.app/">
   <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="style.css">
@@ -17,6 +23,7 @@
       <a href="#features">Features</a>
       <a href="#download">Download</a>
       <a href="#support">Support</a>
+      <a href="/en/" class="lang-switch" data-lang-switch hreflang="en">EN</a>
     </nav>
   </header>
 

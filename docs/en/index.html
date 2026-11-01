@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+  (function(){var K='athlety-lang',l=document.documentElement.lang,p=location.pathname,f=p.replace(/^\/en\//,'/').replace(/^\//,'').replace(/^index\.html$/,'');function u(x){return(x==='en'?'/en/':'/')+f;}var s=null;try{s=localStorage.getItem(K);}catch(e){}var w=s||((navigator.language||'').toLowerCase().indexOf('de')===0?'de':'en');if(w!==l){location.replace(u(w));return;}document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('[data-lang-switch]');if(b)b.addEventListener('click',function(){try{localStorage.setItem(K,l==='de'?'en':'de');}catch(e){}});});})();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Athlety - Track &amp; Field Planner for iOS</title>
+  <meta name="description" content="Athlety is your track and field planner. Find, filter, and save competitions in Germany right on your iPhone.">
+  <meta name="apple-itunes-app" content="app-id=6761119486">
+  <link rel="alternate" hreflang="de" href="https://athlety.app/">
+  <link rel="alternate" hreflang="en" href="https://athlety.app/en/">
+  <link rel="alternate" hreflang="x-default" href="https://athlety.app/">
+  <link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="./" class="logo"><img src="../app-icon.webp" alt="" width="28" height="28"> Athlety</a>
+      <a href="#features">Features</a>
+      <a href="#download">Download</a>
+      <a href="#support">Support</a>
+      <a href="/" class="lang-switch" data-lang-switch hreflang="de">DE</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Your competition planner<br>for track and field.</h1>
+        <p class="subtitle">Find competitions in your region, save your favorites, and keep track of the whole season — all in one app.</p>
+        <a href="https://apps.apple.com/app/id6761119486" class="app-store-badge">
+          <picture>
+            <source srcset="../app-store-badge-white.svg" media="(prefers-color-scheme: dark)">
+            <img src="../app-store-badge-black.svg" alt="Download on the App Store" width="144" height="48">
+          </picture>
+        </a>
+      </div>
+      <div class="hero-image">
+        <div class="phone-mockup">
+          <picture>
+            <source srcset="../screenshot-dark.webp" media="(prefers-color-scheme: dark)">
+            <img src="../screenshot-light.webp" alt="Competition details for the Sparkassen Gala in Athlety with disciplines and venue" class="phone-screen-img">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <h2>Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
+          <h3>Find competitions</h3>
+          <p>Browse all track and field competitions in Germany with up-to-date data from the LADV.</p>
+        </div>
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+          <h3>Filter</h3>
+          <p>Filter by regional association and discipline to find exactly the competitions that suit you.</p>
+        </div>
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4.5L6 21z"/></svg>
+          <h3>Bookmark</h3>
+          <p>Save competitions you're interested in as bookmarks — synced across all your devices via iCloud.</p>
+        </div>
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          <h3>Calendar export</h3>
+          <p>Export competitions straight to your calendar so you never miss a registration deadline.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="download">
+      <h2>Download</h2>
+      <p>Athlety is available for free on the App Store.</p>
+      <a href="https://apps.apple.com/app/id6761119486">Download on the App Store</a>
+    </section>
+
+    <section id="support" class="download">
+      <h2>Support</h2>
+      <p>Questions, feedback, or issues? Send an email to <a href="mailto:hello@athlety.app">hello@athlety.app</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Stefan Lipp</p>
+    <nav>
+      <a href="privacy.html">Privacy</a>
+      <a href="imprint.html">Legal Notice</a>
+    </nav>
+  </footer>
+</body>
+</html>
