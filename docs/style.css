@@ -335,6 +335,30 @@ footer nav {
     margin-right: auto;
   }
 
+  /* Two-row header: logo and language pill on top, section links below */
+  header nav {
+    flex-wrap: wrap;
+    column-gap: 1.25rem;
+    row-gap: 0;
+    padding: 0.75rem 1rem;
+  }
+
+  header nav::before {
+    content: "";
+    flex-basis: 100%;
+    order: 1;
+  }
+
+  header nav a:not(.logo):not(.lang-switch) {
+    order: 2;
+    padding-top: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  header .lang-switch {
+    margin-left: auto;
+  }
+
   footer {
     flex-direction: column;
     gap: 1rem;
