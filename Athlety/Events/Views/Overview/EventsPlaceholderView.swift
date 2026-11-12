@@ -23,9 +23,9 @@ struct EventsPlaceholderView: View {
                 .font(.title2)
                 .fontWeight(.medium)
             Text(description)
-                .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
         }
+        .multilineTextAlignment(.center)
         .padding()
         .toolbar {
             if horizontalSizeClass != .compact {

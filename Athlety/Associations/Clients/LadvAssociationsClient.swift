@@ -22,8 +22,7 @@ nonisolated struct LadvAssociationsClient: AssociationsClient, Sendable {
         let request = URLRequest(url: associationsUrl)
 
         guard let (data, response) = try? await URLSession.shared.data(for: request) else { return [] }
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return [] }
-        guard let ladvAssociations = try? JSONDecoder().decode([LadvAssociation].self, from: data) else { return [] }
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200, let ladvAssociations = try? JSONDecoder().decode([LadvAssociation].self, from: data) else { return [] }
 
         return ladvAssociations
             .map { $0.toAssociation() }
