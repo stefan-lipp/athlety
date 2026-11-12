@@ -7,6 +7,7 @@
 
 import SwiftData
 import SwiftUI
+import TipKit
 
 struct EventDetailsView: View {
     let eventId: Int
@@ -15,9 +16,14 @@ struct EventDetailsView: View {
 
     @State private var viewModel = EventDetailsViewModel()
 
+    private let bookmarkTip = BookmarkTip()
+
     var body: some View {
         List {
             if let event = viewModel.event {
+                TipView(bookmarkTip)
+                    .listRowSeparator(.hidden)
+
                 Section {
                     EventHeaderView(name: event.name, date: event.date, location: event.location.name)
                 }
@@ -61,13 +67,16 @@ struct EventDetailsView: View {
             await viewModel.loadEventDetails(for: eventId, with: modelContext)
         }
         .toolbar {
-            EventDetailsToolbar(isSavedAsBookmark: viewModel.isSavedAsBookmark) {
-                if viewModel.isSavedAsBookmark {
-                    viewModel.removeEventFromBookmarks(in: modelContext)
-                } else {
-                    viewModel.saveEventAsBookmark(in: modelContext)
-                }
-            }
+            EventDetailsToolbar(isSavedAsBookmark: viewModel.isSavedAsBookmark, onToggleBookmark: toggleBookmark)
+        }
+    }
+
+    private func toggleBookmark() {
+        if viewModel.isSavedAsBookmark {
+            viewModel.removeEventFromBookmarks(in: modelContext)
+        } else {
+            viewModel.saveEventAsBookmark(in: modelContext)
+            bookmarkTip.invalidate(reason: .actionPerformed)
         }
     }
 }

@@ -213,6 +213,16 @@
         }
       }
     },
+    "Bookmark events to find them quickly in your saved events." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speichere Wettkämpfe als Lesezeichen, um schnell darauf zugreifen zu können."
+          }
+        }
+      }
+    },
     "Bookmarks" : {
       "localizations" : {
         "de" : {
@@ -809,6 +819,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Speichere Wettkämpfe, die dich interessieren, um sie hier zu sehen."
+          }
+        }
+      }
+    },
+    "Save this event" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wettkampf merken"
           }
         }
       }

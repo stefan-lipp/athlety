@@ -71,6 +71,9 @@ struct EventsOverview: View {
         .task(id: filter) {
             await viewModel.loadUpcomingEvents(for: filter)
         }
+        .onChange(of: eventBookmarks.isEmpty, initial: true) { _, isEmpty in
+            BookmarkTip.hasBookmarks = !isEmpty
+        }
     }
 }
 

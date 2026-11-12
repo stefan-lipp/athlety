@@ -7,6 +7,7 @@
 
 import SwiftData
 import SwiftUI
+import TipKit
 
 @main
 struct AthletyApp: App {
@@ -15,6 +16,13 @@ struct AthletyApp: App {
 
     @AppStorage("showOnboarding") private var showAppOnboarding = true
     @AppStorage("appAppearance") private var appAppearance: Appearance = .system
+
+    init() {
+        try? Tips.configure([
+            .displayFrequency(.immediate),
+            .datastoreLocation(.applicationDefault),
+        ])
+    }
 
     var body: some Scene {
         WindowGroup {

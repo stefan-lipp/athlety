@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftData
+import TipKit
 
 @Observable
 final class EventDetailsViewModel {
@@ -19,6 +20,9 @@ final class EventDetailsViewModel {
         event = await client.loadEventDetails(for: eventId)
         let eventBookmark = findEventBookmark(for: eventId, in: context)
         isSavedAsBookmark = eventBookmark != nil
+        if event != nil {
+            await BookmarkTip.eventDetailsViewed.donate()
+        }
     }
 
     func saveEventAsBookmark(in context: ModelContext) {
@@ -29,8 +33,7 @@ final class EventDetailsViewModel {
     }
 
     func removeEventFromBookmarks(in context: ModelContext) {
-        guard let event else { return }
-        guard let bookmark = findEventBookmark(for: event.id, in: context) else { return }
+        guard let event, let bookmark = findEventBookmark(for: event.id, in: context) else { return }
         context.delete(bookmark)
         isSavedAsBookmark = false
     }
