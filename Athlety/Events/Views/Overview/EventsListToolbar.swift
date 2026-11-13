@@ -27,7 +27,7 @@ struct EventsListToolbar: ToolbarContent {
     @ToolbarContentBuilder
     private var filterButton: some ToolbarContent {
         ToolbarItem {
-            if selectedCategory == .upcoming {
+            if selectedCategory != .saved {
                 Toggle(isOn: Binding { hasActiveFilter } set: { _ in showFilter = true }) {
                     Label("Filter", systemImage: "line.3.horizontal.decrease")
                 }

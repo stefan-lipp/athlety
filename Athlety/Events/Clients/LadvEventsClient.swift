@@ -9,6 +9,7 @@ import Foundation
 
 nonisolated struct LadvEventsClient: EventsClient, Sendable {
     private let eventsUrl: String
+    private let passedEventsUrl: String
     private let eventDetailsUrl: String
     private let resultDetailsUrl: String
 
@@ -17,6 +18,7 @@ nonisolated struct LadvEventsClient: EventsClient, Sendable {
         apiKey: String = AppConfig.shared.ladvApiKey
     ) {
         eventsUrl = "\(baseUrl)/\(apiKey)/ausList"
+        passedEventsUrl = "\(baseUrl)/\(apiKey)/vedList"
         eventDetailsUrl = "\(baseUrl)/\(apiKey)/ausDetail"
         resultDetailsUrl = "\(baseUrl)/\(apiKey)/vedDetail"
     }
@@ -40,6 +42,28 @@ nonisolated struct LadvEventsClient: EventsClient, Sendable {
         }
         if isWorldRankingsCompetition {
             urlComponents.queryItems?.append(URLQueryItem(name: "wrc", value: "true"))
+        }
+        let request = URLRequest(url: urlComponents.url!)
+        guard let (data, response) = try? await URLSession.shared.data(for: request) else { return [] }
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return [] }
+
+        let ladvEvents = try? JSONDecoder().decode([LadvEvent].self, from: data)
+        return ladvEvents?.compactMap { $0.toEvent() } ?? []
+    }
+
+    /// Loads the most recent passed events (LADV "Veranstaltungen") newest first.
+    ///
+    /// Their ids belong to `vedList` / `vedDetail` and differ from the ids of upcoming events.
+    @concurrent
+    func loadPassedEvents(for associationId: String?) async -> [Event] {
+        var urlComponents = URLComponents(string: passedEventsUrl)!
+        urlComponents.queryItems = [
+            URLQueryItem(name: "order", value: "DESC"),
+            URLQueryItem(name: "limit", value: "200"),
+        ]
+        if let associationId {
+            // `homelv` matches events held in the association, like `lv` does for `ausList`
+            urlComponents.queryItems?.append(URLQueryItem(name: "homelv", value: associationId))
         }
         let request = URLRequest(url: urlComponents.url!)
         guard let (data, response) = try? await URLSession.shared.data(for: request) else { return [] }

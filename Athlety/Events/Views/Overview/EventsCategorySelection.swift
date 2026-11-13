@@ -7,22 +7,19 @@
 
 import SwiftUI
 
-/// The row of capsules that switches between upcoming and saved events.
+/// The row of capsules that switches between upcoming, passed, and saved events.
 struct EventsCategorySelection: View {
     @Binding var selectedCategory: EventsOverviewCategory
 
     var body: some View {
         HStack(spacing: 12) {
-            EventsCategoryButton(
-                category: .upcoming,
-                isSelected: selectedCategory == .upcoming,
-                onSelect: { select(.upcoming) }
-            )
-            EventsCategoryButton(
-                category: .saved,
-                isSelected: selectedCategory == .saved,
-                onSelect: { select(.saved) }
-            )
+            ForEach([EventsOverviewCategory.upcoming, .passed, .saved], id: \.self) { category in
+                EventsCategoryButton(
+                    category: category,
+                    isSelected: selectedCategory == category,
+                    onSelect: { select(category) }
+                )
+            }
         }
         .font(.headline)
         .listRowBackground(EmptyView())
