@@ -7,12 +7,10 @@
 
 import SwiftUI
 
-/// Redacted placeholder sections shown while upcoming events are being loaded.
+/// Redacted placeholder sections shown while events are being loaded.
 ///
 /// Reuses ``EventRow`` so the skeleton always matches the real row layout.
 struct EventsLoadingRows: View {
-    var showsDisclosureIndicator = true
-
     private static let sampleEvents: [[Event]] = [
         [
             Event(id: -1, name: "Sportfest der Leichtathleten", location: "Rheinfelden", date: .now, isCancelled: false),
@@ -29,12 +27,7 @@ struct EventsLoadingRows: View {
         ForEach(Array(Self.sampleEvents.enumerated()), id: \.offset) { _, events in
             Section {
                 ForEach(events) { event in
-                    EventRow(
-                        event: event,
-                        isSaved: false,
-                        isSelected: false,
-                        showsDisclosureIndicator: showsDisclosureIndicator
-                    )
+                    EventRow(event: event, isSaved: false, isSelected: false)
                 }
             } header: {
                 EventsSectionHeader(date: .now)

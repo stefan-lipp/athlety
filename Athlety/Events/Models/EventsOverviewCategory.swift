@@ -9,13 +9,13 @@ import SwiftUI
 
 enum EventsOverviewCategory {
     case upcoming
-    case passed
+    case past
     case saved
 
     var icon: String {
         switch self {
         case .upcoming: "square.stack"
-        case .passed: "trophy"
+        case .past: "trophy"
         case .saved: "bookmark"
         }
     }
@@ -23,7 +23,7 @@ enum EventsOverviewCategory {
     var title: LocalizedStringKey {
         switch self {
         case .upcoming: "Upcoming"
-        case .passed: "Passed"
+        case .past: "Past"
         case .saved: "Saved"
         }
     }

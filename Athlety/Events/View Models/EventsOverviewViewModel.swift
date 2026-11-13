@@ -11,17 +11,14 @@ import SwiftData
 @Observable
 final class EventsOverviewViewModel {
     private(set) var upcomingEvents: [Event] = []
+    private(set) var pastEvents: [Event] = []
     private(set) var associations: [Association] = []
     private(set) var isLoadingUpcomingEvents = false
-    private(set) var passedEvents: [Event] = []
-    private(set) var isLoadingPassedEvents = false
-    /// The association the current `passedEvents` were loaded for, `nil` for all associations.
-    private var passedEventsAssociationId: String?
+    private(set) var isLoadingPastEvents = false
 
     private let eventsClient: EventsClient = LadvEventsClient()
     private let associationsClient: AssociationsClient = LadvAssociationsClient()
 
-    /// Loads the upcoming events matching `filter`.
     func loadUpcomingEvents(for filter: EventsFilter) async {
         isLoadingUpcomingEvents = true
         defer { isLoadingUpcomingEvents = false }
@@ -36,19 +33,14 @@ final class EventsOverviewViewModel {
         upcomingEvents = events
     }
 
-    /// Loads the most recent passed events held in the association with `associationId`,
-    /// unless they're already loaded for it.
-    func loadPassedEvents(for associationId: String?) async {
-        guard passedEvents.isEmpty || passedEventsAssociationId != associationId else { return }
+    func loadPastEvents(for associationId: String?) async {
+        isLoadingPastEvents = true
+        defer { isLoadingPastEvents = false }
 
-        isLoadingPassedEvents = true
-        defer { isLoadingPassedEvents = false }
-
-        let events = await eventsClient.loadPassedEvents(for: associationId)
+        let events = await eventsClient.loadPastEvents(for: associationId)
 
         guard !Task.isCancelled else { return }
-        passedEvents = events
-        passedEventsAssociationId = associationId
+        pastEvents = events
     }
 
     func loadAssociations() async {
