@@ -13,5 +13,6 @@ nonisolated protocol EventsClient: Sendable {
         and discipline: Discipline?,
         isWorldRankingsCompetition: Bool
     ) async -> [Event]
+    func loadPassedEvents(for associationId: String?) async -> [Event]
     func loadEventDetails(for eventId: Int) async -> EventDetails?
 }

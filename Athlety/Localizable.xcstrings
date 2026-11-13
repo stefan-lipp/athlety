@@ -643,6 +643,16 @@
         }
       }
     },
+    "No Passed Events" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine vergangenen Wettkämpfe"
+          }
+        }
+      }
+    },
     "No Saved Events" : {
       "localizations" : {
         "de" : {
@@ -689,6 +699,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Auf LADV öffnen"
+          }
+        }
+      }
+    },
+    "Passed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vergangen"
           }
         }
       }
@@ -969,6 +989,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dreisprung"
+          }
+        }
+      }
+    },
+    "Try changing your filter options to see passed events." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versuche es mit anderen Filtereinstellungen, um vergangene Wettkämpfe zu finden."
           }
         }
       }

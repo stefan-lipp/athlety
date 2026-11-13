@@ -35,14 +35,22 @@ struct EventsOverview: View {
         )
     }
 
+    /// The association to load passed events for, or `nil` while the passed category isn't
+    /// selected, so they're only fetched once someone looks at them.
+    private var passedEventsAssociationId: String?? {
+        selectedCategory == .passed ? .some(filterAssociationId) : nil
+    }
+
     var body: some View {
         NavigationSplitView {
             EventsList(
                 selectedCategory: $selectedCategory,
                 selectedEventId: $selectedEventId,
                 upcomingEvents: viewModel.upcomingEvents,
+                passedEvents: viewModel.passedEvents,
                 savedEvents: savedEvents,
                 isLoadingUpcomingEvents: viewModel.isLoadingUpcomingEvents,
+                isLoadingPassedEvents: viewModel.isLoadingPassedEvents,
                 onSaveAsBookmark: { viewModel.saveEventAsBookmark($0, in: modelContext) },
                 onRemoveFromBookmarks: { viewModel.removeEventFromBookmarks($0, in: modelContext) },
                 showsDisclosureIndicator: horizontalSizeClass == .compact
@@ -70,6 +78,10 @@ struct EventsOverview: View {
         }
         .task(id: filter) {
             await viewModel.loadUpcomingEvents(for: filter)
+        }
+        .task(id: passedEventsAssociationId) {
+            guard case let .some(associationId) = passedEventsAssociationId else { return }
+            await viewModel.loadPassedEvents(for: associationId)
         }
         .onChange(of: eventBookmarks.isEmpty, initial: true) { _, isEmpty in
             BookmarkTip.hasBookmarks = !isEmpty

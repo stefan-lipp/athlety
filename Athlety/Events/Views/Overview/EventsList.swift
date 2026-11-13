@@ -12,17 +12,28 @@ struct EventsList: View {
     @Binding var selectedEventId: Int?
 
     let upcomingEvents: [Event]
+    var passedEvents: [Event] = []
     let savedEvents: [Event]
     let isLoadingUpcomingEvents: Bool
+    var isLoadingPassedEvents = false
     let onSaveAsBookmark: (Event) -> Void
     let onRemoveFromBookmarks: (Event) -> Void
     var showsDisclosureIndicator = true
 
+    private var events: [Event] {
+        switch selectedCategory {
+        case .upcoming: upcomingEvents
+        case .passed: passedEvents
+        case .saved: savedEvents
+        }
+    }
+
+    /// Groups by date, with the most recent passed events first and the soonest otherwise.
     private var sortedEventGroups: [(date: Date, events: [Event])] {
-        let events = selectedCategory == .upcoming ? upcomingEvents : savedEvents
+        let isAscending = selectedCategory != .passed
         return Dictionary(grouping: events, by: \.date)
             .map { (date: $0.key, events: $0.value) }
-            .sorted { $0.date < $1.date }
+            .sorted { isAscending ? $0.date < $1.date : $0.date > $1.date }
     }
 
     private var savedEventIds: Set<Int> {
@@ -30,12 +41,31 @@ struct EventsList: View {
     }
 
     private var showLoadingRows: Bool {
-        selectedCategory == .upcoming && isLoadingUpcomingEvents
+        switch selectedCategory {
+        case .upcoming: isLoadingUpcomingEvents
+        case .passed: isLoadingPassedEvents
+        case .saved: false
+        }
     }
 
     private var showEmptyStateRow: Bool {
-        selectedCategory == .upcoming && upcomingEvents.isEmpty ||
-            selectedCategory == .saved && savedEvents.isEmpty
+        events.isEmpty
+    }
+
+    private var emptyStateTitle: LocalizedStringKey {
+        switch selectedCategory {
+        case .upcoming: "No Events Found"
+        case .passed: "No Passed Events"
+        case .saved: "No Saved Events"
+        }
+    }
+
+    private var emptyStateDescription: LocalizedStringKey {
+        switch selectedCategory {
+        case .upcoming: "Try changing your filter options to see upcoming events."
+        case .passed: "Try changing your filter options to see passed events."
+        case .saved: "Save events you're interested in to see them here."
+        }
     }
 
     @Environment(CalendarEventViewModel.self) private var calendarEventViewModel
@@ -49,7 +79,7 @@ struct EventsList: View {
             }
             .selectionDisabled()
             if showLoadingRows {
-                EventsLoadingRows(showsDisclosureIndicator: showsDisclosureIndicator)
+                EventsLoadingRows(showsDisclosureIndicator: showsDisclosureIndicator && selectedCategory != .passed)
                     .selectionDisabled()
                     .transition(.opacity)
             } else if showEmptyStateRow {
@@ -61,7 +91,11 @@ struct EventsList: View {
             } else {
                 ForEach(sortedEventGroups, id: \.date) { group in
                     Section {
-                        eventRows(for: group.events)
+                        if selectedCategory == .passed {
+                            passedEventRows(for: group.events)
+                        } else {
+                            eventRows(for: group.events)
+                        }
                     } header: {
                         EventsSectionHeader(date: group.date)
                     }
@@ -85,10 +119,8 @@ struct EventsList: View {
             Spacer()
             EventsPlaceholderView(
                 icon: selectedCategory.icon,
-                title: selectedCategory == .upcoming ? "No Events Found" : "No Saved Events",
-                description: selectedCategory == .upcoming
-                    ? "Try changing your filter options to see upcoming events."
-                    : "Save events you're interested in to see them here."
+                title: emptyStateTitle,
+                description: emptyStateDescription
             )
             Spacer()
         }
@@ -119,6 +151,15 @@ struct EventsList: View {
                 saveOrUnsaveButton(for: event)
                     .tint(isSaved ? .accent : .blue)
             }
+        }
+    }
+
+    /// Passed events come from a different LADV endpoint whose ids can't be used for event
+    /// details or bookmarks, so their rows are display-only for now.
+    private func passedEventRows(for events: [Event]) -> some View {
+        ForEach(events) { event in
+            EventRow(event: event, isSaved: false, isSelected: false, showsDisclosureIndicator: false)
+                .selectionDisabled()
         }
     }
 
