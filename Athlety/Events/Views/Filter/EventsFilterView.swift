@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct EventsFilterView: View {
+    var isAssociationOnly = false
+
     @Environment(EventsOverviewViewModel.self) private var viewModel
 
     @Environment(\.dismiss) private var dismiss
@@ -26,6 +28,10 @@ struct EventsFilterView: View {
             discipline: selectedDiscipline,
             isWorldRankingsCompetition: selectedIsWorldRankingsCompetition
         )
+    }
+
+    private var isResettable: Bool {
+        isAssociationOnly ? selectedAssociationId != nil : filter.isActive
     }
 
     var body: some View {
@@ -60,7 +66,10 @@ struct EventsFilterView: View {
                         associations: viewModel.associations,
                         selectedAssociationId: $selectedAssociationId
                     )
-                    EventsFilterDisciplineMenu(selectedDiscipline: $selectedDiscipline)
+                    EventsFilterDisciplineMenu(
+                        selectedDiscipline: isAssociationOnly ? .constant(nil) : $selectedDiscipline
+                    )
+                    .disabled(isAssociationOnly)
                 }
 
                 worldRankingsSection
@@ -93,6 +102,7 @@ struct EventsFilterView: View {
                             Text("Discipline")
                         }
                     }
+                    .disabled(isAssociationOnly)
                 }
 
                 worldRankingsSection
@@ -107,14 +117,19 @@ struct EventsFilterView: View {
         }
 
         private var disciplineDisplayName: String {
-            selectedDiscipline?.name ?? String(localized: "All")
+            guard !isAssociationOnly, let selectedDiscipline else { return String(localized: "All") }
+            return selectedDiscipline.name
         }
     #endif
 
     private var worldRankingsSection: some View {
         Section {
-            Toggle("World Ranking Competitions Only", isOn: $selectedIsWorldRankingsCompetition)
-                .tint(.accent)
+            Toggle(
+                "World Ranking Competitions Only",
+                isOn: isAssociationOnly ? .constant(false) : $selectedIsWorldRankingsCompetition
+            )
+            .tint(.accent)
+            .disabled(isAssociationOnly)
             #if os(macOS)
                 .padding(.vertical, 4)
             #endif
@@ -133,7 +148,7 @@ struct EventsFilterView: View {
         }
         ToolbarItem {
             Button("Reset", systemImage: "arrow.counterclockwise", action: resetFilter)
-                .disabled(!filter.isActive)
+                .disabled(!isResettable)
             #if os(macOS)
                 .labelStyle(.titleOnly)
             #endif
@@ -150,8 +165,10 @@ struct EventsFilterView: View {
 
     private func resetFilter() {
         selectedAssociationId = nil
-        selectedDiscipline = nil
-        selectedIsWorldRankingsCompetition = false
+        if !isAssociationOnly {
+            selectedDiscipline = nil
+            selectedIsWorldRankingsCompetition = false
+        }
     }
 
     private func applyFilter() {

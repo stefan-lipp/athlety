@@ -32,7 +32,7 @@ struct EventsListToolbar: ToolbarContent {
                     Label("Filter", systemImage: "line.3.horizontal.decrease")
                 }
                 .sheet(isPresented: $showFilter) {
-                    EventsFilterView()
+                    EventsFilterView(isAssociationOnly: selectedCategory == .past)
                         .preferredColorScheme(colorScheme)
                 }
             }
