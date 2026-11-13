@@ -643,7 +643,7 @@
         }
       }
     },
-    "No Passed Events" : {
+    "No Past Events" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -703,7 +703,7 @@
         }
       }
     },
-    "Passed" : {
+    "Past" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -993,7 +993,7 @@
         }
       }
     },
-    "Try changing your filter options to see passed events." : {
+    "Try changing your filter options to see past events." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {

@@ -35,10 +35,10 @@ struct EventsOverview: View {
         )
     }
 
-    /// The association to load passed events for, or `nil` while the passed category isn't
+    /// The association to load past events for, or `nil` while the past category isn't
     /// selected, so they're only fetched once someone looks at them.
-    private var passedEventsAssociationId: String?? {
-        selectedCategory == .passed ? .some(filterAssociationId) : nil
+    private var pastEventsAssociationId: String?? {
+        selectedCategory == .past ? .some(filterAssociationId) : nil
     }
 
     var body: some View {
@@ -47,13 +47,12 @@ struct EventsOverview: View {
                 selectedCategory: $selectedCategory,
                 selectedEventId: $selectedEventId,
                 upcomingEvents: viewModel.upcomingEvents,
-                passedEvents: viewModel.passedEvents,
+                pastEvents: viewModel.pastEvents,
                 savedEvents: savedEvents,
                 isLoadingUpcomingEvents: viewModel.isLoadingUpcomingEvents,
-                isLoadingPassedEvents: viewModel.isLoadingPassedEvents,
+                isLoadingPastEvents: viewModel.isLoadingPastEvents,
                 onSaveAsBookmark: { viewModel.saveEventAsBookmark($0, in: modelContext) },
-                onRemoveFromBookmarks: { viewModel.removeEventFromBookmarks($0, in: modelContext) },
-                showsDisclosureIndicator: horizontalSizeClass == .compact
+                onRemoveFromBookmarks: { viewModel.removeEventFromBookmarks($0, in: modelContext) }
             )
             .navigationTitle("Events")
             .toolbar {
@@ -79,9 +78,9 @@ struct EventsOverview: View {
         .task(id: filter) {
             await viewModel.loadUpcomingEvents(for: filter)
         }
-        .task(id: passedEventsAssociationId) {
-            guard case let .some(associationId) = passedEventsAssociationId else { return }
-            await viewModel.loadPassedEvents(for: associationId)
+        .task(id: pastEventsAssociationId) {
+            guard case let .some(associationId) = pastEventsAssociationId else { return }
+            await viewModel.loadPastEvents(for: associationId)
         }
         .onChange(of: eventBookmarks.isEmpty, initial: true) { _, isEmpty in
             BookmarkTip.hasBookmarks = !isEmpty
