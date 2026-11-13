@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct EventsFilterView: View {
+    var isAssociationOnly = false
+
     @Environment(EventsOverviewViewModel.self) private var viewModel
 
     @Environment(\.dismiss) private var dismiss
@@ -26,6 +28,10 @@ struct EventsFilterView: View {
             discipline: selectedDiscipline,
             isWorldRankingsCompetition: selectedIsWorldRankingsCompetition
         )
+    }
+
+    private var isResettable: Bool {
+        isAssociationOnly ? selectedAssociationId != nil : filter.isActive
     }
 
     var body: some View {
@@ -54,11 +60,16 @@ struct EventsFilterView: View {
                             Text("Discipline")
                         }
                     }
+                    .disabled(isAssociationOnly)
                 }
 
                 Section {
-                    Toggle("World Ranking Competitions Only", isOn: $selectedIsWorldRankingsCompetition)
-                        .tint(.accent)
+                    Toggle(
+                        "World Ranking Competitions Only",
+                        isOn: isAssociationOnly ? .constant(false) : $selectedIsWorldRankingsCompetition
+                    )
+                    .tint(.accent)
+                    .disabled(isAssociationOnly)
                 }
             }
             .navigationTitle("Filter")
@@ -85,10 +96,12 @@ struct EventsFilterView: View {
         ToolbarItem {
             Button("Reset", systemImage: "arrow.counterclockwise") {
                 selectedAssociationId = nil
-                selectedDiscipline = nil
-                selectedIsWorldRankingsCompetition = false
+                if !isAssociationOnly {
+                    selectedDiscipline = nil
+                    selectedIsWorldRankingsCompetition = false
+                }
             }
-            .disabled(!filter.isActive)
+            .disabled(!isResettable)
         }
         ToolbarItem(placement: .confirmationAction) {
             Button("Done", systemImage: "checkmark") {
@@ -108,7 +121,8 @@ struct EventsFilterView: View {
     }
 
     private var disciplineDisplayName: String {
-        selectedDiscipline?.name ?? String(localized: "All")
+        guard !isAssociationOnly, let selectedDiscipline else { return String(localized: "All") }
+        return selectedDiscipline.name
     }
 }
 
