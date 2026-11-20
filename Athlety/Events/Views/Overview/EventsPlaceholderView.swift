@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct EventsPlaceholderView: View {
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-
     let icon: String
     let title: LocalizedStringKey
     let description: LocalizedStringKey
@@ -27,14 +25,6 @@ struct EventsPlaceholderView: View {
         }
         .multilineTextAlignment(.center)
         .padding()
-        .toolbar {
-            if horizontalSizeClass != .compact {
-                #if os(macOS)
-                    ToolbarSpacer(.flexible)
-                #endif
-                SettingsToolbarButton()
-            }
-        }
     }
 }
 

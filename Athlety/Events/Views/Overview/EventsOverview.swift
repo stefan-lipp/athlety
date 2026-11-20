@@ -68,6 +68,14 @@ struct EventsOverview: View {
                         title: "Select an Event",
                         description: "Choose an event from the list to see its details."
                     )
+                    .toolbar {
+                        if horizontalSizeClass != .compact {
+                            #if os(macOS)
+                                ToolbarSpacer(.flexible)
+                            #endif
+                            SettingsToolbarButton()
+                        }
+                    }
                 }
             }
             #if os(macOS)
