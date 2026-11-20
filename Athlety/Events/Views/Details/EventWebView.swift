@@ -16,7 +16,10 @@ struct EventWebView: View {
         WebView(url: url)
             .navigationTitle(name)
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
+                #if os(macOS)
+                    ToolbarSpacer(.flexible)
+                #endif
+                ToolbarItem {
                     ShareLink(item: url, subject: Text(name))
                 }
             }
