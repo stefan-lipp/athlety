@@ -55,6 +55,9 @@ struct EventDetailsView: View {
                     if !disciplines.isEmpty {
                         Section {
                             EventDisciplineTagsView(disciplines: disciplines)
+                            #if os(macOS)
+                                .listRowSeparator(.hidden)
+                            #endif
                         }
                         .listSectionSeparator(.hidden)
                     }
@@ -70,7 +73,7 @@ struct EventDetailsView: View {
                 }
             }
             #if os(macOS)
-            .listRowInsets(.leading, 16)
+            .listRowInsets(.horizontal, 16)
             #endif
         }
         .listStyle(.plain)
