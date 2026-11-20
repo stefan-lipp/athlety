@@ -30,6 +30,42 @@ struct EventsFilterView: View {
 
     var body: some View {
         NavigationStack {
+            filterContent
+                .navigationTitle("Filter")
+                .toolbarTitleDisplayMode(.inline)
+                .toolbar { toolbar }
+        }
+        #if os(macOS)
+        .frame(minWidth: 400, idealWidth: 420, minHeight: 280, idealHeight: 320)
+        .presentationSizing(.fitted)
+        #endif
+        .task {
+            selectedAssociationId = associationId
+            selectedDiscipline = discipline
+            selectedIsWorldRankingsCompetition = isWorldRankingsCompetition
+            if viewModel.associations.isEmpty {
+                await viewModel.loadAssociations()
+            }
+        }
+    }
+
+    #if os(macOS)
+        private var filterContent: some View {
+            Form {
+                Section {
+                    EventsFilterAssociationMenu(
+                        associations: viewModel.associations,
+                        selectedAssociationId: $selectedAssociationId
+                    )
+                    EventsFilterDisciplineMenu(selectedDiscipline: $selectedDiscipline)
+                }
+
+                worldRankingsSection
+            }
+            .formStyle(.grouped)
+        }
+    #else
+        private var filterContent: some View {
             List {
                 Section {
                     NavigationLink {
@@ -56,25 +92,26 @@ struct EventsFilterView: View {
                     }
                 }
 
-                Section {
-                    Toggle("World Ranking Competitions Only", isOn: $selectedIsWorldRankingsCompetition)
-                        .tint(.accent)
-                }
+                worldRankingsSection
             }
-            .navigationTitle("Filter")
-            .toolbarTitleDisplayMode(.inline)
-            .toolbar { toolbar }
         }
-        #if os(macOS)
-        .frame(minWidth: 420, idealWidth: 460, minHeight: 480, idealHeight: 540)
-        #endif
-        .task {
-            if viewModel.associations.isEmpty {
-                await viewModel.loadAssociations()
+
+        private var associationDisplayName: String {
+            if let id = selectedAssociationId, let association = viewModel.association(withId: id) {
+                return association.name
             }
-            selectedAssociationId = associationId
-            selectedDiscipline = discipline
-            selectedIsWorldRankingsCompetition = isWorldRankingsCompetition
+            return String(localized: "All")
+        }
+
+        private var disciplineDisplayName: String {
+            selectedDiscipline?.name ?? String(localized: "All")
+        }
+    #endif
+
+    private var worldRankingsSection: some View {
+        Section {
+            Toggle("World Ranking Competitions Only", isOn: $selectedIsWorldRankingsCompetition)
+                .tint(.accent)
         }
     }
 
@@ -84,34 +121,38 @@ struct EventsFilterView: View {
             Button("Cancel", systemImage: "xmark") {
                 dismiss()
             }
+            #if os(macOS)
+            .labelStyle(.titleOnly)
+            #endif
         }
         ToolbarItem {
-            Button("Reset", systemImage: "arrow.counterclockwise") {
-                selectedAssociationId = nil
-                selectedDiscipline = nil
-                selectedIsWorldRankingsCompetition = false
-            }
-            .disabled(!filter.isActive)
+            Button("Reset", systemImage: "arrow.counterclockwise", action: resetFilter)
+                .disabled(!filter.isActive)
+            #if os(macOS)
+                .labelStyle(.titleOnly)
+            #endif
         }
         ToolbarItem(placement: .confirmationAction) {
-            Button("Done", systemImage: "checkmark") {
-                associationId = selectedAssociationId
-                discipline = selectedDiscipline
-                isWorldRankingsCompetition = selectedIsWorldRankingsCompetition
-                dismiss()
-            }
+            Button("Done", systemImage: "checkmark", action: applyFilter)
+            #if os(macOS)
+                .labelStyle(.titleOnly)
+            #endif
         }
     }
 
-    private var associationDisplayName: LocalizedStringKey {
-        if let id = selectedAssociationId, let association = viewModel.association(withId: id) {
-            return LocalizedStringKey(association.name)
-        }
-        return "All"
+    // MARK: - Actions
+
+    private func resetFilter() {
+        selectedAssociationId = nil
+        selectedDiscipline = nil
+        selectedIsWorldRankingsCompetition = false
     }
 
-    private var disciplineDisplayName: String {
-        selectedDiscipline?.name ?? String(localized: "All")
+    private func applyFilter() {
+        associationId = selectedAssociationId
+        discipline = selectedDiscipline
+        isWorldRankingsCompetition = selectedIsWorldRankingsCompetition
+        dismiss()
     }
 }
 
