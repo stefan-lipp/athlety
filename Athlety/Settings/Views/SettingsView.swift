@@ -53,15 +53,26 @@ struct SettingsView: View {
                 .toolbarTitleDisplayMode(.inline)
                 .toolbar { toolbar }
         }
+        #if os(macOS)
+        .frame(minWidth: 420, idealWidth: 460, minHeight: 480, idealHeight: 540)
+        #endif
     }
 
     @ToolbarContentBuilder
     private var toolbar: some ToolbarContent {
-        ToolbarItem(placement: .cancellationAction) {
-            Button("Cancel", systemImage: "xmark") {
-                dismiss()
+        #if os(macOS)
+            ToolbarItem(placement: .confirmationAction) {
+                Button("Done") {
+                    dismiss()
+                }
             }
-        }
+        #else
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel", systemImage: "xmark") {
+                    dismiss()
+                }
+            }
+        #endif
     }
 
     private func sectionHeader(for title: LocalizedStringKey) -> some View {

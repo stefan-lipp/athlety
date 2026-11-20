@@ -65,6 +65,9 @@ struct EventsFilterView: View {
             .toolbarTitleDisplayMode(.inline)
             .toolbar { toolbar }
         }
+        #if os(macOS)
+        .frame(minWidth: 420, idealWidth: 460, minHeight: 480, idealHeight: 540)
+        #endif
         .task {
             if viewModel.associations.isEmpty {
                 await viewModel.loadAssociations()
