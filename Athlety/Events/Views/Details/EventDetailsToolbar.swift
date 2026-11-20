@@ -14,6 +14,9 @@ struct EventDetailsToolbar: ToolbarContent {
     let onToggleBookmark: () -> Void
 
     var body: some ToolbarContent {
+        #if os(macOS)
+            ToolbarSpacer(.flexible)
+        #endif
         ToolbarItem {
             Button(action: onToggleBookmark) {
                 Image(systemName: "bookmark")
@@ -22,7 +25,7 @@ struct EventDetailsToolbar: ToolbarContent {
             }
         }
         if horizontalSizeClass != .compact {
-            ToolbarSpacer()
+            ToolbarSpacer(.fixed)
             SettingsToolbarButton()
         }
     }

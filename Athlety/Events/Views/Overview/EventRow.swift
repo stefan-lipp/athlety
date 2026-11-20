@@ -34,7 +34,15 @@ struct EventRow: View {
                 bookmarkIcon
             }
         }
+        #if os(macOS)
+        .padding(.vertical, 10)
+        .padding(.horizontal, 12)
+        .background(rowBackground)
+        .padding(.vertical, 4)
+        .listRowInsets(EdgeInsets())
+        #else
         .listRowBackground(rowBackground)
+        #endif
     }
 
     private var eventLocation: some View {
@@ -83,7 +91,12 @@ struct EventRow: View {
         #else
             let color: Color = isSelected ? Color(.tertiaryLabelColor) : Color(.tertiarySystemFill)
         #endif
-        return color.clipShape(RoundedRectangle(cornerRadius: 14))
+        #if os(macOS)
+            let cornerRadius: CGFloat = 10
+        #else
+            let cornerRadius: CGFloat = 14
+        #endif
+        return color.clipShape(RoundedRectangle(cornerRadius: cornerRadius))
     }
 }
 

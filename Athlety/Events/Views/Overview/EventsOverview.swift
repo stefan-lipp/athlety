@@ -74,6 +74,9 @@ struct EventsOverview: View {
         .onChange(of: eventBookmarks.isEmpty, initial: true) { _, isEmpty in
             BookmarkTip.hasBookmarks = !isEmpty
         }
+        #if os(macOS)
+        .toolbar(removing: .title)
+        #endif
     }
 }
 

@@ -29,6 +29,9 @@ struct EventsPlaceholderView: View {
         .padding()
         .toolbar {
             if horizontalSizeClass != .compact {
+                #if os(macOS)
+                    ToolbarSpacer(.flexible)
+                #endif
                 SettingsToolbarButton()
             }
         }
