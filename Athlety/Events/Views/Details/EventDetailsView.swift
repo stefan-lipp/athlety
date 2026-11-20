@@ -30,7 +30,9 @@ struct EventDetailsView: View {
                 .listSectionSeparator(.hidden)
 
                 Section {
-                    EventCalendarExportView(event: Event(event: event))
+                    #if os(iOS)
+                        EventCalendarExportView(event: Event(event: event))
+                    #endif
                     EventLinksView(url: event.url, links: event.links)
                     EventAttachmentsView(attachments: event.attachments)
                     EventResultsView(results: event.results)

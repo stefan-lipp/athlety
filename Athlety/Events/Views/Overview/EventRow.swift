@@ -78,7 +78,11 @@ struct EventRow: View {
     }
 
     private var rowBackground: some View {
-        let color: Color = isSelected ? Color(.tertiaryLabel) : Color(.tertiarySystemFill)
+        #if os(iOS)
+            let color: Color = isSelected ? Color(.tertiaryLabel) : Color(.tertiarySystemFill)
+        #else
+            let color: Color = isSelected ? Color(.tertiaryLabelColor) : Color(.tertiarySystemFill)
+        #endif
         return color.clipShape(RoundedRectangle(cornerRadius: 14))
     }
 }

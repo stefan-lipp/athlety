@@ -19,7 +19,9 @@ struct SettingsView: View {
             List {
                 Section {
                     appearanceRow
-                    languageRow
+                    #if os(iOS)
+                        languageRow
+                    #endif
                 } header: {
                     sectionHeader(for: "General")
                 }
@@ -42,12 +44,14 @@ struct SettingsView: View {
                 .listSectionSeparator(.hidden)
             }
             .foregroundStyle(.primary)
-            .listStyle(.insetGrouped)
-            .navigationTitle("Settings")
-            .environment(\.defaultMinListRowHeight, 56)
-            .scrollContentBackground(.visible)
-            .toolbarTitleDisplayMode(.inline)
-            .toolbar { toolbar }
+            #if os(iOS)
+                .listStyle(.insetGrouped)
+            #endif
+                .navigationTitle("Settings")
+                .environment(\.defaultMinListRowHeight, 56)
+                .scrollContentBackground(.visible)
+                .toolbarTitleDisplayMode(.inline)
+                .toolbar { toolbar }
         }
     }
 
@@ -84,11 +88,13 @@ struct SettingsView: View {
         .buttonStyle(.bordered)
     }
 
-    private var languageRow: some View {
-        Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
-            Label("Language", systemImage: "globe.desk")
+    #if os(iOS)
+        private var languageRow: some View {
+            Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
+                Label("Language", systemImage: "globe.desk")
+            }
         }
-    }
+    #endif
 
     private var tellFriendRow: some View {
         ShareLink(item: URL(string: "https://www.athlety.app")!) {

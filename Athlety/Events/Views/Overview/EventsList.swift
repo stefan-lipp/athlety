@@ -70,14 +70,16 @@ struct EventsList: View {
             }
         }
         .animation(.easeInOut, value: showLoadingRows)
-        .sheet(isPresented: $showCalendarEventEditView, content: {
-            CalendarEventEditView(
-                event: calendarEventViewModel.calendarEvent,
-                eventStore: calendarEventViewModel.calendarEventStore
-            )
-        })
-        .listRowSpacing(8)
-        .scrollContentBackground(.hidden)
+        #if os(iOS)
+            .sheet(isPresented: $showCalendarEventEditView, content: {
+                CalendarEventEditView(
+                    event: calendarEventViewModel.calendarEvent,
+                    eventStore: calendarEventViewModel.calendarEventStore
+                )
+            })
+            .listRowSpacing(8)
+        #endif
+            .scrollContentBackground(.hidden)
     }
 
     private var emptyStateRow: some View {
@@ -113,7 +115,9 @@ struct EventsList: View {
             .onTapGesture { selectedEventId = event.id }
             .contextMenu {
                 saveOrUnsaveButton(for: event)
-                addToCalendarButton(for: event)
+                #if os(iOS)
+                    addToCalendarButton(for: event)
+                #endif
             }
             .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                 saveOrUnsaveButton(for: event)
@@ -133,14 +137,16 @@ struct EventsList: View {
         }
     }
 
-    private func addToCalendarButton(for event: Event) -> some View {
-        Button {
-            calendarEventViewModel.addEventToCalendar(event)
-            showCalendarEventEditView = true
-        } label: {
-            Label("Add to Calendar", systemImage: "calendar.badge.plus")
+    #if os(iOS)
+        private func addToCalendarButton(for event: Event) -> some View {
+            Button {
+                calendarEventViewModel.addEventToCalendar(event)
+                showCalendarEventEditView = true
+            } label: {
+                Label("Add to Calendar", systemImage: "calendar.badge.plus")
+            }
         }
-    }
+    #endif
 }
 
 #Preview("Loaded") {

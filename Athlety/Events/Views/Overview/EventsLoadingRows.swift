@@ -51,5 +51,7 @@ struct EventsLoadingRows: View {
     List {
         EventsLoadingRows()
     }
+    #if os(iOS)
     .listRowSpacing(8)
+    #endif
 }
