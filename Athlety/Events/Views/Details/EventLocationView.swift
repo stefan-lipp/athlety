@@ -17,7 +17,11 @@ struct EventLocationView: View {
             EventMapView(latitude: location.latitude, longitude: location.longitude)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .frame(height: 256)
+            #if os(macOS)
+                .padding(.vertical, 8)
+            #else
                 .padding(.vertical)
+            #endif
 
             Text(location.name)
                 .fontWeight(.medium)

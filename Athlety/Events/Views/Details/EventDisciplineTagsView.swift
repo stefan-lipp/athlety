@@ -19,7 +19,11 @@ struct EventDisciplineTagsView: View {
                     tag(for: discipline)
                 }
             }
+            #if os(macOS)
+            .padding(.vertical, 8)
+            #else
             .padding(.top)
+            #endif
         }
     }
 
