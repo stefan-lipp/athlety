@@ -27,6 +27,10 @@ struct EventDetailsView: View {
 
                     Section {
                         EventHeaderView(name: event.name, date: event.date, location: event.location.name)
+                        #if os(macOS)
+                            .padding(.bottom)
+                            .listRowSeparator(.hidden)
+                        #endif
                     }
                     .listSectionSeparator(.hidden)
 
