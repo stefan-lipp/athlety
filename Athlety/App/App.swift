@@ -27,6 +27,9 @@ struct AthletyApp: App {
     var body: some Scene {
         WindowGroup {
             EventsOverview()
+            #if os(macOS)
+                .frame(minHeight: 480)
+            #endif
                 .environment(calendarEventViewModel)
                 .environment(eventsOverviewViewModel)
                 .preferredColorScheme(appAppearance.colorScheme)

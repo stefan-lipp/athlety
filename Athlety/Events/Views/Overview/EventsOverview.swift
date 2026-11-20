@@ -55,6 +55,9 @@ struct EventsOverview: View {
                     showSettingsButton: horizontalSizeClass == .compact
                 )
             }
+            #if os(macOS)
+            .navigationSplitViewColumnWidth(min: 260, ideal: 320, max: 440)
+            #endif
         } detail: {
             NavigationStack {
                 if let selectedEventId {
@@ -67,6 +70,9 @@ struct EventsOverview: View {
                     )
                 }
             }
+            #if os(macOS)
+            .frame(minWidth: 420)
+            #endif
         }
         .task(id: filter) {
             await viewModel.loadUpcomingEvents(for: filter)
