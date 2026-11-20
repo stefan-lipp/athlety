@@ -24,6 +24,9 @@ struct EventMapView: View {
 
     var body: some View {
         Map(position: $position, interactionModes: [])
+        #if os(macOS)
+            .allowsHitTesting(false)
+        #endif
             .onChange(of: [latitude, longitude]) {
                 position = EventMapView.regionPosition(latitude: latitude, longitude: longitude)
             }

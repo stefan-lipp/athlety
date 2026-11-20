@@ -20,49 +20,54 @@ struct EventDetailsView: View {
 
     var body: some View {
         List {
-            if let event = viewModel.event {
-                TipView(bookmarkTip)
-                    .listRowSeparator(.hidden)
+            Group {
+                if let event = viewModel.event {
+                    TipView(bookmarkTip)
+                        .listRowSeparator(.hidden)
 
-                Section {
-                    EventHeaderView(name: event.name, date: event.date, location: event.location.name)
-                }
-                .listSectionSeparator(.hidden)
-
-                Section {
-                    #if os(iOS)
-                        EventCalendarExportView(event: Event(event: event))
-                    #endif
-                    EventLinksView(url: event.url, links: event.links)
-                    EventAttachmentsView(attachments: event.attachments)
-                    EventResultsView(results: event.results)
-                }
-                .listSectionSeparator(.hidden)
-
-                if event.isCancelled || event.note != nil {
                     Section {
-                        EventNoteView(isCancelled: event.isCancelled, note: event.note)
+                        EventHeaderView(name: event.name, date: event.date, location: event.location.name)
                     }
-                    .listSectionSeparator(event.isCancelled ? .hidden : .visible)
-                }
+                    .listSectionSeparator(.hidden)
 
-                let disciplines = event.deduplicatedDisciplines
-                if !disciplines.isEmpty {
                     Section {
-                        EventDisciplineTagsView(disciplines: disciplines)
+                        #if os(iOS)
+                            EventCalendarExportView(event: Event(event: event))
+                        #endif
+                        EventLinksView(url: event.url, links: event.links)
+                        EventAttachmentsView(attachments: event.attachments)
+                        EventResultsView(results: event.results)
+                    }
+                    .listSectionSeparator(.hidden)
+
+                    if event.isCancelled || event.note != nil {
+                        Section {
+                            EventNoteView(isCancelled: event.isCancelled, note: event.note)
+                        }
+                        .listSectionSeparator(event.isCancelled ? .hidden : .visible)
+                    }
+
+                    let disciplines = event.deduplicatedDisciplines
+                    if !disciplines.isEmpty {
+                        Section {
+                            EventDisciplineTagsView(disciplines: disciplines)
+                        }
+                        .listSectionSeparator(.hidden)
+                    }
+
+                    Section {
+                        EventLocationView(location: event.location)
+                    }
+
+                    Section {
+                        EventRegistrationView(registration: event.registration)
                     }
                     .listSectionSeparator(.hidden)
                 }
-
-                Section {
-                    EventLocationView(location: event.location)
-                }
-
-                Section {
-                    EventRegistrationView(registration: event.registration)
-                }
-                .listSectionSeparator(.hidden)
             }
+            #if os(macOS)
+            .listRowInsets(.leading, 16)
+            #endif
         }
         .listStyle(.plain)
         .task(id: eventId) {
