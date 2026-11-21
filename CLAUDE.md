@@ -4,14 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Athlety is a native iOS app (Swift/SwiftUI, iOS 26+) for track and field athletes in Germany. It fetches upcoming competitions from the LADV (Leichtathletik-Datenverarbeitung) API and lets users browse, filter, bookmark, and export events to their calendar. There are no external dependencies, only Apple frameworks (SwiftUI, SwiftData, EventKit, MapKit, Foundation).
+Athlety is a native iOS and macOS app (Swift/SwiftUI, iOS 26+ and macOS 26+) for track and field athletes in Germany. It fetches upcoming competitions from the LADV (Leichtathletik-Datenverarbeitung) API and lets users browse, filter, bookmark, and export events to their calendar. There are no external dependencies, only Apple frameworks (SwiftUI, SwiftData, EventKit, MapKit, Foundation).
 
 ## Commands
 
-Plain Xcode project (no SPM package). Build:
+Plain Xcode project (no SPM package) with one multiplatform target (`SUPPORTED_PLATFORMS = iphoneos iphonesimulator macosx`, native macOS, not Mac Catalyst or "Designed for iPad"). Build both platforms after changing shared code:
 
 ```bash
 xcodebuild -project Athlety.xcodeproj -scheme Athlety -destination 'platform=iOS Simulator,name=iPhone 18 Pro' build
+xcodebuild -project Athlety.xcodeproj -scheme Athlety -destination 'platform=macOS' build
 ```
 
 Formatting uses SwiftFormat with default rules (no `.swiftformat` file; `.swift-version` pins Swift 6.0):
@@ -32,6 +33,14 @@ Copy `Athlety/AppConfig.sample.plist` to `Athlety/AppConfig.plist` (gitignored) 
 MVVM with protocol-based API clients and SwiftData persistence, organized by feature under `Athlety/` (`Events/` is the core feature; `Bookmarks/`, `Associations/`, `Calendar/`, `Disciplines/`, `Settings/`, `About/`, `Welcome/`, and the shared `Library/`).
 
 Outside the app target, `LADV/` holds the LADV API documentation (PDF) and `docs/` is the static athlety.app website (privacy policy, imprint).
+
+### Platforms
+
+iOS and macOS share all code. Platform differences live inline in the views behind `#if os(iOS)` / `#if os(macOS)`. Don't create separate files per platform.
+
+- UIKit-only code stays iOS-only: calendar export (`EventCalendarExportView`, `CalendarEventEditView` using `EventKitUI`) and the language row in settings (`UIApplication.openSettingsURLString`). Guard any new UIKit API the same way.
+- On macOS, views add `.frame(min…)` sizes for windows and sheets (`.presentationSizing(.fitted)` for the filter sheet), the filter uses menus instead of navigation pickers, sheet toolbar buttons use `.labelStyle(.titleOnly)` with a "Done" confirmation action, and toolbars put a `ToolbarSpacer(.flexible)` first to push items to the trailing edge.
+- Check `horizontalSizeClass` for layout decisions shared by iPad and Mac (it's never `.compact` on macOS).
 
 ### Concurrency
 

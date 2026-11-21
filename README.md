@@ -1,6 +1,6 @@
 # Athlety
 
-Athlety is an iOS application for track and field athletes, coaches, and anyone interested in athletics in Germany.
+Athlety is an iOS and macOS application for track and field athletes, coaches, and anyone interested in athletics in Germany.
 
 The app provides an overview of upcoming competitions and events and allows you to save important dates for quick access.
 It is designed to help you stay organized throughout the athletics season.
@@ -18,7 +18,7 @@ Athlety currently supports the following functionality:
 - Recognize World Ranking Competitions by their label and filter for them
 - View event details like disciplines, registration deadlines, links, and the venue on a map
 - View documents like the official announcement or schedule for events
-- Export individual events to your personal calendar
+- Export individual events to your personal calendar (iOS only)
 - Save events as bookmarks for quick access
 - Synchronize saved events between devices via iCloud
 - Choose between a light, dark, or system appearance
@@ -29,6 +29,7 @@ Athlety currently supports the following functionality:
 
 - Xcode 26 or later
 - iOS 26 or later (iPhone and iPad)
+- macOS 26 or later (native app, not Mac Catalyst)
 - An API key for the LADV API
 
 The project has no external dependencies and only uses Apple frameworks.
@@ -49,11 +50,18 @@ The app stops at launch if the file or one of its values is missing.
 
 ### Building
 
-Open _Athlety.xcodeproj_ in Xcode and run the _Athlety_ scheme, or build from the command line:
+Open _Athlety.xcodeproj_ in Xcode and run the _Athlety_ scheme with an iOS or macOS destination, or build from the command line:
 
 ```bash
-xcodebuild -project Athlety.xcodeproj -scheme Athlety -destination 'platform=iOS Simulator,name=iPhone 17 Pro' build
+# iOS
+xcodebuild -project Athlety.xcodeproj -scheme Athlety -destination 'platform=iOS Simulator,name=iPhone 18 Pro' build
+
+# macOS
+xcodebuild -project Athlety.xcodeproj -scheme Athlety -destination 'platform=macOS' build
 ```
+
+A single multiplatform target builds for both platforms.
+Platform differences are handled with `#if os(iOS)` and `#if os(macOS)` in the views.
 
 ### Formatting
 
