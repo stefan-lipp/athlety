@@ -25,18 +25,27 @@ struct AthletyApp: App {
     }
 
     var body: some Scene {
-        WindowGroup {
-            EventsOverview()
-            #if os(macOS)
-                .frame(minHeight: 480)
-            #endif
-                .environment(calendarEventViewModel)
-                .environment(eventsOverviewViewModel)
-                .preferredColorScheme(appAppearance.colorScheme)
-                .sheet(isPresented: $showAppOnboarding) {
-                    WelcomeView()
-                }
-        }
-        .modelContainer(for: EventBookmark.self)
+        #if os(macOS)
+            Window("Athlety", id: "main") {
+                content
+                    .frame(minHeight: 480)
+            }
+            .modelContainer(for: EventBookmark.self)
+        #else
+            WindowGroup {
+                content
+            }
+            .modelContainer(for: EventBookmark.self)
+        #endif
+    }
+
+    private var content: some View {
+        EventsOverview()
+            .environment(calendarEventViewModel)
+            .environment(eventsOverviewViewModel)
+            .preferredColorScheme(appAppearance.colorScheme)
+            .sheet(isPresented: $showAppOnboarding) {
+                WelcomeView()
+            }
     }
 }
