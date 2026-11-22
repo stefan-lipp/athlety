@@ -39,7 +39,7 @@ struct EventsFilterView: View {
         .frame(minWidth: 420, idealWidth: 440, maxWidth: 600, minHeight: 320, idealHeight: 360, maxHeight: 600)
         .presentationSizing(.fitted)
         #else
-        .presentationDetents([.medium, .large])
+        .presentationDetents(UIDevice.current.userInterfaceIdiom == .phone ? [.medium, .large] : [.large])
         .presentationBackground(Color(.systemGroupedBackground))
         #endif
         .task {
