@@ -16,46 +16,64 @@ struct SettingsView: View {
 
     var body: some View {
         NavigationStack {
-            List {
-                Section {
-                    appearanceRow
-                    #if os(iOS)
-                        languageRow
-                    #endif
-                } header: {
-                    sectionHeader(for: "General")
-                }
-                .listSectionSeparator(.hidden)
-
-                Section {
-                    tellFriendRow
-                    rateAppRow
-                } header: {
-                    sectionHeader(for: "Recommend")
-                }
-                .listSectionSeparator(.hidden)
-
-                Section {
-                    aboutAthletyRow
-                    feedbackRow
-                } header: {
-                    sectionHeader(for: "Information")
-                }
-                .listSectionSeparator(.hidden)
-            }
-            .foregroundStyle(.primary)
-            #if os(iOS)
-                .listStyle(.insetGrouped)
-            #endif
+            settingsContent
                 .navigationTitle("Settings")
-                .environment(\.defaultMinListRowHeight, 56)
-                .scrollContentBackground(.visible)
                 .toolbarTitleDisplayMode(.inline)
                 .toolbar { toolbar }
         }
         #if os(macOS)
-        .frame(minWidth: 420, idealWidth: 460, minHeight: 480, idealHeight: 540)
+        .frame(minWidth: 420, idealWidth: 440, maxWidth: 600, minHeight: 480, idealHeight: 520, maxHeight: 600)
+        .presentationSizing(.fitted)
         #endif
+    }
+
+    #if os(macOS)
+        private var settingsContent: some View {
+            Form {
+                sections
+            }
+            .formStyle(.grouped)
+            .foregroundStyle(.primary)
+        }
+    #else
+        private var settingsContent: some View {
+            List {
+                sections
+            }
+            .foregroundStyle(.primary)
+            .listStyle(.insetGrouped)
+            .environment(\.defaultMinListRowHeight, 56)
+            .scrollContentBackground(.visible)
+        }
+    #endif
+
+    @ViewBuilder
+    private var sections: some View {
+        Section {
+            appearanceRow
+            #if os(iOS)
+                languageRow
+            #endif
+        } header: {
+            sectionHeader(for: "General")
+        }
+        .listSectionSeparator(.hidden)
+
+        Section {
+            tellFriendRow
+            rateAppRow
+        } header: {
+            sectionHeader(for: "Recommend")
+        }
+        .listSectionSeparator(.hidden)
+
+        Section {
+            aboutAthletyRow
+            feedbackRow
+        } header: {
+            sectionHeader(for: "Information")
+        }
+        .listSectionSeparator(.hidden)
     }
 
     @ToolbarContentBuilder
@@ -75,13 +93,19 @@ struct SettingsView: View {
         #endif
     }
 
-    private func sectionHeader(for title: LocalizedStringKey) -> some View {
-        Text(title)
-            .font(.callout)
-            .foregroundStyle(.primary)
-            .fontWeight(.semibold)
-            .padding(.bottom, 4)
-    }
+    #if os(macOS)
+        private func sectionHeader(for title: LocalizedStringKey) -> some View {
+            Text(title)
+        }
+    #else
+        private func sectionHeader(for title: LocalizedStringKey) -> some View {
+            Text(title)
+                .font(.callout)
+                .foregroundStyle(.primary)
+                .fontWeight(.semibold)
+                .padding(.bottom, 4)
+        }
+    #endif
 
     // MARK: - Rows
 
@@ -95,8 +119,12 @@ struct SettingsView: View {
             Label("Appearance", systemImage: "sun.max")
         }
         .pickerStyle(.menu)
-        .menuIndicator(.hidden)
-        .buttonStyle(.bordered)
+        #if os(macOS)
+            .settingsRowPadding()
+        #else
+            .menuIndicator(.hidden)
+            .buttonStyle(.bordered)
+        #endif
     }
 
     #if os(iOS)
@@ -111,12 +139,17 @@ struct SettingsView: View {
         ShareLink(item: URL(string: "https://www.athlety.app")!) {
             Label("Tell a friend!", systemImage: "hand.thumbsup")
         }
+        #if os(macOS)
+        .buttonStyle(.plain)
+        #endif
+        .settingsRowPadding()
     }
 
     private var rateAppRow: some View {
         Link(destination: URL(string: "https://apps.apple.com/app/id6761119486?action=write-review")!) {
             Label("Rate the App", systemImage: "star")
         }
+        .settingsRowPadding()
     }
 
     private var aboutAthletyRow: some View {
@@ -125,12 +158,24 @@ struct SettingsView: View {
         } label: {
             Label("About Athlety", systemImage: "info.circle")
         }
+        .settingsRowPadding()
     }
 
     private var feedbackRow: some View {
         Link(destination: URL(string: "mailto:hello@athlety.app")!) {
             Label("Feedback & Support", systemImage: "questionmark.circle")
         }
+        .settingsRowPadding()
+    }
+}
+
+private extension View {
+    func settingsRowPadding() -> some View {
+        #if os(macOS)
+            padding(.vertical, 4)
+        #else
+            self
+        #endif
     }
 }
 
