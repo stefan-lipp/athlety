@@ -39,6 +39,7 @@
                 .accessibilityLabel("Discipline")
                 .accessibilityValue(selectedDisciplineName)
             }
+            .padding(.vertical, 4)
         }
 
         private func options(@ViewBuilder content: () -> some View) -> some View {

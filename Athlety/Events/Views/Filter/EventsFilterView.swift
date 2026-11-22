@@ -115,6 +115,9 @@ struct EventsFilterView: View {
         Section {
             Toggle("World Ranking Competitions Only", isOn: $selectedIsWorldRankingsCompetition)
                 .tint(.accent)
+            #if os(macOS)
+                .padding(.vertical, 4)
+            #endif
         }
     }
 

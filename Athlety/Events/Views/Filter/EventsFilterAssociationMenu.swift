@@ -35,6 +35,7 @@
                 .accessibilityLabel("Association")
                 .accessibilityValue(selectedAssociationName)
             }
+            .padding(.vertical, 4)
         }
 
         private func options(@ViewBuilder content: () -> some View) -> some View {
