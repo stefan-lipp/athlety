@@ -36,8 +36,11 @@ struct EventsFilterView: View {
                 .toolbar { toolbar }
         }
         #if os(macOS)
-        .frame(minWidth: 400, idealWidth: 420, minHeight: 280, idealHeight: 320)
+        .frame(minWidth: 420, idealWidth: 440, maxWidth: 600, minHeight: 320, idealHeight: 360, maxHeight: 600)
         .presentationSizing(.fitted)
+        #else
+        .presentationDetents([.medium, .large])
+        .presentationBackground(Color(.systemGroupedBackground))
         #endif
         .task {
             selectedAssociationId = associationId
