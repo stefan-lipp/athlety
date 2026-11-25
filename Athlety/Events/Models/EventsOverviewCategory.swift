@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum EventsOverviewCategory {
+enum EventsOverviewCategory: CaseIterable {
     case upcoming
     case past
     case saved

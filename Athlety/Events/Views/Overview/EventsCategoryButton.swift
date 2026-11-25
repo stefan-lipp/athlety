@@ -32,8 +32,8 @@ struct EventsCategoryButton: View {
             #endif
             .foregroundStyle(isSelected ? .white : .secondary)
             .background(isSelected ? Color.accentColor : Color(.tertiarySystemFill))
-            .clipShape(Capsule())
-            .contentShape(Capsule())
+            .clipShape(.capsule)
+            .contentShape(.capsule)
             .animation(.bouncy, value: isSelected)
         }
         .buttonStyle(.plain)

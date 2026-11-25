@@ -12,19 +12,34 @@ struct EventsCategorySelection: View {
     @Binding var selectedCategory: EventsOverviewCategory
 
     var body: some View {
+        ScrollViewReader { proxy in
+            ScrollView(.horizontal) {
+                categoryButtons
+            }
+            .scrollIndicators(.never)
+            .scrollClipDisabled()
+            .onChange(of: selectedCategory) { _, category in
+                withAnimation(.bouncy) {
+                    proxy.scrollTo(category)
+                }
+            }
+        }
+        .font(.headline)
+        .listRowBackground(EmptyView())
+        .listRowInsets(.horizontal, 0)
+    }
+
+    private var categoryButtons: some View {
         HStack(spacing: 12) {
-            let eventCategories: [EventsOverviewCategory] = [.upcoming, .past, .saved]
-            ForEach(eventCategories, id: \.self) { category in
+            ForEach(EventsOverviewCategory.allCases, id: \.self) { category in
                 EventsCategoryButton(
                     category: category,
                     isSelected: selectedCategory == category,
                     onSelect: { select(category) }
                 )
+                .id(category)
             }
         }
-        .font(.headline)
-        .listRowBackground(EmptyView())
-        .listRowInsets(.leading, 0)
     }
 
     private func select(_ category: EventsOverviewCategory) {
