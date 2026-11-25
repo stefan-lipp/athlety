@@ -16,7 +16,18 @@ struct EventDetailsView: View {
 
     @State private var viewModel = EventDetailsViewModel()
 
+    @Query private var eventBookmarks: [EventBookmark]
+
     private let bookmarkTip = BookmarkTip()
+
+    private var isSavedAsBookmark: Bool {
+        !eventBookmarks.isEmpty
+    }
+
+    init(eventId: Int) {
+        self.eventId = eventId
+        _eventBookmarks = Query(filter: #Predicate<EventBookmark> { $0.id == eventId })
+    }
 
     var body: some View {
         List {
@@ -78,18 +89,18 @@ struct EventDetailsView: View {
         }
         .listStyle(.plain)
         .task(id: eventId) {
-            await viewModel.loadEventDetails(for: eventId, with: modelContext)
+            await viewModel.loadEventDetails(for: eventId)
         }
         .toolbar {
-            EventDetailsToolbar(isSavedAsBookmark: viewModel.isSavedAsBookmark, onToggleBookmark: toggleBookmark)
+            EventDetailsToolbar(isSavedAsBookmark: isSavedAsBookmark, onToggleBookmark: toggleBookmark)
         }
     }
 
     private func toggleBookmark() {
-        if viewModel.isSavedAsBookmark {
-            viewModel.removeEventFromBookmarks(in: modelContext)
-        } else {
-            viewModel.saveEventAsBookmark(in: modelContext)
+        if isSavedAsBookmark {
+            eventBookmarks.forEach(modelContext.delete)
+        } else if let event = viewModel.event {
+            modelContext.insert(EventBookmark(event: event))
             bookmarkTip.invalidate(reason: .actionPerformed)
         }
     }
