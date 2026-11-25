@@ -27,7 +27,11 @@ struct EventRegistrationView: View {
                 } label: {
                     Label("Email", systemImage: "paperplane")
                 }
+                .contentShape(.rect)
             }
+            #if os(macOS)
+            .buttonStyle(.plain)
+            #endif
             .padding(.vertical, 8)
         }
 
